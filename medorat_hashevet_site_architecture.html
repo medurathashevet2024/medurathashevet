@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>מדורת השבט - חוויות טבע ומלאכות קדומות למשפחות</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 12mm;
+            background-color: #faf6f0;
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            color: #2b2b2b;
+            background-color: #faf6f0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+            font-size: 10pt;
+        }
+        
+        .header-banner {
+            margin: -15mm -12mm 20px -12mm;
+            padding: 25px 12mm;
+            background-color: #1e3f20;
+            color: #ffffff;
+            text-align: center;
+        }
+        
+        .header-banner h1 {
+            margin: 0;
+            font-size: 20pt;
+            color: #faf6f0;
+            letter-spacing: 1px;
+        }
+        
+        .header-banner p {
+            margin: 5px 0 0 0;
+            font-size: 11pt;
+            color: #d4e2d5;
+        }
+        
+        h2 {
+            font-size: 14pt;
+            color: #1e3f20;
+            border-left: unset;
+            border-right: 4px solid #e65c00;
+            padding-right: 8px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            page-break-after: avoid;
+        }
+        
+        h3 {
+            font-size: 11pt;
+            color: #5c4033;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            page-break-after: avoid;
+        }
+        
+        p {
+            margin: 0 0 10px 0;
+        }
+        
+        .intro-box {
+            background-color: #ffffff;
+            border-right: 4px solid #1e3f20;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .btn-orange {
+            display: inline-block;
+            background-color: #e65c00;
+            color: #ffffff;
+            padding: 6px 14px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-top: 5px;
+            font-size: 9.5pt;
+        }
+        
+        .section-block {
+            margin-bottom: 25px;
+        }
+        
+        .grid-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .grid-table th {
+            background-color: #1e3f20;
+            color: #ffffff;
+            text-align: right;
+            padding: 8px;
+            font-size: 10pt;
+            font-weight: bold;
+            border: 1px solid #d4e2d5;
+        }
+        
+        .grid-table td {
+            padding: 8px;
+            border: 1px solid #e0dcd5;
+            background-color: #ffffff;
+            vertical-align: top;
+        }
+        
+        .grid-table tr:nth-child(even) td {
+            background-color: #f5f0e8;
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: #5c4033;
+            color: #ffffff;
+            padding: 2px 6px;
+            font-size: 8pt;
+            border-radius: 3px;
+            margin-bottom: 5px;
+        }
+        
+        ul {
+            margin: 0 0 10px 0;
+            padding-right: 20px;
+        }
+        
+        li {
+            margin-bottom: 4px;
+        }
+        
+        .tech-note {
+            background-color: #e2ecdec;
+            background-color: #e3ebe4;
+            border: 1px dashed #1e3f20;
+            padding: 12px;
+            margin-top: 30px;
+            border-radius: 4px;
+        }
+        
+        .tech-note h4 {
+            margin: 0 0 6px 0;
+            color: #1e3f20;
+            font-size: 11pt;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            border-top: 1px solid #e0dcd5;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 8.5pt;
+            color: #777777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-banner">
+        <h1>מדורת השבט</h1>
+        <p>ארכיטקטורת אתר, תכנים מובנים ומדריך פיתוח מותאם</p>
+    </div>
+
+    <div class="intro-box">
+        <strong>שלום!</strong> מסמך זה מרכז את כל המבנה, העמודים, התכנים וההנחיות הטכנולוגיות לבניית האתר החדש של <strong>מדורת השבט</strong>. התוכן מותאם באופן מלא הן לפיתוח כקוד סטטי (GitHub Pages) והן להקמה במערכות ניהול תוכן כגון WordPress + Elementor.
+    </div>
+
+    <div class="section-block">
+        <h2>1. שפה עיצובית ופלטת צבעים מומלצת</h2>
+        <p>העיצוב משדר חיבור עמוק לאדמה, לקהילה ולטבע פראי באמצעות שילוב גוונים מבוססי סביבה:</p>
+        <ul>
+            <li><strong>🌿 ירוק יער (#1e3f20):</strong> צבע ראשי למותג – משדר מרחבים, צמיחה, יציבות וחיבור לטבע.</li>
+            <li><strong>🤎 חום עץ (#5c4033):</strong> צבע משני – מייצג אדמה, מלאכות קדומות, מסורת וחומר גלם חשוף.</li>
+            <li><strong>🧡 כתום מדורה (#e65c00):</strong> צבע הנעה לפעולה – כפתורים, הדגשות, הרשמות ורכיבים אינטראקטיביים.</li>
+            <li><strong>✨ רקע בהיר וחולי (#faf6f0):</strong> רקע נקי ומודרני המאפשר קריאה נוחה במובייל ובמסכים.</li>
+        </ul>
+    </div>
+
+    <div class="section-block">
+        <h2>2. ארכיטקטורת האתר והתכנים המלאים</h2>
+        
+        <div style="margin-bottom: 20px;">
+            <h3>עמוד 1: דף הבית (Home Page)</h3>
+            <p><strong>רכיב עליון (Hero Section):</strong> תמונת אווירה משפחתית רחבה סביב מדורה בהר מירון.</p>
+            <p><strong>כותרת ראשית:</strong> מדורת השבט | חוויות טבע, קמפינג ומלאכות קדומות למשפחות</p>
+            <p><strong>פסקת שיווק ומבוא:</strong><br>
+            "מתי בפעם האחרונה ניתקתם את המסכים, נשמתם אוויר הרים עמוק וישבתם יחד, כל המשפחה, סביב מדורה אמיתית? 'מדורת השבט' נולדה מתוך רצון להחזיר אותנו לבסיס. אנו מציעים מרחב שבו משפחות יכולות להתחבר מחדש – אחת לשנייה, לקהילה ולקצב של הטבע. דרך קמפינג מודרך, סדנאות יצירה בחומרים טבעיים ומלאכות קדומות, אנחנו מייצרים זיכרונות שנשארים לכל החיים."</p>
+            <a href="#" class="btn-orange">כפתור: להרשמה לקמפינג המשפחות הקרוב 🔥</a>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <h3>עמוד 2: קמפינג משפחות (The Camping Experience)</h3>
+            <p><strong>כותרת העמוד:</strong> קמפינג משפחות "הכל כלול" – חוויה קהילתית בטבע</p>
+            <p><strong>תוכן שיווקי:</strong><br>
+            "שכחו מכל מה שאתם יודעים על לוגיסטיקה מתישה של קמפינג. אנחנו דואגים להכל! אתם רק צריכים להגיע עם בגדים נוחים ומצב רוח טוב. החוויה כוללת לינת שטח מודרכת, ארוחות שף מהטבע בטאבון וקדירות, ופעילות מלאה לאורך כל סוף השבוע."</p>
+            
+            <table class="grid-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">זמן / רכיב</th>
+                        <th style="width: 70%;">פירוט הפעילות והאירוח</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🔥 חמישי אחה"צ</strong></td>
+                        <td>הגעה, התארגנות במתחם השבט המוסדר, ומפגש פתיחה קהילתי חם סביב המדורה.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🍲 קולינריה בשטח</strong></td>
+                        <td>בישול מסורתי עשיר – פיתות חמות בטאבון, תבשילי קדירה עמוקים (פויקה) ואירוח מקומי אותנטי.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>👣 אתגרי שטח ומלאכות</strong></td>
+                        <td>סיורי ליקוט צמחים, לימוד טכניקות חיכוך אש והדלקת מדורה בשיטות קדומות, וזמן איכות משפחתי מגבש.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <h3>עמוד 3: סדנאות ומלאכות קדומות (Workshops)</h3>
+            <p><strong>כותרת העמוד:</strong> מחזירים לחיים את מלאכות השבט</p>
+            <p><strong>תוכן שיווקי:</strong><br>
+            "הסדנאות שלנו הן הזדמנות לעצור את מרוץ המחשבות וליצור משהו אמיתי בידיים. אנחנו עובדים עם חומרי הגלם שהאדמה נותנת לנו, ולומדים טכניקות מסורתיות שעברו מדור לדור."</p>
+            
+            <table class="grid-table">
+                <thead>
+                    <tr>
+                        <th style="width: 35%;">שם הסדנה</th>
+                        <th style="width: 65%;">פירוט חומרי הגלם והחוויה</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge">יצירה וליקוט</span><br><strong>תכשיטים מהטבע וצביעה בוטנית</strong></td>
+                        <td>יצירת חרוזים, תליונים ועיצובים ייחודיים מזרעים, אבנים וענפים, לצד הפקת פיגמנטים וצבעים טבעיים מצמחים מקומיים.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge">מלאכת יד מסורתית</span><br><strong>קליעת סלים ויצירת חבלים</strong></td>
+                        <td>לימוד טכניקות קליעה מסורתיות מחומרים טבעיים וייצור חבלים חזקים ועמידים (Natural Cordage) מסיבי צמחים מקומיים.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge">עבודה חושית</span><br><strong>פיסול באדמה ובוץ</strong></td>
+                        <td>היכרות חווייתית עם חומר החרסית, עבודה חושית מרגיעה וחיבור ישיר לאדמה בידיים חשופות.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge">חיבור וקשר</span><br><strong>סדנאות ייחודיות להורה וילד</strong></td>
+                        <td>מרחב יצירה משותף ומעצים המחזק את התקשורת והחיבור הבין-דורי דרך עשייה הדדית ואתגרי שטח חווייתיים.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <h3>עמוד 4: אודות "מדורת השבט"</h3>
+            <p><strong>הסיפור האישי והחזון:</strong><br>
+            "אני מאמינה גדולה בכוחו של הטבע לרפא, לחבר ולהרגיע. כמי שמגיעה מעולמות החינוך לגיל הרך והכלכלה, ראיתי כמה חסר לילדים ולהורים של היום המרחב הפתוח, החופשי, זה שלא דורש מסכים או גירויים מלאכותיים. הקמתי את 'מדורת השבט' כדי לייצר איים של שקט וחיבור בתוך עולם סוער. המטרה שלי היא להעניק לכל משפחה את הביטחון לצאת לטבע, להרגיש בבית, וליצור יחד בידיים."</p>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <h3>עמוד 5: יצירת קשר ופנייה למוסדות</h3>
+            <p><strong>פנייה מותאמת למוסדות, קיבוצים ובתי מלון:</strong><br>
+            "מפיקים אירוע בקיבוץ? מחפשים תוכן ייחודי לאורחי המלון שלכם או לפסטיבל מקומי? דברו איתנו ונרכיב לכם תחנות מלאכה וחוויה מותאמות אישית."</p>
+            <p><strong>ערוצי התקשרות מוטמעים:</strong> כפתור שיחת WhatsApp ישירה, קישור טלפוני, שליחת מייל, מפת מיקום אינטראקטיבית וחיבור לרשתות החברתיות (פייסבוק ואינסטגרם).</p>
+        </div>
+    </div>
+
+    <div class="tech-note">
+        <h4>🛠️ הנחיות יישום טכנולוגי (בחירת פלטפורמה)</h4>
+        <p><strong>אפשרות א' - WordPress + Elementor (מומלץ לעצמאות עסקית):</strong> הקמת האתר על בסיס תבנית נקייה בשילוב אלמנטור. מאפשר לך להוסיף קמפינגים חדשים, לשנות תאריכים, לעדכן גלריות ולחבר מערכות סליקה (תקבול) ללא תלות במתכנת.</p>
+        <p><strong>אפשרות ב' - GitHub Pages (קוד סטטי, 100% חינם באחסון):</strong> בניית האתר כקובצי HTML5/CSS3 קבועים. היתרון הוא עלות אפסית על אחסון ומהירות טעינה מקסימלית, אך כל שינוי עתידי בטקסט או בתאריך ידרוש עדכון קוד.</p>
+    </div>
+
+    <div class="footer">
+        מדורת השבט © 2026 | כל הזכויות שמורות לחוויות טבע ומלאכות קדומות
+    </div>
+
+</body>
+</html>
