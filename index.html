@@ -4,232 +4,479 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>מדורת השבט - חוויות טבע ומלאכות קדומות למשפחות</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* הגדרות כלליות ופלטת צבעים */
         :root {
-            --forest-green: #1e3f20;
-            --earth-brown: #5c4033;
+            --forest-green: #1b3820;
+            --forest-mid: #2d5a37;
+            --forest-light: #eff5f0;
+            --earth-brown: #4a3329;
+            --earth-light: #8c6d5e;
             --campfire-orange: #e65c00;
-            --light-sandy: #faf6f0;
-            --dark-text: #2b2b2b;
+            --campfire-glow: #ff751a;
+            --sandy-bg: #faf6f0;
+            --sandy-dark: #f0e6da;
+            --text-dark: #202020;
+            --text-muted: #555555;
             --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-sm: 0 2px 8px rgba(27, 56, 32, 0.05);
+            --shadow-md: 0 10px 30px rgba(27, 56, 32, 0.08);
+            --shadow-lg: 0 20px 40px rgba(27, 56, 32, 0.12);
         }
 
+        /* Reset & Base Styles */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--light-sandy);
-            color: var(--dark-text);
-            line-height: 1.6;
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--sandy-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        /* תפריט ניווט עליון */
+        h1, h2, h3, .logo {
+            font-family: 'Secular One', sans-serif;
+        }
+
+        /* Header Navigation */
         header {
-            background-color: var(--forest-green);
-            position: sticky;
+            background-color: rgba(27, 56, 32, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            transition: var(--transition);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 18px 24px;
         }
 
         .logo {
-            color: var(--light-sandy);
-            font-size: 24px;
+            color: var(--sandy-bg);
+            font-size: 26px;
             font-weight: bold;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--campfire-orange);
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 32px;
         }
 
         nav a {
             color: #d4e2d5;
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s;
+            font-size: 16px;
+            position: relative;
+            padding: 4px 0;
+            transition: var(--transition);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--campfire-orange);
+            transition: var(--transition);
         }
 
         nav a:hover {
-            color: var(--campfire-orange);
+            color: var(--white);
         }
 
-        /* חלק עליון חווייתי - Hero */
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Premium Hero Section */
         .hero {
-            background: linear-gradient(rgba(30, 63, 32, 0.6), rgba(92, 64, 51, 0.6)), 
-                        url('https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            height: 70vh;
+            position: relative;
+            background: linear-gradient(rgba(27, 56, 32, 0.5), rgba(74, 51, 41, 0.6)), 
+                        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 95vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: var(--white);
-            padding: 0 20px;
+            padding: 0 24px;
+            margin-bottom: -2px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 64px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            animation: fadeInDown 1s both;
         }
 
         .hero p {
-            font-size: 20px;
-            max-width: 600px;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 35px;
+            color: var(--sandy-bg);
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s both 0.2s;
         }
 
+        /* Custom Elegant Button */
         .btn {
-            display: inline-block;
-            background-color: var(--campfire-orange);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--campfire-orange), #ff751a);
             color: var(--white);
-            padding: 12px 30px;
+            padding: 16px 36px;
             text-decoration: none;
             font-size: 18px;
-            font-weight: bold;
-            border-radius: 25px;
-            transition: transform 0.3s, background-color 0.3s;
-            box-shadow: 0 4px 15px rgba(230, 92, 0, 0.4);
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 6px 25px rgba(230, 92, 0, 0.45);
+            border: 2px solid transparent;
+            cursor: pointer;
+            animation: fadeInUp 1s both 0.4s;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            background-color: #ff751a;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(230, 92, 0, 0.6);
+            background: linear-gradient(135deg, #ff751a, var(--campfire-orange));
         }
 
-        /* אזורי תוכן */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 20px;
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            box-shadow: none;
+            margin-right: 15px;
         }
 
-        section {
-            margin-bottom: 40px;
+        .btn-outline:hover {
             background: var(--white);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-            border-right: 5px solid var(--forest-green);
-        }
-
-        section h2 {
             color: var(--forest-green);
-            margin-bottom: 20px;
-            font-size: 28px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            box-shadow: 0 6px 20px rgba(255,255,255,0.2);
+            transform: translateY(-4px);
         }
 
-        /* כרטיסיות סדנאות ולו"ז */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+        /* SVG Shape Dividers */
+        .divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
         }
 
-        .card {
-            background-color: var(--light-sandy);
-            padding: 25px;
-            border-radius: 6px;
-            border-top: 4px solid var(--earth-brown);
-            transition: transform 0.3s;
+        .divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 90px;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .divider .shape-fill {
+            fill: var(--sandy-bg);
         }
 
-        .card h3 {
-            color: var(--earth-brown);
-            margin-bottom: 10px;
-            font-size: 20px;
+        /* Main Content Styling */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
         }
 
-        .badge {
-            background-color: var(--forest-green);
-            color: var(--white);
-            font-size: 12px;
-            padding: 3px 8px;
-            border-radius: 3px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        /* עמוד קשר מהיר */
-        .contact-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .btn-contact {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            color: var(--white);
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .btn-whatsapp { background-color: #25D366; }
-        .btn-phone { background-color: var(--forest-green); }
-
-        /* התאמה למובייל */
-        @media (max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 15px; }
-            .hero h1 { font-size: 32px; }
-            .hero p { font-size: 16px; }
-            section { padding: 20px; }
-        }
-
-        footer {
-            background-color: var(--earth-brown);
-            color: var(--light-sandy);
+        .section-header {
             text-align: center;
-            padding: 20px;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            color: var(--forest-green);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background-color: var(--campfire-orange);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 10px auto 0;
+        }
+
+        /* Section Layouts */
+        .about-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            background: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-text p {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .about-quote {
+            border-right: 4px solid var(--campfire-orange);
+            padding-right: 20px;
+            margin-top: 30px;
+            font-style: italic;
+            font-size: 18px;
+            color: var(--earth-brown);
+            font-weight: 600;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 450px;
+            border-radius: 16px;
+            background: url('https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        /* Premium Premium Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(27, 56, 32, 0.04);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(230, 92, 0, 0.2);
+        }
+
+        .card-img-1 { background: url('https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80') center center/cover; }
+        .card-img-2 { background: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80') center center/cover; }
+        .card-img-3 { background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80') center center/cover; }
+
+        .feature-img {
+            height: 220px;
+            width: 100%;
+        }
+
+        .feature-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-body h3 {
+            font-size: 22px;
+            color: var(--forest-green);
+            margin-bottom: 12px;
+        }
+
+        .feature-body p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Workshop Premium Grid */
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .workshop-card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border-right: 6px solid var(--earth-brown);
+            transition: var(--transition);
+        }
+
+        .workshop-card:hover {
+            border-right-color: var(--campfire-orange);
+            box-shadow: var(--shadow-md);
+            transform: scale(1.02);
+        }
+
+        .w-badge {
+            background-color: var(--forest-light);
+            color: var(--forest-mid);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .workshop-card h3 {
+            font-size: 22px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        /* Interactive Action Block */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--forest-green), var(--earth-brown));
+            border-radius: 24px;
+            padding: 60px 40px;
+            color: var(--white);
+            text-align: center;
+            box-shadow: var(--shadow-lg);
             margin-top: 40px;
-            font-size: 14px;
+        }
+
+        .cta-banner h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta-banner p {
+            font-size: 18px;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #d4e2d5;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-wa {
+            background: #25D366;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        .btn-wa:hover {
+            background: #20ba5a;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Footer Element */
+        footer {
+            background-color: #122415;
+            color: #a3b8a7;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 15px;
+            border-top: 4px solid var(--campfire-orange);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .about-block { grid-template-columns: 1fr; gap: 30px; }
+            .about-image { height: 300px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .workshop-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; padding: 15px; }
+            nav ul { gap: 15px; }
+            .hero h1 { font-size: 40px; }
+            .hero p { font-size: 18px; }
+            .section-header h2 { font-size: 30px; }
+            .wrapper { padding: 50px 16px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- תפריט ניווט -->
+    <!-- תפריט ניווט פרימיום נוזל -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">🌿 מדורת השבט</a>
+            <a href="#" class="logo">🌿 מדורת <span>השבט</span></a>
             <nav>
                 <ul>
-                    <li><a href="#about">אודות</a></li>
+                    <li><a href="#about">מי אנחנו</a></li>
                     <li><a href="#camping">קמפינג משפחות</a></li>
                     <li><a href="#workshops">סדנאות ומלאכות</a></li>
                     <li><a href="#contact">צור קשר</a></li>
@@ -238,92 +485,124 @@
         </div>
     </header>
 
-    <!-- מסך פתיחה Hero -->
+    <!-- מסך פתיחה Hero עוצר נשימה -->
     <div class="hero">
-        <h1>מדורת השבט</h1>
-        <p>חוויות טבע, קמפינג ומלאכות קדומות למשפחות</p>
-        <a href="#camping" class="btn">להרשמה לקמפינג הקרוב 🔥</a>
+        <div class="hero-content">
+            <h1>מדורת השבט</h1>
+            <p>חוויות טבע בלתי נשכחות, קמפינג קהילתי ומלאכות קדומות למשפחות</p>
+            <a href="#camping" class="btn">להרשמה לקמפינג הקרוב <i class="fas fa-fire"></i></a>
+            <a href="#workshops" class="btn btn-outline">גלו את הסדנאות שלנו</a>
+        </div>
+        <!-- עיקול גלי מעוצב ב-SVG לתחתית המסך -->
+        <div class="divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V1200H1200V195.8C1127.46,179.11,1064.64,113.67,985.66,92.83Z" class="shape-fill"></path>
+            </svg>
+        </div>
     </div>
 
-    <div class="container">
+    <!-- גוף האתר -->
+    <div class="wrapper">
 
-        <!-- אודות -->
-        <section id="about">
-            <h2><i class="fas fa-campground"></i> מי אנחנו</h2>
-            <p>מתי בפעם האחרונה ניתקתם את המסכים, נשמתם אוויר הרים עמוק וישבתם יחד, כל המשפחה, סביב מדורה אמיתית? 'מדורת השבט' נולדה מתוך רצון להחזיר אותנו לבסיס. אנו מציעים מרחב שבו משפחות יכולות להתחבר מחדש – אחת לשנייה, לקהילה ולקצב של הטבע. דרך קמפינג מודרך, סדנאות יצירה בחומרים טבעיים ומלאכות קדומות, אנחנו מייצרים זיכרונות שנשארים לכל החיים.</p>
-            <p style="margin-top: 15px; font-style: italic; border-right: 3px solid var(--campfire-orange); padding-right: 10px;">
-                "אני מאמינה גדולה בכוחו של הטבע לרפא, לחבר ולהרגיע. כמי שמגיעה מעולמות החינוך לגיל הרך והכלכלה, ראיתי כמה חסר לילדים ולהורים של היום המרחב הפתוח והחופשי. הקמתי את 'מדורת השבט' כדי לייצר איים של שקט וחיבור בתוך עולם סוער."
-            </p>
+        <!-- אודות - סיפור המותג -->
+        <section id="about" class="about-block" style="border: none;">
+            <div class="about-text">
+                <div style="margin-bottom: 20px;">
+                    <span style="color:var(--campfire-orange); font-weight:700; text-transform:uppercase; letter-spacing:1px;">הסיפור מאחורי השבט</span>
+                    <h2 style="font-size: 34px; color: var(--forest-green); margin-top:5px;">חוזרים לבסיס, מניחים את המסכים</h2>
+                </div>
+                <p>מתי בפעם האחרונה ניתקתם את המסכים, נשמתם אוויר הרים עמוק וישבתם יחד, כל המשפחה, סביב מדורה אמיתית? "מדורת השבט" נולדה מתוך רצון עמוק להחזיר אותנו אל הבסיס הטבעי והמרגיע שלנו.</p>
+                <p>אנו מציעים מרחב קהילתי עוטף שבו משפחות יכולות לעצור את המרוץ היומיומי ולהתחבר מחדש – אחת לשנייה, לטבע פראי ולקצב המרגיע של האדמה. דרך חוויות שטח ייחודיות ומלאכות יד מסורתיות, אנו מייצרים יחד איתכם זיכרונות משפחתיים שנשארים לכל החיים.</p>
+                <div class="about-quote">
+                    "כמי שמגיעה מעולמות החינוך לגיל הרך והכלכלה, ראיתי כמה חסר לילדים ולהורים של היום המרחב הפתוח, החופשי והיצירתי בטבע. הקמתי את 'מדורת השבט' כדי לייצר עבורכם איים של שקט וחיבור פראי בתוך עולם סוער."
+                </div>
+            </div>
+            <div class="about-image"></div>
         </section>
 
-        <!-- קמפינג משפחות -->
-        <section id="camping" style="border-right-color: var(--campfire-orange);">
-            <h2><i class="fas fa-fire"></i> קמפינג משפחות "הכל כלול"</h2>
-            <p>שכחו מכל מה שאתם יודעים על לוגיסטיקה מתישה של קמפינג. אנחנו דואגים להכל! אתם רק צריכים להגיע עם בגדים נוחים ומצב רוח טוב. החוויה כוללת לינת שטח מודרכת, ארוחות שף מהטבע בטאבון וקדירות, ופעילות מלאה לאורך כל סוף השבוע.</p>
+        <!-- קמפינג משפחות "הכל כלול" -->
+        <div id="camping" style="padding-top: 80px; margin-bottom: 20px;">
+            <div class="section-header">
+                <h2>קמפינג משפחות "הכל כלול"</h2>
+                <p>שחררו את הלוגיסטיקה המתישה של השטח. אנחנו דואגים להכל מרמת האוהל ועד ארוחות השף - אתם מגיעים ליהנות.</p>
+            </div>
             
-            <div class="grid">
-                <div class="card">
-                    <h3>🔥 חמישי אחה"צ</h3>
-                    <p>הגעה, התארגנות במתחם השבט המוסדר, ומפגש פתיחה קהילתי חם סביב המדורה המרכזית.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-img card-img-1"></div>
+                    <div class="feature-body">
+                        <h3>🔥 חמישי אחה"צ - המפגש</h3>
+                        <p>הגעה נינוחה, התארגנות מודרכת במתחם השבט המפנק והמוסדר שלנו, ומפגש פתיחה מוזיקלי וקהילתי חם סביב הלהבות.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>🍲 קולינריה בשטח</h3>
-                    <p>בישול מסורתי עשיר – פיתות חמות בטאבון, תבשילי קדירה עמוקים (פויקה) ואירוח מקומי אותנטי.</p>
+                <div class="feature-card">
+                    <div class="feature-img card-img-2"></div>
+                    <div class="feature-body">
+                        <h3>🍲 קולינריה פראית בשטח</h3>
+                        <p>חוויית בישול מסורתית עשירה ומפנקת במיוחד – מאפים חמים ישר מהטאבון, תבשילי קדירה עמוקים (פויקה) המבושלים שעות, ואירוח אותנטי מפנק.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>👣 אתגרים ומלאכות</h3>
-                    <p>סיורי ליקוט צמחים, לימוד טכניקות חיכוך אש והדלקת מדורה בשיטות קדומות, וזמן איכות משפחתי מגבש.</p>
+                <div class="feature-card">
+                    <div class="feature-img card-img-3"></div>
+                    <div class="feature-body">
+                        <h3>👣 אתגרי שטח ומלאכות</h3>
+                        <p>יוצאים לסיורי ליקוט מרתקים, לומדים ומנסים טכניקות מדהימות של חיכוך אש והדלקת מדורה בשיטות קדומות, ונהנים מזמן איכות נדיר.</p>
+                    </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="https://wa.me/?text=שלום! אשמח לקבל פרטים והרשמה לקמפינג המשפחות הקרוב" class="btn" style="background-color: #25D366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);"><i class="fab fa-whatsapp"></i> לחצו כאן להרשמה מהירה ב-WhatsApp</a>
-            </div>
-        </section>
+        </div>
 
         <!-- סדנאות ומלאכות קדומות -->
-        <section id="workshops">
-            <h2><i class="fas fa-hammer"></i> מחזירים לחיים את מלאכות השבט</h2>
-            <p>הסדנאות שלנו הן הזדמנות לעצור את מרוץ המחשבות וליצור משהו אמיתי בידיים. אנחנו עובדים עם חומרי הגלם שהאדמה נותנת לנו, ולומדים טכניקות מסורתיות שעברו מדור לדור.</p>
-            
-            <div class="grid">
-                <div class="card">
-                    <span class="badge">יצירה וליקוט</span>
-                    <h3>תכשיטים מהטבע וצביעה בוטנית</h3>
-                    <p>יצירת חרוזים, תליונים ועיצובים ייחודיים מזרעים, אבנים וענפים, לצד הפקת פיגמנטים מצמחים מקומיים.</p>
-                </div>
-                <div class="card">
-                    <span class="badge">מלאכת יד מסורתית</span>
-                    <h3>קליעת סלים ויצירת חבלים</h3>
-                    <p>לימוד טכניקות קליעה מסורתיות מחומרים טבעיים וייצור חבלים חזקים ועמידים (Natural Cordage) מסיבי צמחים.</p>
-                </div>
-                <div class="card">
-                    <span class="badge">עבודה חושית</span>
-                    <h3>פיסול באדמה ובוץ</h3>
-                    <p>היכרות חווייתית עם חומר החרסית, עבודה חושית מרגיעה וחיבור ישיר לאדמה בידיים חשופות.</p>
-                </div>
-                <div class="card">
-                    <span class="badge">חיבור וקשר</span>
-                    <h3>סדנאות ייחודיות להורה וילד</h3>
-                    <p>מרחב יצירה משותף ומעצים המחזק את התקשורת והחיבור הבין-דורי דרך עשייה הדדית ואתגרי שטח חווייתיים.</p>
-                </div>
+        <div id="workshops" style="padding-top: 80px; margin-bottom: 20px;">
+            <div class="section-header">
+                <h2>מחזירים לחיים את מלאכות השבט</h2>
+                <p>הזדמנות אמיתית לעצור את מרוץ המחשבות, להפעיל את החושים וליצור חפצים אמיתיים ומרשימים מחומרי הגלם שהאדמה נותנת לנו.</p>
             </div>
-        </section>
 
-        <!-- יצירת קשר -->
-        <section id="contact" style="border-right-color: var(--earth-brown);">
-            <h2><i class="fas fa-envelope"></i> בואו נדבר</h2>
-            <p>מפיקים אירוע בקיבוץ? מחפשים תוכן ייחודי לאורחי המלון שלכם או לפסטיבל מקומי? דברו איתנו ונרכיב לכם תחנות מלאכה וחוויה מותאמות אישית.</p>
-            
-            <div class="contact-buttons">
-                <a href="https://wa.me/?text=שלום! אני מעוניין בפרטים לגבי פעילות של מדורת השבט" class="btn-contact btn-whatsapp"><i class="fab fa-whatsapp"></i> דברו איתנו ב-WhatsApp</a>
-                <a href="tel:" class="btn-contact btn-phone"><i class="fas fa-phone-alt"></i> התקשרו אלינו</a>
+            <div class="workshop-grid">
+                <div class="workshop-card">
+                    <span class="w-badge"><i class="fas fa-leaf"></i> יצירה וליקוט מקומי</span>
+                    <h3>תכשיטים מהטבע וצביעה בוטנית</h3>
+                    <p>לימוד מרתק של יצירת חרוזים, תליונים ועיצובים מרהיבים מזרעים, אבנים מיוחדות וענפים, לצד התנסות מעשית בהפקת פיגמנטים וצבעים טבעיים מצמחי בר מקומיים.</p>
+                </div>
+                <div class="workshop-card">
+                    <span class="w-badge"><i class="fas fa-hands"></i> מלאכת יד מסורתית</span>
+                    <h3>קליעת סלים ויצירת חבלים</h3>
+                    <p>היכרות עם טכניקות קליעה מסורתיות עתיקות באמצעות חומרי גלם טבעיים בלבד, ולימוד שיטת השזירה לייצור חבלים חזקים במיוחד (Natural Cordage) מסיבי צמחים.</p>
+                </div>
+                <div class="workshop-card">
+                    <span class="w-badge"><i class="fas fa-paint-roller"></i> עבודה חושית עמוקה</span>
+                    <h3>פיסול באדמה ובוץ</h3>
+                    <p>חיבור פיזי וישיר לקרקע. היכרות חווייתית מדהימה ומרגיעה עם חומר החרסית הגולמי, עבודה חושית משחררת ויצירת צורות ואלמנטים אומנותיים בידיים חשופות.</p>
+                </div>
+                <div class="workshop-card">
+                    <span class="w-badge"><i class="fas fa-heart"></i> חיבור וקשר בין-דורי</span>
+                    <h3>סדנאות ייחודיות להורה וילד</h3>
+                    <p>מרחב יצירה מוגן, מעצים ומקרב המחזק את התקשורת המשפחתית והקשר הרגשי דרך שיתוף פעולה בעשייה פיזית, אתגרי שטח חווייתיים והצלחה משותפת.</p>
+                </div>
             </div>
-        </section>
+        </div>
+
+        <!-- פנייה מותאמת ואינטראקטיבית - צור קשר -->
+        <div id="contact" class="cta-banner">
+            <h2>מפיקים אירוע בקיבוץ, מועצה או בית מלון?</h2>
+            <p>אנו מתמחים בהקמת מתחמי חוויה, תחנות מלאכה מסורתיות ואירועים קהילתיים בהתאמה אישית מלאה לאופי הקהל והשטח שלכם. בואו נרכיב יחד את החוויה הבאה שלכם.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/?text=שלום! אשמח לשמוע פרטים ותוכניות לפעילות של מדורת השבט" class="btn btn-wa" target="_blank">
+                    <i class="fab fa-whatsapp"></i> שיחת WhatsApp מהירה
+                </a>
+                <a href="tel:" class="btn" style="background: var(--white); color: var(--forest-green);">
+                    <i class="fas fa-phone-alt"></i> התקשרו אלינו ישירות
+                </a>
+            </div>
+        </div>
 
     </div>
 
+    <!-- פוטר מינימליסטי מהודר -->
     <footer>
-        <p>מדורת השבט © 2026 | כל הזכויות שמורות לחוויות טבע ומלאכות קדומות</p>
+        <p>מדורת השבט © 2026 | חוויות טבע, קמפינג משפחות ומלאכות קדומות</p>
+        <p style="font-size: 12px; color: #6a826f;">כל הזכויות שמורות. מיוצר באהבה וחיבור לאדמה.</p>
     </footer>
 
 </body>
