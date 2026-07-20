@@ -59,7 +59,6 @@
             width: 100%;
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            transition: var(--transition);
         }
 
         .nav-container {
@@ -79,12 +78,9 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            letter-spacing: 0.5px;
         }
 
-        .logo span {
-            color: var(--campfire-orange);
-        }
+        .logo span { color: var(--campfire-orange); }
 
         nav ul {
             display: flex;
@@ -97,28 +93,6 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 16px;
-            position: relative;
-            padding: 4px 0;
-            transition: var(--transition);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--campfire-orange);
-            transition: var(--transition);
-        }
-
-        nav a:hover {
-            color: var(--white);
-        }
-
-        nav a:hover::after {
-            width: 100%;
         }
 
         /* Premium Hero Section */
@@ -126,7 +100,7 @@
             position: relative;
             background: linear-gradient(rgba(27, 56, 32, 0.5), rgba(74, 51, 41, 0.6)), 
                         url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            height: 95vh;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -134,32 +108,11 @@
             text-align: center;
             color: var(--white);
             padding: 0 24px;
-            margin-bottom: -2px;
         }
 
-        .hero-content {
-            max-width: 850px;
-            z-index: 2;
-        }
+        .hero h1 { font-size: 54px; margin-bottom: 20px; }
+        .hero p { font-size: 22px; margin-bottom: 35px; }
 
-        .hero h1 {
-            font-size: 64px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            animation: fadeInDown 1s both;
-        }
-
-        .hero p {
-            font-size: 24px;
-            font-weight: 300;
-            margin-bottom: 35px;
-            color: var(--sandy-bg);
-            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s both 0.2s;
-        }
-
-        /* Custom Elegant Button */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -173,304 +126,157 @@
             border-radius: 50px;
             transition: var(--transition);
             box-shadow: 0 6px 25px rgba(230, 92, 0, 0.45);
-            border: 2px solid transparent;
+            border: none;
             cursor: pointer;
-            animation: fadeInUp 1s both 0.4s;
         }
 
         .btn:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(230, 92, 0, 0.6);
-            background: linear-gradient(135deg, #ff751a, var(--campfire-orange));
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--white);
-            box-shadow: none;
-            margin-right: 15px;
-        }
-
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--forest-green);
-            box-shadow: 0 6px 20px rgba(255,255,255,0.2);
-            transform: translateY(-4px);
-        }
-
-        /* SVG Shape Dividers */
-        .divider {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            transform: rotate(180deg);
-        }
-
-        .divider svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 90px;
-        }
-
-        .divider .shape-fill {
-            fill: var(--sandy-bg);
-        }
-
-        /* Main Content Styling */
         .wrapper {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 24px;
+            padding: 60px 24px;
         }
 
         .section-header {
             text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 { font-size: 40px; color: var(--forest-green); }
+
+        section {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
             margin-bottom: 60px;
         }
 
-        .section-header h2 {
-            font-size: 40px;
-            color: var(--forest-green);
-            position: relative;
-            display: inline-block;
-            margin-bottom: 15px;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
         }
 
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 25%;
-            width: 50%;
-            height: 3px;
-            background-color: var(--campfire-orange);
-            border-radius: 2px;
+        .card {
+            background-color: var(--sandy-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border-top: 4px solid var(--earth-brown);
         }
 
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 18px;
-            max-width: 600px;
-            margin: 10px auto 0;
+        .info-list { list-style: none; margin-top: 15px; }
+        .info-list li { position: relative; padding-right: 25px; margin-bottom: 10px; font-size: 16px; }
+        .info-list li::before {
+            content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900;
+            position: absolute; right: 0; color: var(--campfire-orange);
         }
+        .equipment-list li::before { content: "\f553"; color: var(--forest-mid); }
 
-        /* Section Layouts */
-        .about-block {
+        /* טופס הרשמה ומכירה מודרני */
+        .booking-box {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            background: var(--white);
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .about-text p {
-            font-size: 18px;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .about-quote {
-            border-right: 4px solid var(--campfire-orange);
-            padding-right: 20px;
+            gap: 40px;
             margin-top: 30px;
-            font-style: italic;
-            font-size: 18px;
-            color: var(--earth-brown);
-            font-weight: 600;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 450px;
-            border-radius: 16px;
-            background: url('https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-        }
-
-        /* Premium Premium Feature Grid */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(27, 56, 32, 0.04);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(230, 92, 0, 0.2);
-        }
-
-        .card-img-1 { background: url('https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80') center center/cover; }
-        .card-img-2 { background: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80') center center/cover; }
-        .card-img-3 { background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80') center center/cover; }
-
-        .feature-img {
-            height: 220px;
-            width: 100%;
-        }
-
-        .feature-body {
-            padding: 30px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .feature-body h3 {
-            font-size: 22px;
-            color: var(--forest-green);
-            margin-bottom: 12px;
-        }
-
-        .feature-body p {
-            color: var(--text-muted);
-            font-size: 16px;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        /* Workshop Premium Grid */
-        .workshop-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .workshop-card {
-            background: var(--white);
+            background: var(--forest-light);
             padding: 35px;
             border-radius: 16px;
-            box-shadow: var(--shadow-sm);
-            border-right: 6px solid var(--earth-brown);
-            transition: var(--transition);
         }
 
-        .workshop-card:hover {
-            border-right-color: var(--campfire-orange);
-            box-shadow: var(--shadow-md);
-            transform: scale(1.02);
+        .price-tag {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            border-right: 5px solid var(--campfire-orange);
         }
 
-        .w-badge {
-            background-color: var(--forest-light);
-            color: var(--forest-mid);
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 15px;
+        .price-item { font-size: 20px; margin-bottom: 15px; font-weight: bold; }
+        .price-item span { color: var(--campfire-orange); font-size: 24px; }
+
+        .booking-form { display: flex; flex-direction: column; gap: 15px; }
+        .form-group { display: flex; flex-direction: column; gap: 5px; }
+        .form-group label { font-weight: 700; color: var(--forest-green); }
+        .form-group input, .form-group select { padding: 12px; border: 1px solid #cccccc; border-radius: 8px; font-size: 16px; }
+
+        .total-price-box {
+            background: var(--forest-green); color: var(--white);
+            padding: 15px; border-radius: 8px; text-align: center; font-size: 20px; font-weight: bold;
         }
 
-        .workshop-card h3 {
-            font-size: 22px;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-        }
-
-        /* Interactive Action Block */
-        .cta-banner {
-            background: linear-gradient(135deg, var(--forest-green), var(--earth-brown));
-            border-radius: 24px;
-            padding: 60px 40px;
-            color: var(--white);
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-            margin-top: 40px;
-        }
-
-        .cta-banner h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        .cta-banner p {
-            font-size: 18px;
-            max-width: 650px;
-            margin: 0 auto 30px;
-            color: #d4e2d5;
-        }
-
-        .cta-buttons {
-            display: flex;
+        /* חלונית פרטי תשלום (Modal) */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
             justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            align-items: center;
+            padding: 20px;
         }
 
-        .btn-wa {
-            background: #25D366;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-        }
-        .btn-wa:hover {
-            background: #20ba5a;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
-        }
-
-        /* Footer Element */
-        footer {
-            background-color: #122415;
-            color: #a3b8a7;
+        .modal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+            position: relative;
             text-align: center;
-            padding: 40px 20px;
-            font-size: 15px;
-            border-top: 4px solid var(--campfire-orange);
         }
 
-        footer p {
-            margin-bottom: 10px;
+        .close-modal {
+            position: absolute;
+            top: 15px; left: 15px;
+            font-size: 24px; cursor: pointer; color: var(--text-muted);
         }
 
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 992px) {
-            .about-block { grid-template-columns: 1fr; gap: 30px; }
-            .about-image { height: 300px; }
-            .feature-grid { grid-template-columns: 1fr; }
-            .workshop-grid { grid-template-columns: 1fr; }
+        .pay-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 18px;
         }
 
-        @media (max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 15px; padding: 15px; }
-            nav ul { gap: 15px; }
-            .hero h1 { font-size: 40px; }
-            .hero p { font-size: 18px; }
-            .section-header h2 { font-size: 30px; }
-            .wrapper { padding: 50px 16px; }
+        .btn-bit { background-color: #00c3b0; }
+        .btn-paybox { background-color: #00a4e4; }
+        .bank-details {
+            background: var(--sandy-bg);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px dashed var(--earth-light);
+            text-align: right;
+            font-size: 16px;
         }
+
+        @media (max-width: 992px) { .booking-box { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 15px; } }
+
+        footer { background-color: #122415; color: #a3b8a7; text-align: center; padding: 30px; }
     </style>
 </head>
 <body>
 
-    <!-- תפריט ניווט פרימיום נוזל -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">🌿 מדורת <span>השבט</span></a>
@@ -479,130 +285,217 @@
                     <li><a href="#about">מי אנחנו</a></li>
                     <li><a href="#camping">קמפינג משפחות</a></li>
                     <li><a href="#workshops">סדנאות ומלאכות</a></li>
-                    <li><a href="#contact">צור קשר</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- מסך פתיחה Hero עוצר נשימה -->
     <div class="hero">
-        <div class="hero-content">
-            <h1>מדורת השבט</h1>
-            <p>חוויות טבע בלתי נשכחות, קמפינג קהילתי ומלאכות קדומות למשפחות</p>
-            <a href="#camping" class="btn">להרשמה לקמפינג הקרוב <i class="fas fa-fire"></i></a>
-            <a href="#workshops" class="btn btn-outline">גלו את הסדנאות שלנו</a>
-        </div>
-        <!-- עיקול גלי מעוצב ב-SVG לתחתית המסך -->
-        <div class="divider">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V1200H1200V195.8C1127.46,179.11,1064.64,113.67,985.66,92.83Z" class="shape-fill"></path>
-            </svg>
-        </div>
+        <h1>מדורת השבט</h1>
+        <p>חוויות טבע בלתי נשכחות ומלאכות קדומות למשפחות</p>
+        <a href="#camping" class="btn">דלגו ישר לפרטי הקמפינג והרשמה <i class="fas fa-arrow-down"></i></a>
     </div>
 
-    <!-- גוף האתר -->
     <div class="wrapper">
 
-        <!-- אודות - סיפור המותג -->
-        <section id="about" class="about-block" style="border: none;">
-            <div class="about-text">
-                <div style="margin-bottom: 20px;">
-                    <span style="color:var(--campfire-orange); font-weight:700; text-transform:uppercase; letter-spacing:1px;">הסיפור מאחורי השבט</span>
-                    <h2 style="font-size: 34px; color: var(--forest-green); margin-top:5px;">חוזרים לבסיס, מניחים את המסכים</h2>
+        <!-- עמוד המכירה הממוקד של הקמפינג -->
+        <section id="camping">
+            <div class="section-header">
+                <span style="color:var(--campfire-orange); font-weight:700;">הרפתקה משפחתית קהילתית</span>
+                <h2>קמפינג משפחות "הכל כלול" - הר מירון</h2>
+                <p>שחררו את הלוגיסטיקה המתישה מהראש. אנחנו דואגים להכל מרמת מתחם הלינה ועד ארוחות השף. אתם מגיעים פשוט ליהנות ולייצר זיכרונות.</p>
+            </div>
+
+            <h3>📅 לוח הזמנים והחוויות</h3>
+            <div class="grid">
+                <div class="card">
+                    <h3>🔥 חמישי אחה"צ - המפגש</h3>
+                    <p>הגעה נינוחה לשטח, התארגנות מודרכת במתחם השבט המוסדר שלנו, ומפגש פתיחה מוזיקלי וקהילתי חם סביב המדורה המרכזית.</p>
                 </div>
-                <p>מתי בפעם האחרונה ניתקתם את המסכים, נשמתם אוויר הרים עמוק וישבתם יחד, כל המשפחה, סביב מדורה אמיתית? "מדורת השבט" נולדה מתוך רצון עמוק להחזיר אותנו אל הבסיס הטבעי והמרגיע שלנו.</p>
-                <p>אנו מציעים מרחב קהילתי עוטף שבו משפחות יכולות לעצור את המרוץ היומיומי ולהתחבר מחדש – אחת לשנייה, לטבע פראי ולקצב המרגיע של האדמה. דרך חוויות שטח ייחודיות ומלאכות יד מסורתיות, אנו מייצרים יחד איתכם זיכרונות משפחתיים שנשארים לכל החיים.</p>
-                <div class="about-quote">
-                    "כמי שמגיעה מעולמות החינוך לגיל הרך והכלכלה, ראיתי כמה חסר לילדים ולהורים של היום המרחב הפתוח, החופשי והיצירתי בטבע. הקמתי את 'מדורת השבט' כדי לייצר עבורכם איים של שקט וחיבור פראי בתוך עולם סוער."
+                <div class="card">
+                    <h3>🍲 קולינריה פראית בשטח</h3>
+                    <p>חוויית בישול מסורתית ומפנקת במיוחד – מאפים חמים ישר מהטאבון, תבשילי קדירה עמוקים (פויקה) המבושלים שעות בשטח, ואירוח אותנטי עשיר.</p>
+                </div>
+                <div class="card">
+                    <h3>👣 אתגרים ומלאכות</h3>
+                    <p>יוצאים לסיורי ליקוט מרתקים, לומדים ומנסים טכניקות מדהימות של חיכוך אש והדלקת מדורה בשיטות קדומות, ונהנים מזמן איכות משפחתי נדיר.</p>
                 </div>
             </div>
-            <div class="about-image"></div>
+
+            <div class="grid" style="margin-top: 40px;">
+                <!-- מה אנחנו מספקים -->
+                <div>
+                    <h3 style="color: var(--forest-green); margin-bottom: 15px;"><i class="fas fa-check-circle"></i> מה אנחנו מספקים?</h3>
+                    <ul class="info-list">
+                        <li>מתחם קמפינג מוסדר ומאובטח בטבע.</li>
+                        <li>ארוחות שף מלאות (בוקר, ערב ונשנושי שטח) לאורך כל סוף השבוע.</li>
+                        <li>כל חומרי הגלם וכלי העבודה לסדנאות המלאכה והליקוט.</li>
+                        <li>הדרכה צמודה, לוגיסטיקה מלאה וליווי מקצועי.</li>
+                        <li>מתחם תה/קפה חופשי ומים זמינים לאורך כל האירוע.</li>
+                    </ul>
+                </div>
+
+                <!-- רשימת ציוד משפחתית -->
+                <div>
+                    <h3 style="color: var(--earth-brown); margin-bottom: 15px;"><i class="fas fa-backpack"></i> רשימת ציוד שעל המשפחה להביא:</h3>
+                    <ul class="info-list equipment-list">
+                        <li>אוהל משפחתי, מזרנים ושקי שינה/שמיכות נוחות.</li>
+                        <li>בגדים נוחים להליכה ובגדים חמים במיוחד ללילה (במירון קריר!).</li>
+                        <li>נעלי הליכה סגורות ונוחות.</li>
+                        <li>פנסים (רצוי פנסי ראש) לכל בן משפחה.</li>
+                        <li>כובעים, קרם הגנה ותכשיר נגד יתושים.</li>
+                        <li>כלי אוכל רב-פעמיים אישיים למשפחה (שומרים על הסביבה).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- אזור עלויות, ביטולים וטופס הרשמה אינטראקטיבי -->
+            <div class="booking-box">
+                <div class="price-tag">
+                    <h3 style="color: var(--forest-green); margin-bottom: 15px;"><i class="fas fa-tags"></i> עלויות ומדיניות</h3>
+                    <div class="price-item">מבוגר (מגיל 14 ומעלה): <span>₪550</span></div>
+                    <div class="price-item">ילד (גיל 4 עד 14): <span>₪380</span></div>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 15px;">*הפעילות ללא עלות לתינוקות מתחת לגיל 4.</p>
+                    
+                    <h4 style="margin-top: 20px; color: var(--earth-brown); font-size: 16px;">🛡️ מדיניות אפשרויות ביטול:</h4>
+                    <p style="font-size: 14px; color: var(--text-muted);">
+                        ביטול עד 7 ימי עסקים לפני האירוע – החזר מלא בניכוי 5% דמי רישום.<br>
+                        ביטול בין 7 ל-3 ימי עסקים לפני האירוע – החזר של 50% מעלות הכרטיס.<br>
+                        ביטול בטווח של פחות מ-3 ימי עסקים – לא ניתן לקבל החזר, אך ניתן להעביר את הכרטיס למשפחה אחרת.
+                    </p>
+                </div>
+
+                <!-- טופס ההרשמה הדינמי ללא סליקה -->
+                <div class="booking-form">
+                    <h3 style="color: var(--forest-green);"><i class="fas fa-user-plus"></i> טופס הרשמה מהיר לקמפינג</h3>
+                    
+                    <div class="form-group">
+                        <label>שם מלא של איש הקשר:</label>
+                        <input type="text" id="parentName" placeholder="ישראל ישראלי" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>מספר טלפון (זמין ל-WhatsApp):</label>
+                        <input type="tel" id="parentPhone" placeholder="050-1234567" required>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>מספר מבוגרים:</label>
+                            <select id="adultsNum" onchange="calculateTotal()">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>מספר ילדים (גיל 4-14):</label>
+                            <select id="kidsNum" onchange="calculateTotal()">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="total-price-box">
+                        לתשלום: ₪<span id="totalAmount">1860</span>
+                    </div>
+
+                    <button class="btn" onclick="processRegistration()" style="width: 100%; justify-content: center; margin-top: 10px;">
+                        המשך לבחירת אופן תשלום (ביט / פייבוקס / העברה) <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
         </section>
-
-        <!-- קמפינג משפחות "הכל כלול" -->
-        <div id="camping" style="padding-top: 80px; margin-bottom: 20px;">
-            <div class="section-header">
-                <h2>קמפינג משפחות "הכל כלול"</h2>
-                <p>שחררו את הלוגיסטיקה המתישה של השטח. אנחנו דואגים להכל מרמת האוהל ועד ארוחות השף - אתם מגיעים ליהנות.</p>
-            </div>
-            
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-img card-img-1"></div>
-                    <div class="feature-body">
-                        <h3>🔥 חמישי אחה"צ - המפגש</h3>
-                        <p>הגעה נינוחה, התארגנות מודרכת במתחם השבט המפנק והמוסדר שלנו, ומפגש פתיחה מוזיקלי וקהילתי חם סביב הלהבות.</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-img card-img-2"></div>
-                    <div class="feature-body">
-                        <h3>🍲 קולינריה פראית בשטח</h3>
-                        <p>חוויית בישול מסורתית עשירה ומפנקת במיוחד – מאפים חמים ישר מהטאבון, תבשילי קדירה עמוקים (פויקה) המבושלים שעות, ואירוח אותנטי מפנק.</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-img card-img-3"></div>
-                    <div class="feature-body">
-                        <h3>👣 אתגרי שטח ומלאכות</h3>
-                        <p>יוצאים לסיורי ליקוט מרתקים, לומדים ומנסים טכניקות מדהימות של חיכוך אש והדלקת מדורה בשיטות קדומות, ונהנים מזמן איכות נדיר.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- סדנאות ומלאכות קדומות -->
-        <div id="workshops" style="padding-top: 80px; margin-bottom: 20px;">
-            <div class="section-header">
-                <h2>מחזירים לחיים את מלאכות השבט</h2>
-                <p>הזדמנות אמיתית לעצור את מרוץ המחשבות, להפעיל את החושים וליצור חפצים אמיתיים ומרשימים מחומרי הגלם שהאדמה נותנת לנו.</p>
-            </div>
-
-            <div class="workshop-grid">
-                <div class="workshop-card">
-                    <span class="w-badge"><i class="fas fa-leaf"></i> יצירה וליקוט מקומי</span>
-                    <h3>תכשיטים מהטבע וצביעה בוטנית</h3>
-                    <p>לימוד מרתק של יצירת חרוזים, תליונים ועיצובים מרהיבים מזרעים, אבנים מיוחדות וענפים, לצד התנסות מעשית בהפקת פיגמנטים וצבעים טבעיים מצמחי בר מקומיים.</p>
-                </div>
-                <div class="workshop-card">
-                    <span class="w-badge"><i class="fas fa-hands"></i> מלאכת יד מסורתית</span>
-                    <h3>קליעת סלים ויצירת חבלים</h3>
-                    <p>היכרות עם טכניקות קליעה מסורתיות עתיקות באמצעות חומרי גלם טבעיים בלבד, ולימוד שיטת השזירה לייצור חבלים חזקים במיוחד (Natural Cordage) מסיבי צמחים.</p>
-                </div>
-                <div class="workshop-card">
-                    <span class="w-badge"><i class="fas fa-paint-roller"></i> עבודה חושית עמוקה</span>
-                    <h3>פיסול באדמה ובוץ</h3>
-                    <p>חיבור פיזי וישיר לקרקע. היכרות חווייתית מדהימה ומרגיעה עם חומר החרסית הגולמי, עבודה חושית משחררת ויצירת צורות ואלמנטים אומנותיים בידיים חשופות.</p>
-                </div>
-                <div class="workshop-card">
-                    <span class="w-badge"><i class="fas fa-heart"></i> חיבור וקשר בין-דורי</span>
-                    <h3>סדנאות ייחודיות להורה וילד</h3>
-                    <p>מרחב יצירה מוגן, מעצים ומקרב המחזק את התקשורת המשפחתית והקשר הרגשי דרך שיתוף פעולה בעשייה פיזית, אתגרי שטח חווייתיים והצלחה משותפת.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- פנייה מותאמת ואינטראקטיבית - צור קשר -->
-        <div id="contact" class="cta-banner">
-            <h2>מפיקים אירוע בקיבוץ, מועצה או בית מלון?</h2>
-            <p>אנו מתמחים בהקמת מתחמי חוויה, תחנות מלאכה מסורתיות ואירועים קהילתיים בהתאמה אישית מלאה לאופי הקהל והשטח שלכם. בואו נרכיב יחד את החוויה הבאה שלכם.</p>
-            <div class="cta-buttons">
-                <a href="https://wa.me/?text=שלום! אשמח לשמוע פרטים ותוכניות לפעילות של מדורת השבט" class="btn btn-wa" target="_blank">
-                    <i class="fab fa-whatsapp"></i> שיחת WhatsApp מהירה
-                </a>
-                <a href="tel:" class="btn" style="background: var(--white); color: var(--forest-green);">
-                    <i class="fas fa-phone-alt"></i> התקשרו אלינו ישירות
-                </a>
-            </div>
-        </div>
-
     </div>
 
-    <!-- פוטר מינימליסטי מהודר -->
+    <!-- חלונית פופ-אפ מודרנית לבחירת אופן התשלום -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--forest-green);"><i class="fas fa-wallet"></i> השלמת הרישום למדורת השבט</h2>
+            <p style="margin-top: 10px; font-size: 16px;">
+                ההרשמה שלך נשמרה בהצלחה! סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 20px;">₪<span id="modalTotal">1860</span></strong>.
+                <br>אנא בצעו העברה באחד מהאמצעים הבאים כדי להבטיח את מקומכם:
+            </p>
+            
+            <div class="payment-methods">
+                <!-- לינקים לביט ופייבוקס (כאן תחליפי בעתיד את הקישור לקישור הציבורי שלך) -->
+                <a href="https://bit.ly/your-bit-link" target="_blank" class="pay-btn btn-bit">
+                    <i class="fas fa-paper-plane"></i> תשלום באמצעות bit
+                </a>
+                
+                <a href="https://payboxapp.page.link/your-paybox-link" target="_blank" class="pay-btn btn-paybox">
+                    <i class="fas fa-box-open"></i> תשלום באמצעות PayBox
+                </a>
+                
+                <div class="bank-details">
+                    <strong>🏦 העברה בנקאית:</strong><br>
+                    שם המוטב: מדורת השבט<br>
+                    בנק: לאומי (10)<br>
+                    סניף: 612<br>
+                    מספר חשבון: 12345678<br>
+                    <span style="font-size: 13px; color: var(--text-muted);">*אנא ציינו את שמכם המלא בפרטי ההעברה.</span>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 14px; color: var(--forest-mid); font-weight: bold;">
+                💚 הודעת סיכום נשלחה כעת לוואטסאפ של מדורת השבט לאישור סופי!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // מספר הטלפון שלך אליו יישלחו הודעות הרישום בוואטסאפ (שני למספר שלך)
+        const MY_WHATSAPP_NUMBER = "972501234567"; 
+
+        function calculateTotal() {
+            const adults = parseInt(document.getElementById('adultsNum').value);
+            const kids = parseInt(document.getElementById('kidsNum').value);
+            const total = (adults * 550) + (kids * 380);
+            document.getElementById('totalAmount').innerText = total;
+        }
+
+        function processRegistration() {
+            const name = document.getElementById('parentName').value;
+            const phone = document.getElementById('parentPhone').value;
+            const adults = document.getElementById('adultsNum').value;
+            const kids = document.getElementById('kidsNum').value;
+            const total = document.getElementById('totalAmount').innerText;
+            
+            if(!name || !phone) {
+                alert('אנא מלאו שם מלא ומספר טלפון כדי להתקדם לתשלום.');
+                return;
+            }
+            
+            // 1. עדכון המחיר הסופי בחלונית התשלום
+            document.getElementById('modalTotal').innerText = total;
+            
+            // 2. פתיחת חלונית התשלום באתר
+            document.getElementById('paymentModal').style.display = 'flex';
+            
+            // 3. הכנת הודעת וואטסאפ אוטומטית עבורך
+            const message = `שלום! נרשמנו לקמפינג המשפחות דרך האתר.%0A*שם מלא:* ${name}%0A*טלפון:* ${phone}%0A*מבוגרים:* ${adults}%0A*ילדים:* ${kids}%0A*סך הכל לתשלום:* ₪${total}%0Aאנחנו מבצעים העברה כעת.`;
+            const waUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
+            
+            // פתיחת וואטסאפ בחלונית חדשה אחרי שניה כדי לא להפריע לחלונית התשלום
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 1000);
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+    </script>
+
     <footer>
         <p>מדורת השבט © 2026 | חוויות טבע, קמפינג משפחות ומלאכות קדומות</p>
-        <p style="font-size: 12px; color: #6a826f;">כל הזכויות שמורות. מיוצר באהבה וחיבור לאדמה.</p>
     </footer>
 
 </body>
