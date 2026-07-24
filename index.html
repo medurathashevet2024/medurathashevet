@@ -275,7 +275,6 @@
         .price-item { font-size: 18px; margin-bottom: 10px; font-weight: bold; color: var(--earth-brown); }
         .price-item span { color: var(--campfire-orange); font-size: 22px; }
 
-        /* בולטות מחיר מחוק וחיסכון */
         .price-anchor-box {
             background: #fff5f0;
             border: 2px dashed var(--campfire-orange);
@@ -413,7 +412,7 @@
             object-fit: contain;
         }
 
-        /* Modal תשלום מעודן בלתי צבעוני */
+        /* Modal תשלום מעודן */
         .payment-modal {
             display: none;
             position: fixed;
@@ -452,7 +451,6 @@
             margin-top: 25px;
         }
 
-        /* עיצוב נקי ויוקרתי בגווני זית ואפור למניעת צבעוניות יתר */
         .pay-option-btn {
             display: flex;
             align-items: center;
@@ -720,7 +718,7 @@
         </section>
     </div>
 
-    <!-- חלונית בחירת אופן תשלום: העברה בנקאית ראשונה, כרטיס אשראי אחרון, עיצוב יוקרתי ומאופק -->
+    <!-- חלונית בחירת אופן תשלום -->
     <div id="paymentModal" class="payment-modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -728,60 +726,53 @@
             <p style="margin-top: 8px; font-size: 16px;">
                 סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">890</span></strong>
             </p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp עם פרטי ההזמנה שלך לשליחת קישור תשלום:</p>
             
             <div class="payment-options-grid">
                 
-                <!-- 1. העברה בנקאית ראשונה ברשימה -->
-                <button onclick="toggleBankDetails()" class="pay-option-btn">
+                <!-- 1. העברה בנקאית -->
+                <button onclick="sendOrderToWhatsApp('העברה בנקאית')" class="pay-option-btn">
                     <div class="pay-btn-content">
                         <div class="pay-btn-icon"><i class="fas fa-university"></i></div>
                         <span>1. העברה בנקאית רגילה</span>
                     </div>
-                    <i class="fas fa-chevron-down" style="color: #888; font-size: 14px;"></i>
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
                 </button>
 
-                <!-- פרטי הבנק (נגלים בלחיצה) -->
-                <div id="bankDetailsBox" class="bank-details">
-                    <strong style="color: var(--earth-brown);"><i class="fas fa-info-circle"></i> פרטי החשבון להעברה:</strong><br>
-                    שם המוטב: מדורת השבט<br>
-                    בנק: לאומי (קוד 10)<br>
-                    סניף: 612<br>
-                    מספר חשבון: 12345678<br>
-                    <span style="font-size: 12px; color: var(--text-muted); display: block; margin-top: 4px;">*אנא ציינו את שמכם המלא בפרטי ההעברה.</span>
-                </div>
-
                 <!-- 2. PayBox -->
-                <a href="#" target="_blank" class="pay-option-btn">
+                <button onclick="sendOrderToWhatsApp('PayBox')" class="pay-option-btn">
                     <div class="pay-btn-content">
                         <div class="pay-btn-icon"><i class="fas fa-box-open"></i></div>
                         <span>2. תשלום באפליקציית PayBox</span>
                     </div>
-                    <i class="fas fa-arrow-left" style="color: #888; font-size: 14px;"></i>
-                </a>
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
+                </button>
 
                 <!-- 3. bit -->
-                <a href="#" target="_blank" class="pay-option-btn">
+                <button onclick="sendOrderToWhatsApp('bit')" class="pay-option-btn">
                     <div class="pay-btn-content">
                         <div class="pay-btn-icon"><i class="fas fa-mobile-alt"></i></div>
                         <span>3. תשלום באפליקציית bit</span>
                     </div>
-                    <i class="fas fa-arrow-left" style="color: #888; font-size: 14px;"></i>
-                </a>
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
+                </button>
 
-                <!-- 4. כרטיס אשראי אחרון ברשימה -->
-                <a href="#" target="_blank" class="pay-option-btn">
+                <!-- 4. כרטיס אשראי -->
+                <button onclick="sendOrderToWhatsApp('כרטיס אשראי')" class="pay-option-btn">
                     <div class="pay-btn-content">
                         <div class="pay-btn-icon"><i class="far fa-credit-card"></i></div>
                         <span>4. תשלום בכרטיס אשראי</span>
                     </div>
-                    <i class="fas fa-lock" style="color: #888; font-size: 14px;"></i>
-                </a>
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
+                </button>
 
             </div>
         </div>
     </div>
 
     <script>
+        const MY_WHATSAPP_NUMBER = "972559914540"; 
+
         function renderKidsAgesInputs() {
             const kidsCount = parseInt(document.getElementById('kidsNum').value);
             const container = document.getElementById('kidsAgesContainer');
@@ -874,18 +865,45 @@
             document.getElementById('paymentModal').style.display = 'flex';
         }
 
-        function toggleBankDetails() {
-            const box = document.getElementById('bankDetailsBox');
-            if (box.style.display === 'block') {
-                box.style.display = 'none';
-            } else {
-                box.style.display = 'block';
-            }
+        // פונקציה חדשה: שליחת הודעת WhatsApp מרוכזת עם כל פרטי ההרשמה והתשלום שנבחר
+        function sendOrderToWhatsApp(paymentMethod) {
+            const name = document.getElementById('parentName').value;
+            const phone = document.getElementById('parentPhone').value;
+            const adults = document.getElementById('adultsNum').value;
+            const kids = document.getElementById('kidsNum').value;
+            const total = document.getElementById('totalAmount').innerText;
+            const isEarlyBird = document.getElementById('earlyBirdCheck').checked ? "כן (הרשמה מוקדמת)" : "לא";
+
+            // איסוף גילאי הילדים
+            const ageInputs = document.querySelectorAll('.kid-age-input');
+            let ages = [];
+            ageInputs.forEach((input, index) => {
+                if (input.value !== "") {
+                    ages.push(`ילד ${index + 1}: גיל ${input.value}`);
+                }
+            });
+            const agesStr = ages.length > 0 ? ages.join(', ') : 'לא צוינו גילאים';
+
+            // הרכבת ההודעה
+            const message = `שלום! נרשמתי לקמפינג המשפחות דרך האתר:%0A%0A` +
+                            `*שם מלא:* ${name}%0A` +
+                            `*טלפון:* ${phone}%0A` +
+                            `*מספר מבוגרים:* ${adults}%0A` +
+                            `*מספר ילדים:* ${kids}%0A` +
+                            `*גילאי הילדים:* ${agesStr}%0A` +
+                            `*הרשמה מוקדמת:* ${isEarlyBird}%0A` +
+                            `*סך הכל לתשלום:* ₪${total}%0A` +
+                            `*אופן תשלום מבוקש:* ${paymentMethod}%0A%0A` +
+                            `אשמח לקבל קישור / פרטים לתשלום. תודה!`;
+
+            const waUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
+            
+            window.open(waUrl, '_blank');
+            closeModal();
         }
 
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
-            document.getElementById('bankDetailsBox').style.display = 'none';
         }
 
         window.onload = function() {
