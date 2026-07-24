@@ -266,14 +266,50 @@
             color: var(--white);
             font-size: 14px;
             font-weight: bold;
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
             display: inline-block;
             margin-bottom: 15px;
         }
 
-        .price-item { font-size: 19px; margin-bottom: 12px; font-weight: bold; color: var(--earth-brown); }
-        .price-item span { color: var(--campfire-orange); font-size: 24px; }
+        .price-item { font-size: 18px; margin-bottom: 10px; font-weight: bold; color: var(--earth-brown); }
+        .price-item span { color: var(--campfire-orange); font-size: 22px; }
+
+        .price-anchor-box {
+            background: #fff8f5;
+            border: 1.5px dashed var(--campfire-orange);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .old-price-line {
+            text-decoration: line-through;
+            color: #888888;
+            font-size: 18px;
+            margin-left: 8px;
+        }
+
+        .discount-price-highlight {
+            color: var(--campfire-orange);
+            font-size: 32px;
+            font-weight: 800;
+            display: block;
+            line-height: 1.1;
+            margin-top: 4px;
+        }
+
+        .savings-tag {
+            background: #25D366;
+            color: white;
+            font-size: 13px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 6px;
+        }
 
         .booking-form { display: flex; flex-direction: column; gap: 16px; }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
@@ -297,9 +333,9 @@
 
         .kids-ages-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 10px;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             padding: 15px;
             border-radius: 12px;
             border: 1px dashed var(--forest-mid);
@@ -372,12 +408,12 @@
             object-fit: contain;
         }
 
-        /* Modal תשלום */
+        /* Modal תשלום מעוצב */
         .payment-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(18, 36, 21, 0.65);
+            background: rgba(18, 36, 21, 0.7);
             backdrop-filter: blur(8px);
             z-index: 2000;
             justify-content: center;
@@ -388,8 +424,8 @@
         .modal-content {
             background: var(--white);
             padding: 40px;
-            border-radius: 22px;
-            max-width: 500px;
+            border-radius: 24px;
+            max-width: 520px;
             width: 100%;
             position: relative;
             text-align: center;
@@ -404,15 +440,56 @@
         }
         .close-modal:hover { color: var(--campfire-orange); }
 
+        .payment-options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .pay-option-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 17px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .pay-option-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        }
+
+        .btn-bit { background: linear-gradient(135deg, #00c3b0, #00a595); }
+        .btn-paybox { background: linear-gradient(135deg, #00a4e4, #0082b4); }
+        .btn-credit { background: linear-gradient(135deg, #2d5a37, #1b3820); }
+        .btn-bank { background: linear-gradient(135deg, #8c6d5e, #4a3329); }
+
         .bank-details {
+            display: none;
             background: var(--sandy-bg);
             padding: 18px;
             border-radius: 14px;
             border: 2px dashed #c8d4cb;
             text-align: right;
             font-size: 15px;
-            margin-top: 18px;
+            margin-top: 12px;
             line-height: 1.8;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 992px) { 
@@ -511,18 +588,24 @@
             <!-- אזור עלויות, הרשמה מוקדמת וטופס הרשמה -->
             <div class="booking-box">
                 <div class="price-tag">
-                    <span class="early-bird-badge">🔥 הרשמה מוקדמת עד ה-5.8: ₪890 למשפחה!</span>
-                    <h3 style="color: var(--forest-green); margin-bottom: 15px; font-size: 22px;"><i class="fas fa-calculator"></i> עלויות ומבצעים</h3>
+                    <span class="early-bird-badge">🔥 מחירון ומבצע הרשמה מוקדמת</span>
                     
                     <div class="price-item">מבוגר: <span>₪250</span></div>
                     <div class="price-item">ילד (מגיל 4): <span>₪220</span></div>
                     <div class="price-item" style="color: var(--forest-mid);">🎁 ילד שלישי במשפחה – חינם!</div>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">*תינוקות ופעוטות מתחת לגיל 4 – כניסה חופשית.</p>
                     
-                    <p style="font-size: 14px; color: var(--forest-mid); margin-top: 10px; margin-bottom: 15px; font-weight: bold;">
-                        *תינוקות ופעוטות מתחת לגיל 4 – כניסה חופשית ללא עלות!
-                    </p>
-                    
-                    <h4 style="margin-top: 10px; color: var(--earth-brown); font-size: 15px; font-weight: 700;">מדיניות אפשרויות ביטול הוגנת:</h4>
+                    <!-- קופסת חיסכון בולטת למחיר המלא מול ההרשמה המוקדמת -->
+                    <div class="price-anchor-box">
+                        <span style="font-size: 14px; font-weight: bold; color: var(--text-dark);">מחיר הרשמה מוקדמת (עד ה-5.8):</span>
+                        <div style="margin-top: 5px;">
+                            <span class="old-price-line">₪1,160</span>
+                            <span class="discount-price-highlight">₪890</span>
+                            <span class="savings-tag">חיסכון של ₪270 למשפחה!</span>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 15px; color: var(--earth-brown); font-size: 15px; font-weight: 700;">מדיניות אפשרויות ביטול הוגנת:</h4>
                     <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
                         • ביטול עד 7 ימי עסקים לפני מועד האירוע – החזר כספי מלא בניכוי 5% דמי רישום.<br>
                         • ביטול בין 7 ל-3 ימי עסקים לפני מועד האירוע – החזר בגובה 50% מעלות הכרטיס.<br>
@@ -555,7 +638,6 @@
                         </div>
                         <div class="form-group">
                             <label>מספר ילדים (מינימום 2):</label>
-                            <!-- מספר הילדים מתחיל מ-2 לפי הבקשה -->
                             <select id="kidsNum" onchange="renderKidsAgesInputs(); calculateTotal();">
                                 <option value="2" selected>2 ילדים</option>
                                 <option value="3">3 ילדים (שלישי חינם!)</option>
@@ -572,11 +654,11 @@
                         <div id="kidsAgesContainer" class="kids-ages-container"></div>
                     </div>
 
-                    <!-- צ'קבוקס להרשמה מוקדמת עד 5.8 -->
-                    <div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 10px; border-radius: 8px; border: 1px solid var(--campfire-orange);">
+                    <!-- בחירת מסלול הרשמה מוקדמת -->
+                    <div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 12px; border-radius: 12px; border: 1.5px solid var(--campfire-orange);">
                         <input type="checkbox" id="earlyBirdCheck" onchange="calculateTotal()" checked style="width: 20px; height: 20px; cursor: pointer;">
-                        <label for="earlyBirdCheck" style="font-weight: bold; color: var(--campfire-orange); cursor: pointer;">
-                            מימוש הרשמה מוקדמת עד ה-5.8 (890 ₪ למשפחה)
+                        <label for="earlyBirdCheck" style="font-weight: bold; color: var(--campfire-orange); cursor: pointer; font-size: 15px;">
+                            מימוש הנחת הרשמה מוקדמת עד ה-5.8 (890 ₪ בלבד!)
                         </label>
                     </div>
 
@@ -584,13 +666,13 @@
                         לתשלום כולל: ₪<span id="totalAmount">890</span>
                     </div>
 
-                    <button class="btn" onclick="processRegistration()" style="width: 100%; justify-content: center; margin-top: 10px;">
+                    <button class="btn" onclick="openPaymentModal()" style="width: 100%; justify-content: center; margin-top: 10px;">
                         המשך לבחירת אופן תשלום <i class="fas fa-chevron-left"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- סרגל קישורים המכיל את הלוגו במרכז -->
+            <!-- סרגל קישורים והלוגו במרכז -->
             <div class="social-bar">
                 <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa">
                     <i class="fab fa-whatsapp"></i>
@@ -610,38 +692,52 @@
         </section>
     </div>
 
-    <!-- חלונית תשלום -->
+    <!-- חלונית בחירת אופן תשלום (Modal) -->
     <div id="paymentModal" class="payment-modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-wallet" style="color: var(--campfire-orange);"></i> השלמת הרישום למדורת השבט</h2>
-            <p style="margin-top: 15px; font-size: 16px;">
-                ההרשמה נשמרה! סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 22px;">₪<span id="modalTotal">890</span></strong>.
-                <br>אנא בצעו העברה באחד מהאמצעים הבאים:
+            <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-wallet" style="color: var(--campfire-orange);"></i> בחירת אופן תשלום נוח</h2>
+            <p style="margin-top: 10px; font-size: 16px;">
+                סך הכל לתשלום עבור ההרשמה: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">890</span></strong>
             </p>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">אנא בחרו את אמצעי התשלום המועדף עליכם להשלמת ההזמנה:</p>
             
-            <div class="social-bar" style="flex-direction: column; gap: 10px; background: none; border: none; padding: 0;">
-                <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa" style="width: 100%; justify-content: center;">
-                    <i class="fab fa-whatsapp"></i>
-                    אישור הרשמה ותשלום ב-WhatsApp
+            <div class="payment-options-grid">
+                <!-- כפתור bit (עדכני את הקישור ב-href בעתיד) -->
+                <a href="#" target="_blank" class="pay-option-btn btn-bit">
+                    <i class="fas fa-mobile-alt"></i> תשלום באפליקציית bit
                 </a>
+                
+                <!-- כפתור PayBox (עדכני את הקישור ב-href בעתיד) -->
+                <a href="#" target="_blank" class="pay-option-btn btn-paybox">
+                    <i class="fas fa-box-open"></i> תשלום באפליקציית PayBox
+                </a>
+
+                <!-- כפתור כרטיס אשראי (עדכני את הקישור ב-href בעתיד) -->
+                <a href="#" target="_blank" class="pay-option-btn btn-credit">
+                    <i class="far fa-credit-card"></i> תשלום מאובטח בכרטיס אשראי
+                </a>
+
+                <!-- כפתור העברה בנקאית שמציג את הפרטים -->
+                <button onclick="toggleBankDetails()" class="pay-option-btn btn-bank">
+                    <i class="fas fa-university"></i> העברה בנקאית רגילה
+                </button>
             </div>
-            
-            <div class="bank-details">
-                <strong>העברה בנקאית:</strong><br>
+
+            <!-- פרטי בנק (נגלים בלחיצה על כפתור העברה בנקאית) -->
+            <div id="bankDetailsBox" class="bank-details">
+                <strong style="color: var(--earth-brown);"><i class="fas fa-info-circle"></i> פרטי החשבון להעברה:</strong><br>
                 שם המוטב: מדורת השבט<br>
-                בנק: לאומי (10)<br>
+                בנק: לאומי (קוד 10)<br>
                 סניף: 612<br>
                 מספר חשבון: 12345678<br>
-                <span style="font-size: 12px; color: var(--text-muted);">*יש לציין את שמכם המלא בפרטי ההעברה.</span>
+                <span style="font-size: 12px; color: var(--text-muted); display: block; margin-top: 4px;">*אנא ציינו את שמכם המלא בפרטי ההעברה.</span>
             </div>
         </div>
     </div>
 
     <script>
-        const MY_WHATSAPP_NUMBER = "972559914540"; 
-
-        // יצירת חלוניות הזנת גילאי הילדים לפי הכמות שנבחרה
+        // יצירת חלוניות הזנת גילאי הילדים
         function renderKidsAgesInputs() {
             const kidsCount = parseInt(document.getElementById('kidsNum').value);
             const container = document.getElementById('kidsAgesContainer');
@@ -677,7 +773,6 @@
             const isEarlyBird = document.getElementById('earlyBirdCheck').checked;
             
             if (isEarlyBird) {
-                // מחיר הרשמה מוקדמת חגיגי
                 document.getElementById('totalAmount').innerText = "890";
                 return;
             }
@@ -685,54 +780,44 @@
             const adults = parseInt(document.getElementById('adultsNum').value);
             const kids = parseInt(document.getElementById('kidsNum').value);
             
-            // חישוב מבוגר 250, ילד 220, ילד שלישי חינם!
             let payableKids = kids;
             if (kids >= 3) {
-                payableKids = kids - 1; // הילד השלישי ללא עלות
+                payableKids = kids - 1; // הילד השלישי בחינם
             }
 
             const total = (adults * 250) + (payableKids * 220);
             document.getElementById('totalAmount').innerText = total;
         }
 
-        function processRegistration() {
+        function openPaymentModal() {
             const name = document.getElementById('parentName').value;
             const phone = document.getElementById('parentPhone').value;
-            const adults = document.getElementById('adultsNum').value;
-            const kids = document.getElementById('kidsNum').value;
             const total = document.getElementById('totalAmount').innerText;
-            
-            // איסוף גילאי הילדים
-            const ageInputs = document.querySelectorAll('.kid-age-input');
-            let ages = [];
-            ageInputs.forEach((input, index) => {
-                if (input.value) {
-                    ages.push(`ילד ${index + 1}: גיל ${input.value}`);
-                }
-            });
-            const agesStr = ages.length > 0 ? ages.join(', ') : 'לא צוינו גילאים';
 
             if(!name || !phone) {
-                alert('אנא מלאו שם מלא ומספר טלפון נייד כדי להתקדם.');
+                alert('אנא מלאו שם מלא ומספר טלפון נייד כדי להתקדם לתשלום.');
                 return;
             }
-            
+
             document.getElementById('modalTotal').innerText = total;
             document.getElementById('paymentModal').style.display = 'flex';
-            
-            const message = `שלום! נרשמנו לקמפינג המשפחות דרך האתר.%0A*שם מלא:* ${name}%0A*טלפון:* ${phone}%0A*מבוגרים:* ${adults}%0A*ילדים:* ${kids}%0A*גילאי הילדים:* ${agesStr}%0A*סך הכל לתשלום:* ₪${total}%0Aאנחנו מועברים לתשלום כעת.`;
-            const waUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
-            
-            setTimeout(() => {
-                window.open(waUrl, '_blank');
-            }, 1000);
+        }
+
+        function toggleBankDetails() {
+            const box = document.getElementById('bankDetailsBox');
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
+            } else {
+                box.style.display = 'block';
+            }
         }
 
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('bankDetailsBox').style.display = 'none';
         }
 
-        // הרצה ראשונית של חלוניות הגילאים בטעינה
+        // טעינה ראשונית של הטופס
         window.onload = function() {
             renderKidsAgesInputs();
             calculateTotal();
