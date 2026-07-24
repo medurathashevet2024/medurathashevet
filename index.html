@@ -275,26 +275,30 @@
         .price-item { font-size: 18px; margin-bottom: 10px; font-weight: bold; color: var(--earth-brown); }
         .price-item span { color: var(--campfire-orange); font-size: 22px; }
 
+        /* בולטות מחיר מחוק וחיסכון */
         .price-anchor-box {
-            background: #fff8f5;
-            border: 1.5px dashed var(--campfire-orange);
-            padding: 15px;
-            border-radius: 12px;
+            background: #fff5f0;
+            border: 2px dashed var(--campfire-orange);
+            padding: 18px;
+            border-radius: 14px;
             margin: 15px 0;
             text-align: center;
         }
 
-        .old-price-line {
+        .old-price-highlight {
             text-decoration: line-through;
-            color: #888888;
-            font-size: 18px;
-            margin-left: 8px;
+            text-decoration-color: #d9381e;
+            text-decoration-thickness: 3px;
+            color: #777777;
+            font-size: 24px;
+            font-weight: 800;
+            margin-left: 10px;
         }
 
         .discount-price-highlight {
             color: var(--campfire-orange);
-            font-size: 32px;
-            font-weight: 800;
+            font-size: 36px;
+            font-weight: 900;
             display: block;
             line-height: 1.1;
             margin-top: 4px;
@@ -303,12 +307,13 @@
         .savings-tag {
             background: #25D366;
             color: white;
-            font-size: 13px;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-weight: bold;
+            font-size: 14px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 800;
             display: inline-block;
-            margin-top: 6px;
+            margin-top: 8px;
+            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
         }
 
         .booking-form { display: flex; flex-direction: column; gap: 16px; }
@@ -591,17 +596,24 @@
                     <span class="early-bird-badge">🔥 מחירון ומבצע הרשמה מוקדמת</span>
                     
                     <div class="price-item">מבוגר: <span>₪250</span></div>
-                    <div class="price-item">ילד (מגיל 4): <span>₪220</span></div>
+                    <div class="price-item">ילד (מגיל 2): <span>₪220</span></div>
                     <div class="price-item" style="color: var(--forest-mid);">🎁 ילד שלישי במשפחה – חינם!</div>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">*תינוקות ופעוטות מתחת לגיל 4 – כניסה חופשית.</p>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">*פעוטות מתחת לגיל 2 – כניסה חופשית ללא עלות.</p>
                     
-                    <!-- קופסת חיסכון בולטת למחיר המלא מול ההרשמה המוקדמת -->
+                    <!-- קופסת חיסכון דינמית ובולטת -->
                     <div class="price-anchor-box">
-                        <span style="font-size: 14px; font-weight: bold; color: var(--text-dark);">מחיר הרשמה מוקדמת (עד ה-5.8):</span>
-                        <div style="margin-top: 5px;">
-                            <span class="old-price-line">₪1,160</span>
-                            <span class="discount-price-highlight">₪890</span>
-                            <span class="savings-tag">חיסכון של ₪270 למשפחה!</span>
+                        <span style="font-size: 15px; font-weight: bold; color: var(--text-dark);">מחיר מלא לפי הרכב משפחתי:</span>
+                        <div style="margin-top: 6px;">
+                            <span class="old-price-highlight" id="oldPriceDisplay">₪940</span>
+                        </div>
+
+                        <span style="font-size: 15px; font-weight: bold; color: var(--campfire-orange); display: block; margin-top: 10px;">
+                            מחיר הרשמה מוקדמת (עד 5.8):
+                        </span>
+                        <span class="discount-price-highlight" id="earlyPriceDisplay">₪890</span>
+                        
+                        <div>
+                            <span class="savings-tag" id="savingsTag">חיסכון של ₪50 בלחיצה!</span>
                         </div>
                     </div>
 
@@ -650,7 +662,7 @@
 
                     <!-- חלוניות הזנת גילאי הילדים -->
                     <div class="form-group">
-                        <label>גילאי הילדים:</label>
+                        <label>גילאי הילדים (פעוט מתחת לגיל 2 - חינם!):</label>
                         <div id="kidsAgesContainer" class="kids-ages-container"></div>
                     </div>
 
@@ -703,28 +715,23 @@
             <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">אנא בחרו את אמצעי התשלום המועדף עליכם להשלמת ההזמנה:</p>
             
             <div class="payment-options-grid">
-                <!-- כפתור bit (עדכני את הקישור ב-href בעתיד) -->
                 <a href="#" target="_blank" class="pay-option-btn btn-bit">
                     <i class="fas fa-mobile-alt"></i> תשלום באפליקציית bit
                 </a>
                 
-                <!-- כפתור PayBox (עדכני את הקישור ב-href בעתיד) -->
                 <a href="#" target="_blank" class="pay-option-btn btn-paybox">
                     <i class="fas fa-box-open"></i> תשלום באפליקציית PayBox
                 </a>
 
-                <!-- כפתור כרטיס אשראי (עדכני את הקישור ב-href בעתיד) -->
                 <a href="#" target="_blank" class="pay-option-btn btn-credit">
                     <i class="far fa-credit-card"></i> תשלום מאובטח בכרטיס אשראי
                 </a>
 
-                <!-- כפתור העברה בנקאית שמציג את הפרטים -->
                 <button onclick="toggleBankDetails()" class="pay-option-btn btn-bank">
                     <i class="fas fa-university"></i> העברה בנקאית רגילה
                 </button>
             </div>
 
-            <!-- פרטי בנק (נגלים בלחיצה על כפתור העברה בנקאית) -->
             <div id="bankDetailsBox" class="bank-details">
                 <strong style="color: var(--earth-brown);"><i class="fas fa-info-circle"></i> פרטי החשבון להעברה:</strong><br>
                 שם המוטב: מדורת השבט<br>
@@ -737,7 +744,6 @@
     </div>
 
     <script>
-        // יצירת חלוניות הזנת גילאי הילדים
         function renderKidsAgesInputs() {
             const kidsCount = parseInt(document.getElementById('kidsNum').value);
             const container = document.getElementById('kidsAgesContainer');
@@ -762,6 +768,7 @@
                 input.className = 'kid-age-input';
                 input.style.padding = '6px';
                 input.style.fontSize = '14px';
+                input.oninput = calculateTotal; // חישוב מחדש במידה ומוזן פעוט מתחת לגיל 2
 
                 div.appendChild(label);
                 div.appendChild(input);
@@ -770,23 +777,57 @@
         }
 
         function calculateTotal() {
-            const isEarlyBird = document.getElementById('earlyBirdCheck').checked;
-            
-            if (isEarlyBird) {
-                document.getElementById('totalAmount').innerText = "890";
-                return;
-            }
-
             const adults = parseInt(document.getElementById('adultsNum').value);
-            const kids = parseInt(document.getElementById('kidsNum').value);
+            const totalKidsSelected = parseInt(document.getElementById('kidsNum').value);
             
-            let payableKids = kids;
-            if (kids >= 3) {
-                payableKids = kids - 1; // הילד השלישי בחינם
+            // איסוף גילאי הילדים ובדיקה כמה מתחת לגיל 2 (חינם)
+            const ageInputs = document.querySelectorAll('.kid-age-input');
+            let under2Count = 0;
+            
+            ageInputs.forEach(input => {
+                const val = parseFloat(input.value);
+                if (!isNaN(val) && val < 2) {
+                    under2Count++;
+                }
+            });
+
+            // מספר הילדים שמשלמים עליהם (בני 2 ומעלה)
+            let payingKids = Math.max(0, totalKidsSelected - under2Count);
+
+            // חישוב הטבת הילד השלישי (אם יש 3 ילדים משלמים ומעלה, ה-3 בחינם)
+            let payableKidsAfterThirdFree = payingKids;
+            if (payingKids >= 3) {
+                payableKidsAfterThirdFree = payingKids - 1;
             }
 
-            const total = (adults * 250) + (payableKids * 220);
-            document.getElementById('totalAmount').innerText = total;
+            // חישוב המחיר המלא (המחוק) בדינמיות
+            const fullCalculatedPrice = (adults * 250) + (payableKidsAfterThirdFree * 220);
+            
+            // עדכון המחיר המחוק בתצוגה הבולטת
+            document.getElementById('oldPriceDisplay').innerText = `₪${fullCalculatedPrice}`;
+
+            const isEarlyBird = document.getElementById('earlyBirdCheck').checked;
+            let finalPrice = fullCalculatedPrice;
+
+            if (isEarlyBird) {
+                // מחיר הרשמה מוקדמת מוגדר ל-890 ₪ למשפחה (או המחיר המלא אם הוא נמוך מ-890)
+                finalPrice = Math.min(890, fullCalculatedPrice);
+                document.getElementById('earlyPriceDisplay').innerText = `₪${finalPrice}`;
+            } else {
+                document.getElementById('earlyPriceDisplay').innerText = `₪${fullCalculatedPrice}`;
+            }
+
+            // חישוב החיסכון והצגתו
+            const savings = fullCalculatedPrice - finalPrice;
+            if (savings > 0) {
+                document.getElementById('savingsTag').innerText = `חיסכון של ₪${savings} למשפחה!`;
+                document.getElementById('savingsTag').style.display = 'inline-block';
+            } else {
+                document.getElementById('savingsTag').style.display = 'none';
+            }
+
+            // עדכון הסכום לתשלום בתחתית הטופס
+            document.getElementById('totalAmount').innerText = finalPrice;
         }
 
         function openPaymentModal() {
