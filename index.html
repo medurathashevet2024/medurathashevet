@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>מדורת השבט - חוויות טבע ומלאכות קדומות למשפחות</title>
-    <!-- Google Fonts -->
+    <!-- Google Fonts & FontAwesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --forest-green: #1b3820;
             --forest-mid: #2d5a37;
-            --forest-light: #f2f7f3;
+            --forest-light: #f0f5f1;
             --earth-brown: #4a3329;
             --earth-light: #8c6d5e;
             --campfire-orange: #e65c00;
@@ -48,17 +49,17 @@
             font-family: 'Secular One', sans-serif;
         }
 
-        /* Header Navigation */
+        /* Header Navigation - רקע לבן יוקרתי ונקי למעלה */
         header {
-            background-color: rgba(27, 56, 32, 0.96);
+            background-color: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(27, 56, 32, 0.08);
         }
 
         .nav-container {
@@ -70,37 +71,22 @@
             padding: 10px 24px;
         }
 
-        /* התאמת הלוגו לרקע */
+        /* התאמת הלוגו לרקע הלבן */
         .brand-logo {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            padding: 4px 8px;
-            border-radius: 12px;
-            transition: var(--transition);
-        }
-
-        .logo-img-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 4px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .brand-logo img {
-            max-height: 48px;
+            max-height: 52px;
             width: auto;
             object-fit: contain;
-            mix-blend-mode: multiply; /* עוזר להתאמת רקע הלוגו ללא שוליים בולטים */
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
 
         .brand-logo .logo-text {
-            color: var(--sandy-bg);
+            color: var(--forest-green);
             font-size: 26px;
             font-weight: bold;
             letter-spacing: 0.5px;
@@ -114,14 +100,14 @@
         }
 
         nav a {
-            color: #d4e2d5;
+            color: var(--forest-green);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 16px;
             transition: var(--transition);
         }
 
-        nav a:hover { color: var(--white); }
+        nav a:hover { color: var(--campfire-orange); }
 
         /* Hero Section */
         .hero {
@@ -136,7 +122,7 @@
             text-align: center;
             color: var(--white);
             padding: 0 24px;
-            margin-top: 65px;
+            margin-top: 70px;
         }
 
         .hero h1 {
@@ -155,7 +141,7 @@
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow));
             color: var(--white);
             padding: 15px 38px;
@@ -174,7 +160,7 @@
             box-shadow: 0 10px 28px rgba(230, 92, 0, 0.55);
         }
 
-        /* Layout Structure */
+        /* Layout Architecture */
         .wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -239,32 +225,36 @@
             color: var(--forest-green);
             margin-bottom: 12px;
             font-size: 21px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .info-list { list-style: none; margin-top: 15px; }
         .info-list li { 
             position: relative; 
-            padding-right: 22px; 
+            padding-right: 28px; 
             margin-bottom: 12px; 
             font-size: 16px;
         }
         .info-list li::before {
-            content: "•";
+            content: "\f00c"; 
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900;
             position: absolute; 
             right: 0; 
             color: var(--campfire-orange); 
-            font-size: 22px; 
-            font-weight: bold;
-            line-height: 1;
+            font-size: 16px;
         }
+        .equipment-list li::before { content: "\f553"; color: var(--forest-mid); }
 
-        /* קופסת הרשמה וטופס מעוצב */
+        /* קופסת הרשמה וטופס */
         .booking-box {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 40px;
             margin-top: 40px;
-            background: linear-gradient(135deg, var(--forest-light), #e6efe8);
+            background: linear-gradient(135deg, var(--forest-light), #e4ede6);
             padding: 40px;
             border-radius: 22px;
             border: 1px solid rgba(27, 56, 32, 0.08);
@@ -312,7 +302,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* רכיבי מדיה חברתית ויצירת קשר יוקרתיים */
+        /* רכיבי מדיה חברתית */
         .social-bar {
             display: flex;
             align-items: center;
@@ -341,10 +331,7 @@
             box-shadow: 0 8px 22px rgba(0,0,0,0.15);
         }
 
-        .social-link img {
-            width: 24px;
-            height: 24px;
-        }
+        .social-link i { font-size: 22px; }
 
         .link-wa { background: linear-gradient(135deg, #25D366, #1eaa53); }
         .link-fb { background: linear-gradient(135deg, #1877F2, #0d5cb5); }
@@ -412,10 +399,8 @@
     <header>
         <div class="nav-container">
             <a href="#" class="brand-logo">
-                <div class="logo-img-wrapper">
-                    <!-- תמונת הלוגו שלך ב-GitHub תיטען פה בשם logo.png -->
-                    <img src="logo.png" alt="לוגו מדורת השבט" onerror="this.style.display='none'">
-                </div>
+                <!-- הלוגו שלך יושב עכשיו על רקע לבן מושלם! -->
+                <img src="logo.png" alt="לוגו מדורת השבט" onerror="this.style.display='none'">
                 <span class="logo-text">מדורת השבט</span>
             </a>
             <nav>
@@ -424,8 +409,8 @@
                     <li><a href="#camping">קמפינג משפחות</a></li>
                     <li><a href="#workshops">סדנאות ומלאכות</a></li>
                     <li>
-                        <a href="https://wa.me/972559914540" target="_blank" style="color: #25D366; font-weight: bold;">
-                            055-9914540
+                        <a href="https://wa.me/972559914540" target="_blank" style="color: #25D366; font-weight: bold; display: flex; align-items: center; gap: 6px;">
+                            <i class="fab fa-whatsapp" style="font-size: 20px;"></i> 055-9914540
                         </a>
                     </li>
                 </ul>
@@ -436,7 +421,7 @@
     <div class="hero">
         <h1>מדורת השבט</h1>
         <p>חוויות טבע בלתי נשכחות ומלאכות קדומות למשפחות</p>
-        <a href="#camping" class="btn">דלגו ישר לפרטי הקמפינג והרשמה</a>
+        <a href="#camping" class="btn">דלגו ישר לפרטי הקמפינג והרשמה <i class="fas fa-arrow-down"></i></a>
     </div>
 
     <div class="wrapper">
@@ -450,22 +435,22 @@
 
             <div class="grid">
                 <div class="card">
-                    <h3>חמישי אחה"צ - המפגש</h3>
+                    <h3><i class="fas fa-fire" style="color: var(--campfire-orange);"></i> חמישי אחה"צ - המפגש</h3>
                     <p>הגעה נינוחה לשטח, התארגנות מודרכת במתחם השבט המוסדר שלנו, ומפגש פתיחה מוזיקלי וקהילתי חם סביב המדורה המרכזית.</p>
                 </div>
                 <div class="card">
-                    <h3>קולינריה פראית בשטח</h3>
+                    <h3><i class="fas fa-utensils" style="color: var(--earth-light);"></i> קולינריה פראית בשטח</h3>
                     <p>חוויית בישול מסורתית ומפנקת במיוחד – מאפים חמים ישר מהטאבון, תבשילי קדירה עמוקים (פויקה) המבושלים שעות בשטח, ואירוח אותנטי עשיר.</p>
                 </div>
                 <div class="card">
-                    <h3>אתגרים ומלאכות</h3>
+                    <h3><i class="fas fa-compass" style="color: var(--forest-mid);"></i> אתגרים ומלאכות</h3>
                     <p>יוצאים לסיורי ליקוט מרתקים, לומדים ומנסים טכניקות מדהימות של חיכוך אש והדלקת מדורה בשיטות קדומות, ונהנים מזמן איכות משפחתי נדיר.</p>
                 </div>
             </div>
 
             <div class="grid" style="margin-top: 40px; background: #ffffff; padding: 10px 0;">
                 <div>
-                    <h3 style="color: var(--forest-green); margin-bottom: 15px; font-size: 22px;">מה החבילה כוללת?</h3>
+                    <h3 style="color: var(--forest-green); margin-bottom: 15px; font-size: 22px;"><i class="fas fa-clipboard-check"></i> מה החבילה כוללת?</h3>
                     <ul class="info-list">
                         <li>מתחם קמפינג מוסדר, מגודר ומאובטח בלב הטבע.</li>
                         <li>ארוחות שף מלאות עשירות לאורך כל הסופ"ש.</li>
@@ -476,8 +461,8 @@
                 </div>
 
                 <div>
-                    <h3 style="color: var(--earth-brown); margin-bottom: 15px; font-size: 22px;">מה עליכם להביא מהבית?</h3>
-                    <ul class="info-list">
+                    <h3 style="color: var(--earth-brown); margin-bottom: 15px; font-size: 22px;"><i class="fas fa-hiking"></i> מה עליכם להביא מהבית?</h3>
+                    <ul class="info-list equipment-list">
                         <li>אוהל משפחתי מרווח, מזרני שטח נוחים ושקי שינה או שמיכות חמות.</li>
                         <li>בגדים נוחים להליכה ובגדים חמים במיוחד ללילה.</li>
                         <li>נעלי הליכה סגורות ויציבות.</li>
@@ -491,7 +476,7 @@
             <!-- אזור עלויות, ביטולים וטופס הרשמה -->
             <div class="booking-box">
                 <div class="price-tag">
-                    <h3 style="color: var(--forest-green); margin-bottom: 15px; font-size: 22px;">עלויות ומדיניות</h3>
+                    <h3 style="color: var(--forest-green); margin-bottom: 15px; font-size: 22px;"><i class="fas fa-calculator"></i> עלויות ומדיניות</h3>
                     <div class="price-item">מבוגר (מגיל 14 ומעלה): <span>₪550</span></div>
                     <div class="price-item">ילד (גיל 4 עד 14): <span>₪380</span></div>
                     <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 15px; font-style: italic;">*ההשתתפות ללא עלות לפעוטות ותינוקות מתחת לגיל 4.</p>
@@ -505,7 +490,7 @@
                 </div>
 
                 <div class="booking-form">
-                    <h3 style="color: var(--forest-green); font-size: 22px;">טופס הרשמה מהיר לקמפינג</h3>
+                    <h3 style="color: var(--forest-green); font-size: 22px;"><i class="fas fa-user-check"></i> טופס הרשמה מהיר לקמפינג</h3>
                     
                     <div class="form-group">
                         <label>שם מלא של איש הקשר המשפחתי:</label>
@@ -545,7 +530,7 @@
                     </div>
 
                     <button class="btn" onclick="processRegistration()" style="width: 100%; justify-content: center; margin-top: 10px;">
-                        המשך לבחירת אופן תשלום
+                        המשך לבחירת אופן תשלום <i class="fas fa-chevron-left"></i>
                     </button>
                 </div>
             </div>
@@ -553,12 +538,12 @@
             <!-- קישורים יוקרתיים לרשתות חברתיות ווואטסאפ -->
             <div class="social-bar">
                 <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
                     שלחו לנו הודעה ב-WhatsApp (055-9914540)
                 </a>
                 
                 <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%98/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook">
+                    <i class="fab fa-facebook-f"></i>
                     עמוד הפייסבוק של מדורת השבט
                 </a>
             </div>
@@ -570,7 +555,7 @@
     <div id="paymentModal" class="payment-modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h2 style="color: var(--forest-green); font-size: 24px;">השלמת הרישום למדורת השבט</h2>
+            <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-wallet" style="color: var(--campfire-orange);"></i> השלמת הרישום למדורת השבט</h2>
             <p style="margin-top: 15px; font-size: 16px;">
                 ההרשמה נשמרה! סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 22px;">₪<span id="modalTotal">1860</span></strong>.
                 <br>אנא בצעו העברה באחד מהאמצעים הבאים:
@@ -578,7 +563,7 @@
             
             <div class="social-bar" style="flex-direction: column; gap: 10px;">
                 <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa" style="width: 100%; justify-content: center;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
                     אישור הרשמה ותשלום ב-WhatsApp
                 </a>
             </div>
