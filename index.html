@@ -175,7 +175,7 @@
             padding: 35px;
             border-radius: 20px;
             border-right: 6px solid var(--forest-green);
-            margin-bottom: 50px;
+            margin-top: 20px;
             line-height: 1.8;
             font-size: 18px;
         }
@@ -552,21 +552,6 @@
 
     <div class="wrapper">
 
-        <!-- סקציית "מי אנחנו" עם התוכן המורחב מהתכתבויות האתר -->
-        <section id="about">
-            <div class="section-header">
-                <h2>מי אנחנו</h2>
-            </div>
-            <div class="about-box">
-                <p>
-                    <strong>מדורת השבט</strong> נולדה מתוך תשוקה עמוקה לחבר אנשים, משפחות וקהילות בחזרה אל קצב הטבע, אל השקט ואל העשייה המשותפת בידיים. בעולם דיגיטלי עמוס וממהר, אנו מזמינים אתכם לעצור את מרוץ היומיום, להניח את המסכים בצד ולייצר זיכרונות משפחתיים אמיתיים במרחב הפתוח.
-                </p>
-                <p>
-                    הפעילויות והקמפינגים שלנו משלבים בין אירוח מפנק, קולינריה פראית מזינה (טאבון, פויקה ובישולי שדה), לבין חיבור למלאכות קדומות ומסורתיות – יצירה בחומרים טבעיים כמו קליעה בסיבי בננה, פיסול באדמה ובוץ, צביעה בוטנית, תכשיטי טבע וטכניקות חיכוך אש. אנו מאמינים כי השהות המשותפת סביב המדורה מעניקה לכל משפחה מרחב בטוח של ביחד, יצירתיות, רוגע וחיבור שורשי.
-                </p>
-            </div>
-        </section>
-
         <!-- עמוד המכירה הממוקד של הקמפינג -->
         <section id="camping">
             <div class="section-header">
@@ -661,10 +646,19 @@
                         <input type="tel" id="parentPhone" placeholder="055-9914540" required>
                     </div>
 
+                    <!-- בחירת מועד הקמפינג באוגוסט -->
+                    <div class="form-group">
+                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת מועד הקמפינג (חודש אוגוסט):</label>
+                        <select id="campingDate" required>
+                            <option value="13-14.8 (חמישי-שישי)">13-14 באוגוסט (סוף שבוע 1)</option>
+                            <option value="21-22.8 (שישי-שבת)">21-22 באוגוסט (סוף שבוע 2)</option>
+                            <option value="25-26.8 (שלישי-רביעי)">25-26 באוגוסט (אמצע שבוע)</option>
+                        </select>
+                    </div>
+
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                         <div class="form-group">
                             <label>מספר מבוגרים:</label>
-                            <!-- אופציות 1,2 בלבד -->
                             <select id="adultsNum" onchange="calculateTotal()">
                                 <option value="1">1</option>
                                 <option value="2" selected>2</option>
@@ -672,7 +666,6 @@
                         </div>
                         <div class="form-group">
                             <label>מספר ילדים:</label>
-                            <!-- אופציות 1,2,3,4 בלבד בלי המילה ילדים -->
                             <select id="kidsNum" onchange="renderKidsAgesInputs(); calculateTotal();">
                                 <option value="1">1</option>
                                 <option value="2" selected>2</option>
@@ -682,9 +675,9 @@
                         </div>
                     </div>
 
-                    <!-- חלוניות הזנת גילאי הילדים -->
+                    <!-- חלוניות הזנת גילאי הילדים - שדות חובה -->
                     <div class="form-group">
-                        <label>גילאי הילדים (פעוט מתחת לגיל 2 - חינם!):</label>
+                        <label>גילאי הילדים <span style="color: red;">*חובה למלא</span> (פעוט מתחת לגיל 2 - חינם!):</label>
                         <div id="kidsAgesContainer" class="kids-ages-container"></div>
                     </div>
 
@@ -706,25 +699,40 @@
                 </div>
             </div>
 
-            <!-- סרגל קישורים והלוגו במרכז -->
-            <div class="social-bar">
-                <!-- כפתור WhatsApp ללא מספר טלפון -->
-                <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa">
-                    <i class="fab fa-whatsapp"></i>
-                    שלחו לנו הודעה ב-WhatsApp
-                </a>
-                
-                <div class="logo-center-box">
-                    <img src="logo.png" alt="לוגו מדורת השבט" onerror="this.style.display='none'">
-                </div>
+        </section>
 
-                <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%98/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
-                    <i class="fab fa-facebook-f"></i>
-                    עמוד הפייסבוק
-                </a>
+        <!-- סקציית "מי אנחנו" הממוקמת כעת אחרי פרטי ההרשמה -->
+        <section id="about">
+            <div class="section-header">
+                <h2>מי אנחנו</h2>
+            </div>
+            <div class="about-box">
+                <p>
+                    <strong>מדורת השבט</strong> נולדה מתוך תשוקה עמוקה לחבר אנשים, משפחות וקהילות בחזרה אל קצב הטבע, אל השקט ואל העשייה המשותפת בידיים. בעולם דיגיטלי עמוס וממהר, אנו מזמינים אתכם לעצור את מרוץ היומיום, להניח את המסכים בצד ולייצר זיכרונות משפחתיים אמיתיים במרחב הפתוח.
+                </p>
+                <p>
+                    הפעילויות והקמפינגים שלנו משלבים בין אירוח מפנק, קולינריה פראית מזינה (טאבון, פויקה ובישולי שדה), לבין חיבור למלאכות קדומות ומסורתיות – יצירה בחומרים טבעיים כמו קליעה בסיבי בננה, פיסול באדמה ובוץ, צביעה בוטנית, תכשיטי טבע וטכניקות חיכוך אש. אנו מאמינים כי השהות המשותפת סביב המדורה מעניקה לכל משפחה מרחב בטוח של ביחד, יצירתיות, רוגע וחיבור שורשי.
+                </p>
+            </div>
+        </section>
+
+        <!-- סרגל קישורים תחתון והלוגו במרכז -->
+        <div class="social-bar">
+            <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa">
+                <i class="fab fa-whatsapp"></i>
+                שלחו לנו הודעה ב-WhatsApp
+            </a>
+            
+            <div class="logo-center-box">
+                <img src="logo.png" alt="לוגו מדורת השבט" onerror="this.style.display='none'">
             </div>
 
-        </section>
+            <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%98/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
+                <i class="fab fa-facebook-f"></i>
+                עמוד הפייסבוק
+            </a>
+        </div>
+
     </div>
 
     <!-- חלונית בחירת אופן תשלום -->
@@ -739,7 +747,6 @@
             
             <div class="payment-options-grid">
                 
-                <!-- 1. העברה בנקאית -->
                 <button onclick="sendOrderToWhatsApp('העברה בנקאית')" class="pay-option-btn">
                     <div class="pay-btn-content">
                         <div class="pay-btn-icon"><i class="fas fa-university"></i></div>
@@ -748,7 +755,6 @@
                     <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
                 </button>
 
-                <!-- 2. PayBox -->
                 <button onclick="sendOrderToWhatsApp('PayBox')" class="pay-option-btn">
                     <div class="pay-btn-content">
                         <div class="pay-btn-icon"><i class="fas fa-box-open"></i></div>
@@ -757,7 +763,6 @@
                     <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
                 </button>
 
-                <!-- 3. bit -->
                 <button onclick="sendOrderToWhatsApp('bit')" class="pay-option-btn">
                     <div class="pay-btn-content">
                         <div class="pay-btn-icon"><i class="fas fa-mobile-alt"></i></div>
@@ -766,7 +771,6 @@
                     <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
                 </button>
 
-                <!-- 4. כרטיס אשראי -->
                 <button onclick="sendOrderToWhatsApp('כרטיס אשראי')" class="pay-option-btn">
                     <div class="pay-btn-content">
                         <div class="pay-btn-icon"><i class="far fa-credit-card"></i></div>
@@ -803,6 +807,7 @@
                 input.min = '0';
                 input.max = '18';
                 input.placeholder = 'גיל';
+                input.required = true; // שדה חובה
                 input.className = 'kid-age-input';
                 input.style.padding = '6px';
                 input.style.fontSize = '14px';
@@ -865,6 +870,20 @@
                 return;
             }
 
+            // בדיקת חובת מילוי גילאי כל הילדים
+            const ageInputs = document.querySelectorAll('.kid-age-input');
+            let allAgesFilled = true;
+            ageInputs.forEach(input => {
+                if (input.value === "" || input.value === null) {
+                    allAgesFilled = false;
+                }
+            });
+
+            if (!allAgesFilled) {
+                alert('אנא מלאו את הגילאים עבור כל הילדים בטופס.');
+                return;
+            }
+
             document.getElementById('modalTotal').innerText = total;
             document.getElementById('paymentModal').style.display = 'flex';
         }
@@ -872,6 +891,7 @@
         function sendOrderToWhatsApp(paymentMethod) {
             const name = document.getElementById('parentName').value;
             const phone = document.getElementById('parentPhone').value;
+            const selectedDate = document.getElementById('campingDate').value;
             const adults = document.getElementById('adultsNum').value;
             const kids = document.getElementById('kidsNum').value;
             const total = document.getElementById('totalAmount').innerText;
@@ -889,6 +909,7 @@
             const message = `שלום! נרשמתי לקמפינג המשפחות דרך האתר:%0A%0A` +
                             `*שם מלא:* ${name}%0A` +
                             `*טלפון:* ${phone}%0A` +
+                            `*מועד נבחר באוגוסט:* ${selectedDate}%0A` +
                             `*מספר מבוגרים:* ${adults}%0A` +
                             `*מספר ילדים:* ${kids}%0A` +
                             `*גילאי הילדים:* ${agesStr}%0A` +
