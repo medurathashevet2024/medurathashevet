@@ -241,7 +241,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: center;
+            align-items: start;
             margin-top: 40px;
             background: #ffffff;
             padding: 20px 0;
@@ -251,14 +251,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
+            margin-bottom: 25px;
         }
 
         .equipment-image-box img {
             width: 100%;
             max-width: 450px;
             height: auto;
-            max-height: 580px;
+            max-height: 400px;
             object-fit: cover;
             border-radius: 20px;
             box-shadow: 0 12px 30px rgba(0,0,0,0.15);
@@ -690,6 +690,8 @@
 
             <!-- סקציית הציוד והתמונה המשולבת -->
             <div class="equipment-section-container">
+                
+                <!-- עמודה ימנית: מה אנחנו מספקים -->
                 <div>
                     <h3 style="color: var(--forest-green); margin-bottom: 12px; font-size: 22px;"><i class="fas fa-clipboard-check"></i> מה אנחנו מספקים?</h3>
                     <ul class="info-list">
@@ -704,8 +706,16 @@
                         <li>פינת ישיבה משותפת על מחצלות.</li>
                         <li>משחקי קופסא לילדים לערב ללא מסכים.</li>
                     </ul>
+                </div>
 
-                    <h3 style="color: var(--earth-brown); margin-top: 25px; margin-bottom: 12px; font-size: 22px;"><i class="fas fa-hiking"></i> מה אתם מביאים?</h3>
+                <!-- עמודה שמאלית: תמונה + רשימות הציוד שאתם מביאים -->
+                <div>
+                    <!-- התמונה -->
+                    <div class="equipment-image-box">
+                        <img src="IMG2.PNG" alt="בישול פויקה ומדורה" onerror="this.style.display='none'">
+                    </div>
+
+                    <h3 style="color: var(--earth-brown); margin-bottom: 12px; font-size: 22px;"><i class="fas fa-hiking"></i> מה אתם מביאים?</h3>
                     <ul class="info-list equipment-list">
                         <li>סדינים וציפות/שמיכות דקות.</li>
                         <li>סט אחד של בגדי החלפה, בגדים ארוכים דקים לערב.</li>
@@ -732,10 +742,6 @@
                     </ul>
                 </div>
 
-                <!-- עמודת התמונה -->
-                <div class="equipment-image-box">
-                    <img src="IMG2.PNG" alt="בישול פויקה ומדורה" onerror="this.style.display='none'">
-                </div>
             </div>
 
             <!-- אזור עלויות, הרשמה מוקדמת וטופס הרשמה -->
@@ -836,7 +842,7 @@
                     <div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 12px; border-radius: 12px; border: 1.5px solid var(--forest-mid);">
                         <input type="checkbox" id="ownEquipmentCheck" onchange="calculateTotal()" style="width: 20px; height: 20px; cursor: pointer;">
                         <label for="ownEquipmentCheck" style="font-weight: bold; color: var(--forest-green); cursor: pointer; font-size: 15px;">
-                            יש לי מזרנים ואוהל. אני רוצה לשלם פחות (הנחה של ₪60 לאדם)
+                            יש לי מזרנים ואוהל. אני רוצה לשלם פחות
                         </label>
                     </div>
 
