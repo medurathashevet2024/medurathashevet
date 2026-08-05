@@ -486,6 +486,17 @@
             box-shadow: 0 10px 28px rgba(230, 92, 0, 0.55);
         }
 
+        .site-notes-box {
+            margin-top: 12px;
+            background: #fff8f0;
+            border-right: 4px solid var(--campfire-orange);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            color: var(--earth-brown);
+            line-height: 1.5;
+        }
+
         /* סרגל קישורים והלוגו במרכז */
         .social-bar {
             display: flex;
@@ -669,7 +680,7 @@
         <!-- עמוד המכירה הממוקד של הקמפינג -->
         <section id="camping">
             <div class="section-header">
-                <h2>קמפינג משפחות "הכל כלול" - הר מירון</h2>
+                <h2>קמפינג משפחות "הכל כלול"</h2>
                 <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">שחררו את הלוגיסטיקה המתישה. אנחנו דואגים להכל - מרמת האוהל והמזרנים ועד הארוחות. אתם מגיעים פשוט ליהנות ולייצר זיכרונות.</p>
             </div>
 
@@ -702,7 +713,8 @@
                         <li>ברזיה לשטיפת ידיים וכלים כולל סבון נוזלי.</li>
                         <li>סדנאות יצירה לילדים.</li>
                         <li>הדרכה מקצועית צמודה, לוגיסטיקה מאורגנת וליווי אישי.</li>
-                        <li>הלינה בחניון לילה של רשות הטבע והגנים. יש ברזי מים ושולחנות פיקניק. <strong>אין שירותים ומקלחות</strong>.</li>
+                        <li>הלינה במירון הינה בחניון לילה של רשות הטבע והגנים. יש ברזי מים ושולחנות פיקניק. אין שירותים ומקלחות.</li>
+                        <li>הלינה בחוף אמנון ובפארק הירדן כוללת שירותים ומקלחות, ברזי מים ושולחנות פיקניק.</li>
                         <li>פינת ישיבה משותפת על מחצלות.</li>
                         <li>משחקי קופסא לילדים לערב ללא מסכים.</li>
                     </ul>
@@ -744,10 +756,10 @@
 
             </div>
 
-            <!-- אזור עלויות, הרשמה מוקדמת וטופס הרשמה -->
+            <!-- אזור עלויות, מחירון וטופס הרשמה -->
             <div class="booking-box">
                 <div class="price-tag">
-                    <span class="early-bird-badge"> מחירון ומבצע הרשמה מוקדמת</span>
+                    <span class="early-bird-badge"> מחירון והנחת מחיר כולל</span>
                     
                     <div class="price-item">מבוגר: <span>₪250</span></div>
                     <div class="price-item">ילד (מגיל שנתיים): <span>₪220</span></div>
@@ -755,18 +767,18 @@
                     
                     <!-- קופסת חיסכון דינמית ובולטת -->
                     <div class="price-anchor-box">
-                        <span style="font-size: 15px; font-weight: bold; color: var(--text-dark);">מחיר מלא לפי הרכב משפחתי:</span>
+                        <span style="font-size: 15px; font-weight: bold; color: var(--text-dark);">מחיר לפי מחירון יחידים:</span>
                         <div style="margin-top: 6px;">
                             <span class="old-price-highlight" id="oldPriceDisplay">₪940</span>
                         </div>
 
                         <span style="font-size: 15px; font-weight: bold; color: var(--campfire-orange); display: block; margin-top: 10px;">
-                            מחיר הרשמה מוקדמת (עד 5.8):
+                            מחיר מופחת למשפחה (עד ₪770 למשפחה):
                         </span>
-                        <span class="discount-price-highlight" id="earlyPriceDisplay">₪890</span>
+                        <span class="discount-price-highlight" id="earlyPriceDisplay">₪770</span>
                         
                         <div>
-                            <span class="savings-tag" id="savingsTag">חיסכון של ₪50 בלחיצה</span>
+                            <span class="savings-tag" id="savingsTag">חיסכון מיוחד בהרשמה משפחתית</span>
                         </div>
                     </div>
 
@@ -798,7 +810,7 @@
 
                     <!-- לוח שנה ויזואלי של אוגוסט לבחירת תאריכים מורשים בלבד -->
                     <div class="form-group">
-                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת תאריך:</label>
+                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת תאריך ומיקום:</label>
                         <div class="calendar-container">
                             <div class="calendar-header">אוגוסט 2026</div>
                             <div class="calendar-weekdays">
@@ -810,6 +822,13 @@
                             <div class="selected-date-banner" id="selectedDateBanner">
                                 אנא לחצו על אחד המועדים המודגשים בלוח
                             </div>
+                        </div>
+
+                        <!-- הערות לגבי תשלום נוסף במיקומים -->
+                        <div class="site-notes-box">
+                            📌 <strong>הערות חשובות לגבי המיקומים:</strong><br>
+                            • <strong>חוף אמנון (כנרת):</strong> המחיר אינו כולל תשלום חנייה (5 ש"ח לשעה לחניון החוף).<br>
+                            • <strong>פארק הירדן:</strong> המחיר אינו כולל דמי כניסה לפארק (100 ש"ח לרכב למשפחה).
                         </div>
                     </div>
 
@@ -838,33 +857,8 @@
                         <div id="kidsAgesContainer" class="kids-ages-container"></div>
                     </div>
 
-                    <!-- הוספת ציוד אישי (מזרנים ואוהל) -->
-                    <div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 12px; border-radius: 12px; border: 1.5px solid var(--forest-mid);">
-                        <input type="checkbox" id="ownEquipmentCheck" onchange="calculateTotal()" style="width: 20px; height: 20px; cursor: pointer;">
-                        <label for="ownEquipmentCheck" style="font-weight: bold; color: var(--forest-green); cursor: pointer; font-size: 15px;">
-                            יש לי מזרנים ואוהל. אני רוצה לשלם פחות (הנחה של ₪60 לאדם)
-                        </label>
-                    </div>
-
-                    <!-- בחירת מסלול הרשמה מוקדמת -->
-                    <div style="display: flex; align- items: center; gap: 10px; background: #fff; padding: 12px; border-radius: 12px; border: 1.5px solid var(--campfire-orange);">
-                        <input type="checkbox" id="earlyBirdCheck" onchange="calculateTotal()" checked style="width: 20px; height: 20px; cursor: pointer;">
-                        <label for="earlyBirdCheck" style="font-weight: bold; color: var(--campfire-orange); cursor: pointer; font-size: 15px;">
-                            מימוש הנחת הרשמה מוקדמת עד ה-5.8
-                        </label>
-                    </div>
-
-                    <!-- שדה קוד קופון -->
-                    <div class="form-group" style="margin-top: 5px;">
-                        <label><i class="fas fa-ticket-alt" style="color: var(--campfire-orange);"></i> קוד קופון:</label>
-                        <div style="display: flex; gap: 10px;">
-                            <input type="text" id="couponCodeInput" placeholder="הזינו קוד קופון" oninput="calculateTotal()" style="text-transform: uppercase;">
-                        </div>
-                        <div id="couponMessage" style="font-size: 13px; font-weight: bold; margin-top: 4px; display: none;"></div>
-                    </div>
-
                     <div class="total-price-box">
-                        לתשלום: ₪<span id="totalAmount">890</span>
+                        לתשלום: ₪<span id="totalAmount">770</span>
                     </div>
 
                     <button class="btn-submit" onclick="openPaymentModal()" style="width: 100%; justify-content: center; margin-top: 10px;">
@@ -915,7 +909,7 @@
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-shield-alt" style="color: var(--forest-mid);"></i> בחירת אופן תשלום</h2>
             <p style="margin-top: 8px; font-size: 16px;">
-                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">890</span></strong>
+                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">770</span></strong>
             </p>
             <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp עם פרטי ההזמנה שלך לשליחת קישור תשלום:</p>
             
@@ -959,7 +953,7 @@
 
     <script>
         const MY_WHATSAPP_NUMBER = "972559914540"; 
-        let selectedDateText = "14-15.8 (שישי-שבת)"; // ברירת מחדל מועד ראשון מעודכן
+        let selectedDateText = "13-14.8 (חוף אמנון - כנרת)"; // ברירת מחדל מועד ראשון
 
         // יצירת לוח שנה ויזואלי של אוגוסט 2026
         function renderAugustCalendar() {
@@ -980,13 +974,16 @@
                 dayCell.className = 'day-cell';
                 dayCell.innerText = day;
 
-                // ימים מורשים לבחירה (14-15 במקום 13-14)
-                if (day === 14 || day === 15) {
+                // ימים מורשים לבחירה
+                if (day === 13 || day === 14) {
                     dayCell.classList.add('available');
-                    dayCell.onclick = () => selectDateGroup("14-15.8 (שישי-שבת)", [14, 15]);
+                    dayCell.onclick = () => selectDateGroup("13-14.8 (חוף אמנון - כנרת)", [13, 14]);
+                } else if (day === 18 || day === 19) {
+                    dayCell.classList.add('available');
+                    dayCell.onclick = () => selectDateGroup("18-19.8 (פארק הירדן)", [18, 19]);
                 } else if (day === 21 || day === 22) {
                     dayCell.classList.add('available');
-                    dayCell.onclick = () => selectDateGroup("21-22.8 (שישי-שבת)", [21, 22]);
+                    dayCell.onclick = () => selectDateGroup("21-22.8 (שישי-שבת - הר מירון)", [21, 22]);
                 } else if (day === 25 || day === 26) {
                     dayCell.classList.add('available');
                     dayCell.onclick = () => selectDateGroup("25-26.8 (שלישי-רביעי)", [25, 26]);
@@ -997,7 +994,7 @@
             }
 
             // סימון ברירת מחדל ראשונית
-            selectDateGroup("14-15.8 (שישי-שבת)", [14, 15]);
+            selectDateGroup("13-14.8 (חוף אמנון - כנרת)", [13, 14]);
         }
 
         function selectDateGroup(dateText, daysArray) {
@@ -1012,7 +1009,7 @@
                 if (cell) cell.classList.add('selected');
             });
 
-            document.getElementById('selectedDateBanner').innerText = `תאריך נבחר: ${dateText}`;
+            document.getElementById('selectedDateBanner').innerText = `תאריך ומיקום נבחר: ${dateText}`;
         }
 
         function renderKidsAgesInputs() {
@@ -1063,58 +1060,17 @@
             });
 
             let payingKids = Math.max(0, totalKidsSelected - under2Count);
-            let totalPayingPeople = adults + payingKids;
 
             // חישוב מחיר בסיסי מלא לפי מחירון
             let rawBasePrice = (adults * 250) + (payingKids * 220);
-            let fullCalculatedPrice = rawBasePrice;
+            
+            // הגבלת תקרת המחיר הכולל ל-770 ש"ח
+            let finalPrice = Math.min(770, rawBasePrice);
 
-            document.getElementById('oldPriceDisplay').innerText = `₪${fullCalculatedPrice}`;
-
-            const isEarlyBird = document.getElementById('earlyBirdCheck').checked;
-            let finalPrice = fullCalculatedPrice;
-
-            if (isEarlyBird) {
-                let earlyBirdCap = Math.min(890, fullCalculatedPrice);
-                finalPrice = earlyBirdCap;
-            }
-
-            // מנגנון בדיקת קופון CAMP120 - מנכה 120 ש"ח ישירות ממחיר המבצע/ההרשמה
-            const couponInput = document.getElementById('couponCodeInput').value.trim().toUpperCase();
-            const couponMsg = document.getElementById('couponMessage');
-
-            if (couponInput === "CAMP120") {
-                if (rawBasePrice >= 890) {
-                    couponMsg.innerText = "✓ קוד קופון התקבל! עודכנה הנחה של 120 ₪";
-                    couponMsg.style.color = "#25D366";
-                    couponMsg.style.display = "block";
-                    
-                    finalPrice -= 120;
-                } else {
-                    couponMsg.innerText = "ℹ הקופון CAMP120 תקף להרכב משפחתי מעל 890 ₪ בלבד";
-                    couponMsg.style.color = "#e65c00";
-                    couponMsg.style.display = "block";
-                }
-            } else if (couponInput !== "") {
-                couponMsg.innerText = "✗ קוד קופון לא תקין";
-                couponMsg.style.color = "#d9534f";
-                couponMsg.style.display = "block";
-            } else {
-                couponMsg.style.display = "none";
-            }
-
-            // חישוב הנחת ציוד אישי (60 ש"ח לנפש משלמת) יירד לאחר מכן
-            const hasOwnEquipment = document.getElementById('ownEquipmentCheck').checked;
-            if (hasOwnEquipment) {
-                finalPrice -= (totalPayingPeople * 60);
-                fullCalculatedPrice -= (totalPayingPeople * 60);
-            }
-
-            finalPrice = Math.max(0, finalPrice);
-
+            document.getElementById('oldPriceDisplay').innerText = `₪${rawBasePrice}`;
             document.getElementById('earlyPriceDisplay').innerText = `₪${finalPrice}`;
 
-            const savings = fullCalculatedPrice - finalPrice;
+            const savings = rawBasePrice - finalPrice;
             if (savings > 0) {
                 document.getElementById('savingsTag').innerText = `חיסכון של ₪${savings} למשפחה`;
                 document.getElementById('savingsTag').style.display = 'inline-block';
@@ -1160,11 +1116,6 @@
             const adults = document.getElementById('adultsNum').value;
             const kids = document.getElementById('kidsNum').value;
             const total = document.getElementById('totalAmount').innerText;
-            const isEarlyBird = document.getElementById('earlyBirdCheck').checked ? "כן" : "לא";
-            const ownEquipment = document.getElementById('ownEquipmentCheck').checked ? "כן (מביאים אוהל ומזרנים)" : "לא (מסופק ע\"י מדורת השבט)";
-            
-            const couponInput = document.getElementById('couponCodeInput').value.trim().toUpperCase();
-            const couponUsedStr = (couponInput === "CAMP120") ? "CAMP120 (מימוש הנחת 120 ₪)" : (couponInput !== "" ? couponInput : "ללא");
 
             const ageInputs = document.querySelectorAll('.kid-age-input');
             let ages = [];
@@ -1183,9 +1134,6 @@
                             `מספר מבוגרים: ${adults}%0A` +
                             `מספר ילדים: ${kids}%0A` +
                             `גילאי הילדים: ${agesStr}%0A` +
-                            `ציוד אישי (אוהל ומזרנים): ${ownEquipment}%0A` +
-                            `הרשמה מוקדמת: ${isEarlyBird}%0A` +
-                            `קוד קופון: ${couponUsedStr}%0A` +
                             `סך הכל לתשלום: ₪${total}%0A` +
                             `אופן תשלום מבוקש: ${paymentMethod}%0A%0A` +
                             `אשמח לקבל קישור לתשלום. תודה`;
