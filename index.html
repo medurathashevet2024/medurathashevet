@@ -842,7 +842,7 @@
                     <div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 12px; border-radius: 12px; border: 1.5px solid var(--forest-mid);">
                         <input type="checkbox" id="ownEquipmentCheck" onchange="calculateTotal()" style="width: 20px; height: 20px; cursor: pointer;">
                         <label for="ownEquipmentCheck" style="font-weight: bold; color: var(--forest-green); cursor: pointer; font-size: 15px;">
-                            יש לי מזרנים ואוהל. אני רוצה לשלם פחות
+                            יש לי מזרנים ואוהל. אני רוצה לשלם פחות (הנחה של ₪60 לאדם)
                         </label>
                     </div>
 
@@ -852,6 +852,15 @@
                         <label for="earlyBirdCheck" style="font-weight: bold; color: var(--campfire-orange); cursor: pointer; font-size: 15px;">
                             מימוש הנחת הרשמה מוקדמת עד ה-5.8
                         </label>
+                    </div>
+
+                    <!-- שדה קוד קופון -->
+                    <div class="form-group" style="margin-top: 5px;">
+                        <label><i class="fas fa-ticket-alt" style="color: var(--campfire-orange);"></i> קוד קופון:</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="couponCodeInput" placeholder="הזינו קוד קופון" oninput="calculateTotal()" style="text-transform: uppercase;">
+                        </div>
+                        <div id="couponMessage" style="font-size: 13px; font-weight: bold; margin-top: 4px; display: none;"></div>
                     </div>
 
                     <div class="total-price-box">
@@ -1056,8 +1065,9 @@
             let payingKids = Math.max(0, totalKidsSelected - under2Count);
             let totalPayingPeople = adults + payingKids;
 
-            // חישוב מחיר בסיסי מלא
-            let fullCalculatedPrice = (adults * 250) + (payingKids * 220);
+            // חישוב מחיר בסיסי מלא לפי מחירון
+            let rawBasePrice = (adults * 250) + (payingKids * 220);
+            let fullCalculatedPrice = rawBasePrice;
             
             // חישוב הנחת ציוד אישי (60 ש"ח לנפש משלמת)
             const hasOwnEquipment = document.getElementById('ownEquipmentCheck').checked;
@@ -1073,10 +1083,34 @@
             if (isEarlyBird) {
                 let earlyBirdCap = 890 - (hasOwnEquipment ? (totalPayingPeople * 60) : 0);
                 finalPrice = Math.min(earlyBirdCap, fullCalculatedPrice);
-                document.getElementById('earlyPriceDisplay').innerText = `₪${finalPrice}`;
-            } else {
-                document.getElementById('earlyPriceDisplay').innerText = `₪${fullCalculatedPrice}`;
             }
+
+            // מנגנון בדיקת קופון CAMP120 - מופעל רק עבור הרכב שמגיע למחיר המלא (890 ומעלה)
+            const couponInput = document.getElementById('couponCodeInput').value.trim().toUpperCase();
+            const couponMsg = document.getElementById('couponMessage');
+
+            if (couponInput === "CAMP120") {
+                if (rawBasePrice >= 890) {
+                    couponMsg.innerText = "✓ קוד קופון התקבל! עודכנה הנחה של 120 ₪";
+                    couponMsg.style.color = "#25D366";
+                    couponMsg.style.display = "block";
+                    
+                    let couponCap = (rawBasePrice - 120) - (hasOwnEquipment ? (totalPayingPeople * 60) : 0);
+                    finalPrice = Math.min(couponCap, finalPrice);
+                } else {
+                    couponMsg.innerText = "ℹ הקופון CAMP120 תקף להרכב משפחתי מעל 890 ₪ בלבד";
+                    couponMsg.style.color = "#e65c00";
+                    couponMsg.style.display = "block";
+                }
+            } else if (couponInput !== "") {
+                couponMsg.innerText = "✗ קוד קופון לא תקין";
+                couponMsg.style.color = "#d9534f";
+                couponMsg.style.display = "block";
+            } else {
+                couponMsg.style.display = "none";
+            }
+
+            document.getElementById('earlyPriceDisplay').innerText = `₪${finalPrice}`;
 
             const savings = fullCalculatedPrice - finalPrice;
             if (savings > 0) {
@@ -1126,6 +1160,9 @@
             const total = document.getElementById('totalAmount').innerText;
             const isEarlyBird = document.getElementById('earlyBirdCheck').checked ? "כן" : "לא";
             const ownEquipment = document.getElementById('ownEquipmentCheck').checked ? "כן (מביאים אוהל ומזרנים)" : "לא (מסופק ע\"י מדורת השבט)";
+            
+            const couponInput = document.getElementById('couponCodeInput').value.trim().toUpperCase();
+            const couponUsedStr = (couponInput === "CAMP120") ? "CAMP120 (מימוש הנחת 120 ₪)" : (couponInput !== "" ? couponInput : "ללא");
 
             const ageInputs = document.querySelectorAll('.kid-age-input');
             let ages = [];
@@ -1146,6 +1183,7 @@
                             `גילאי הילדים: ${agesStr}%0A` +
                             `ציוד אישי (אוהל ומזרנים): ${ownEquipment}%0A` +
                             `הרשמה מוקדמת: ${isEarlyBird}%0A` +
+                            `קוד קופון: ${couponUsedStr}%0A` +
                             `סך הכל לתשלום: ₪${total}%0A` +
                             `אופן תשלום מבוקש: ${paymentMethod}%0A%0A` +
                             `אשמח לקבל קישור לתשלום. תודה`;
