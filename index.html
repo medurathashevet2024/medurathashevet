@@ -847,7 +847,7 @@
                     </div>
 
                     <!-- בחירת מסלול הרשמה מוקדמת -->
-                    <div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 12px; border-radius: 12px; border: 1.5px solid var(--campfire-orange);">
+                    <div style="display: flex; align- items: center; gap: 10px; background: #fff; padding: 12px; border-radius: 12px; border: 1.5px solid var(--campfire-orange);">
                         <input type="checkbox" id="earlyBirdCheck" onchange="calculateTotal()" checked style="width: 20px; height: 20px; cursor: pointer;">
                         <label for="earlyBirdCheck" style="font-weight: bold; color: var(--campfire-orange); cursor: pointer; font-size: 15px;">
                             מימוש הנחת הרשמה מוקדמת עד ה-5.8
@@ -1068,12 +1068,6 @@
             // חישוב מחיר בסיסי מלא לפי מחירון
             let rawBasePrice = (adults * 250) + (payingKids * 220);
             let fullCalculatedPrice = rawBasePrice;
-            
-            // חישוב הנחת ציוד אישי (60 ש"ח לנפש משלמת)
-            const hasOwnEquipment = document.getElementById('ownEquipmentCheck').checked;
-            if (hasOwnEquipment) {
-                fullCalculatedPrice -= (totalPayingPeople * 60);
-            }
 
             document.getElementById('oldPriceDisplay').innerText = `₪${fullCalculatedPrice}`;
 
@@ -1081,11 +1075,11 @@
             let finalPrice = fullCalculatedPrice;
 
             if (isEarlyBird) {
-                let earlyBirdCap = 890 - (hasOwnEquipment ? (totalPayingPeople * 60) : 0);
-                finalPrice = Math.min(earlyBirdCap, fullCalculatedPrice);
+                let earlyBirdCap = Math.min(890, fullCalculatedPrice);
+                finalPrice = earlyBirdCap;
             }
 
-            // מנגנון בדיקת קופון CAMP120 - מופעל רק עבור הרכב שמגיע למחיר המלא (890 ומעלה)
+            // מנגנון בדיקת קופון CAMP120 - מנכה 120 ש"ח ישירות ממחיר המבצע/ההרשמה
             const couponInput = document.getElementById('couponCodeInput').value.trim().toUpperCase();
             const couponMsg = document.getElementById('couponMessage');
 
@@ -1095,8 +1089,7 @@
                     couponMsg.style.color = "#25D366";
                     couponMsg.style.display = "block";
                     
-                    let couponCap = (rawBasePrice - 120) - (hasOwnEquipment ? (totalPayingPeople * 60) : 0);
-                    finalPrice = Math.min(couponCap, finalPrice);
+                    finalPrice -= 120;
                 } else {
                     couponMsg.innerText = "ℹ הקופון CAMP120 תקף להרכב משפחתי מעל 890 ₪ בלבד";
                     couponMsg.style.color = "#e65c00";
@@ -1109,6 +1102,15 @@
             } else {
                 couponMsg.style.display = "none";
             }
+
+            // חישוב הנחת ציוד אישי (60 ש"ח לנפש משלמת) יירד לאחר מכן
+            const hasOwnEquipment = document.getElementById('ownEquipmentCheck').checked;
+            if (hasOwnEquipment) {
+                finalPrice -= (totalPayingPeople * 60);
+                fullCalculatedPrice -= (totalPayingPeople * 60);
+            }
+
+            finalPrice = Math.max(0, finalPrice);
 
             document.getElementById('earlyPriceDisplay').innerText = `₪${finalPrice}`;
 
