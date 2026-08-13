@@ -296,8 +296,8 @@
             margin-bottom: 15px;
         }
 
-        .price-item { font-size: 18px; margin-bottom: 10px; font-weight: bold; color: var(--earth-brown); }
-        .price-item span { color: var(--campfire-orange); font-size: 22px; }
+        .price-item { font-size: 17px; margin-bottom: 8px; font-weight: bold; color: var(--earth-brown); }
+        .price-item span { color: var(--campfire-orange); font-size: 20px; }
 
         .price-anchor-box {
             background: #fff5f0;
@@ -306,16 +306,6 @@
             border-radius: 14px;
             margin: 15px 0;
             text-align: center;
-        }
-
-        .old-price-highlight {
-            text-decoration: line-through;
-            text-decoration-color: #d9381e;
-            text-decoration-thickness: 3px;
-            color: #777777;
-            font-size: 24px;
-            font-weight: 800;
-            margin-left: 10px;
         }
 
         .discount-price-highlight {
@@ -327,16 +317,15 @@
             margin-top: 4px;
         }
 
-        .savings-tag {
-            background: #25D366;
+        .tent-bonus-tag {
+            background: #2d5a37;
             color: white;
-            font-size: 14px;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-weight: 800;
-            display: inline-block;
+            font-size: 13px;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            display: none;
             margin-top: 8px;
-            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
         }
 
         .booking-form { display: flex; flex-direction: column; gap: 16px; }
@@ -484,17 +473,6 @@
         .btn-submit:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 28px rgba(230, 92, 0, 0.55);
-        }
-
-        .site-notes-box {
-            margin-top: 12px;
-            background: #fff8f0;
-            border-right: 4px solid var(--campfire-orange);
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 13.5px;
-            color: var(--earth-brown);
-            line-height: 1.6;
         }
 
         /* סרגל קישורים והלוגו במרכז */
@@ -755,29 +733,23 @@
 
             </div>
 
-            <!-- אזור עלויות, מחירון וטופס הרשמה -->
+            <!-- אזור עלויות, מחירון מעודכן וטופס הרשמה -->
             <div class="booking-box">
                 <div class="price-tag">
-                    <span class="early-bird-badge"> מחירון והנחת מחיר כולל</span>
+                    <span class="early-bird-badge"> מחירון קמפינג משפחות</span>
                     
                     <div class="price-item">מבוגר: <span>₪250</span></div>
-                    <div class="price-item">ילד (מגיל שנתיים): <span>₪220</span></div>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">*פעוטות מתחת לגיל שנתיים - ללא עלות.</p>
+                    <div class="price-item">ילד ראשון (מגיל שנתיים): <span>₪100</span></div>
+                    <div class="price-item">כל ילד נוסף: <span>₪50</span> בלבד!</div>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px; margin-bottom: 10px;">*מ-5 נפשות ומעלה: תוספת 50 ₪ לאוהל נוסף.<br>*פעוטות מתחת לגיל שנתיים - ללא עלות.</p>
                     
-                    <!-- קופסת חיסכון דינמית ובולטת -->
+                    <!-- קופסת חיסכון דינמית -->
                     <div class="price-anchor-box">
-                        <span style="font-size: 15px; font-weight: bold; color: var(--text-dark);">מחיר לפי מחירון יחידים:</span>
-                        <div style="margin-top: 6px;">
-                            <span class="old-price-highlight" id="oldPriceDisplay">₪940</span>
-                        </div>
-
-                        <span style="font-size: 15px; font-weight: bold; color: var(--campfire-orange); display: block; margin-top: 10px;">
-                            מחיר מופחת למשפחה (עד ₪770 למשפחה):
-                        </span>
-                        <span class="discount-price-highlight" id="earlyPriceDisplay">₪770</span>
+                        <span style="font-size: 15px; font-weight: bold; color: var(--text-dark);">סך הכל להרכב הנבחר:</span>
+                        <span class="discount-price-highlight" id="calculatedTotalDisplay">₪650</span>
                         
                         <div>
-                            <span class="savings-tag" id="savingsTag">חיסכון מיוחד בהרשמה משפחתית</span>
+                            <span class="tent-bonus-tag" id="tentBonusTag">כולל תוספת ₪50 לאוהל מורחב/נוסף</span>
                         </div>
                     </div>
 
@@ -820,7 +792,9 @@
                             </div>
                             <div class="selected-date-banner" id="selectedDateBanner">
                                 אנא לחצו על אחד המועדים המודגשים בלוח
-                          
+                            </div>
+                        </div>
+                    </div>
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                         <div class="form-group">
@@ -837,18 +811,19 @@
                                 <option value="2">2</option>
                                 <option value="3" selected>3</option>
                                 <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
                         </div>
                     </div>
 
                     <!-- חלוניות הזנת גילאי הילדים - שדות חובה -->
                     <div class="form-group">
-                        <label>גילאי הילדים <span style="color: red;"></span> </label>
+                        <label>גילאי הילדים <span style="color: red;">*</span> </label>
                         <div id="kidsAgesContainer" class="kids-ages-container"></div>
                     </div>
 
                     <div class="total-price-box">
-                        לתשלום: ₪<span id="totalAmount">770</span>
+                        לתשלום: ₪<span id="totalAmount">650</span>
                     </div>
 
                     <button class="btn-submit" onclick="openPaymentModal()" style="width: 100%; justify-content: center; margin-top: 10px;">
@@ -899,7 +874,7 @@
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-shield-alt" style="color: var(--forest-mid);"></i> בחירת אופן תשלום</h2>
             <p style="margin-top: 8px; font-size: 16px;">
-                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">770</span></strong>
+                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">650</span></strong>
             </p>
             <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp עם פרטי ההזמנה שלך לשליחת קישור תשלום:</p>
             
@@ -1040,35 +1015,45 @@
             const totalKidsSelected = parseInt(document.getElementById('kidsNum').value);
             
             const ageInputs = document.querySelectorAll('.kid-age-input');
-            let under2Count = 0;
+            let payingKids = 0;
             
             ageInputs.forEach(input => {
                 const val = parseFloat(input.value);
-                if (!isNaN(val) && val < 2) {
-                    under2Count++;
+                if (isNaN(val) || val >= 2) {
+                    payingKids++;
                 }
             });
 
-            let payingKids = Math.max(0, totalKidsSelected - under2Count);
-
-            // חישוב מחיר בסיסי מלא לפי מחירון
-            let rawBasePrice = (adults * 250) + (payingKids * 100);
-            
-            // הגבלת תקרת המחיר הכולל ל-770 ש"ח
-            let finalPrice = Math.min(770, rawBasePrice);
-
-            document.getElementById('oldPriceDisplay').innerText = `₪${rawBasePrice}`;
-            document.getElementById('earlyPriceDisplay').innerText = `₪${finalPrice}`;
-
-            const savings = rawBasePrice - finalPrice;
-            if (savings > 0) {
-                document.getElementById('savingsTag').innerText = `חיסכון של ₪${savings} למשפחה`;
-                document.getElementById('savingsTag').style.display = 'inline-block';
-            } else {
-                document.getElementById('savingsTag').style.display = 'none';
+            if (ageInputs.length === 0) {
+                payingKids = totalKidsSelected;
             }
 
-            document.getElementById('totalAmount').innerText = finalPrice;
+            // מבוגרים: 250 ש"ח
+            let total = adults * 250;
+
+            // ילדים: 100 ש"ח לילד ראשון, 50 ש"ח לכל ילד נוסף
+            if (payingKids > 0) {
+                total += 100;
+                if (payingKids > 1) {
+                    total += (payingKids - 1) * 50;
+                }
+            }
+
+            // תוספת לאוהל מ-5 נפשות ומעלה
+            const totalPayingPeople = adults + payingKids;
+            const tentTag = document.getElementById('tentBonusTag');
+
+            if (totalPayingPeople >= 5) {
+                total += 50;
+                if (tentTag) tentTag.style.display = 'inline-block';
+            } else {
+                if (tentTag) tentTag.style.display = 'none';
+            }
+
+            const calcDisplay = document.getElementById('calculatedTotalDisplay');
+            if (calcDisplay) calcDisplay.innerText = `₪${total}`;
+            
+            document.getElementById('totalAmount').innerText = total;
         }
 
         function openPaymentModal() {
