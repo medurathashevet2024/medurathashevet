@@ -812,18 +812,18 @@
                             <!-- בחירת תאריך התחלה וסיום מדויקים עבור ספטמבר (27-29) -->
                             <div id="dateRangeBox" class="date-range-box">
                                 <label style="font-size: 14px; font-weight: bold; color: var(--forest-green); display: block; margin-bottom: 8px;">
-                                    🏕️ בחירת תאריכי כניסה ויציאה בסוכות (27-29.9):
+                                    🏕️ בחירת תאריכי הגעה ועזיבה בחול המועד סוכות (27-29.9):
                                 </label>
                                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                                     <div>
-                                        <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך הגעה (כניסה):</span>
+                                        <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך הגעה </span>
                                         <select id="startDateSelect" onchange="handleStartDateChange()" style="padding: 8px; border-radius: 8px; border: 1.5px solid var(--forest-mid); font-size: 13px; font-weight: bold; width: 100%; margin-top: 4px;">
                                             <option value="27" selected>27.9 (יום ראשון)</option>
                                             <option value="28">28.9 (יום שני)</option>
                                         </select>
                                     </div>
                                     <div>
-                                        <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך עזיבה (יציאה):</span>
+                                        <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך עזיבה </span>
                                         <select id="endDateSelect" onchange="calculateDateRangeNights()" style="padding: 8px; border-radius: 8px; border: 1.5px solid var(--forest-mid); font-size: 13px; font-weight: bold; width: 100%; margin-top: 4px;">
                                             <option value="28" selected>28.9 (יום שני)</option>
                                             <option value="29">29.9 (יום שלישי)</option>
@@ -1027,7 +1027,7 @@
 
                     if (day === 22 || day === 23) {
                         dayCell.classList.add('available');
-                        dayCell.onclick = () => selectDateGroup("22-23.9 (שלישי-רביעי - אמהות וילדים בלבד)", [22, 23], 9, false);
+                        dayCell.onclick = () => selectDateGroup("22-23.9 (שלישי-רביעי - הר מירון)", [22, 23], 9, false);
                     } else if (day >= 27 && day <= 29) {
                         dayCell.classList.add('available');
                         dayCell.onclick = () => selectDateGroup("27-29.9 (סוכות - בחירת תאריכי הגעה ועזיבה)", [27, 28, 29], 9, true);
