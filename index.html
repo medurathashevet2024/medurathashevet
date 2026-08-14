@@ -438,10 +438,10 @@
             line-height: 1.5;
         }
 
-        .nights-select-box {
+        .date-range-box {
             background: #fff;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 14px;
+            border-radius: 12px;
             border: 1.5px dashed var(--campfire-orange);
             margin-top: 10px;
             display: none;
@@ -809,16 +809,32 @@
                                 <!-- ימים יווצרו אוטומטית דרך JavaScript -->
                             </div>
                             
-                            <!-- בחירת כמות לילות עבור ספטמבר (25-28) -->
-                            <div id="nightsSelectBox" class="nights-select-box">
-                                <label style="font-size: 14px; font-weight: bold; color: var(--forest-green); display: block; margin-bottom: 5px;">
-                                    🌙 בחירת מספר לילות (תוספת 200 ₪ לכל לילה נוסף למשפחה):
+                            <!-- בחירת תאריך התחלה וסיום מדויקים עבור ספטמבר (25-28) -->
+                            <div id="dateRangeBox" class="date-range-box">
+                                <label style="font-size: 14px; font-weight: bold; color: var(--forest-green); display: block; margin-bottom: 8px;">
+                                    🏕️ בחירת תאריכי כניסה ויציאה בסוכות (25-28.9):
                                 </label>
-                                <select id="stayNightsCount" onchange="updateStayNights()" style="padding: 8px 12px; border-radius: 8px; border: 1.5px solid var(--campfire-orange); font-size: 14px; font-weight: bold;">
-                                    <option value="1">לילה 1 (25-26.9 שישי-שבת - אמהות וילדים בלבד)</option>
-                                    <option value="2">2 לילות (25-27.9 שישי-ראשון - תוספת 200 ₪)</option>
-                                    <option value="3">3 לילות (25-28.9 שישי-שני - תוספת 400 ₪)</option>
-                                </select>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                    <div>
+                                        <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך הגעה (כניסה):</span>
+                                        <select id="startDateSelect" onchange="handleStartDateChange()" style="padding: 8px; border-radius: 8px; border: 1.5px solid var(--forest-mid); font-size: 13px; font-weight: bold; width: 100%; margin-top: 4px;">
+                                            <option value="25" selected>25.9 (יום שישי)</option>
+                                            <option value="26">26.9 (יום שבת)</option>
+                                            <option value="27">27.9 (יום ראשון)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך עזיבה (יציאה):</span>
+                                        <select id="endDateSelect" onchange="calculateDateRangeNights()" style="padding: 8px; border-radius: 8px; border: 1.5px solid var(--forest-mid); font-size: 13px; font-weight: bold; width: 100%; margin-top: 4px;">
+                                            <option value="26" selected>26.9 (יום שבת)</option>
+                                            <option value="27">27.9 (יום ראשון)</option>
+                                            <option value="28">28.9 (יום שני)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="font-size: 12px; color: var(--campfire-orange); font-weight: bold; margin-top: 8px;">
+                                    * תוספת 200 ₪ לכל לילה נוסף למשפחה מעבר ללילה הראשון.
+                                </div>
                             </div>
 
                             <div class="selected-date-banner" id="selectedDateBanner">
@@ -839,8 +855,8 @@
                             <label>מספר ילדים:</label>
                             <select id="kidsNum" onchange="renderKidsAgesInputs(); calculateTotal();">
                                 <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3" selected>3</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                             </select>
@@ -1000,7 +1016,7 @@
                 }
             } else {
                 title.innerText = "ספטמבר 2026";
-                // ספטמבר 2026 מתחיל ביום שלישי (2 תאים ריקים: ראשון, שני)
+                // ספטמבר 2026 מתחיל ביום שלישי (2 תאים ריקים)
                 for (let i = 0; i < 2; i++) {
                     const emptyCell = document.createElement('div');
                     emptyCell.className = 'day-cell';
@@ -1019,7 +1035,7 @@
                         dayCell.onclick = () => selectDateGroup("22-23.9 (שלישי-רביעי)", [22, 23], 9, false);
                     } else if (day >= 25 && day <= 28) {
                         dayCell.classList.add('available');
-                        dayCell.onclick = () => selectDateGroup("25-28.9 (סוכות - אפשרות למספר לילות)", [25, 26, 27, 28], 9, true);
+                        dayCell.onclick = () => selectDateGroup("25-28.9 (סוכות - בחירת תאריכי הגעה ועזיבה)", [25, 26, 27, 28], 9, true);
                     }
 
                     container.appendChild(dayCell);
@@ -1028,7 +1044,7 @@
         }
 
         function selectDateGroup(dateText, daysArray, month, isMultiNight) {
-            const nightsBox = document.getElementById('nightsSelectBox');
+            const rangeBox = document.getElementById('dateRangeBox');
             
             // ניקוי סימונים
             document.querySelectorAll('.day-cell').forEach(cell => cell.classList.remove('selected'));
@@ -1040,10 +1056,10 @@
             });
 
             if (isMultiNight) {
-                nightsBox.style.display = 'block';
-                updateStayNights();
+                rangeBox.style.display = 'block';
+                handleStartDateChange();
             } else {
-                nightsBox.style.display = 'none';
+                rangeBox.style.display = 'none';
                 extraNightsCost = 0;
                 selectedNightsDetails = "";
                 selectedDateText = dateText;
@@ -1052,26 +1068,43 @@
             }
         }
 
-        function updateStayNights() {
-            const select = document.getElementById('stayNightsCount');
-            const val = parseInt(select.value);
-
-            if (val === 1) {
-                extraNightsCost = 0;
-                selectedNightsDetails = "לילה 1 (25-26.9 שישי-שבת - אמהות וילדים בלבד)";
-                selectedDateText = "25-26.9 (לילה 1 - אמהות וילדים בלבד)";
-                document.getElementById('selectedDateBanner').innerHTML = `תאריך נבחר: 25-26.9 (לילה 1)<br><span style="color: #ffeb3b; font-size: 13px;">*מועד 25-26.9 מיועד לאמהות וילדים בלבד</span>`;
-            } else if (val === 2) {
-                extraNightsCost = 200;
-                selectedNightsDetails = "2 לילות (25-27.9 שישי עד ראשון)";
-                selectedDateText = "25-27.9 (2 לילות)";
-                document.getElementById('selectedDateBanner').innerHTML = `תאריך נבחר: 25-27.9 (2 לילות, תוספת 200 ₪ למשפחה)<br><span style="color: #ffeb3b; font-size: 13px;">*מועד 25-26.9 מיועד לאמהות וילדים בלבד</span>`;
-            } else if (val === 3) {
-                extraNightsCost = 400;
-                selectedNightsDetails = "3 לילות (25-28.9 שישי עד שני)";
-                selectedDateText = "25-28.9 (3 לילות)";
-                document.getElementById('selectedDateBanner').innerHTML = `תאריך נבחר: 25-28.9 (3 לילות, תוספת 400 ₪ למשפחה)<br><span style="color: #ffeb3b; font-size: 13px;">*מועד 25-26.9 מיועד לאמהות וילדים בלבד</span>`;
+        function handleStartDateChange() {
+            const startVal = parseInt(document.getElementById('startDateSelect').value);
+            const endSelect = document.getElementById('endDateSelect');
+            
+            // עדכון אפשרויות סיום חוקיות (הסיום חייב להיות אחרי ההתחלה)
+            endSelect.innerHTML = '';
+            
+            const dayNames = { 26: "26.9 (יום שבת)", 27: "27.9 (יום ראשון)", 28: "28.9 (יום שני)" };
+            
+            for (let d = startVal + 1; d <= 28; d++) {
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.innerText = dayNames[d];
+                endSelect.appendChild(opt);
             }
+
+            calculateDateRangeNights();
+        }
+
+        function calculateDateRangeNights() {
+            const startVal = parseInt(document.getElementById('startDateSelect').value);
+            const endVal = parseInt(document.getElementById('endDateSelect').value);
+            
+            const nights = endVal - startVal;
+            const extraNights = Math.max(0, nights - 1);
+            extraNightsCost = extraNights * 200;
+
+            const isMomsOnlyIncluded = (startVal === 25);
+            let momsNote = isMomsOnlyIncluded ? `<br><span style="color: #ffeb3b; font-size: 13px;">*מועד 25-26.9 מיועד לאמהות וילדים בלבד</span>` : '';
+
+            let nightsText = nights === 1 ? "לילה 1" : `${nights} לילות`;
+            let extraCostText = extraNightsCost > 0 ? ` (תוספת ₪${extraNightsCost} על לילות נוספים)` : '';
+
+            selectedDateText = `${startVal}-${endVal}.9 (${nightsText})`;
+            selectedNightsDetails = `כניסה: ${startVal}.9 | יציאה: ${endVal}.9 (${nightsText})`;
+
+            document.getElementById('selectedDateBanner').innerHTML = `תאריכים נבחרים: ${startVal}.9 עד ${endVal}.9 (${nightsText})${extraCostText}${momsNote}`;
 
             calculateTotal();
         }
@@ -1193,7 +1226,7 @@
 
             let dateInfo = selectedDateText;
             if (selectedNightsDetails !== "") {
-                dateInfo += ` (${selectedNightsDetails})`;
+                dateInfo = `${selectedDateText} [${selectedNightsDetails}]`;
             }
 
             const message = `שלום! נרשמתי לקמפינג המשפחות דרך האתר:%0A%0A` +
