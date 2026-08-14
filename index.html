@@ -337,7 +337,7 @@
             box-shadow: 0 0 0 3px rgba(230, 92, 0, 0.15);
         }
 
-        /* עיצוב לוח שנה ויזואלי של אוגוסט */
+        /* עיצוב לוח שנה ויזואלי של אוגוסט / ספטמבר */
         .calendar-container {
             background: var(--white);
             padding: 15px;
@@ -346,14 +346,32 @@
         }
 
         .calendar-header {
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-weight: 800;
             font-size: 16px;
             color: var(--forest-green);
             margin-bottom: 10px;
             background: var(--forest-light);
-            padding: 6px;
+            padding: 8px 12px;
             border-radius: 8px;
+        }
+
+        .cal-nav-btn {
+            background: var(--forest-green);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .cal-nav-btn:hover {
+            background: var(--campfire-orange);
         }
 
         .calendar-weekdays {
@@ -412,11 +430,21 @@
             margin-top: 10px;
             background: var(--forest-green);
             color: var(--white);
-            padding: 8px 12px;
+            padding: 10px 14px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: bold;
             text-align: center;
+            line-height: 1.5;
+        }
+
+        .nights-select-box {
+            background: #fff;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1.5px dashed var(--campfire-orange);
+            margin-top: 10px;
+            display: none;
         }
 
         .kids-ages-container {
@@ -728,13 +756,15 @@
                     <span class="early-bird-badge"> מחירון קמפינג משפחות</span>
                     
                     <div class="price-item">מבוגר: <span>₪250</span></div>
-                    <div class="price-item">ילד (מגיל שנתיים): <span>₪100</span></div>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px; margin-bottom: 10px;">*פעוטות מתחת לגיל שנתיים - ללא עלות.</p>
+                    <div class="price-item">ילד ראשון ושני (מגיל שנתיים): <span>₪100</span></div>
+                    <div class="price-item">ילד שלישי והלאה: <span>₪50</span> בלבד!</div>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px; margin-bottom: 6px;">*פעוטות מתחת לגיל שנתיים - ללא עלות.</p>
+                    <p style="font-size: 13px; color: var(--forest-green); font-weight: bold; margin-bottom: 10px;">*בספטמבר: כל לילה נוסף בין ה-25-28.9 ב-200 ₪ למשפחה בלבד.</p>
                     
                     <!-- קופסת מחיר דינמית -->
                     <div class="price-anchor-box">
                         <span style="font-size: 15px; font-weight: bold; color: var(--text-dark);">סך הכל להרכב הנבחר:</span>
-                        <span class="discount-price-highlight" id="calculatedTotalDisplay">₪800</span>
+                        <span class="discount-price-highlight" id="calculatedTotalDisplay">₪700</span>
                     </div>
 
                     <h4 style="margin-top: 15px; color: var(--earth-brown); font-size: 15px; font-weight: 700;">מדיניות ביטול :</h4>
@@ -763,17 +793,34 @@
                         <input type="email" id="parentEmail" placeholder="example@domain.com" required>
                     </div>
 
-                    <!-- לוח שנה ויזואלי של אוגוסט לבחירת תאריכים מורשים בלבד -->
+                    <!-- לוח שנה ויזואלי לבחירת תאריכים מורשים בלבד (אוגוסט / ספטמבר) -->
                     <div class="form-group">
                         <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת תאריך ומיקום:</label>
                         <div class="calendar-container">
-                            <div class="calendar-header">אוגוסט 2026</div>
+                            <div class="calendar-header">
+                                <button type="button" class="cal-nav-btn" onclick="prevMonth()"><i class="fas fa-chevron-right"></i></button>
+                                <span id="calendarMonthTitle">אוגוסט 2026</span>
+                                <button type="button" class="cal-nav-btn" onclick="nextMonth()"><i class="fas fa-chevron-left"></i></button>
+                            </div>
                             <div class="calendar-weekdays">
                                 <div>א'</div><div>ב'</div><div>ג'</div><div>ד'</div><div>ה'</div><div>ו'</div><div>ש'</div>
                             </div>
                             <div class="calendar-days" id="calendarDays">
                                 <!-- ימים יווצרו אוטומטית דרך JavaScript -->
                             </div>
+                            
+                            <!-- בחירת כמות לילות עבור ספטמבר (25-28) -->
+                            <div id="nightsSelectBox" class="nights-select-box">
+                                <label style="font-size: 14px; font-weight: bold; color: var(--forest-green); display: block; margin-bottom: 5px;">
+                                    🌙 בחירת מספר לילות (תוספת 200 ₪ לכל לילה נוסף למשפחה):
+                                </label>
+                                <select id="stayNightsCount" onchange="updateStayNights()" style="padding: 8px 12px; border-radius: 8px; border: 1.5px solid var(--campfire-orange); font-size: 14px; font-weight: bold;">
+                                    <option value="1">לילה 1 (25-26.9 שישי-שבת - אמהות וילדים בלבד)</option>
+                                    <option value="2">2 לילות (25-27.9 שישי-ראשון - תוספת 200 ₪)</option>
+                                    <option value="3">3 לילות (25-28.9 שישי-שני - תוספת 400 ₪)</option>
+                                </select>
+                            </div>
+
                             <div class="selected-date-banner" id="selectedDateBanner">
                                 אנא לחצו על אחד המועדים המודגשים בלוח
                             </div>
@@ -807,7 +854,7 @@
                     </div>
 
                     <div class="total-price-box">
-                        לתשלום: ₪<span id="totalAmount">800</span>
+                        לתשלום: ₪<span id="totalAmount">700</span>
                     </div>
 
                     <button class="btn-submit" onclick="openPaymentModal()" style="width: 100%; justify-content: center; margin-top: 10px;">
@@ -858,7 +905,7 @@
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-shield-alt" style="color: var(--forest-mid);"></i> בחירת אופן תשלום</h2>
             <p style="margin-top: 8px; font-size: 16px;">
-                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">800</span></strong>
+                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">700</span></strong>
             </p>
             <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp עם פרטי ההזמנה שלך לשליחת קישור תשלום:</p>
             
@@ -902,63 +949,131 @@
 
     <script>
         const MY_WHATSAPP_NUMBER = "972559914540"; 
-        let selectedDateText = "13-14.8 (חוף אמנון - כנרת)"; // ברירת מחדל מועד ראשון
+        let currentMonth = 8; // 8 = אוגוסט, 9 = ספטמבר
+        let selectedDateText = "13-14.8 (חוף אמנון - כנרת)";
+        let extraNightsCost = 0;
+        let selectedNightsDetails = "";
 
-        // יצירת לוח שנה ויזואלי של אוגוסט 2026
-        function renderAugustCalendar() {
-            const container = document.getElementById('calendarDays');
-            container.innerHTML = '';
-
-            // אוגוסט 2026 מתחיל ביום שבת (רווח של 6 ימים ריקים מתחילת השבוע)
-            for (let i = 0; i < 6; i++) {
-                const emptyCell = document.createElement('div');
-                emptyCell.className = 'day-cell';
-                emptyCell.style.background = 'transparent';
-                container.appendChild(emptyCell);
-            }
-
-            // ימי אוגוסט (1 עד 31)
-            for (let day = 1; day <= 31; day++) {
-                const dayCell = document.createElement('div');
-                dayCell.className = 'day-cell';
-                dayCell.innerText = day;
-
-                // ימים מורשים לבחירה
-                if (day === 13 || day === 14) {
-                    dayCell.classList.add('available');
-                    dayCell.onclick = () => selectDateGroup("13-14.8 (חוף אמנון - כנרת)", [13, 14]);
-                } else if (day === 18 || day === 19) {
-                    dayCell.classList.add('available');
-                    dayCell.onclick = () => selectDateGroup("18-19.8 (שלישי-רביעי - הר מירון)", [18, 19]);
-                } else if (day === 21 || day === 22) {
-                    dayCell.classList.add('available');
-                    dayCell.onclick = () => selectDateGroup("21-22.8 (שישי-שבת - הר מירון)", [21, 22]);
-                } else if (day === 25 || day === 26) {
-                    dayCell.classList.add('available');
-                    dayCell.onclick = () => selectDateGroup("25-26.8 (שלישי-רביעי - הר מירון)", [25, 26]);
-                }
-
-                dayCell.id = `day-${day}`;
-                container.appendChild(dayCell);
-            }
-
-            // סימון ברירת מחדל ראשונית
-            selectDateGroup("13-14.8 (חוף אמנון - כנרת)", [13, 14]);
+        function prevMonth() {
+            currentMonth = 8;
+            renderCalendar();
         }
 
-        function selectDateGroup(dateText, daysArray) {
-            selectedDateText = dateText;
+        function nextMonth() {
+            currentMonth = 9;
+            renderCalendar();
+        }
 
-            // ניקוי סימונים קודמים
+        function renderCalendar() {
+            const container = document.getElementById('calendarDays');
+            const title = document.getElementById('calendarMonthTitle');
+            container.innerHTML = '';
+
+            if (currentMonth === 8) {
+                title.innerText = "אוגוסט 2026";
+                // אוגוסט 2026 מתחיל ביום שבת (6 תאים ריקים)
+                for (let i = 0; i < 6; i++) {
+                    const emptyCell = document.createElement('div');
+                    emptyCell.className = 'day-cell';
+                    emptyCell.style.background = 'transparent';
+                    container.appendChild(emptyCell);
+                }
+
+                for (let day = 1; day <= 31; day++) {
+                    const dayCell = document.createElement('div');
+                    dayCell.className = 'day-cell';
+                    dayCell.innerText = day;
+                    dayCell.id = `day-8-${day}`;
+
+                    if (day === 13 || day === 14) {
+                        dayCell.classList.add('available');
+                        dayCell.onclick = () => selectDateGroup("13-14.8 (חוף אמנון - כנרת)", [13, 14], 8, false);
+                    } else if (day === 21 || day === 22) {
+                        dayCell.classList.add('available');
+                        dayCell.onclick = () => selectDateGroup("21-22.8 (שישי-שבת - הר מירון)", [21, 22], 8, false);
+                    } else if (day === 25 || day === 26) {
+                        dayCell.classList.add('available');
+                        dayCell.onclick = () => selectDateGroup("25-26.8 (שלישי-רביעי - הר מירון)", [25, 26], 8, false);
+                    }
+
+                    container.appendChild(dayCell);
+                }
+            } else {
+                title.innerText = "ספטמבר 2026";
+                // ספטמבר 2026 מתחיל ביום שלישי (2 תאים ריקים: ראשון, שני)
+                for (let i = 0; i < 2; i++) {
+                    const emptyCell = document.createElement('div');
+                    emptyCell.className = 'day-cell';
+                    emptyCell.style.background = 'transparent';
+                    container.appendChild(emptyCell);
+                }
+
+                for (let day = 1; day <= 30; day++) {
+                    const dayCell = document.createElement('div');
+                    dayCell.className = 'day-cell';
+                    dayCell.innerText = day;
+                    dayCell.id = `day-9-${day}`;
+
+                    if (day === 22 || day === 23) {
+                        dayCell.classList.add('available');
+                        dayCell.onclick = () => selectDateGroup("22-23.9 (שלישי-רביעי)", [22, 23], 9, false);
+                    } else if (day >= 25 && day <= 28) {
+                        dayCell.classList.add('available');
+                        dayCell.onclick = () => selectDateGroup("25-28.9 (סוכות - אפשרות למספר לילות)", [25, 26, 27, 28], 9, true);
+                    }
+
+                    container.appendChild(dayCell);
+                }
+            }
+        }
+
+        function selectDateGroup(dateText, daysArray, month, isMultiNight) {
+            const nightsBox = document.getElementById('nightsSelectBox');
+            
+            // ניקוי סימונים
             document.querySelectorAll('.day-cell').forEach(cell => cell.classList.remove('selected'));
 
-            // הוספת סימון לימים הנבחרים
+            // הוספת סימונים לימים הנבחרים
             daysArray.forEach(day => {
-                const cell = document.getElementById(`day-${day}`);
+                const cell = document.getElementById(`day-${month}-${day}`);
                 if (cell) cell.classList.add('selected');
             });
 
-            document.getElementById('selectedDateBanner').innerText = `תאריך ומיקום נבחר: ${dateText}`;
+            if (isMultiNight) {
+                nightsBox.style.display = 'block';
+                updateStayNights();
+            } else {
+                nightsBox.style.display = 'none';
+                extraNightsCost = 0;
+                selectedNightsDetails = "";
+                selectedDateText = dateText;
+                document.getElementById('selectedDateBanner').innerHTML = `תאריך ומיקום נבחר: ${dateText}`;
+                calculateTotal();
+            }
+        }
+
+        function updateStayNights() {
+            const select = document.getElementById('stayNightsCount');
+            const val = parseInt(select.value);
+
+            if (val === 1) {
+                extraNightsCost = 0;
+                selectedNightsDetails = "לילה 1 (25-26.9 שישי-שבת - אמהות וילדים בלבד)";
+                selectedDateText = "25-26.9 (לילה 1 - אמהות וילדים בלבד)";
+                document.getElementById('selectedDateBanner').innerHTML = `תאריך נבחר: 25-26.9 (לילה 1)<br><span style="color: #ffeb3b; font-size: 13px;">*מועד 25-26.9 מיועד לאמהות וילדים בלבד</span>`;
+            } else if (val === 2) {
+                extraNightsCost = 200;
+                selectedNightsDetails = "2 לילות (25-27.9 שישי עד ראשון)";
+                selectedDateText = "25-27.9 (2 לילות)";
+                document.getElementById('selectedDateBanner').innerHTML = `תאריך נבחר: 25-27.9 (2 לילות, תוספת 200 ₪ למשפחה)<br><span style="color: #ffeb3b; font-size: 13px;">*מועד 25-26.9 מיועד לאמהות וילדים בלבד</span>`;
+            } else if (val === 3) {
+                extraNightsCost = 400;
+                selectedNightsDetails = "3 לילות (25-28.9 שישי עד שני)";
+                selectedDateText = "25-28.9 (3 לילות)";
+                document.getElementById('selectedDateBanner').innerHTML = `תאריך נבחר: 25-28.9 (3 לילות, תוספת 400 ₪ למשפחה)<br><span style="color: #ffeb3b; font-size: 13px;">*מועד 25-26.9 מיועד לאמהות וילדים בלבד</span>`;
+            }
+
+            calculateTotal();
         }
 
         function renderKidsAgesInputs() {
@@ -1012,8 +1127,18 @@
                 payingKids = totalKidsSelected;
             }
 
-            // חישוב מבוגרים (250 ש"ח) + ילדים משלמים (100 ש"ח לילד)
-            let total = (adults * 250) + (payingKids * 100);
+            // מבוגרים: 250 ש"ח
+            let total = adults * 250;
+
+            // ילד 1 ו-2: 100 ש"ח כל אחד | ילד 3 ומעלה: 50 ש"ח בלבד
+            if (payingKids > 0) {
+                let firstTwoKids = Math.min(2, payingKids);
+                let extraKids = Math.max(0, payingKids - 2);
+                total += (firstTwoKids * 100) + (extraKids * 50);
+            }
+
+            // הוספת עלות לילות נוספים אם נבחרו בספטמבר
+            total += extraNightsCost;
 
             const calcDisplay = document.getElementById('calculatedTotalDisplay');
             if (calcDisplay) calcDisplay.innerText = `₪${total}`;
@@ -1066,11 +1191,16 @@
             });
             const agesStr = ages.length > 0 ? ages.join(', ') : 'לא צוינו גילאים';
 
+            let dateInfo = selectedDateText;
+            if (selectedNightsDetails !== "") {
+                dateInfo += ` (${selectedNightsDetails})`;
+            }
+
             const message = `שלום! נרשמתי לקמפינג המשפחות דרך האתר:%0A%0A` +
                             `שם מלא: ${name}%0A` +
                             `טלפון: ${phone}%0A` +
                             `מייל: ${email}%0A` +
-                            `מועד נבחר באוגוסט: ${selectedDateText}%0A` +
+                            `מועד נבחר: ${dateInfo}%0A` +
                             `מספר מבוגרים: ${adults}%0A` +
                             `מספר ילדים: ${kids}%0A` +
                             `גילאי הילדים: ${agesStr}%0A` +
@@ -1089,9 +1219,11 @@
         }
 
         window.onload = function() {
-            renderAugustCalendar();
+            renderCalendar();
             renderKidsAgesInputs();
             calculateTotal();
+            // סימון מועד ברירת מחדל
+            selectDateGroup("13-14.8 (חוף אמנון - כנרת)", [13, 14], 8, false);
         };
     </script>
 
