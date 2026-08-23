@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדורת השבט - קמפינג סוף החופש בהרי ירושלים</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --forest-green: #1b3820;
+            --forest-mid: #2d5a37;
+            --forest-light: #f0f5f1;
+            --earth-brown: #4a3329;
+            --earth-light: #8c6d5e;
+            --campfire-orange: #e65c00;
+            --campfire-glow: #ff751a;
+            --sandy-bg: #faf6f0;
+            --text-dark: #1f2421;
+            --text-muted: #58635a;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 4px 15px rgba(27, 56, 32, 0.05);
+            --shadow-md: 0 12px 35px rgba(27, 56, 32, 0.08);
+            --shadow-lg: 0 20px 45px rgba(27, 56, 32, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--sandy-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Secular One', sans-serif;
+        }
+
+        header {
+            background-color: rgba(27, 56, 32, 0.98);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 24px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .brand-logo .logo-text {
+            color: var(--sandy-bg);
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #d4e2d5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        nav a:hover { color: var(--white); }
+
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(27, 56, 32, 0.5), rgba(74, 51, 41, 0.6)), 
+                        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 52vh;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 24px;
+            margin-top: 65px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 12px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 22px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            font-weight: 300;
+            max-width: 800px;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-header h2 { 
+            font-size: 38px; 
+            color: var(--forest-green); 
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 30%;
+            width: 40%;
+            height: 3px;
+            background-color: var(--campfire-orange);
+            border-radius: 2px;
+        }
+
+        section {
+            background: var(--white);
+            padding: 45px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 50px;
+            border: 1px solid rgba(27, 56, 32, 0.04);
+        }
+
+        .event-chips {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .chip {
+            background: var(--forest-light);
+            color: var(--forest-green);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1.5px solid rgba(45, 90, 55, 0.2);
+        }
+
+        .chip i { color: var(--campfire-orange); }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background-color: var(--sandy-bg);
+            padding: 24px;
+            border-radius: 18px;
+            border-top: 5px solid var(--earth-brown);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-top-color: var(--campfire-orange);
+        }
+
+        .card h3 {
+            color: var(--forest-green);
+            margin-bottom: 10px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* עיצוב הלו"ז */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .schedule-day-box {
+            background: #faf7f2;
+            padding: 25px;
+            border-radius: 18px;
+            border: 1.5px solid #e2dad0;
+        }
+
+        .schedule-day-title {
+            font-size: 20px;
+            color: var(--forest-green);
+            font-weight: bold;
+            margin-bottom: 18px;
+            border-bottom: 2px solid var(--campfire-orange);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .schedule-timeline {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .schedule-timeline li {
+            position: relative;
+            padding-right: 22px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .schedule-timeline li::before {
+            content: "•";
+            color: var(--campfire-orange);
+            font-weight: bold;
+            font-size: 22px;
+            position: absolute;
+            right: 0;
+            top: -4px;
+        }
+
+        .timeline-time {
+            font-weight: 800;
+            color: var(--earth-brown);
+            margin-left: 6px;
+        }
+
+        /* טופס ומחירים */
+        .booking-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 35px;
+            background: linear-gradient(135deg, var(--forest-light), #e4ede6);
+            padding: 40px;
+            border-radius: 22px;
+            border: 1px solid rgba(27, 56, 32, 0.08);
+        }
+
+        .price-tag {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: var(--shadow-sm);
+            border-right: 5px solid var(--campfire-orange);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .early-bird-badge {
+            background: var(--campfire-orange);
+            color: var(--white);
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+
+        .price-item { font-size: 17px; font-weight: bold; color: var(--earth-brown); margin-bottom: 6px; }
+        .price-item span { color: var(--campfire-orange); font-size: 22px; }
+
+        .discount-callout {
+            background: #e8f5e9;
+            border: 1.5px dashed #2e7d32;
+            padding: 12px;
+            border-radius: 12px;
+            margin: 12px 0;
+            font-size: 14px;
+            color: #1b5e20;
+            font-weight: bold;
+        }
+
+        .booking-form { display: flex; flex-direction: column; gap: 16px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-weight: 700; color: var(--forest-green); }
+
+        .form-group input, .form-group select { 
+            padding: 13px 16px; 
+            border: 1.5px solid #cdd8cf; 
+            border-radius: 12px; 
+            font-size: 16px; 
+            width: 100%;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--campfire-orange);
+            box-shadow: 0 0 0 3px rgba(230, 92, 0, 0.15);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1.5px solid #cdd8cf;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--forest-green);
+        }
+
+        .checkbox-container input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--campfire-orange);
+        }
+
+        /* לוח שנה אוגוסט 2026 */
+        .calendar-container {
+            background: var(--white);
+            padding: 16px;
+            border-radius: 16px;
+            border: 1.5px solid #cdd8cf;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            width: 100%;
+        }
+
+        .calendar-header {
+            text-align: center;
+            font-weight: 800;
+            font-size: 17px;
+            color: var(--forest-green);
+            margin-bottom: 12px;
+            background: var(--forest-light);
+            padding: 8px 14px;
+            border-radius: 10px;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+        }
+
+        .day-cell {
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            border-radius: 8px;
+            background: #f4f6f4;
+            color: #a0aaa2;
+            cursor: not-allowed;
+            user-select: none;
+            font-weight: 600;
+        }
+
+        .day-cell.available {
+            background: #e8f5e9;
+            color: var(--forest-green);
+            font-weight: bold;
+            cursor: pointer;
+            border: 1.5px solid #81c784;
+            transition: var(--transition);
+        }
+
+        .day-cell.selected {
+            background: var(--campfire-orange) !important;
+            color: var(--white) !important;
+            border-color: var(--campfire-orange) !important;
+            box-shadow: 0 3px 10px rgba(230, 92, 0, 0.4);
+            font-weight: 800;
+        }
+
+        .selected-date-banner {
+            margin-top: 14px;
+            background: var(--forest-green);
+            color: var(--white);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .total-price-box {
+            background: var(--forest-green); 
+            color: var(--white);
+            padding: 16px; 
+            border-radius: 12px; 
+            text-align: center; 
+            font-size: 22px; 
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow));
+            color: var(--white);
+            padding: 15px 38px;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 6px 22px rgba(230, 92, 0, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(230, 92, 0, 0.55);
+        }
+
+        .social-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            background: rgba(27, 56, 32, 0.04);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px dashed rgba(27, 56, 32, 0.15);
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 16px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .social-link:hover { transform: translateY(-3px); }
+        .link-wa { background: linear-gradient(135deg, #25D366, #1eaa53); }
+        .link-fb { background: linear-gradient(135deg, #1877F2, #0d5cb5); }
+
+        .logo-center-box {
+            background: var(--white);
+            padding: 10px 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(27, 56, 32, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-center-box img {
+            max-height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Modal תשלום */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(18, 36, 21, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px; left: 15px;
+            font-size: 26px; cursor: pointer; color: var(--text-muted);
+        }
+
+        .payment-options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .pay-option-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-dark);
+            background: #f8faf8;
+            font-weight: 700;
+            font-size: 16px;
+            transition: var(--transition);
+            border: 1.5px solid #dce5dd;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .pay-option-btn:hover {
+            background: var(--white);
+            border-color: var(--forest-green);
+            transform: translateY(-2px);
+        }
+
+        .pay-btn-content { display: flex; align-items: center; gap: 14px; }
+        .pay-btn-icon {
+            width: 40px; height: 40px; border-radius: 10px;
+            background: var(--forest-light); color: var(--forest-green);
+            display: flex; align-items: center; justify-content: center; font-size: 18px;
+        }
+
+        @media (max-width: 992px) { 
+            .booking-box { grid-template-columns: 1fr; }
+            .schedule-grid { grid-template-columns: 1fr; }
+            section { padding: 30px 20px; }
+        }
+        @media (max-width: 768px) { 
+            .nav-container { flex-direction: column; gap: 12px; } 
+            .hero h1 { font-size: 36px; }
+            .social-bar { flex-direction: column; }
+        }
+
+        footer { 
+            background-color: #0f2112; color: #a3b8a7; text-align: center; 
+            padding: 35px 20px; font-size: 15px; border-top: 4px solid var(--campfire-orange);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <span class="logo-text">🌿 מדורת השבט</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">על הקמפינג</a></li>
+                    <li><a href="#schedule">תוכנית הטיול</a></li>
+                    <li><a href="#booking">הרשמה</a></li>
+                    <li>
+                        <a href="https://wa.me/972559914540" target="_blank" style="color: #25D366; font-weight: bold; display: flex; align-items: center; gap: 6px;">
+                            <i class="fab fa-whatsapp" style="font-size: 20px;"></i> 055-9914540
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>סוגרים שנה בהרי ירושלים</h1>
+        <p>חוויית קמפינג משפחתית לסיום החופש הגדול – 24 שעות של טבע, אוויר הרים קריר וזמן איכות אמיתי</p>
+    </div>
+
+    <div class="wrapper">
+
+        <!-- סקציית מה מחכה לנו -->
+        <section id="about">
+            <div class="section-header">
+                <h2>מה מחכה לנו בקמפינג?</h2>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">
+                    בלי לחץ ובלי למהר – 24 שעות של טבע, ריחות של מדורה, צל קריר וחיבור משפחתי.
+                </p>
+            </div>
+
+            <div class="event-chips">
+                <div class="chip"><i class="far fa-calendar-check"></i> 27-28 לאוגוסט 2026 (חמישי-שישי)</div>
+                <div class="chip"><i class="fas fa-map-marker-alt"></i> חניון לילה נס הרים, הרי ירושלים</div>
+                <div class="chip"><i class="fas fa-child"></i> מתאים לכל המשפחה (עדיפות לגילאי שנתיים ומעלה)</div>
+            </div>
+
+            <div class="grid-cards">
+                <div class="card">
+                    <h3><i class="fas fa-mountain"></i> מערת הנטיפים ונס הרים</h3>
+                    <p>סיור קריר ומרהיב בשמורת טבע מערת הנטיפים, והתמקמות בחניון נס הרים בלב חורש ירוק ובריזת הרים מרעננת.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-fire"></i> עששיות וסיר פוייקה</h3>
+                    <p>סדנת עששיות לילדים, טיול שקיעה מול נופי הרי ירושלים, וארוחת ערב מפנקת וחמה מסיר פוייקה שהתבשל על המדורה.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-bread-slice"></i> זריחה ופיתות בטאבון</h3>
+                    <p>תצפית זריחה למשכימי קום, קפה של בוקר, אפיית פיתות חמות על הטאבון וארוחת בוקר כפרית ומזינה.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-landmark"></i> חוויה ירושלמית בעיר העתיקה</h3>
+                    <p>נסיעה ברכבת הקלה, שכשוך במזרקות פארק טדי, מעבר בסמטאות השוק הצבעוניות, תפילה בכותל ומעגל פרידה מרגש.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- סקציית לוח זמנים מפורט -->
+        <section id="schedule">
+            <div class="section-header">
+                <h2>לוח הזמנים של הפעילות</h2>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">
+                    כל הפעילויות והמסלולים מותאמים, קלילים, בטוחים ובקצב רגוע
+                </p>
+            </div>
+
+            <div class="schedule-grid">
+                <!-- יום 1 -->
+                <div class="schedule-day-box">
+                    <div class="schedule-day-title">
+                        <i class="fas fa-sun"></i> יום חמישי (27.8): מערת הנטיפים, שקיעה ופוייקה
+                    </div>
+                    <ul class="schedule-timeline">
+                        <li><span class="timeline-time">14:30 – 16:30:</span> ביקור וסיור קריר בשמורת טבע מערת הנטיפים.</li>
+                        <li><span class="timeline-time">16:30 – 17:00:</span> נסיעה במעלה ההר והגעה לחניון לילה נס הרים.</li>
+                        <li><span class="timeline-time">17:00 – 17:15:</span> מעגל פתיחה והיכרות קצרה על המחצלת.</li>
+                        <li><span class="timeline-time">17:15 – 18:00:</span> הקמת אוהלים, פריסת מזרנים והעמדת סיר הפוייקה על האש.</li>
+                        <li><span class="timeline-time">18:00 – 18:45:</span> סדנת יצירת עששיות לילדים.</li>
+                        <li><span class="timeline-time">18:45 – 19:15:</span> זמן חופשי, מנוחה ונשנוש קל במחנה.</li>
+                        <li><span class="timeline-time">19:15 – 19:45:</span> הליכה קצרה לתצפית שקיעה מול הרי ירושלים והדלקת עששיות.</li>
+                        <li><span class="timeline-time">19:45 – 21:00:</span> ארוחת ערב חגיגית ועשירה מסיר הפוייקה.</li>
+                        <li><span class="timeline-time">21:00 ואילך:</span> התארגנות לשינה ולילה תחת שמיים זרועי כוכבים.</li>
+                    </ul>
+                </div>
+
+                <!-- יום 2 -->
+                <div class="schedule-day-box">
+                    <div class="schedule-day-title">
+                        <i class="fas fa-compass"></i> יום שישי (28.8): זריחה, טאבון, מזרקות טדי והכותל
+                    </div>
+                    <ul class="schedule-timeline">
+                        <li><span class="timeline-time">06:00 – 06:45:</span> הליכה קצרה (כ־5 דק') לתצפית זריחה מזרחה.</li>
+                        <li><span class="timeline-time">06:45 – 07:30:</span> קפה של בוקר והתעוררות הקבוצה.</li>
+                        <li><span class="timeline-time">07:30 – 09:00:</span> אפיית פיתות חמות על הטאבון/סאג' וארוחת בוקר.</li>
+                        <li><span class="timeline-time">09:00 – 10:00:</span> קיפול אוהלים, אריזת ציוד וניקיון השטח.</li>
+                        <li><span class="timeline-time">10:00 – 10:40:</span> נסיעה לירושלים וחניה בחניון חנה וסע הר הרצל.</li>
+                        <li><span class="timeline-time">10:40 – 11:10:</span> נסיעה חווייתית ברכבת הקלה לתחנת העירייה (יפו מרכז).</li>
+                        <li><span class="timeline-time">11:10 – 11:50:</span> פארק טדי – שכשוך והתרעננות במזרקות המים מול החומות.</li>
+                        <li><span class="timeline-time">11:50 – 12:55:</span> עלייה לשער יפו, הליכה בסמטאות השוק, והגעה לכותל המערבי.</li>
+                        <li><span class="timeline-time">12:55 – 13:10:</span> מעגל סיכום ופרידה ברובע היהודי.</li>
+                        <li><span class="timeline-time">13:10 – 14:00:</span> חזרה ברכבת הקלה לרכבים בהר הרצל ופיזור הביתה לשבת.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- אזור הרשמה ומחשבון -->
+        <section id="booking">
+            <div class="section-header">
+                <h2>מחירון והרשמה לקמפינג</h2>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">הכל כלול: הדרכה, סדנת עששיות, טיולי ערב ובוקר, ביקור בכותל, 2 ארוחות מלאות, אוהל ומזרנים נוחים</p>
+            </div>
+
+            <div class="booking-box">
+                <div class="price-tag">
+                    <div>
+                        <span class="early-bird-badge">חבילות משפחתיות</span>
+                        <div class="price-item">הורה + ילד: <span>₪420</span></div>
+                        <div class="price-item">זוג + 2 ילדים: <span>₪790</span></div>
+                        <div class="price-item">זוג + 3 ילדים: <span>₪890</span></div>
+                        
+                        <div class="discount-callout">
+                            🎒 הטבה למצטיידים עצמאית: מגיעים עם אוהל ומזרנים מהבית? קבלו 100 ₪ הנחה למשפחה!
+                        </div>
+
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">
+                            * הכניסה לשמורת מערת הנטיפים בתשלום נפרד בקופה / חינם לבעלי מנוי מטמון.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 style="color: var(--earth-brown); font-size: 15px; font-weight: 700; margin-top: 15px;">מדיניות ביטול:</h4>
+                        <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+                            • עד 10 ימי עסקים לפני המועד - החזר כספי מלא.<br>
+                            • בין 10 ל-3 ימי עסקים - החזר בגובה 50%.<br>
+                            • פחות מ-3 ימי עסקים - ניתן להעביר את הזכות למשפחה אחרת.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="booking-form">
+                    <h3 style="color: var(--forest-green); font-size: 22px;"><i class="fas fa-user-check"></i> טופס שריין מקום</h3>
+                    
+                    <div class="form-group">
+                        <label>שם מלא:</label>
+                        <input type="text" id="parentName" placeholder="שם מלא" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>טלפון נייד:</label>
+                        <input type="tel" id="parentPhone" placeholder="050-0000000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>כתובת מייל:</label>
+                        <input type="email" id="parentEmail" placeholder="example@domain.com" required>
+                    </div>
+
+                    <!-- בחירת הרכב משפחתי -->
+                    <div class="form-group">
+                        <label>הרכב משפחתי:</label>
+                        <select id="familyPlan" onchange="calculateTotal()">
+                            <option value="420" selected>הורה + ילד 1 (₪420)</option>
+                            <option value="790">זוג + 2 ילדים (₪790)</option>
+                            <option value="890">זוג + 3 ילדים (₪890)</option>
+                        </select>
+                    </div>
+
+                    <!-- צ'קבוקס הבאת ציוד עצמאי -->
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="bringOwnGear" onchange="calculateTotal()">
+                        <span>מגיעים עם אוהל ומזרנים מהבית (100 ₪ הנחה)</span>
+                    </label>
+
+                    <!-- לוח שנה אוגוסט 2026 -->
+                    <div class="form-group">
+                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> מועד הפעילות:</label>
+                        <div class="calendar-container">
+                            <div class="calendar-header">אוגוסט 2026</div>
+                            <div class="calendar-weekdays">
+                                <div>א'</div><div>ב'</div><div>ג'</div><div>ד'</div><div>ה'</div><div>ו'</div><div>ש'</div>
+                            </div>
+                            <div class="calendar-days" id="calendarDays">
+                                <!-- הימים יווצרו דרך JS -->
+                            </div>
+                            <div class="selected-date-banner" id="selectedDateBanner">
+                                מועד נבחר: 27-28 לאוגוסט 2026 (חמישי-שישי) | הרי ירושלים
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="total-price-box">
+                        לתשלום: ₪<span id="totalAmount">420</span>
+                    </div>
+
+                    <button class="btn-submit" onclick="openPaymentModal()" style="width: 100%; justify-content: center; margin-top: 6px;">
+                        בחירת אופן תשלום והרשמה <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- סרגל קישורים תחתון והלוגו במרכז -->
+        <div class="social-bar">
+            <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa">
+                <i class="fab fa-whatsapp"></i>
+                שלחו לנו הודעה ב-WhatsApp
+            </a>
+            
+            <div class="logo-center-box">
+                <img src="LOGO.PNG" alt="לוגו מדורת השבט" 
+                     onerror="if (this.src.endsWith('LOGO.PNG')) { this.src='logo.png'; } else if (this.src.endsWith('logo.png')) { this.src='logo.jpg'; } else { this.style.display='none'; }">
+            </div>
+
+            <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%98/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
+                <i class="fab fa-facebook-f"></i>
+                עמוד הפייסבוק
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Modal תשלום -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-shield-alt" style="color: var(--forest-mid);"></i> בחירת אופן תשלום</h2>
+            <p style="margin-top: 8px; font-size: 16px;">
+                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">420</span></strong>
+            </p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp עם פרטי ההרשמה לקבלת קישור לתשלום:</p>
+            
+            <div class="payment-options-grid">
+                <button onclick="sendOrderToWhatsApp('העברה בנקאית')" class="pay-option-btn">
+                    <div class="pay-btn-content">
+                        <div class="pay-btn-icon"><i class="fas fa-university"></i></div>
+                        <span> העברה בנקאית </span>
+                    </div>
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
+                </button>
+
+                <button onclick="sendOrderToWhatsApp('PayBox')" class="pay-option-btn">
+                    <div class="pay-btn-content">
+                        <div class="pay-btn-icon"><i class="fas fa-box-open"></i></div>
+                        <span> PayBox</span>
+                    </div>
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
+                </button>
+
+                <button onclick="sendOrderToWhatsApp('bit')" class="pay-option-btn">
+                    <div class="pay-btn-content">
+                        <div class="pay-btn-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <span> bit</span>
+                    </div>
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
+                </button>
+
+                <button onclick="sendOrderToWhatsApp('כרטיס אשראי')" class="pay-option-btn">
+                    <div class="pay-btn-content">
+                        <div class="pay-btn-icon"><i class="far fa-credit-card"></i></div>
+                        <span> תשלום בכרטיס אשראי</span>
+                    </div>
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const MY_WHATSAPP_NUMBER = "972559914540"; 
+        const selectedDateText = "27-28.8.2026 (חמישי-שישי) | קמפינג הרי ירושלים (נס הרים)";
+
+        function renderCalendar() {
+            const container = document.getElementById('calendarDays');
+            container.innerHTML = '';
+
+            // אוגוסט 2026 מתחיל ביום שבת (6 תאים ריקים)
+            for (let i = 0; i < 6; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'day-cell';
+                emptyCell.style.background = 'transparent';
+                container.appendChild(emptyCell);
+            }
+
+            for (let day = 1; day <= 31; day++) {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'day-cell';
+                dayCell.innerText = day;
+                dayCell.id = `day-${day}`;
+
+                if (day === 27 || day === 28) {
+                    dayCell.classList.add('available', 'selected');
+                }
+
+                container.appendChild(dayCell);
+            }
+        }
+
+        function calculateTotal() {
+            const basePrice = parseInt(document.getElementById('familyPlan').value);
+            const isOwnGear = document.getElementById('bringOwnGear').checked;
+            
+            let total = basePrice;
+            if (isOwnGear) {
+                total -= 100;
+            }
+
+            document.getElementById('totalAmount').innerText = total;
+        }
+
+        function openPaymentModal() {
+            const name = document.getElementById('parentName').value.trim();
+            const phone = document.getElementById('parentPhone').value.trim();
+            const email = document.getElementById('parentEmail').value.trim();
+            const total = document.getElementById('totalAmount').innerText;
+
+            if(!name || !phone || !email) {
+                alert('אנא מלאו שם מלא, טלפון נייד וכתובת מייל כדי להמשיך להרשמה.');
+                return;
+            }
+
+            document.getElementById('modalTotal').innerText = total;
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function sendOrderToWhatsApp(paymentMethod) {
+            const name = document.getElementById('parentName').value.trim();
+            const phone = document.getElementById('parentPhone').value.trim();
+            const email = document.getElementById('parentEmail').value.trim();
+            const planSelect = document.getElementById('familyPlan');
+            const planText = planSelect.options[planSelect.selectedIndex].text;
+            const isOwnGear = document.getElementById('bringOwnGear').checked ? "כן (מביאים אוהל ומזרנים עצמאית - 100 ₪ הנחה)" : "לא (אספקת ציוד מלאה על ידי מדורת השבט)";
+            const total = document.getElementById('totalAmount').innerText;
+
+            const message = `שלום! נרשמתי לקמפינג סוף החופש בהרי ירושלים:%0A%0A` +
+                            `שם מלא: ${name}%0A` +
+                            `טלפון: ${phone}%0A` +
+                            `מייל: ${email}%0A` +
+                            `מועד: ${selectedDateText}%0A` +
+                            `הרכב חבילה: ${planText}%0A` +
+                            `ציוד עצמאי: ${isOwnGear}%0A` +
+                            `סך הכל לתשלום: ₪${total}%0A` +
+                            `אופן תשלום מבוקש: ${paymentMethod}%0A%0A` +
+                            `אשמח לקבל קישור לתשלום לשריין את מקומנו. תודה!`;
+
+            const waUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
+            
+            window.open(waUrl, '_blank');
+            closeModal();
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        window.onload = function() {
+            renderCalendar();
+            calculateTotal();
+        };
+    </script>
+
+    <footer>
+        <p>מדורת השבט | קמפינג משפחות, חוויות טבע ומלאכות קדומות</p>
+        <p style="font-size: 12px; color: #6a826f; margin-top: 5px;">טלפון ליצירת קשר: 055-9914540</p>
+    </footer>
+
+</body>
+</html>
