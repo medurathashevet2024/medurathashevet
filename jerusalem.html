@@ -99,6 +99,30 @@
 
         nav a:hover { color: var(--white); }
 
+        .phone-nav-link {
+            color: #ffffff !important;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .phone-nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .wa-header-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
         .hero {
             position: relative;
             background: linear-gradient(rgba(27, 56, 32, 0.5), rgba(74, 51, 41, 0.6)), 
@@ -189,95 +213,68 @@
 
         .chip i { color: var(--campfire-orange); }
 
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 22px;
-            margin-top: 25px;
-        }
-
-        .card {
-            background-color: var(--sandy-bg);
-            padding: 24px;
-            border-radius: 18px;
-            border-top: 5px solid var(--earth-brown);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            border-top-color: var(--campfire-orange);
-        }
-
-        .card h3 {
-            color: var(--forest-green);
-            margin-bottom: 10px;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* עיצוב הלו"ז */
         .schedule-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
             margin-top: 25px;
         }
 
         .schedule-day-box {
             background: #faf7f2;
-            padding: 25px;
+            padding: 28px;
             border-radius: 18px;
             border: 1.5px solid #e2dad0;
         }
 
         .schedule-day-title {
-            font-size: 20px;
+            font-size: 21px;
             color: var(--forest-green);
             font-weight: bold;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             border-bottom: 2px solid var(--campfire-orange);
             padding-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .schedule-timeline {
+        .experience-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
 
-        .schedule-timeline li {
+        .experience-list li {
             position: relative;
-            padding-right: 22px;
-            font-size: 15px;
-            line-height: 1.5;
+            padding-right: 28px;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
-        .schedule-timeline li::before {
-            content: "•";
+        .experience-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
             color: var(--campfire-orange);
-            font-weight: bold;
-            font-size: 22px;
             position: absolute;
             right: 0;
-            top: -4px;
+            top: 2px;
+            font-size: 15px;
         }
 
-        .timeline-time {
-            font-weight: 800;
-            color: var(--earth-brown);
-            margin-left: 6px;
+        .schedule-note-box {
+            text-align: center;
+            margin-top: 25px;
+            padding: 14px;
+            background: var(--forest-light);
+            border-radius: 12px;
+            font-weight: 700;
+            color: var(--forest-green);
+            font-size: 15px;
         }
 
-        /* טופס ומחירים */
         .booking-box {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -366,7 +363,6 @@
             accent-color: var(--campfire-orange);
         }
 
-        /* לוח שנה אוגוסט 2026 */
         .calendar-container {
             background: var(--white);
             padding: 16px;
@@ -475,10 +471,7 @@
             cursor: pointer;
         }
 
-        .btn-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 28px rgba(230, 92, 0, 0.55);
-        }
+        .btn-submit:hover { transform: translateY(-3px); }
 
         .social-bar {
             display: flex;
@@ -528,7 +521,6 @@
             object-fit: contain;
         }
 
-        /* Modal תשלום */
         .payment-modal {
             display: none;
             position: fixed;
@@ -602,7 +594,7 @@
         }
         @media (max-width: 768px) { 
             .nav-container { flex-direction: column; gap: 12px; } 
-            .hero h1 { font-size: 36px; }
+            .hero h1 { font-size: 34px; }
             .social-bar { flex-direction: column; }
         }
 
@@ -616,17 +608,18 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="brand-logo">
+            <a href="index.html" class="brand-logo">
                 <span class="logo-text">🌿 מדורת השבט</span>
             </a>
             <nav>
                 <ul>
                     <li><a href="#about">על הקמפינג</a></li>
-                    <li><a href="#schedule">תוכנית הטיול</a></li>
+                    <li><a href="#schedule">התוכנית</a></li>
                     <li><a href="#booking">הרשמה</a></li>
                     <li>
-                        <a href="https://wa.me/972559914540" target="_blank" style="color: #25D366; font-weight: bold; display: flex; align-items: center; gap: 6px;">
-                            <i class="fab fa-whatsapp" style="font-size: 20px;"></i> 055-9914540
+                        <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-header-icon">
+                            055-9914540
                         </a>
                     </li>
                 </ul>
@@ -655,73 +648,49 @@
                 <div class="chip"><i class="fas fa-map-marker-alt"></i> חניון לילה נס הרים, הרי ירושלים</div>
                 <div class="chip"><i class="fas fa-child"></i> מתאים לכל המשפחה (עדיפות לגילאי שנתיים ומעלה)</div>
             </div>
-
-            <div class="grid-cards">
-                <div class="card">
-                    <h3><i class="fas fa-mountain"></i> מערת הנטיפים ונס הרים</h3>
-                    <p>סיור קריר ומרהיב בשמורת טבע מערת הנטיפים, והתמקמות בחניון נס הרים בלב חורש ירוק ובריזת הרים מרעננת.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fas fa-fire"></i> עששיות וסיר פוייקה</h3>
-                    <p>סדנת עששיות לילדים, טיול שקיעה מול נופי הרי ירושלים, וארוחת ערב מפנקת וחמה מסיר פוייקה שהתבשל על המדורה.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fas fa-bread-slice"></i> זריחה ופיתות בטאבון</h3>
-                    <p>תצפית זריחה למשכימי קום, קפה של בוקר, אפיית פיתות חמות על הטאבון וארוחת בוקר כפרית ומזינה.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fas fa-landmark"></i> חוויה ירושלמית בעיר העתיקה</h3>
-                    <p>נסיעה ברכבת הקלה, שכשוך במזרקות פארק טדי, מעבר בסמטאות השוק הצבעוניות, תפילה בכותל ומעגל פרידה מרגש.</p>
-                </div>
-            </div>
         </section>
 
-        <!-- סקציית לוח זמנים מפורט -->
+        <!-- סקציית תוכנית הטיול התמציתית -->
         <section id="schedule">
             <div class="section-header">
-                <h2>לוח הזמנים של הפעילות</h2>
+                <h2>תוכנית החוויות</h2>
                 <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">
                     כל הפעילויות והמסלולים מותאמים, קלילים, בטוחים ובקצב רגוע
                 </p>
             </div>
 
             <div class="schedule-grid">
-                <!-- יום 1 -->
+                <!-- יום חמישי -->
                 <div class="schedule-day-box">
                     <div class="schedule-day-title">
-                        <i class="fas fa-sun"></i> יום חמישי (27.8): מערת הנטיפים, שקיעה ופוייקה
+                        <i class="fas fa-sun"></i> יום חמישי (אחה"צ וערב): מערת הנטיפים, שקיעה ופוייקה
                     </div>
-                    <ul class="schedule-timeline">
-                        <li><span class="timeline-time">14:30 – 16:30:</span> ביקור וסיור קריר בשמורת טבע מערת הנטיפים.</li>
-                        <li><span class="timeline-time">16:30 – 17:00:</span> נסיעה במעלה ההר והגעה לחניון לילה נס הרים.</li>
-                        <li><span class="timeline-time">17:00 – 17:15:</span> מעגל פתיחה והיכרות קצרה על המחצלת.</li>
-                        <li><span class="timeline-time">17:15 – 18:00:</span> הקמת אוהלים, פריסת מזרנים והעמדת סיר הפוייקה על האש.</li>
-                        <li><span class="timeline-time">18:00 – 18:45:</span> סדנת יצירת עששיות לילדים.</li>
-                        <li><span class="timeline-time">18:45 – 19:15:</span> זמן חופשי, מנוחה ונשנוש קל במחנה.</li>
-                        <li><span class="timeline-time">19:15 – 19:45:</span> הליכה קצרה לתצפית שקיעה מול הרי ירושלים והדלקת עששיות.</li>
-                        <li><span class="timeline-time">19:45 – 21:00:</span> ארוחת ערב חגיגית ועשירה מסיר הפוייקה.</li>
-                        <li><span class="timeline-time">21:00 ואילך:</span> התארגנות לשינה ולילה תחת שמיים זרועי כוכבים.</li>
+                    <ul class="experience-list">
+                        <li><strong>סיור קריר ומרהיב:</strong> ביקור בשמורת טבע מערת הנטיפים.</li>
+                        <li><strong>התמקמות בטבע:</strong> הגעה לחניון נס הרים, הקמת אוהלים ומפגש פתיחה.</li>
+                        <li><strong>יצירה ושקיעה:</strong> סדנת הכנת עששיות לילדים והליכה קצרה לתצפית שקיעה מול ההרים.</li>
+                        <li><strong>ארוחת מדורה:</strong> סיר פוייקה עשיר ומפנק שמתבשל בנחת.</li>
+                        <li><strong>לילה קסום:</strong> לינה באוהלים תחת שמיים זרועי כוכבים באוויר הרים צלול.</li>
                     </ul>
                 </div>
 
-                <!-- יום 2 -->
+                <!-- יום שישי -->
                 <div class="schedule-day-box">
                     <div class="schedule-day-title">
-                        <i class="fas fa-compass"></i> יום שישי (28.8): זריחה, טאבון, מזרקות טדי והכותל
+                        <i class="fas fa-compass"></i> יום שישי (בוקר וצהריים): זריחה, טאבון והעיר העתיקה
                     </div>
-                    <ul class="schedule-timeline">
-                        <li><span class="timeline-time">06:00 – 06:45:</span> הליכה קצרה (כ־5 דק') לתצפית זריחה מזרחה.</li>
-                        <li><span class="timeline-time">06:45 – 07:30:</span> קפה של בוקר והתעוררות הקבוצה.</li>
-                        <li><span class="timeline-time">07:30 – 09:00:</span> אפיית פיתות חמות על הטאבון/סאג' וארוחת בוקר.</li>
-                        <li><span class="timeline-time">09:00 – 10:00:</span> קיפול אוהלים, אריזת ציוד וניקיון השטח.</li>
-                        <li><span class="timeline-time">10:00 – 10:40:</span> נסיעה לירושלים וחניה בחניון חנה וסע הר הרצל.</li>
-                        <li><span class="timeline-time">10:40 – 11:10:</span> נסיעה חווייתית ברכבת הקלה לתחנת העירייה (יפו מרכז).</li>
-                        <li><span class="timeline-time">11:10 – 11:50:</span> פארק טדי – שכשוך והתרעננות במזרקות המים מול החומות.</li>
-                        <li><span class="timeline-time">11:50 – 12:55:</span> עלייה לשער יפו, הליכה בסמטאות השוק, והגעה לכותל המערבי.</li>
-                        <li><span class="timeline-time">12:55 – 13:10:</span> מעגל סיכום ופרידה ברובע היהודי.</li>
-                        <li><span class="timeline-time">13:10 – 14:00:</span> חזרה ברכבת הקלה לרכבים בהר הרצל ופיזור הביתה לשבת.</li>
+                    <ul class="experience-list">
+                        <li><strong>בוקר של שקט:</strong> תצפית זריחה למשכימי קום וקפה חם בטבע.</li>
+                        <li><strong>ארוחת בוקר כפרית:</strong> אפיית פיתות חמות על הטאבון והתארגנות לנסיעה.</li>
+                        <li><strong>חוויה ירושלמית:</strong> נסיעה ברכבת הקלה והתרעננות במזרקות פארק טדי מול החומות.</li>
+                        <li><strong>סמטאות וכותל:</strong> מעבר בשוק הצבעוני, הגעה לרחבת הכותל ומעגל סיכום ופרידה.</li>
+                        <li><strong>חזרה הביתה:</strong> סיום עד השעה 14:00 והגעה רגועה לקראת שבת.</li>
                     </ul>
                 </div>
+            </div>
+
+            <div class="schedule-note-box">
+                📄 לנרשמים יישלח קובץ לו"ז מפורט שעה-אחר-שעה עם הנחיות הגעה וציוד מומלץ
             </div>
         </section>
 
@@ -735,10 +704,10 @@
             <div class="booking-box">
                 <div class="price-tag">
                     <div>
-                        <span class="early-bird-badge">חבילות משפחתיות</span>
-                        <div class="price-item">הורה + ילד: <span>₪420</span></div>
-                        <div class="price-item">זוג + 2 ילדים: <span>₪790</span></div>
-                        <div class="price-item">זוג + 3 ילדים: <span>₪890</span></div>
+                        <span class="early-bird-badge">מחירון קמפינג ירושלים</span>
+                        <div class="price-item">מבוגר: <span>₪250</span></div>
+                        <div class="price-item">ילד 1 ו-2 (מגיל שנתיים): <span>₪170</span></div>
+                        <div class="price-item">ילד שלישי והלאה: <span>₪100</span> בלבד!</div>
                         
                         <div class="discount-callout">
                             🎒 הטבה למצטיידים עצמאית: מגיעים עם אוהל ומזרנים מהבית? קבלו 100 ₪ הנחה למשפחה!
@@ -777,14 +746,28 @@
                         <input type="email" id="parentEmail" placeholder="example@domain.com" required>
                     </div>
 
-                    <!-- בחירת הרכב משפחתי -->
-                    <div class="form-group">
-                        <label>הרכב משפחתי:</label>
-                        <select id="familyPlan" onchange="calculateTotal()">
-                            <option value="420" selected>הורה + ילד 1 (₪420)</option>
-                            <option value="790">זוג + 2 ילדים (₪790)</option>
-                            <option value="890">זוג + 3 ילדים (₪890)</option>
-                        </select>
+                    <!-- בחירת מספר מבוגרים וילדים -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>מספר מבוגרים:</label>
+                            <select id="adultsNum" onchange="calculateTotal()">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>מספר ילדים:</label>
+                            <select id="kidsNum" onchange="calculateTotal()">
+                                <option value="0">ללא ילדים</option>
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- צ'קבוקס הבאת ציוד עצמאי -->
@@ -811,7 +794,7 @@
                     </div>
 
                     <div class="total-price-box">
-                        לתשלום: ₪<span id="totalAmount">420</span>
+                        לתשלום: ₪<span id="totalAmount">790</span>
                     </div>
 
                     <button class="btn-submit" onclick="openPaymentModal()" style="width: 100%; justify-content: center; margin-top: 6px;">
@@ -847,7 +830,7 @@
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-shield-alt" style="color: var(--forest-mid);"></i> בחירת אופן תשלום</h2>
             <p style="margin-top: 8px; font-size: 16px;">
-                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">420</span></strong>
+                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">790</span></strong>
             </p>
             <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp עם פרטי ההרשמה לקבלת קישור לתשלום:</p>
             
@@ -895,7 +878,6 @@
             const container = document.getElementById('calendarDays');
             container.innerHTML = '';
 
-            // אוגוסט 2026 מתחיל ביום שבת (6 תאים ריקים)
             for (let i = 0; i < 6; i++) {
                 const emptyCell = document.createElement('div');
                 emptyCell.className = 'day-cell';
@@ -918,12 +900,23 @@
         }
 
         function calculateTotal() {
-            const basePrice = parseInt(document.getElementById('familyPlan').value);
+            const adults = parseInt(document.getElementById('adultsNum').value);
+            const kids = parseInt(document.getElementById('kidsNum').value);
             const isOwnGear = document.getElementById('bringOwnGear').checked;
             
-            let total = basePrice;
+            // מבוגרים: 250 ש"ח
+            let total = adults * 250;
+
+            // ילדים: 170 ש"ח לילד 1 ו-2, 100 ש"ח לילד 3 ומעלה
+            if (kids > 0) {
+                const firstTwo = Math.min(2, kids);
+                const extraKids = Math.max(0, kids - 2);
+                total += (firstTwo * 170) + (extraKids * 100);
+            }
+
+            // הנחת ציוד עצמאי
             if (isOwnGear) {
-                total -= 100;
+                total = Math.max(0, total - 100);
             }
 
             document.getElementById('totalAmount').innerText = total;
@@ -948,8 +941,8 @@
             const name = document.getElementById('parentName').value.trim();
             const phone = document.getElementById('parentPhone').value.trim();
             const email = document.getElementById('parentEmail').value.trim();
-            const planSelect = document.getElementById('familyPlan');
-            const planText = planSelect.options[planSelect.selectedIndex].text;
+            const adults = document.getElementById('adultsNum').value;
+            const kids = document.getElementById('kidsNum').value;
             const isOwnGear = document.getElementById('bringOwnGear').checked ? "כן (מביאים אוהל ומזרנים עצמאית - 100 ₪ הנחה)" : "לא (אספקת ציוד מלאה על ידי מדורת השבט)";
             const total = document.getElementById('totalAmount').innerText;
 
@@ -958,7 +951,7 @@
                             `טלפון: ${phone}%0A` +
                             `מייל: ${email}%0A` +
                             `מועד: ${selectedDateText}%0A` +
-                            `הרכב חבילה: ${planText}%0A` +
+                            `הרכב משפחתי: ${adults} מבוגרים, ${kids} ילדים%0A` +
                             `ציוד עצמאי: ${isOwnGear}%0A` +
                             `סך הכל לתשלום: ₪${total}%0A` +
                             `אופן תשלום מבוקש: ${paymentMethod}%0A%0A` +
