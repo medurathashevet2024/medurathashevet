@@ -29,484 +29,119 @@
             --shadow-lg: 0 20px 45px rgba(27, 56, 32, 0.14);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Assistant', sans-serif;
-            background-color: var(--sandy-bg);
-            color: var(--text-dark);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .logo-text {
-            font-family: 'Secular One', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: 'Assistant', sans-serif; background-color: var(--sandy-bg); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3, .logo-text { font-family: 'Secular One', sans-serif; }
 
         header {
             background-color: rgba(27, 56, 32, 0.98);
             backdrop-filter: blur(12px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
             box-shadow: 0 4px 25px rgba(0,0,0,0.15);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .nav-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 24px;
-        }
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
+        .brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand-logo .logo-text { color: var(--sandy-bg); font-size: 26px; font-weight: bold; letter-spacing: 0.5px; }
 
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .brand-logo .logo-text {
-            color: var(--sandy-bg);
-            font-size: 26px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-            align-items: center;
-        }
-
-        nav a {
-            color: #d4e2d5;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            transition: var(--transition);
-        }
-
+        nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+        nav a { color: #d4e2d5; text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
         nav a:hover { color: var(--white); }
 
         .phone-nav-link {
-            color: #ffffff !important;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 6px 14px;
-            border-radius: 20px;
+            color: #ffffff !important; font-weight: bold; display: flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
         }
 
-        .phone-nav-link:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .wa-header-icon {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-            vertical-align: middle;
-        }
+        .wa-header-icon { width: 20px; height: 20px; object-fit: contain; vertical-align: middle; }
 
         .hero {
             position: relative;
             background: linear-gradient(rgba(27, 56, 32, 0.52), rgba(74, 51, 41, 0.62)), 
                         url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            height: 52vh;
-            min-height: 420px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 24px;
-            margin-top: 65px;
+            height: 52vh; min-height: 420px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: var(--white); padding: 0 24px; margin-top: 65px;
         }
 
-        .hero h1 {
-            font-size: 56px;
-            margin-bottom: 12px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        }
+        .hero h1 { font-size: 56px; margin-bottom: 12px; text-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+        .hero p { font-size: 23px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); font-weight: 300; }
 
-        .hero p {
-            font-size: 23px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            font-weight: 300;
-        }
+        .wrapper { max-width: 1200px; margin: 0 auto; padding: 50px 24px; }
+        .section-header { text-align: center; margin-bottom: 35px; }
+        .section-header h2 { font-size: 38px; color: var(--forest-green); position: relative; display: inline-block; }
+        .section-header h2::after { content: ''; position: absolute; bottom: -8px; left: 30%; width: 40%; height: 3px; background-color: var(--campfire-orange); border-radius: 2px; }
 
-        .wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 50px 24px;
-        }
+        section { background: var(--white); padding: 45px; border-radius: 24px; box-shadow: var(--shadow-md); margin-bottom: 50px; border: 1px solid rgba(27, 56, 32, 0.04); }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .section-header h2 { 
-            font-size: 38px; 
-            color: var(--forest-green); 
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 30%;
-            width: 40%;
-            height: 3px;
-            background-color: var(--campfire-orange);
-            border-radius: 2px;
-        }
-
-        section {
-            background: var(--white);
-            padding: 45px;
-            border-radius: 24px;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 50px;
-            border: 1px solid rgba(27, 56, 32, 0.04);
-        }
-
-        /* כרטיסיות ניווט לפעילויות */
-        .hub-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-top: 15px;
-        }
-
+        .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 15px; }
         .hub-card {
-            background: #ffffff;
-            border: 2px solid #e1e9e2;
-            border-radius: 20px;
-            padding: 32px 26px;
-            text-align: center;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: var(--shadow-sm);
+            background: #ffffff; border: 2px solid #e1e9e2; border-radius: 20px; padding: 32px 26px; text-align: center;
+            transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-sm);
         }
-
-        .hub-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--campfire-orange);
-            box-shadow: var(--shadow-md);
-        }
+        .hub-card:hover { transform: translateY(-6px); border-color: var(--campfire-orange); box-shadow: var(--shadow-md); }
 
         .hub-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: var(--forest-light);
-            color: var(--forest-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            margin: 0 auto 16px auto;
+            width: 70px; height: 70px; border-radius: 50%; background: var(--forest-light); color: var(--forest-green);
+            display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 16px auto;
             border: 1.5px solid rgba(45, 90, 55, 0.15);
         }
 
-        .hub-card h3 {
-            font-size: 23px;
-            color: var(--forest-green);
-            margin-bottom: 8px;
-        }
-
-        .hub-dates-tag {
-            display: inline-block;
-            background: #fff5eb;
-            color: var(--campfire-orange);
-            font-weight: 800;
-            font-size: 14px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            border: 1px solid rgba(230, 92, 0, 0.2);
-        }
-
-        .hub-card p {
-            font-size: 15px;
-            color: var(--text-muted);
-            margin-bottom: 22px;
-            line-height: 1.6;
-        }
+        .hub-card h3 { font-size: 23px; color: var(--forest-green); margin-bottom: 8px; }
+        .hub-dates-tag { display: inline-block; background: #fff5eb; color: var(--campfire-orange); font-weight: 800; font-size: 14px; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; border: 1px solid rgba(230, 92, 0, 0.2); }
+        .hub-card p { font-size: 15px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.6; }
 
         .hub-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 13px 26px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            transition: var(--transition);
-            color: var(--white);
-            background: var(--forest-green);
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 26px;
+            border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 15px; color: var(--white); background: var(--forest-green);
         }
+        .hub-btn:hover { background: var(--campfire-orange); }
+        .hub-btn-highlight { background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow)); box-shadow: 0 4px 15px rgba(230, 92, 0, 0.3); }
 
-        .hub-btn:hover {
-            background: var(--campfire-orange);
-        }
+        .big-calendar-wrapper { max-width: 850px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 20px; border: 2px solid #e1e9e2; box-shadow: var(--shadow-sm); }
+        .calendar-header { display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 20px; color: var(--forest-green); margin-bottom: 15px; background: var(--forest-light); padding: 10px 18px; border-radius: 12px; }
+        .cal-nav-btn { background: var(--forest-green); color: var(--white); border: none; border-radius: 8px; padding: 7px 16px; cursor: pointer; font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+        .cal-nav-btn:hover { background: var(--campfire-orange); }
 
-        .hub-btn-highlight {
-            background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow));
-            box-shadow: 0 4px 15px rgba(230, 92, 0, 0.3);
-        }
+        .calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; font-size: 15px; color: var(--text-muted); margin-bottom: 10px; }
+        .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+        .day-cell { min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 16px; border-radius: 12px; background: #f8faf8; color: #9aa89d; cursor: not-allowed; font-weight: 600; }
+        .day-cell.available { background: #e8f5e9; color: var(--forest-green); font-weight: 800; cursor: pointer; border: 2px solid #81c784; }
+        .day-cell.available:hover { background: var(--campfire-glow); color: var(--white); border-color: var(--campfire-orange); }
+        .day-cell.selected { background: var(--campfire-orange) !important; color: var(--white) !important; border-color: var(--campfire-orange) !important; box-shadow: 0 4px 14px rgba(230, 92, 0, 0.4); }
 
-        /* לוח שנה מרכזי וגדול */
-        .big-calendar-wrapper {
-            max-width: 850px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 20px;
-            border: 2px solid #e1e9e2;
-            box-shadow: var(--shadow-sm);
-        }
+        .event-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--campfire-orange); margin-top: 3px; }
+        .day-cell.selected .event-dot { background: #ffffff; }
 
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 800;
-            font-size: 20px;
-            color: var(--forest-green);
-            margin-bottom: 15px;
-            background: var(--forest-light);
-            padding: 10px 18px;
-            border-radius: 12px;
-        }
+        .event-info-box { margin-top: 20px; background: linear-gradient(135deg, var(--forest-light), #e4ede6); border: 1.5px solid rgba(27, 56, 32, 0.1); border-radius: 14px; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .event-info-text h4 { color: var(--forest-green); font-size: 18px; margin-bottom: 4px; }
+        .event-info-text p { color: var(--text-dark); font-size: 14px; margin: 0; }
 
-        .cal-nav-btn {
-            background: var(--forest-green);
-            color: var(--white);
-            border: none;
-            border-radius: 8px;
-            padding: 7px 16px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: var(--transition);
-        }
-
-        .cal-nav-btn:hover {
-            background: var(--campfire-orange);
-            transform: scale(1.03);
-        }
-
-        .calendar-weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            font-weight: bold;
-            font-size: 15px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        .calendar-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
-        }
-
-        .day-cell {
-            min-height: 52px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            border-radius: 12px;
-            background: #f8faf8;
-            color: #9aa89d;
-            cursor: not-allowed;
-            user-select: none;
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .day-cell.available {
-            background: #e8f5e9;
-            color: var(--forest-green);
-            font-weight: 800;
-            cursor: pointer;
-            border: 2px solid #81c784;
-        }
-
-        .day-cell.available:hover {
-            background: var(--campfire-glow);
-            color: var(--white);
-            border-color: var(--campfire-orange);
-            transform: scale(1.05);
-        }
-
-        .day-cell.selected {
-            background: var(--campfire-orange) !important;
-            color: var(--white) !important;
-            border-color: var(--campfire-orange) !important;
-            box-shadow: 0 4px 14px rgba(230, 92, 0, 0.4);
-        }
-
-        .event-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--campfire-orange);
-            margin-top: 3px;
-        }
-
-        .day-cell.selected .event-dot {
-            background: #ffffff;
-        }
-
-        /* תיבת פרטי אירוע נבחר בלוח */
-        .event-info-box {
-            margin-top: 20px;
-            background: linear-gradient(135deg, var(--forest-light), #e4ede6);
-            border: 1.5px solid rgba(27, 56, 32, 0.1);
-            border-radius: 14px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .event-info-text h4 {
-            color: var(--forest-green);
-            font-size: 18px;
-            margin-bottom: 4px;
-        }
-
-        .event-info-text p {
-            color: var(--text-dark);
-            font-size: 14px;
-            margin: 0;
-        }
-
-        .about-box {
-            background: linear-gradient(135deg, var(--forest-light), #eaf2eb);
-            padding: 35px;
-            border-radius: 20px;
-            border-right: 6px solid var(--forest-green);
-            line-height: 1.8;
-            font-size: 18px;
-        }
-
-        .about-box p {
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .social-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-            background: rgba(27, 56, 32, 0.04);
-            padding: 25px;
-            border-radius: 20px;
-            border: 1px dashed rgba(27, 56, 32, 0.15);
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: var(--white);
-            font-weight: bold;
-            font-size: 16px;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .social-link:hover { transform: translateY(-3px); }
+        .about-box { background: linear-gradient(135deg, var(--forest-light), #eaf2eb); padding: 35px; border-radius: 20px; border-right: 6px solid var(--forest-green); line-height: 1.8; font-size: 18px; }
+        .social-bar { display: flex; align-items: center; justify-content: center; gap: 25px; margin-top: 40px; flex-wrap: wrap; background: rgba(27, 56, 32, 0.04); padding: 25px; border-radius: 20px; border: 1px dashed rgba(27, 56, 32, 0.15); }
+        .social-link { display: inline-flex; align-items: center; gap: 12px; padding: 14px 28px; border-radius: 50px; text-decoration: none; color: var(--white); font-weight: bold; font-size: 16px; }
         .link-wa { background: linear-gradient(135deg, #25D366, #1eaa53); }
         .link-fb { background: linear-gradient(135deg, #1877F2, #0d5cb5); }
+        .logo-center-box { background: var(--white); padding: 10px 20px; border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+        .logo-center-box img { max-height: 60px; width: auto; object-fit: contain; }
 
-        .logo-center-box {
-            background: var(--white);
-            padding: 10px 20px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(27, 56, 32, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-center-box img {
-            max-height: 60px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        @media (max-width: 992px) { 
-            section { padding: 30px 20px; }
-            .event-info-box { flex-direction: column; text-align: center; }
-        }
-        @media (max-width: 768px) { 
-            .nav-container { flex-direction: column; gap: 12px; } 
-            .hero h1 { font-size: 36px; }
-            .social-bar { flex-direction: column; }
-            .day-cell { min-height: 44px; font-size: 14px; }
-        }
-
-        footer { 
-            background-color: #0f2112; color: #a3b8a7; text-align: center; 
-            padding: 35px 20px; font-size: 15px; border-top: 4px solid var(--campfire-orange);
-        }
+        @media (max-width: 992px) { section { padding: 30px 20px; } .event-info-box { flex-direction: column; text-align: center; } }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .hero h1 { font-size: 36px; } .day-cell { min-height: 44px; font-size: 14px; } }
+        footer { background-color: #0f2112; color: #a3b8a7; text-align: center; padding: 35px 20px; font-size: 15px; border-top: 4px solid var(--campfire-orange); }
     </style>
 </head>
 <body>
 
     <header>
         <div class="nav-container">
-            <a href="index.html" class="brand-logo">
-                <span class="logo-text">🌿 מדורת השבט</span>
-            </a>
+            <a href="index.html" class="brand-logo"><span class="logo-text">🌿 מדורת השבט</span></a>
             <nav>
                 <ul>
                     <li><a href="#activities">החוויות שלנו</a></li>
                     <li><a href="#calendar-section">לוח אירועים</a></li>
-                    <li><a href="jerusalem.html" style="color: var(--campfire-orange); font-weight: bold;">קמפינג ירושלים 🌲</a></li>
+                    <li><a href="jerusalem.html" style="color: var(--campfire-orange); font-weight: bold;">הרי ירושלים 🌲</a></li>
+                    <li><a href="carmel.html" style="color: var(--forest-green); font-weight: bold;">סוכות בכרמל ⛰️</a></li>
                     <li><a href="#about">מי אנחנו</a></li>
                     <li>
                         <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
@@ -536,26 +171,26 @@
             </div>
 
             <div class="hub-grid">
-                <!-- כרטיס 1: קמפינג ירושלים -->
+                <!-- כרטיס 1: קמפינג הרי ירושלים -->
                 <div class="hub-card">
                     <div>
                         <div class="hub-icon"><i class="fas fa-mountain"></i></div>
                         <h3>קמפינג הרי ירושלים</h3>
-                        <span class="hub-dates-tag">27-28 לאוגוסט 2026</span>
-                        <p>סוגרים שנה בנס הרים: שמורת מערת הנטיפים, סדנת עששיות, סיר פוייקה, זריחה, מזרקות טדי וביקור בכותל.</p>
+                        <span class="hub-dates-tag">27-28.8 | 22-23.9</span>
+                        <p>חניון נס הרים: מערת הנטיפים, סדנת עששיות, סיר פוייקה, זריחה, מזרקות טדי והכותל המערבי.</p>
                     </div>
                     <a href="jerusalem.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה לירושלים <i class="fas fa-chevron-left"></i></a>
                 </div>
 
-                <!-- כרטיס 2: קמפינג צפון וסוכות -->
+                <!-- כרטיס 2: קמפינג סוכות בכרמל -->
                 <div class="hub-card">
                     <div>
                         <div class="hub-icon"><i class="fas fa-campground"></i></div>
-                        <h3>קמפינג משפחות וסוכות</h3>
-                        <span class="hub-dates-tag">ספטמבר 2026 (צפון)</span>
-                        <p>קמפינג "הכל כלול" בטבע הגלילי: אוהלים ומזרנים, בישולי מדורה וטאבון, סדנאות יצירה באדמה ותצפית כוכבים.</p>
+                        <h3>קמפינג סוכות בכרמל</h3>
+                        <span class="hub-dates-tag">27-29 לספטמבר (חול המועד)</span>
+                        <p>חניון הכלניות (פארק הכרמל): שביל היחמורים, חי-בר כרמל, סדנאות יצירה באדמה ובישולי מדורה וטאבון.</p>
                     </div>
-                    <a href="https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20קמפינג%20משפחות%20בספטמבר/סוכות" target="_blank" class="hub-btn">לפרטים והרשמה לספטמבר <i class="fas fa-chevron-left"></i></a>
+                    <a href="carmel.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה לכרמל <i class="fas fa-chevron-left"></i></a>
                 </div>
 
                 <!-- כרטיס 3: סדנאות יצירה בעמק הירדן -->
@@ -571,7 +206,7 @@
             </div>
         </section>
 
-        <!-- לוח שנה מרכזי וגדול לכל האירועים -->
+        <!-- לוח שנה מרכזי עם הפניות פנימיות בלבד -->
         <section id="calendar-section">
             <div class="section-header">
                 <h2>לוח אירועים ופעילויות</h2>
@@ -592,10 +227,9 @@
                 </div>
                 
                 <div class="calendar-days" id="calendarDays">
-                    <!-- נוצר אוטומטית ע"י JS -->
+                    <!-- נוצר דרך JS -->
                 </div>
 
-                <!-- תיבת פרטי האירוע של התאריך הנבחר -->
                 <div class="event-info-box" id="eventInfoBox">
                     <div class="event-info-text">
                         <h4 id="eventTitle">קמפינג סוף החופש בהרי ירושלים (נס הרים)</h4>
@@ -606,7 +240,6 @@
             </div>
         </section>
 
-        <!-- סקציית "מי אנחנו" -->
         <section id="about">
             <div class="section-header">
                 <h2>מי אנחנו</h2>
@@ -616,43 +249,30 @@
                     <strong>מדורת השבט</strong> נולדה מתוך תשוקה עמוקה לחבר אנשים, משפחות וקהילות בחזרה אל קצב הטבע, אל השקט ואל העשייה המשותפת בידיים. בעולם דיגיטלי עמוס וממהר, אנו מזמינים אתכם לעצור את מרוץ היומיום, להניח את המסכים בצד ולייצר זיכרונות משפחתיים אמיתיים במרחב הפתוח.
                 </p>
                 <p>
-                    הפעילויות והקמפינגים שלנו משלבים בין אירוח מכל הלב, עד הפרט האחרון, ארוחות מגוונות וטעימות שמבושלות בשטח (טאבון, פוייקה ובישולי שדה), לבין חיבור למלאכות קדומות ומסורתיות – יצירה בחומרים טבעיים כמו קליעה בסיבי בננה, פיסול באדמה ובוץ, יצירת תכשיטים מהטבע ועוד. אנו מאמינים כי השהות המשותפת סביב המדורה מעניקה לכל משפחה מרחב בטוח של ביחד, יצירתיות, רוגע וחיבור שורשי.
+                    הפעילויות והקמפינגים שלנו משלבים בין אירוח מכל הלב, עד הפרט האחרון, ארוחות מגוונות וטעימות שמבושלות בשטח (טאבון, פוייקה ובישולי שדה), לבין חיבור למלאכות קדומות ומסורתיות – יצירה בחומרים טבעיים, פיסול באדמה ובוץ, תכשיטים מהטבע ועוד.
                 </p>
             </div>
         </section>
 
-        <!-- סרגל קישורים תחתון והלוגו במרכז -->
         <div class="social-bar">
             <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa">
-                <i class="fab fa-whatsapp"></i>
-                שלחו לנו הודעה ב-WhatsApp
+                <i class="fab fa-whatsapp"></i> שלחו לנו הודעה ב-WhatsApp
             </a>
-            
             <div class="logo-center-box">
-                <img src="LOGO.PNG" alt="לוגו מדורת השבט" 
-                     onerror="if (this.src.endsWith('LOGO.PNG')) { this.src='logo.png'; } else if (this.src.endsWith('logo.png')) { this.src='logo.jpg'; } else { this.style.display='none'; }">
+                <img src="LOGO.PNG" alt="לוגו מדורת השבט" onerror="if (this.src.endsWith('LOGO.PNG')) { this.src='logo.png'; } else if (this.src.endsWith('logo.png')) { this.src='logo.jpg'; } else { this.style.display='none'; }">
             </div>
-
             <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%98/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
-                <i class="fab fa-facebook-f"></i>
-                עמוד הפייסבוק
+                <i class="fab fa-facebook-f"></i> עמוד הפייסבוק
             </a>
         </div>
 
     </div>
 
     <script>
-        let currentMonth = 8; // 8 = אוגוסט, 9 = ספטמבר
+        let currentMonth = 8;
 
-        function prevMonth() {
-            currentMonth = 8;
-            renderCalendar();
-        }
-
-        function nextMonth() {
-            currentMonth = 9;
-            renderCalendar();
-        }
+        function prevMonth() { currentMonth = 8; renderCalendar(); }
+        function nextMonth() { currentMonth = 9; renderCalendar(); }
 
         function renderCalendar() {
             const container = document.getElementById('calendarDays');
@@ -661,7 +281,6 @@
 
             if (currentMonth === 8) {
                 title.innerText = "אוגוסט 2026";
-                // אוגוסט מתחיל ביום שבת (6 תאים ריקים ב-RTL)
                 for (let i = 0; i < 6; i++) {
                     const emptyCell = document.createElement('div');
                     emptyCell.className = 'day-cell';
@@ -675,7 +294,6 @@
                     dayCell.id = `day-8-${day}`;
                     dayCell.innerHTML = `<span>${day}</span>`;
 
-                    // 27-28 לאוגוסט (הרי ירושלים)
                     if (day === 27 || day === 28) {
                         dayCell.classList.add('available');
                         dayCell.innerHTML += `<div class="event-dot"></div>`;
@@ -686,11 +304,9 @@
                             [27, 28], 8
                         );
                     }
-
                     container.appendChild(dayCell);
                 }
 
-                // בחירת ברירת מחדל לאוגוסט
                 showEventInfo(
                     "קמפינג סוף החופש בהרי ירושלים (חניון נס הרים)",
                     "27-28 לאוגוסט 2026 (חמישי-שישי) | שמורת מערת הנטיפים, עששיות, סיר פוייקה, מזרקות טדי והכותל.",
@@ -700,7 +316,6 @@
 
             } else {
                 title.innerText = "ספטמבר 2026";
-                // ספטמבר מתחיל ביום שלישי (2 תאים ריקים)
                 for (let i = 0; i < 2; i++) {
                     const emptyCell = document.createElement('div');
                     emptyCell.className = 'day-cell';
@@ -714,25 +329,25 @@
                     dayCell.id = `day-9-${day}`;
                     dayCell.innerHTML = `<span>${day}</span>`;
 
-                    // 22-23 לספטמבר (אמהות וילדים)
+                    // 22-23 לספטמבר - הפניה לעמוד ירושלים
                     if (day === 22 || day === 23) {
                         dayCell.classList.add('available');
                         dayCell.innerHTML += `<div class="event-dot"></div>`;
                         dayCell.onclick = () => showEventInfo(
-                            "קמפינג אמהות וילדים בטבע (צפון)",
-                            "22-23 לספטמבר 2026 (שלישי-רביעי) | חוויית טבע מגבשת ומחברת, בישולי מדורה וסדנאות יצירה.",
-                            "https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20קמפינג%20אמהות%20וילדים%20ב-22-23%20בספטמבר",
+                            "קמפינג משפחות בהרי ירושלים (חניון נס הרים)",
+                            "22-23 לספטמבר 2026 (שלישי-רביעי) | מערת הנטיפים, עששיות, סיר פוייקה, זריחה והכותל.",
+                            "jerusalem.html",
                             [22, 23], 9
                         );
                     }
-                    // 27-29 לספטמבר (קמפינג סוכות)
+                    // 27-29 לספטמבר - הפניה לעמוד הכרמל
                     else if (day >= 27 && day <= 29) {
                         dayCell.classList.add('available');
                         dayCell.innerHTML += `<div class="event-dot"></div>`;
                         dayCell.onclick = () => showEventInfo(
-                            "קמפינג משפחות בסוכות (צפון)",
-                            "27-29 לספטמבר 2026 (חול המועד סוכות) | אפשרות ללילה אחד או שני לילות, הכל כלול בטבע הגלילי.",
-                            "https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20קמפינג%20סוכות%20ב-27-29%20בספטמבר",
+                            "קמפינג סוכות בפארק הכרמל (חניון כלניות)",
+                            "27-29 לספטמבר 2026 (חול המועד סוכות) | שביל היחמורים, חי-בר כרמל, סדנאות באדמה ובישולי מדורה.",
+                            "carmel.html",
                             [27, 28, 29], 9
                         );
                     }
@@ -740,11 +355,10 @@
                     container.appendChild(dayCell);
                 }
 
-                // בחירת ברירת מחדל לספטמבר
                 showEventInfo(
-                    "קמפינג משפחות בסוכות (צפון)",
-                    "27-29 לספטמבר 2026 (חול המועד סוכות) | אפשרות ללילה אחד או שני לילות, הכל כלול בטבע הגלילי.",
-                    "https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20קמפינג%20סוכות%20ב-27-29%20בספטמבר",
+                    "קמפינג סוכות בפארק הכרמל (חניון כלניות)",
+                    "27-29 לספטמבר 2026 (חול המועד סוכות) | שביל היחמורים, חי-בר כרמל, סדנאות באדמה ובישולי מדורה.",
+                    "carmel.html",
                     [27, 28, 29], 9
                 );
             }
@@ -756,15 +370,9 @@
             
             const linkBtn = document.getElementById('eventLinkBtn');
             linkBtn.href = linkUrl;
-            if (linkUrl.startsWith('http')) {
-                linkBtn.target = "_blank";
-                linkBtn.innerHTML = `לפרטים והרשמה בוואטסאפ <i class="fab fa-whatsapp"></i>`;
-            } else {
-                linkBtn.target = "_self";
-                linkBtn.innerHTML = `מעבר לעמוד ההרשמה <i class="fas fa-chevron-left"></i>`;
-            }
+            linkBtn.target = "_self";
+            linkBtn.innerHTML = `מעבר לעמוד ההרשמה <i class="fas fa-chevron-left"></i>`;
 
-            // סימון ימים בלוח
             document.querySelectorAll('.day-cell').forEach(cell => cell.classList.remove('selected'));
             daysArray.forEach(day => {
                 const cell = document.getElementById(`day-${month}-${day}`);
@@ -772,9 +380,7 @@
             });
         }
 
-        window.onload = function() {
-            renderCalendar();
-        };
+        window.onload = function() { renderCalendar(); };
     </script>
 
     <footer>
