@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדורת השבט - ציוד והנחיות לקמפינג</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --forest-green: #1b3820;
+            --forest-mid: #2d5a37;
+            --forest-light: #f0f5f1;
+            --earth-brown: #4a3329;
+            --earth-light: #8c6d5e;
+            --campfire-orange: #e65c00;
+            --campfire-glow: #ff751a;
+            --sandy-bg: #faf6f0;
+            --text-dark: #1f2421;
+            --text-muted: #58635a;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 4px 15px rgba(27, 56, 32, 0.05);
+            --shadow-md: 0 12px 35px rgba(27, 56, 32, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: 'Assistant', sans-serif; background-color: var(--sandy-bg); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3, .logo-text { font-family: 'Secular One', sans-serif; }
+
+        header {
+            background-color: rgba(27, 56, 32, 0.98); backdrop-filter: blur(12px);
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15); border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
+        .brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand-logo .logo-text { color: var(--sandy-bg); font-size: 26px; font-weight: bold; }
+        nav ul { display: flex; list-style: none; gap: 18px; align-items: center; }
+        nav a { color: #d4e2d5; text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        nav a:hover { color: var(--white); }
+
+        .phone-nav-link {
+            color: #ffffff !important; font-weight: bold; display: flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .wa-header-icon { width: 20px; height: 20px; object-fit: contain; vertical-align: middle; }
+
+        .hero {
+            background: linear-gradient(rgba(27, 56, 32, 0.5), rgba(74, 51, 41, 0.6)), 
+                        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 40vh; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: var(--white); padding: 0 24px; margin-top: 65px;
+        }
+
+        .hero h1 { font-size: 48px; margin-bottom: 8px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .hero p { font-size: 20px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); font-weight: 300; max-width: 700px; }
+
+        .wrapper { max-width: 1200px; margin: 0 auto; padding: 50px 24px; }
+        .section-header { text-align: center; margin-bottom: 35px; }
+        .section-header h2 { font-size: 38px; color: var(--forest-green); position: relative; display: inline-block; }
+        .section-header h2::after { content: ''; position: absolute; bottom: -8px; left: 30%; width: 40%; height: 3px; background-color: var(--campfire-orange); border-radius: 2px; }
+
+        section { background: var(--white); padding: 45px; border-radius: 24px; box-shadow: var(--shadow-md); margin-bottom: 50px; border: 1px solid rgba(27, 56, 32, 0.04); }
+
+        .equipment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .equipment-image-box { display: flex; justify-content: center; align-items: center; margin-bottom: 25px; }
+        .equipment-image-box img { width: 100%; max-width: 450px; height: auto; max-height: 380px; object-fit: cover; border-radius: 20px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); border: 4px solid #f8faf8; }
+
+        .info-list { list-style: none; margin-top: 15px; }
+        .info-list li { position: relative; padding-right: 28px; margin-bottom: 12px; font-size: 16px; }
+        .info-list li::before { content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; right: 0; color: var(--campfire-orange); font-size: 16px; }
+        .equipment-list li::before { content: "\f553"; color: var(--forest-mid); }
+        .optional-list li::before { content: "\f067"; color: var(--earth-light); }
+        .ban-list li::before { content: "\f05e"; color: #d9534f; }
+
+        .cta-box { text-align: center; margin-top: 30px; }
+        .btn-main { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow)); color: var(--white); padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 17px; }
+
+        .social-bar { display: flex; align-items: center; justify-content: center; gap: 25px; margin-top: 40px; flex-wrap: wrap; background: rgba(27, 56, 32, 0.04); padding: 25px; border-radius: 20px; border: 1px dashed rgba(27, 56, 32, 0.15); }
+        .social-link { display: inline-flex; align-items: center; gap: 12px; padding: 14px 28px; border-radius: 50px; text-decoration: none; color: var(--white); font-weight: bold; font-size: 16px; }
+        .link-wa { background: linear-gradient(135deg, #25D366, #1eaa53); }
+        .link-fb { background: linear-gradient(135deg, #1877F2, #0d5cb5); }
+        .logo-center-box { background: var(--white); padding: 10px 20px; border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+        .logo-center-box img { max-height: 60px; width: auto; object-fit: contain; }
+
+        @media (max-width: 992px) { .equipment-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .hero h1 { font-size: 32px; } }
+        footer { background-color: #0f2112; color: #a3b8a7; text-align: center; padding: 35px 20px; font-size: 15px; border-top: 4px solid var(--campfire-orange); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo"><span class="logo-text">🌿 מדורת השבט</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">דף הבית</a></li>
+                    <li><a href="jerusalem.html">קמפינג ירושלים 🌲</a></li>
+                    <li><a href="carmel.html">סוכות בכרמל ⛰️</a></li>
+                    <li><a href="equipment.html" style="color: var(--campfire-orange); font-weight: bold;">ציוד והנחיות 🎒</a></li>
+                    <li>
+                        <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-header-icon">
+                            055-9914540
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>ציוד והנחיות לקמפינג</h1>
+        <p>כל מה שחשוב לדעת, מה אנחנו דואגים להביא עבורכם ומה כדאי לארוז בתיק</p>
+    </div>
+
+    <div class="wrapper">
+        <section>
+            <div class="section-header">
+                <h2>מגיעים בראש שקט</h2>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">
+                    אנחנו דואגים לכל המעטפת הלוגיסטית, האוכל והפעילות – אתם רק מגיעים עם תיק אישי
+                </p>
+            </div>
+
+            <div class="equipment-grid">
+                <div>
+                    <h3 style="color: var(--forest-green); margin-bottom: 12px; font-size: 22px;"><i class="fas fa-clipboard-check"></i> מה אנחנו מספקים?</h3>
+                    <ul class="info-list">
+                        <li>אוהל ומזרנים נוחים לכל המשפחה (למעט מי שבוחר להביא ציוד עצמאי).</li>
+                        <li>ארוחת ערב עשירה ומפנקת: סיר פוייקה חם ומגוון המתבשל על המדורה.</li>
+                        <li>ארוחת בוקר כפרית: אפיית פיתות חמות על הטאבון והסאג', ירקות טריים וממרחים.</li>
+                        <li>פינת קפה ותה צמחים לאורך כל הפעילות.</li>
+                        <li>כלי אוכל רב פעמיים.</li>
+                        <li>סדנאות יצירה מודרכות לילדים (עששיות, פיסול באדמה ומלאכות).</li>
+                        <li>הדרכה צמודה, טיולי שקיעה, זריחה וליווי מלא.</li>
+                        <li>מתחם ישיבה משותף על מחצלות.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="equipment-image-box">
+                        <img src="IMG2.PNG" alt="בישול פויקה ומדורה" onerror="this.style.display='none'">
+                    </div>
+
+                    <h3 style="color: var(--earth-brown); margin-bottom: 12px; font-size: 22px;"><i class="fas fa-hiking"></i> מה אתם מביאים בתיק?</h3>
+                    <ul class="info-list equipment-list">
+                        <li>סדינים וציפות/שמיכות דקות (או שקי שינה).</li>
+                        <li>בגדי החלפה ובגדים ארוכים דקים לערב (באזור ההר קריר בלילה).</li>
+                        <li>נעליים נוחות להליכה וסנדלים.</li>
+                        <li>פנס אישי לכל משתתף.</li>
+                        <li>כובע, קרם הגנה ותכשיר נגד יתושים.</li>
+                        <li>ציוד היגיינה אישי (מברשת שיניים, מגבת) ותרופות אישיות.</li>
+                        <li>שישיית מים מינרליים למשפחה.</li>
+                    </ul>
+
+                    <h3 style="color: var(--earth-brown); margin-top: 25px; margin-bottom: 12px; font-size: 22px;"><i class="fas fa-chair"></i> ציוד רשות:</h3>
+                    <ul class="info-list optional-list">
+                        <li>כרית שינה אישית.</li>
+                        <li>מחצלת קטנה לפרוס ליד האוהל.</li>
+                        <li>כיסאות מתקפלים.</li>
+                    </ul>
+
+                    <h3 style="color: var(--earth-brown); margin-top: 25px; margin-bottom: 12px; font-size: 22px;"><i class="fas fa-ban"></i> מה לא להביא:</h3>
+                    <ul class="info-list ban-list">
+                        <li>בעלי חיים.</li>
+                        <li>רמקולים ומוזיקה רועשת.</li>
+                        <li>מסכים וטלפונים לילדים בזמן הפעילות.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <a href="index.html#activities" class="btn-main">לבחירת מועד והרשמה לקמפינג <i class="fas fa-chevron-left"></i></a>
+            </div>
+        </section>
+
+        <div class="social-bar">
+            <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa">
+                <i class="fab fa-whatsapp"></i> שלחו לנו הודעה ב-WhatsApp
+            </a>
+            <div class="logo-center-box">
+                <img src="LOGO.PNG" alt="לוגו מדורת השבט" onerror="if (this.src.endsWith('LOGO.PNG')) { this.src='logo.png'; } else if (this.src.endsWith('logo.png')) { this.src='logo.jpg'; } else { this.style.display='none'; }">
+            </div>
+            <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%98/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
+                <i class="fab fa-facebook-f"></i> עמוד הפייסבוק
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>מדורת השבט | קמפינג משפחות, חוויות טבע ומלאכות קדומות</p>
+        <p style="font-size: 12px; color: #6a826f; margin-top: 5px;">טלפון ליצירת קשר: 055-9914540</p>
+    </footer>
+
+</body>
+</html>
