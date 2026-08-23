@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מדורת השבט - חוויות טבע בלתי נשכחות</title>
+    <title>מדורת השבט - חוויות טבע, קמפינג משפחות ומלאכות קדומות</title>
     <!-- Google Fonts & FontAwesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,6 @@
             --shadow-lg: 0 20px 45px rgba(27, 56, 32, 0.14);
         }
 
-        /* Reset & Base Styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -49,11 +48,9 @@
             font-family: 'Secular One', sans-serif;
         }
 
-        /* Header Navigation */
         header {
             background-color: rgba(27, 56, 32, 0.98);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             position: fixed;
             top: 0;
             width: 100%;
@@ -88,7 +85,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 28px;
+            gap: 20px;
             align-items: center;
         }
 
@@ -96,18 +93,42 @@
             color: #d4e2d5;
             text-decoration: none;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             transition: var(--transition);
         }
 
         nav a:hover { color: var(--white); }
 
-        /* Hero Section */
+        .phone-nav-link {
+            color: #ffffff !important;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .phone-nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .wa-header-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
         .hero {
             position: relative;
-            background: linear-gradient(rgba(27, 56, 32, 0.5), rgba(74, 51, 41, 0.6)), 
+            background: linear-gradient(rgba(27, 56, 32, 0.52), rgba(74, 51, 41, 0.62)), 
                         url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            height: 50vh;
+            height: 52vh;
+            min-height: 420px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -119,31 +140,30 @@
         }
 
         .hero h1 {
-            font-size: 58px;
+            font-size: 56px;
             margin-bottom: 12px;
             text-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         .hero p {
-            font-size: 22px;
+            font-size: 23px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.3);
             font-weight: 300;
         }
 
-        /* Layout Architecture */
         .wrapper {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 24px;
+            padding: 50px 24px;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .section-header h2 { 
-            font-size: 42px; 
+            font-size: 38px; 
             color: var(--forest-green); 
             position: relative;
             display: inline-block;
@@ -162,29 +182,91 @@
 
         section {
             background: var(--white);
-            padding: 50px;
+            padding: 45px;
             border-radius: 24px;
             box-shadow: var(--shadow-md);
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             border: 1px solid rgba(27, 56, 32, 0.04);
         }
 
-        /* סקציית "מי אנחנו" מעוצבת */
-        .about-box {
-            background: linear-gradient(135deg, var(--forest-light), #eaf2eb);
-            padding: 35px;
+        /* כרטיסיות ניווט לפעילויות השונות */
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 10px;
+        }
+
+        .hub-card {
+            background: #ffffff;
+            border: 2px solid #e1e9e2;
             border-radius: 20px;
-            border-right: 6px solid var(--forest-green);
-            margin-top: 20px;
-            line-height: 1.8;
-            font-size: 18px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
         }
 
-        .about-box p {
-            margin-bottom: 15px;
-            color: var(--text-dark);
+        .hub-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--campfire-orange);
+            box-shadow: var(--shadow-md);
         }
 
+        .hub-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: var(--forest-light);
+            color: var(--forest-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 15px auto;
+            border: 1.5px solid rgba(45, 90, 55, 0.15);
+        }
+
+        .hub-card h3 {
+            font-size: 22px;
+            color: var(--forest-green);
+            margin-bottom: 8px;
+        }
+
+        .hub-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .hub-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: var(--transition);
+            color: var(--white);
+            background: var(--forest-green);
+        }
+
+        .hub-btn:hover {
+            background: var(--campfire-orange);
+        }
+
+        .hub-btn-highlight {
+            background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow));
+        }
+
+        /* סקציית קמפינג צפון/מירון */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -236,7 +318,6 @@
         .optional-list li::before { content: "\f067"; color: var(--earth-light); }
         .ban-list li::before { content: "\f05e"; color: #d9534f; }
 
-        /* סקציית הציוד והתמונה */
         .equipment-section-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -265,7 +346,6 @@
             border: 4px solid #f8faf8;
         }
 
-        /* קופסת הרשמה וטופס */
         .booking-box {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
@@ -337,7 +417,6 @@
             box-shadow: 0 0 0 3px rgba(230, 92, 0, 0.15);
         }
 
-        /* עיצוב משופר ורספונסיבי של לוח השנה */
         .calendar-container {
             background: var(--white);
             padding: 18px;
@@ -367,7 +446,7 @@
             border-radius: 8px;
             padding: 6px 14px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             display: flex;
             align-items: center;
@@ -377,7 +456,7 @@
 
         .cal-nav-btn:hover {
             background: var(--campfire-orange);
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
 
         .calendar-weekdays {
@@ -500,7 +579,6 @@
             box-shadow: 0 10px 28px rgba(230, 92, 0, 0.55);
         }
 
-        /* סרגל קישורים והלוגו במרכז */
         .social-bar {
             display: flex;
             align-items: center;
@@ -555,7 +633,6 @@
             object-fit: contain;
         }
 
-        /* Modal תשלום */
         .payment-modal {
             display: none;
             position: fixed;
@@ -658,13 +735,15 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="brand-logo">
+            <a href="index.html" class="brand-logo">
                 <span class="logo-text">🌿 מדורת השבט</span>
             </a>
-           <nav>
+            <nav>
                 <ul>
-                    <li><a href="#about">מי אנחנו</a></li>
+                    <li><a href="#activities">החוויות שלנו</a></li>
                     <li><a href="jerusalem.html" style="color: var(--campfire-orange); font-weight: bold;">קמפינג ירושלים 🌲</a></li>
+                    <li><a href="#camping">קמפינג מירון/צפון</a></li>
+                    <li><a href="#about">מי אנחנו</a></li>
                     <li>
                         <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-header-icon">
@@ -678,12 +757,54 @@
 
     <div class="hero">
         <h1>מדורת השבט</h1>
-        <p>חוויות טבע בלתי נשכחות</p>
+        <p>חוויות טבע בלתי נשכחות, קמפינג משפחות ומלאכות קדומות</p>
     </div>
 
     <div class="wrapper">
 
-        <!-- עמוד המכירה הממוקד של הקמפינג -->
+        <!-- מרכז פעילויות וחוויות לבחירה -->
+        <section id="activities" style="background: linear-gradient(135deg, #ffffff, #f7faf7);">
+            <div class="section-header">
+                <h2>איזו חוויה מתאימה לכם?</h2>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">
+                    בחרו את הפעילות הרצויה והבטיחו מקום במפגש הקרוב
+                </p>
+            </div>
+
+            <div class="hub-grid">
+                <!-- כרטיס 1: קמפינג ירושלים -->
+                <div class="hub-card">
+                    <div>
+                        <div class="hub-icon"><i class="fas fa-mountain"></i></div>
+                        <h3>קמפינג הרי ירושלים</h3>
+                        <p>סוגרים שנה בחניון נס הרים: מערת הנטיפים, עששיות, סיר פוייקה, זריחה, מזרקות טדי והכותל.</p>
+                    </div>
+                    <a href="jerusalem.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה לירושלים <i class="fas fa-chevron-left"></i></a>
+                </div>
+
+                <!-- כרטיס 2: קמפינג מירון וספטמבר -->
+                <div class="hub-card">
+                    <div>
+                        <div class="hub-icon"><i class="fas fa-campground"></i></div>
+                        <h3>קמפינג צפון ומירון</h3>
+                        <p>קמפינג "הכל כלול" בטבע הגלילי: אוהלים ומזרנים, בישולי מדורה, סדנאות יצירה באדמה ותצפית כוכבים.</p>
+                    </div>
+                    <a href="#camping" class="hub-btn">למועדי הקמפינג והרשמה <i class="fas fa-chevron-left"></i></a>
+                </div>
+
+                <!-- כרטיס 3: סדנאות יצירה בטבע -->
+                <div class="hub-card">
+                    <div>
+                        <div class="hub-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h3>סדנאות יצירה מהטבע</h3>
+                        <p>אשדות יעקב מאוחד: דמויות יער, תכשיטים מהטבע ופיסול באדמה למבוגרים וילדים.</p>
+                    </div>
+                    <a href="https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20סדנאות%20היצירה%20מהטבע%20באשדות%20יעקב" target="_blank" class="hub-btn">לפרטים והרשמה לסדנאות <i class="fas fa-chevron-left"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- עמוד המכירה הממוקד של קמפינג מירון וספטמבר -->
         <section id="camping">
             <div class="section-header">
                 <h2>קמפינג משפחות "הכל כלול"</h2>
@@ -707,8 +828,6 @@
 
             <!-- סקציית הציוד והתמונה המשולבת -->
             <div class="equipment-section-container">
-                
-                <!-- עמודה ימנית: מה אנחנו מספקים -->
                 <div>
                     <h3 style="color: var(--forest-green); margin-bottom: 12px; font-size: 22px;"><i class="fas fa-clipboard-check"></i> מה אנחנו מספקים?</h3>
                     <ul class="info-list">
@@ -719,15 +838,13 @@
                         <li>ברזיה לשטיפת ידיים וכלים כולל סבון נוזלי.</li>
                         <li>סדנאות יצירה לילדים.</li>
                         <li>הדרכה מקצועית צמודה, לוגיסטיקה מאורגנת וליווי אישי.</li>
-                        <li><strong>הלינה בהר מירון הינה בחניון לילה של רשות הטבע והגנים. יש ברזי מים ושולחנות פיקניק. אין שירותים ומקלחות.</strong></li>
+                        <li><strong>הלינה במירון הינה בחניון לילה של רשות הטבע והגנים. יש ברזי מים ושולחנות פיקניק. אין שירותים ומקלחות.</strong></li>
                         <li>פינת ישיבה משותפת על מחצלות.</li>
                         <li>משחקי קופסא לילדים לערב ללא מסכים.</li>
                     </ul>
                 </div>
 
-                <!-- עמודה שמאלית: תמונה + רשימות הציוד שאתם מביאים -->
                 <div>
-                    <!-- התמונה -->
                     <div class="equipment-image-box">
                         <img src="IMG2.PNG" alt="בישול פויקה ומדורה" onerror="this.style.display='none'">
                     </div>
@@ -758,7 +875,6 @@
                         <li>טלפונים לילדים.</li>
                     </ul>
                 </div>
-
             </div>
 
             <!-- אזור עלויות, מחירון מעודכן וטופס הרשמה -->
@@ -772,7 +888,6 @@
                     <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px; margin-bottom: 6px;">*פעוטות מתחת לגיל שנתיים - ללא עלות.</p>
                     <p style="font-size: 13px; color: var(--forest-green); font-weight: bold; margin-bottom: 10px;">*בספטמבר: שהייה של לילה נוסף בין ה-27-29.9 בתוספת 200 ₪ למשפחה.</p>
                     
-                    <!-- קופסת מחיר דינמית -->
                     <div class="price-anchor-box">
                         <span style="font-size: 15px; font-weight: bold; color: var(--text-dark);">סך הכל להרכב הנבחר:</span>
                         <span class="discount-price-highlight" id="calculatedTotalDisplay">₪700</span>
@@ -780,9 +895,9 @@
 
                     <h4 style="margin-top: 15px; color: var(--earth-brown); font-size: 15px; font-weight: 700;">מדיניות ביטול :</h4>
                     <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
-                        •  עד 10 ימי עסקים לפני מועד האירוע - החזר כספי מלא .<br>
-                        •  בין 10 ל-3 ימי עסקים לפני מועד האירוע - החזר בגובה 50% מהתשלום.<br>
-                        •  פחות מ-3 ימי עסקים – לא ניתן לקבל החזר, אך ניתן להעביר את הזכות למשפחה אחרת
+                        • עד 10 ימי עסקים לפני מועד האירוע - החזר כספי מלא .<br>
+                        • בין 10 ל-3 ימי עסקים לפני מועד האירוע - החזר בגובה 50% מהתשלום.<br>
+                        • פחות מ-3 ימי עסקים – לא ניתן לקבל החזר, אך ניתן להעביר את הזכות למשפחה אחרת
                     </p>
                 </div>
 
@@ -804,20 +919,20 @@
                         <input type="email" id="parentEmail" placeholder="example@domain.com" required>
                     </div>
 
-                    <!-- לוח שנה ויזואלי שלם ותקין -->
+                    <!-- לוח שנה מעודכן (הוסר 25-26.8) -->
                     <div class="form-group">
                         <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת תאריך ומיקום:</label>
                         <div class="calendar-container">
                             <div class="calendar-header">
-                                <button type="button" class="cal-nav-btn" onclick="prevMonth()"><i class="fas fa-chevron-right"></i> </button>
+                                <button type="button" class="cal-nav-btn" onclick="prevMonth()"><i class="fas fa-chevron-right"></i> לחודש הקודם</button>
                                 <span id="calendarMonthTitle">אוגוסט 2026</span>
-                                <button type="button" class="cal-nav-btn" onclick="nextMonth()"> <i class="fas fa-chevron-left"></i></button>
+                                <button type="button" class="cal-nav-btn" onclick="nextMonth()">לחודש הבא <i class="fas fa-chevron-left"></i></button>
                             </div>
                             <div class="calendar-weekdays">
                                 <div>א'</div><div>ב'</div><div>ג'</div><div>ד'</div><div>ה'</div><div>ו'</div><div>ש'</div>
                             </div>
                             <div class="calendar-days" id="calendarDays">
-                                <!-- ימים יווצרו אוטומטית דרך JavaScript -->
+                                <!-- ימים יווצרו דרך JavaScript -->
                             </div>
                             
                             <!-- בחירת תאריך התחלה וסיום מדויקים עבור ספטמבר (27-29) -->
@@ -864,15 +979,14 @@
                             <label>מספר ילדים:</label>
                             <select id="kidsNum" onchange="renderKidsAgesInputs(); calculateTotal();">
                                 <option value="1">1</option>
-                                <option value="2" selected>2</option>
-                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- חלוניות הזנת גילאי הילדים - שדות חובה -->
                     <div class="form-group">
                         <label>גילאי הילדים <span style="color: red;">*</span> </label>
                         <div id="kidsAgesContainer" class="kids-ages-container"></div>
@@ -890,7 +1004,7 @@
 
         </section>
 
-        <!-- סקציית "מי אנחנו" הממוקמת כעת אחרי פרטי ההרשמה -->
+        <!-- סקציית "מי אנחנו" -->
         <section id="about">
             <div class="section-header">
                 <h2>מי אנחנו</h2>
@@ -913,7 +1027,8 @@
             </a>
             
             <div class="logo-center-box">
-                <img src="logo.png" alt="לוגו מדורת השבט" onerror="this.style.display='none'">
+                <img src="LOGO.PNG" alt="לוגו מדורת השבט" 
+                     onerror="if (this.src.endsWith('LOGO.PNG')) { this.src='logo.png'; } else if (this.src.endsWith('logo.png')) { this.src='logo.jpg'; } else { this.style.display='none'; }">
             </div>
 
             <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%98/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
@@ -924,7 +1039,7 @@
 
     </div>
 
-    <!-- חלונית בחירת אופן תשלום -->
+    <!-- Modal תשלום -->
     <div id="paymentModal" class="payment-modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -935,7 +1050,6 @@
             <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp עם פרטי ההזמנה שלך לשליחת קישור תשלום:</p>
             
             <div class="payment-options-grid">
-                
                 <button onclick="sendOrderToWhatsApp('העברה בנקאית')" class="pay-option-btn">
                     <div class="pay-btn-content">
                         <div class="pay-btn-icon"><i class="fas fa-university"></i></div>
@@ -967,15 +1081,14 @@
                     </div>
                     <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
                 </button>
-
             </div>
         </div>
     </div>
 
     <script>
         const MY_WHATSAPP_NUMBER = "972559914540"; 
-        let currentMonth = 8; // 8 = אוגוסט, 9 = ספטמבר
-        let selectedDateText = "21-22.8 (שישי-שבת - הר מירון)";
+        let currentMonth = 9; // ברירת מחדל לספטמבר (המועדים הפעילים)
+        let selectedDateText = "27-29.9 (סוכות)";
         let extraNightsCost = 0;
         let selectedNightsDetails = "";
 
@@ -996,7 +1109,6 @@
 
             if (currentMonth === 8) {
                 title.innerText = "אוגוסט 2026";
-                // אוגוסט 2026 מתחיל ביום שבת (6 ימים ריקים מתחילת השבוע ב-RTL)
                 for (let i = 0; i < 6; i++) {
                     const emptyCell = document.createElement('div');
                     emptyCell.className = 'day-cell';
@@ -1009,20 +1121,10 @@
                     dayCell.className = 'day-cell';
                     dayCell.innerText = day;
                     dayCell.id = `day-8-${day}`;
-
-                    if (day === 21 || day === 22) {
-                        dayCell.classList.add('available');
-                        dayCell.onclick = () => selectDateGroup("21-22.8 (שישי-שבת - הר מירון)", [21, 22], 8, false);
-                    } else if (day === 25 || day === 26) {
-                        dayCell.classList.add('available');
-                        dayCell.onclick = () => selectDateGroup("25-26.8 (שלישי-רביעי - הר מירון )", [25, 26], 8, false);
-                    }
-
                     container.appendChild(dayCell);
                 }
             } else {
                 title.innerText = "ספטמבר 2026";
-                // ספטמבר 2026 מתחיל ביום שלישי (2 ימים ריקים)
                 for (let i = 0; i < 2; i++) {
                     const emptyCell = document.createElement('div');
                     emptyCell.className = 'day-cell';
@@ -1052,10 +1154,8 @@
         function selectDateGroup(dateText, daysArray, month, isMultiNight) {
             const rangeBox = document.getElementById('dateRangeBox');
             
-            // ניקוי סימונים
             document.querySelectorAll('.day-cell').forEach(cell => cell.classList.remove('selected'));
 
-            // הוספת סימונים לימים הנבחרים
             daysArray.forEach(day => {
                 const cell = document.getElementById(`day-${month}-${day}`);
                 if (cell) cell.classList.add('selected');
@@ -1166,17 +1266,14 @@
                 payingKids = totalKidsSelected;
             }
 
-            // מבוגרים: 250 ש"ח
             let total = adults * 250;
 
-            // ילד 1 ו-2: 100 ש"ח כל אחד | ילד 3 ומעלה: 50 ש"ח בלבד
             if (payingKids > 0) {
                 let firstTwoKids = Math.min(2, payingKids);
                 let extraKids = Math.max(0, payingKids - 2);
                 total += (firstTwoKids * 100) + (extraKids * 50);
             }
 
-            // הוספת עלות לילה נוסף אם נבחר בספטמבר
             total += extraNightsCost;
 
             const calcDisplay = document.getElementById('calculatedTotalDisplay');
@@ -1261,8 +1358,8 @@
             renderCalendar();
             renderKidsAgesInputs();
             calculateTotal();
-            // סימון מועד ברירת מחדל
-            selectDateGroup("21-22.8 (שישי-שבת - הר מירון)", [21, 22], 8, false);
+            // סימון מועד ספטמבר כברירת מחדל
+            selectDateGroup("27-29.9 (סוכות - בחירת תאריכי הגעה ועזיבה)", [27, 28, 29], 9, true);
         };
     </script>
 
