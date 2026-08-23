@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>מדורת השבט - חוויות טבע, קמפינג משפחות ומלאכות קדומות</title>
-    <!-- Google Fonts & FontAwesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
@@ -34,27 +33,23 @@
         h1, h2, h3, .logo-text { font-family: 'Secular One', sans-serif; }
 
         header {
-            background-color: rgba(27, 56, 32, 0.98);
-            backdrop-filter: blur(12px);
+            background-color: rgba(27, 56, 32, 0.98); backdrop-filter: blur(12px);
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15); border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
         .brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .brand-logo .logo-text { color: var(--sandy-bg); font-size: 26px; font-weight: bold; letter-spacing: 0.5px; }
 
-        nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+        nav ul { display: flex; list-style: none; gap: 18px; align-items: center; }
         nav a { color: #d4e2d5; text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
         nav a:hover { color: var(--white); }
 
         .phone-nav-link {
             color: #ffffff !important; font-weight: bold; display: flex; align-items: center; gap: 8px;
-            background: rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
         .wa-header-icon { width: 20px; height: 20px; object-fit: contain; vertical-align: middle; }
 
         .hero {
@@ -142,6 +137,7 @@
                     <li><a href="#calendar-section">לוח אירועים</a></li>
                     <li><a href="jerusalem.html" style="color: var(--campfire-orange); font-weight: bold;">הרי ירושלים 🌲</a></li>
                     <li><a href="carmel.html" style="color: var(--forest-green); font-weight: bold;">סוכות בכרמל ⛰️</a></li>
+                    <li><a href="equipment.html">ציוד והנחיות 🎒</a></li>
                     <li><a href="#about">מי אנחנו</a></li>
                     <li>
                         <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
@@ -161,7 +157,6 @@
 
     <div class="wrapper">
 
-        <!-- מרכז פעילויות וחוויות לבחירה -->
         <section id="activities">
             <div class="section-header">
                 <h2>החוויות הקרובות שלנו</h2>
@@ -171,7 +166,6 @@
             </div>
 
             <div class="hub-grid">
-                <!-- כרטיס 1: קמפינג הרי ירושלים -->
                 <div class="hub-card">
                     <div>
                         <div class="hub-icon"><i class="fas fa-mountain"></i></div>
@@ -182,18 +176,16 @@
                     <a href="jerusalem.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה לירושלים <i class="fas fa-chevron-left"></i></a>
                 </div>
 
-                <!-- כרטיס 2: קמפינג סוכות בכרמל -->
                 <div class="hub-card">
                     <div>
                         <div class="hub-icon"><i class="fas fa-campground"></i></div>
                         <h3>קמפינג סוכות בכרמל</h3>
                         <span class="hub-dates-tag">27-29 לספטמבר (חול המועד)</span>
-                        <p>חניון הכלניות (פארק הכרמל): שביל היחמורים, חי-בר כרמל, סדנאות יצירה באדמה ובישולי מדורה וטאבון.</p>
+                        <p>חניון הכלניות: הגשרים התלויים בפארק נשר, עששיות בשקיעה, זריחה בחורשת הארבעים ושמורת חי-בר כרמל.</p>
                     </div>
                     <a href="carmel.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה לכרמל <i class="fas fa-chevron-left"></i></a>
                 </div>
 
-                <!-- כרטיס 3: סדנאות יצירה בעמק הירדן -->
                 <div class="hub-card">
                     <div>
                         <div class="hub-icon"><i class="fas fa-paint-brush"></i></div>
@@ -206,7 +198,6 @@
             </div>
         </section>
 
-        <!-- לוח שנה מרכזי עם הפניות פנימיות בלבד -->
         <section id="calendar-section">
             <div class="section-header">
                 <h2>לוח אירועים ופעילויות</h2>
@@ -329,7 +320,6 @@
                     dayCell.id = `day-9-${day}`;
                     dayCell.innerHTML = `<span>${day}</span>`;
 
-                    // 22-23 לספטמבר - הפניה לעמוד ירושלים
                     if (day === 22 || day === 23) {
                         dayCell.classList.add('available');
                         dayCell.innerHTML += `<div class="event-dot"></div>`;
@@ -339,14 +329,12 @@
                             "jerusalem.html",
                             [22, 23], 9
                         );
-                    }
-                    // 27-29 לספטמבר - הפניה לעמוד הכרמל
-                    else if (day >= 27 && day <= 29) {
+                    } else if (day >= 27 && day <= 29) {
                         dayCell.classList.add('available');
                         dayCell.innerHTML += `<div class="event-dot"></div>`;
                         dayCell.onclick = () => showEventInfo(
                             "קמפינג סוכות בפארק הכרמל (חניון כלניות)",
-                            "27-29 לספטמבר 2026 (חול המועד סוכות) | שביל היחמורים, חי-בר כרמל, סדנאות באדמה ובישולי מדורה.",
+                            "27-29 לספטמבר 2026 (חול המועד סוכות) | הגשרים התלויים, עששיות בשקיעה, זריחה וחי-בר כרמל.",
                             "carmel.html",
                             [27, 28, 29], 9
                         );
@@ -357,7 +345,7 @@
 
                 showEventInfo(
                     "קמפינג סוכות בפארק הכרמל (חניון כלניות)",
-                    "27-29 לספטמבר 2026 (חול המועד סוכות) | שביל היחמורים, חי-בר כרמל, סדנאות באדמה ובישולי מדורה.",
+                    "27-29 לספטמבר 2026 (חול המועד סוכות) | הגשרים התלויים, עששיות בשקיעה, זריחה וחי-בר כרמל.",
                     "carmel.html",
                     [27, 28, 29], 9
                 );
@@ -370,7 +358,6 @@
             
             const linkBtn = document.getElementById('eventLinkBtn');
             linkBtn.href = linkUrl;
-            linkBtn.target = "_self";
             linkBtn.innerHTML = `מעבר לעמוד ההרשמה <i class="fas fa-chevron-left"></i>`;
 
             document.querySelectorAll('.day-cell').forEach(cell => cell.classList.remove('selected'));
