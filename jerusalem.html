@@ -650,7 +650,6 @@
                         <div class="price-item">מבוגר: <span>₪250</span></div>
                         <div class="price-item">ילד 1 ו-2 (מגיל שנתיים): <span>₪170</span></div>
                         <div class="price-item">ילד שלישי והלאה: <span>₪50</span> בלבד!</div>
-                        <p style="font-size: 13px; color: var(--forest-green); font-weight: bold; margin-top: 4px;">* מקסימום מחיר למשפחה: ₪890 בלבד</p>
                         
                         <div class="discount-callout">
                             🎒 הטבה למצטיידים עצמאית: מגיעים עם אוהל ומזרנים מהבית? קבלו 100 ₪ הנחה למשפחה!
@@ -709,6 +708,7 @@
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
+                                <option value="6">6</option>
                             </select>
                         </div>
                     </div>
@@ -848,24 +848,21 @@
             const isOwnGear = document.getElementById('bringOwnGear').checked;
             
             // מבוגרים: 250 ש"ח
-            let baseTotal = adults * 250;
+            let total = adults * 250;
 
             // ילדים: 170 ש"ח לילד 1 ו-2, 50 ש"ח לילד 3 ומעלה
             if (kids > 0) {
                 const firstTwo = Math.min(2, kids);
                 const extraKids = Math.max(0, kids - 2);
-                baseTotal += (firstTwo * 170) + (extraKids * 50);
+                total += (firstTwo * 170) + (extraKids * 50);
             }
-
-            // הגבלת תקרת מחיר מקסימלית למשפחה ל-890 ש"ח
-            let finalTotal = Math.min(890, baseTotal);
 
             // הנחת ציוד עצמאי
             if (isOwnGear) {
-                finalTotal = Math.max(0, finalTotal - 100);
+                total = Math.max(0, total - 100);
             }
 
-            document.getElementById('totalAmount').innerText = finalTotal;
+            document.getElementById('totalAmount').innerText = total;
         }
 
         function openPaymentModal() {
