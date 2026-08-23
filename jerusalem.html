@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מדורת השבט - קמפינג סוף החופש בהרי ירושלים</title>
-    <!-- Google Fonts & FontAwesome Icons -->
+    <title>מדורת השבט - קמפינג בהרי ירושלים</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
@@ -29,560 +28,119 @@
             --shadow-lg: 0 20px 45px rgba(27, 56, 32, 0.14);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Assistant', sans-serif;
-            background-color: var(--sandy-bg);
-            color: var(--text-dark);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .logo-text {
-            font-family: 'Secular One', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: 'Assistant', sans-serif; background-color: var(--sandy-bg); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3, .logo-text { font-family: 'Secular One', sans-serif; }
 
         header {
-            background-color: rgba(27, 56, 32, 0.98);
-            backdrop-filter: blur(12px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background-color: rgba(27, 56, 32, 0.98); backdrop-filter: blur(12px);
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15); border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .nav-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 24px;
-        }
-
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .brand-logo .logo-text {
-            color: var(--sandy-bg);
-            font-size: 26px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 28px;
-            align-items: center;
-        }
-
-        nav a {
-            color: #d4e2d5;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: var(--transition);
-        }
-
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
+        .brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand-logo .logo-text { color: var(--sandy-bg); font-size: 26px; font-weight: bold; }
+        nav ul { display: flex; list-style: none; gap: 18px; align-items: center; }
+        nav a { color: #d4e2d5; text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
         nav a:hover { color: var(--white); }
 
         .phone-nav-link {
-            color: #ffffff !important;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
+            color: #ffffff !important; font-weight: bold; display: flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
-        .phone-nav-link:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .wa-header-icon {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-            vertical-align: middle;
-        }
+        .wa-header-icon { width: 20px; height: 20px; object-fit: contain; vertical-align: middle; }
 
         .hero {
-            position: relative;
             background: linear-gradient(rgba(27, 56, 32, 0.5), rgba(74, 51, 41, 0.6)), 
                         url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            height: 52vh;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 24px;
-            margin-top: 65px;
+            height: 52vh; min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: var(--white); padding: 0 24px; margin-top: 65px;
         }
 
-        .hero h1 {
-            font-size: 52px;
-            margin-bottom: 12px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
+        .hero h1 { font-size: 52px; margin-bottom: 12px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .hero p { font-size: 22px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); font-weight: 300; max-width: 800px; }
 
-        .hero p {
-            font-size: 22px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-            font-weight: 300;
-            max-width: 800px;
-        }
+        .wrapper { max-width: 1200px; margin: 0 auto; padding: 50px 24px; }
+        .section-header { text-align: center; margin-bottom: 35px; }
+        .section-header h2 { font-size: 38px; color: var(--forest-green); position: relative; display: inline-block; }
+        .section-header h2::after { content: ''; position: absolute; bottom: -8px; left: 30%; width: 40%; height: 3px; background-color: var(--campfire-orange); border-radius: 2px; }
 
-        .wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 50px 24px;
-        }
+        section { background: var(--white); padding: 45px; border-radius: 24px; box-shadow: var(--shadow-md); margin-bottom: 50px; border: 1px solid rgba(27, 56, 32, 0.04); }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .section-header h2 { 
-            font-size: 38px; 
-            color: var(--forest-green); 
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 30%;
-            width: 40%;
-            height: 3px;
-            background-color: var(--campfire-orange);
-            border-radius: 2px;
-        }
-
-        section {
-            background: var(--white);
-            padding: 45px;
-            border-radius: 24px;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 50px;
-            border: 1px solid rgba(27, 56, 32, 0.04);
-        }
-
-        .event-chips {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 30px;
-        }
-
-        .chip {
-            background: var(--forest-light);
-            color: var(--forest-green);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1.5px solid rgba(45, 90, 55, 0.2);
-        }
-
+        .event-chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-bottom: 30px; }
+        .chip { background: var(--forest-light); color: var(--forest-green); padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; border: 1.5px solid rgba(45, 90, 55, 0.2); }
         .chip i { color: var(--campfire-orange); }
 
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 22px;
-            margin-top: 25px;
-        }
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; margin-top: 25px; }
+        .card { background-color: var(--sandy-bg); padding: 24px; border-radius: 18px; border-top: 5px solid var(--earth-brown); box-shadow: var(--shadow-sm); transition: var(--transition); }
+        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-top-color: var(--campfire-orange); }
+        .card h3 { color: var(--forest-green); margin-bottom: 10px; font-size: 20px; display: flex; align-items: center; gap: 8px; }
 
-        .card {
-            background-color: var(--sandy-bg);
-            padding: 24px;
-            border-radius: 18px;
-            border-top: 5px solid var(--earth-brown);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
+        .info-link-banner {
+            margin-top: 30px; background: #faf4eb; border: 1.5px dashed var(--campfire-orange); border-radius: 16px;
+            padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
         }
+        .info-link-banner p { font-size: 16px; font-weight: bold; color: var(--earth-brown); margin: 0; }
+        .info-link-btn { color: var(--campfire-orange); font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            border-top-color: var(--campfire-orange);
-        }
-
-        .card h3 {
-            color: var(--forest-green);
-            margin-bottom: 10px;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .booking-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 35px;
-            background: linear-gradient(135deg, var(--forest-light), #e4ede6);
-            padding: 40px;
-            border-radius: 22px;
-            border: 1px solid rgba(27, 56, 32, 0.08);
-        }
-
-        .price-tag {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: var(--shadow-sm);
-            border-right: 5px solid var(--campfire-orange);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .early-bird-badge {
-            background: var(--campfire-orange);
-            color: var(--white);
-            font-size: 14px;
-            font-weight: bold;
-            padding: 5px 14px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 12px;
-            align-self: flex-start;
-        }
-
+        .booking-box { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 35px; background: linear-gradient(135deg, var(--forest-light), #e4ede6); padding: 40px; border-radius: 22px; border: 1px solid rgba(27, 56, 32, 0.08); }
+        .price-tag { background: var(--white); padding: 30px; border-radius: 18px; box-shadow: var(--shadow-sm); border-right: 5px solid var(--campfire-orange); display: flex; flex-direction: column; justify-content: space-between; }
+        .early-bird-badge { background: var(--campfire-orange); color: var(--white); font-size: 14px; font-weight: bold; padding: 5px 14px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
         .price-item { font-size: 17px; font-weight: bold; color: var(--earth-brown); margin-bottom: 6px; }
         .price-item span { color: var(--campfire-orange); font-size: 22px; }
 
-        .discount-callout {
-            background: #e8f5e9;
-            border: 1.5px dashed #2e7d32;
-            padding: 12px;
-            border-radius: 12px;
-            margin: 12px 0;
-            font-size: 14px;
-            color: #1b5e20;
-            font-weight: bold;
-        }
+        .discount-callout { background: #e8f5e9; border: 1.5px dashed #2e7d32; padding: 12px; border-radius: 12px; margin: 12px 0; font-size: 14px; color: #1b5e20; font-weight: bold; }
 
         .booking-form { display: flex; flex-direction: column; gap: 16px; }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
         .form-group label { font-weight: 700; color: var(--forest-green); }
+        .form-group input, .form-group select { padding: 13px 16px; border: 1.5px solid #cdd8cf; border-radius: 12px; font-size: 16px; width: 100%; background: var(--white); }
 
-        .form-group input, .form-group select { 
-            padding: 13px 16px; 
-            border: 1.5px solid #cdd8cf; 
-            border-radius: 12px; 
-            font-size: 16px; 
-            width: 100%;
-            background: var(--white);
-            transition: var(--transition);
-        }
+        .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--white); padding: 12px 16px; border-radius: 12px; border: 1.5px solid #cdd8cf; cursor: pointer; font-weight: 700; color: var(--forest-green); }
+        .checkbox-container input { width: 20px; height: 20px; cursor: pointer; accent-color: var(--campfire-orange); }
 
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--campfire-orange);
-            box-shadow: 0 0 0 3px rgba(230, 92, 0, 0.15);
-        }
+        .calendar-container { background: var(--white); padding: 16px; border-radius: 16px; border: 1.5px solid #cdd8cf; width: 100%; }
+        .calendar-header { text-align: center; font-weight: 800; font-size: 17px; color: var(--forest-green); margin-bottom: 12px; background: var(--forest-light); padding: 8px 14px; border-radius: 10px; }
+        .calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+        .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+        .day-cell { min-height: 38px; display: flex; align-items: center; justify-content: center; font-size: 14px; border-radius: 8px; background: #f4f6f4; color: #a0aaa2; cursor: not-allowed; font-weight: 600; }
+        .day-cell.available { background: #e8f5e9; color: var(--forest-green); font-weight: bold; cursor: pointer; border: 1.5px solid #81c784; }
+        .day-cell.selected { background: var(--campfire-orange) !important; color: var(--white) !important; border-color: var(--campfire-orange) !important; }
 
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--white);
-            padding: 12px 16px;
-            border-radius: 12px;
-            border: 1.5px solid #cdd8cf;
-            cursor: pointer;
-            font-weight: 700;
-            color: var(--forest-green);
-        }
+        .selected-date-banner { margin-top: 14px; background: var(--forest-green); color: var(--white); padding: 10px 14px; border-radius: 10px; font-size: 14px; font-weight: bold; text-align: center; line-height: 1.5; }
+        .total-price-box { background: var(--forest-green); color: var(--white); padding: 16px; border-radius: 12px; text-align: center; font-size: 22px; font-weight: bold; }
+        .btn-submit { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow)); color: var(--white); padding: 15px 38px; text-decoration: none; font-size: 19px; font-weight: 700; border-radius: 50px; border: none; cursor: pointer; }
 
-        .checkbox-container input {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: var(--campfire-orange);
-        }
-
-        .calendar-container {
-            background: var(--white);
-            padding: 16px;
-            border-radius: 16px;
-            border: 1.5px solid #cdd8cf;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            width: 100%;
-        }
-
-        .calendar-header {
-            text-align: center;
-            font-weight: 800;
-            font-size: 17px;
-            color: var(--forest-green);
-            margin-bottom: 12px;
-            background: var(--forest-light);
-            padding: 8px 14px;
-            border-radius: 10px;
-        }
-
-        .calendar-weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            font-weight: bold;
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .calendar-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-        }
-
-        .day-cell {
-            min-height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            border-radius: 8px;
-            background: #f4f6f4;
-            color: #a0aaa2;
-            cursor: not-allowed;
-            user-select: none;
-            font-weight: 600;
-        }
-
-        .day-cell.available {
-            background: #e8f5e9;
-            color: var(--forest-green);
-            font-weight: bold;
-            cursor: pointer;
-            border: 1.5px solid #81c784;
-            transition: var(--transition);
-        }
-
-        .day-cell.selected {
-            background: var(--campfire-orange) !important;
-            color: var(--white) !important;
-            border-color: var(--campfire-orange) !important;
-            box-shadow: 0 3px 10px rgba(230, 92, 0, 0.4);
-            font-weight: 800;
-        }
-
-        .selected-date-banner {
-            margin-top: 14px;
-            background: var(--forest-green);
-            color: var(--white);
-            padding: 10px 14px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-            line-height: 1.5;
-        }
-
-        .total-price-box {
-            background: var(--forest-green); 
-            color: var(--white);
-            padding: 16px; 
-            border-radius: 12px; 
-            text-align: center; 
-            font-size: 22px; 
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-submit {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow));
-            color: var(--white);
-            padding: 15px 38px;
-            text-decoration: none;
-            font-size: 19px;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: var(--transition);
-            box-shadow: 0 6px 22px rgba(230, 92, 0, 0.4);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-submit:hover { transform: translateY(-3px); }
-
-        .social-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-            background: rgba(27, 56, 32, 0.04);
-            padding: 25px;
-            border-radius: 20px;
-            border: 1px dashed rgba(27, 56, 32, 0.15);
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: var(--white);
-            font-weight: bold;
-            font-size: 16px;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .social-link:hover { transform: translateY(-3px); }
+        .social-bar { display: flex; align-items: center; justify-content: center; gap: 25px; margin-top: 40px; flex-wrap: wrap; background: rgba(27, 56, 32, 0.04); padding: 25px; border-radius: 20px; border: 1px dashed rgba(27, 56, 32, 0.15); }
+        .social-link { display: inline-flex; align-items: center; gap: 12px; padding: 14px 28px; border-radius: 50px; text-decoration: none; color: var(--white); font-weight: bold; font-size: 16px; }
         .link-wa { background: linear-gradient(135deg, #25D366, #1eaa53); }
         .link-fb { background: linear-gradient(135deg, #1877F2, #0d5cb5); }
+        .logo-center-box { background: var(--white); padding: 10px 20px; border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+        .logo-center-box img { max-height: 60px; width: auto; object-fit: contain; }
 
-        .logo-center-box {
-            background: var(--white);
-            padding: 10px 20px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(27, 56, 32, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        .payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18, 36, 21, 0.75); backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: var(--white); padding: 40px; border-radius: 24px; max-width: 500px; width: 100%; position: relative; text-align: center; }
+        .close-modal { position: absolute; top: 15px; left: 15px; font-size: 26px; cursor: pointer; color: var(--text-muted); }
+        .payment-options-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
+        .pay-option-btn { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-radius: 14px; text-decoration: none; color: var(--text-dark); background: #f8faf8; font-weight: 700; font-size: 16px; border: 1.5px solid #dce5dd; cursor: pointer; width: 100%; }
 
-        .logo-center-box img {
-            max-height: 60px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .payment-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(18, 36, 21, 0.75);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 24px;
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px; left: 15px;
-            font-size: 26px; cursor: pointer; color: var(--text-muted);
-        }
-
-        .payment-options-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 25px;
-        }
-
-        .pay-option-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            border-radius: 14px;
-            text-decoration: none;
-            color: var(--text-dark);
-            background: #f8faf8;
-            font-weight: 700;
-            font-size: 16px;
-            transition: var(--transition);
-            border: 1.5px solid #dce5dd;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .pay-option-btn:hover {
-            background: var(--white);
-            border-color: var(--forest-green);
-            transform: translateY(-2px);
-        }
-
-        .pay-btn-content { display: flex; align-items: center; gap: 14px; }
-        .pay-btn-icon {
-            width: 40px; height: 40px; border-radius: 10px;
-            background: var(--forest-light); color: var(--forest-green);
-            display: flex; align-items: center; justify-content: center; font-size: 18px;
-        }
-
-        @media (max-width: 992px) { 
-            .booking-box { grid-template-columns: 1fr; }
-            section { padding: 30px 20px; }
-        }
-        @media (max-width: 768px) { 
-            .nav-container { flex-direction: column; gap: 12px; } 
-            .hero h1 { font-size: 34px; }
-            .social-bar { flex-direction: column; }
-        }
-
-        footer { 
-            background-color: #0f2112; color: #a3b8a7; text-align: center; 
-            padding: 35px 20px; font-size: 15px; border-top: 4px solid var(--campfire-orange);
-        }
+        @media (max-width: 992px) { .booking-box { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .hero h1 { font-size: 34px; } }
+        footer { background-color: #0f2112; color: #a3b8a7; text-align: center; padding: 35px 20px; font-size: 15px; border-top: 4px solid var(--campfire-orange); }
     </style>
 </head>
 <body>
 
     <header>
         <div class="nav-container">
-            <a href="index.html" class="brand-logo">
-                <span class="logo-text">🌿 מדורת השבט</span>
-            </a>
+            <a href="index.html" class="brand-logo"><span class="logo-text">🌿 מדורת השבט</span></a>
             <nav>
                 <ul>
-                    <li><a href="#about">על הקמפינג</a></li>
-                    <li><a href="#booking">הרשמה</a></li>
+                    <li><a href="index.html">דף הבית</a></li>
+                    <li><a href="jerusalem.html" style="color: var(--campfire-orange); font-weight: bold;">הרי ירושלים 🌲</a></li>
+                    <li><a href="carmel.html">סוכות בכרמל ⛰️</a></li>
+                    <li><a href="equipment.html">ציוד והנחיות 🎒</a></li>
                     <li>
                         <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-header-icon">
@@ -595,13 +153,12 @@
     </header>
 
     <div class="hero">
-        <h1>סוגרים שנה בהרי ירושלים</h1>
-        <p>חוויית קמפינג משפחתית לסיום החופש הגדול – 24 שעות של טבע, אוויר הרים קריר וזמן איכות אמיתי</p>
+        <h1>קמפינג משפחות בהרי ירושלים</h1>
+        <p>חוויית טבע משפחתית – מערת הנטיפים, עששיות, שקיעה, סיר פוייקה, מזרקות טדי והכותל המערבי</p>
     </div>
 
     <div class="wrapper">
 
-        <!-- סקציית מה מחכה לנו (כרטיסיות קצרות וקריאות) -->
         <section id="about">
             <div class="section-header">
                 <h2>מה מחכה לנו בקמפינג?</h2>
@@ -611,7 +168,7 @@
             </div>
 
             <div class="event-chips">
-                <div class="chip"><i class="far fa-calendar-check"></i> 27-28 לאוגוסט 2026 (חמישי-שישי)</div>
+                <div class="chip"><i class="far fa-calendar-check"></i> 27-28 לאוגוסט 2026 | 22-23 לספטמבר 2026</div>
                 <div class="chip"><i class="fas fa-map-marker-alt"></i> חניון לילה נס הרים, הרי ירושלים</div>
                 <div class="chip"><i class="fas fa-child"></i> מתאים לכל המשפחה (עדיפות לגילאי שנתיים ומעלה)</div>
             </div>
@@ -633,6 +190,11 @@
                     <h3><i class="fas fa-landmark"></i> חוויה ירושלמית בעיר העתיקה</h3>
                     <p>נסיעה ברכבת הקלה, שכשוך במזרקות פארק טדי, מעבר בסמטאות השוק הצבעוניות, תפילה בכותל ומעגל פרידה מרגש.</p>
                 </div>
+            </div>
+
+            <div class="info-link-banner">
+                <p><i class="fas fa-backpack" style="color: var(--campfire-orange);"></i> רוצים לדעת מה אנחנו מספקים ומה לארוז בתיק?</p>
+                <a href="equipment.html" class="info-link-btn">לרשימת הציוד וההנחיות המלאה <i class="fas fa-arrow-left"></i></a>
             </div>
         </section>
 
@@ -688,7 +250,6 @@
                         <input type="email" id="parentEmail" placeholder="example@domain.com" required>
                     </div>
 
-                    <!-- בחירת מספר מבוגרים וילדים -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                         <div class="form-group">
                             <label>מספר מבוגרים:</label>
@@ -704,7 +265,7 @@
                             <select id="kidsNum" onchange="calculateTotal()">
                                 <option value="0">ללא ילדים</option>
                                 <option value="1">1</option>
-                                <option value="2" selected>2</option>
+                                <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
@@ -713,26 +274,19 @@
                         </div>
                     </div>
 
-                    <!-- צ'קבוקס הבאת ציוד עצמאי -->
                     <label class="checkbox-container">
                         <input type="checkbox" id="bringOwnGear" onchange="calculateTotal()">
                         <span>מגיעים עם אוהל ומזרנים מהבית (100 ₪ הנחה)</span>
                     </label>
 
-                    <!-- לוח שנה אוגוסט 2026 -->
                     <div class="form-group">
-                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> מועד הפעילות:</label>
-                        <div class="calendar-container">
-                            <div class="calendar-header">אוגוסט 2026</div>
-                            <div class="calendar-weekdays">
-                                <div>א'</div><div>ב'</div><div>ג'</div><div>ד'</div><div>ה'</div><div>ו'</div><div>ש'</div>
-                            </div>
-                            <div class="calendar-days" id="calendarDays">
-                                <!-- הימים יווצרו דרך JS -->
-                            </div>
-                            <div class="selected-date-banner" id="selectedDateBanner">
-                                מועד נבחר: 27-28 לאוגוסט 2026 (חמישי-שישי) | הרי ירושלים
-                            </div>
+                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת מועד הפעילות:</label>
+                        <select id="eventDateSelect" onchange="updateSelectedDateBanner()" style="padding: 12px; border-radius: 12px; border: 1.5px solid #cdd8cf; font-weight: bold; color: var(--forest-green);">
+                            <option value="27-28 לאוגוסט 2026 (חמישי-שישי)" selected>27-28 לאוגוסט 2026 (חמישי-שישי)</option>
+                            <option value="22-23 לספטמבר 2026 (שלישי-רביעי)">22-23 לספטמבר 2026 (שלישי-רביעי)</option>
+                        </select>
+                        <div class="selected-date-banner" id="selectedDateBanner">
+                            מועד נבחר: 27-28 לאוגוסט 2026 (חמישי-שישי) | הרי ירושלים
                         </div>
                     </div>
 
@@ -747,21 +301,15 @@
             </div>
         </section>
 
-        <!-- סרגל קישורים תחתון והלוגו במרכז -->
         <div class="social-bar">
             <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa">
-                <i class="fab fa-whatsapp"></i>
-                שלחו לנו הודעה ב-WhatsApp
+                <i class="fab fa-whatsapp"></i> שלחו לנו הודעה ב-WhatsApp
             </a>
-            
             <div class="logo-center-box">
-                <img src="LOGO.PNG" alt="לוגו מדורת השבט" 
-                     onerror="if (this.src.endsWith('LOGO.PNG')) { this.src='logo.png'; } else if (this.src.endsWith('logo.png')) { this.src='logo.jpg'; } else { this.style.display='none'; }">
+                <img src="LOGO.PNG" alt="לוגו מדורת השבט" onerror="if (this.src.endsWith('LOGO.PNG')) { this.src='logo.png'; } else if (this.src.endsWith('logo.png')) { this.src='logo.jpg'; } else { this.style.display='none'; }">
             </div>
-
             <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%98/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
-                <i class="fab fa-facebook-f"></i>
-                עמוד הפייסבוק
+                <i class="fab fa-facebook-f"></i> עמוד הפייסבוק
             </a>
         </div>
 
@@ -772,74 +320,24 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-shield-alt" style="color: var(--forest-mid);"></i> בחירת אופן תשלום</h2>
-            <p style="margin-top: 8px; font-size: 16px;">
-                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">790</span></strong>
-            </p>
-            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp עם פרטי ההרשמה לקבלת קישור לתשלום:</p>
+            <p style="margin-top: 8px; font-size: 16px;">סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">790</span></strong></p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp לקבלת קישור לתשלום:</p>
             
             <div class="payment-options-grid">
-                <button onclick="sendOrderToWhatsApp('העברה בנקאית')" class="pay-option-btn">
-                    <div class="pay-btn-content">
-                        <div class="pay-btn-icon"><i class="fas fa-university"></i></div>
-                        <span> העברה בנקאית </span>
-                    </div>
-                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
-                </button>
-
-                <button onclick="sendOrderToWhatsApp('PayBox')" class="pay-option-btn">
-                    <div class="pay-btn-content">
-                        <div class="pay-btn-icon"><i class="fas fa-box-open"></i></div>
-                        <span> PayBox</span>
-                    </div>
-                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
-                </button>
-
-                <button onclick="sendOrderToWhatsApp('bit')" class="pay-option-btn">
-                    <div class="pay-btn-content">
-                        <div class="pay-btn-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <span> bit</span>
-                    </div>
-                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
-                </button>
-
-                <button onclick="sendOrderToWhatsApp('כרטיס אשראי')" class="pay-option-btn">
-                    <div class="pay-btn-content">
-                        <div class="pay-btn-icon"><i class="far fa-credit-card"></i></div>
-                        <span> תשלום בכרטיס אשראי</span>
-                    </div>
-                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
-                </button>
+                <button onclick="sendOrderToWhatsApp('העברה בנקאית')" class="pay-option-btn"><span>העברה בנקאית</span><i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i></button>
+                <button onclick="sendOrderToWhatsApp('PayBox')" class="pay-option-btn"><span>PayBox</span><i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i></button>
+                <button onclick="sendOrderToWhatsApp('bit')" class="pay-option-btn"><span>bit</span><i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i></button>
+                <button onclick="sendOrderToWhatsApp('כרטיס אשראי')" class="pay-option-btn"><span>תשלום בכרטיס אשראי</span><i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i></button>
             </div>
         </div>
     </div>
 
     <script>
         const MY_WHATSAPP_NUMBER = "972559914540"; 
-        const selectedDateText = "27-28.8.2026 (חמישי-שישי) | קמפינג הרי ירושלים (נס הרים)";
 
-        function renderCalendar() {
-            const container = document.getElementById('calendarDays');
-            container.innerHTML = '';
-
-            for (let i = 0; i < 6; i++) {
-                const emptyCell = document.createElement('div');
-                emptyCell.className = 'day-cell';
-                emptyCell.style.background = 'transparent';
-                container.appendChild(emptyCell);
-            }
-
-            for (let day = 1; day <= 31; day++) {
-                const dayCell = document.createElement('div');
-                dayCell.className = 'day-cell';
-                dayCell.innerText = day;
-                dayCell.id = `day-${day}`;
-
-                if (day === 27 || day === 28) {
-                    dayCell.classList.add('available', 'selected');
-                }
-
-                container.appendChild(dayCell);
-            }
+        function updateSelectedDateBanner() {
+            const selectedVal = document.getElementById('eventDateSelect').value;
+            document.getElementById('selectedDateBanner').innerText = `מועד נבחר: ${selectedVal} | הרי ירושלים`;
         }
 
         function calculateTotal() {
@@ -847,17 +345,13 @@
             const kids = parseInt(document.getElementById('kidsNum').value);
             const isOwnGear = document.getElementById('bringOwnGear').checked;
             
-            // מבוגרים: 250 ש"ח
             let total = adults * 250;
-
-            // ילדים: 170 ש"ח לילד 1 ו-2, 50 ש"ח לילד 3 ומעלה
             if (kids > 0) {
                 const firstTwo = Math.min(2, kids);
                 const extraKids = Math.max(0, kids - 2);
                 total += (firstTwo * 170) + (extraKids * 50);
             }
 
-            // הנחת ציוד עצמאי
             if (isOwnGear) {
                 total = Math.max(0, total - 100);
             }
@@ -886,14 +380,15 @@
             const email = document.getElementById('parentEmail').value.trim();
             const adults = document.getElementById('adultsNum').value;
             const kids = document.getElementById('kidsNum').value;
+            const dateText = document.getElementById('eventDateSelect').value;
             const isOwnGear = document.getElementById('bringOwnGear').checked ? "כן (מביאים אוהל ומזרנים עצמאית - 100 ₪ הנחה)" : "לא (אספקת ציוד מלאה על ידי מדורת השבט)";
             const total = document.getElementById('totalAmount').innerText;
 
-            const message = `שלום! נרשמתי לקמפינג סוף החופש בהרי ירושלים:%0A%0A` +
+            const message = `שלום! נרשמתי לקמפינג בהרי ירושלים:%0A%0A` +
                             `שם מלא: ${name}%0A` +
                             `טלפון: ${phone}%0A` +
                             `מייל: ${email}%0A` +
-                            `מועד: ${selectedDateText}%0A` +
+                            `מועד: ${dateText}%0A` +
                             `הרכב משפחתי: ${adults} מבוגרים, ${kids} ילדים%0A` +
                             `ציוד עצמאי: ${isOwnGear}%0A` +
                             `סך הכל לתשלום: ₪${total}%0A` +
@@ -901,19 +396,12 @@
                             `אשמח לקבל קישור לתשלום לשריין את מקומנו. תודה!`;
 
             const waUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
-            
             window.open(waUrl, '_blank');
             closeModal();
         }
 
-        function closeModal() {
-            document.getElementById('paymentModal').style.display = 'none';
-        }
-
-        window.onload = function() {
-            renderCalendar();
-            calculateTotal();
-        };
+        function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
+        window.onload = function() { calculateTotal(); };
     </script>
 
     <footer>
