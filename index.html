@@ -189,19 +189,19 @@
             border: 1px solid rgba(27, 56, 32, 0.04);
         }
 
-        /* כרטיסיות ניווט לפעילויות השונות */
+        /* כרטיסיות ניווט לפעילויות */
         .hub-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .hub-card {
             background: #ffffff;
             border: 2px solid #e1e9e2;
             border-radius: 20px;
-            padding: 30px 25px;
+            padding: 32px 26px;
             text-align: center;
             transition: var(--transition);
             display: flex;
@@ -217,29 +217,41 @@
         }
 
         .hub-icon {
-            width: 65px;
-            height: 65px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background: var(--forest-light);
             color: var(--forest-green);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin: 0 auto 15px auto;
+            font-size: 30px;
+            margin: 0 auto 16px auto;
             border: 1.5px solid rgba(45, 90, 55, 0.15);
         }
 
         .hub-card h3 {
-            font-size: 22px;
+            font-size: 23px;
             color: var(--forest-green);
             margin-bottom: 8px;
+        }
+
+        .hub-dates-tag {
+            display: inline-block;
+            background: #fff5eb;
+            color: var(--campfire-orange);
+            font-weight: 800;
+            font-size: 14px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(230, 92, 0, 0.2);
         }
 
         .hub-card p {
             font-size: 15px;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             line-height: 1.6;
         }
 
@@ -248,7 +260,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 24px;
+            padding: 13px 26px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
@@ -264,166 +276,18 @@
 
         .hub-btn-highlight {
             background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow));
+            box-shadow: 0 4px 15px rgba(230, 92, 0, 0.3);
         }
 
-        /* סקציית קמפינג צפון/מירון */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .card {
-            background-color: var(--sandy-bg);
-            padding: 28px;
-            border-radius: 18px;
-            border-top: 5px solid var(--earth-brown);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-            border-top-color: var(--campfire-orange);
-        }
-
-        .card h3 {
-            color: var(--forest-green);
-            margin-bottom: 12px;
-            font-size: 21px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .info-list { list-style: none; margin-top: 15px; }
-        .info-list li { 
-            position: relative; 
-            padding-right: 28px; 
-            margin-bottom: 12px; 
-            font-size: 16px;
-        }
-        .info-list li::before {
-            content: "\f00c"; 
-            font-family: "Font Awesome 5 Free"; 
-            font-weight: 900;
-            position: absolute; 
-            right: 0; 
-            color: var(--campfire-orange); 
-            font-size: 16px;
-        }
-        .equipment-list li::before { content: "\f553"; color: var(--forest-mid); }
-        .optional-list li::before { content: "\f067"; color: var(--earth-light); }
-        .ban-list li::before { content: "\f05e"; color: #d9534f; }
-
-        .equipment-section-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-            margin-top: 40px;
+        /* לוח שנה מרכזי וגדול */
+        .big-calendar-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
             background: #ffffff;
-            padding: 20px 0;
-        }
-
-        .equipment-image-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .equipment-image-box img {
-            width: 100%;
-            max-width: 450px;
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
+            padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-            border: 4px solid #f8faf8;
-        }
-
-        .booking-box {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
-            margin-top: 40px;
-            background: linear-gradient(135deg, var(--forest-light), #e4ede6);
-            padding: 40px;
-            border-radius: 22px;
-            border: 1px solid rgba(27, 56, 32, 0.08);
-        }
-
-        .price-tag {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 18px;
+            border: 2px solid #e1e9e2;
             box-shadow: var(--shadow-sm);
-            border-right: 5px solid var(--campfire-orange);
-        }
-
-        .early-bird-badge {
-            background: var(--campfire-orange);
-            color: var(--white);
-            font-size: 14px;
-            font-weight: bold;
-            padding: 5px 14px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .price-item { font-size: 18px; margin-bottom: 10px; font-weight: bold; color: var(--earth-brown); }
-        .price-item span { color: var(--campfire-orange); font-size: 22px; }
-
-        .price-anchor-box {
-            background: #fff5f0;
-            border: 2px dashed var(--campfire-orange);
-            padding: 18px;
-            border-radius: 14px;
-            margin: 15px 0;
-            text-align: center;
-        }
-
-        .discount-price-highlight {
-            color: var(--campfire-orange);
-            font-size: 38px;
-            font-weight: 900;
-            display: block;
-            line-height: 1.1;
-            margin-top: 4px;
-        }
-
-        .booking-form { display: flex; flex-direction: column; gap: 16px; }
-        .form-group { display: flex; flex-direction: column; gap: 6px; }
-        .form-group label { font-weight: 700; color: var(--forest-green); }
-
-        .form-group input, .form-group select { 
-            padding: 13px 16px; 
-            border: 1.5px solid #cdd8cf; 
-            border-radius: 12px; 
-            font-size: 16px; 
-            width: 100%;
-            background: var(--white);
-            transition: var(--transition);
-        }
-
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--campfire-orange);
-            box-shadow: 0 0 0 3px rgba(230, 92, 0, 0.15);
-        }
-
-        .calendar-container {
-            background: var(--white);
-            padding: 18px;
-            border-radius: 16px;
-            border: 1.5px solid #cdd8cf;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            width: 100%;
         }
 
         .calendar-header {
@@ -431,12 +295,12 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 800;
-            font-size: 17px;
+            font-size: 20px;
             color: var(--forest-green);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             background: var(--forest-light);
-            padding: 8px 14px;
-            border-radius: 10px;
+            padding: 10px 18px;
+            border-radius: 12px;
         }
 
         .cal-nav-btn {
@@ -444,19 +308,19 @@
             color: var(--white);
             border: none;
             border-radius: 8px;
-            padding: 6px 14px;
+            padding: 7px 16px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: bold;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 6px;
             transition: var(--transition);
         }
 
         .cal-nav-btn:hover {
             background: var(--campfire-orange);
-            transform: scale(1.04);
+            transform: scale(1.03);
         }
 
         .calendar-weekdays {
@@ -464,119 +328,106 @@
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 15px;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .calendar-days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
+            gap: 8px;
         }
 
         .day-cell {
-            min-height: 38px;
+            min-height: 52px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            border-radius: 8px;
-            background: #f4f6f4;
-            color: #a0aaa2;
+            font-size: 16px;
+            border-radius: 12px;
+            background: #f8faf8;
+            color: #9aa89d;
             cursor: not-allowed;
             user-select: none;
             font-weight: 600;
+            transition: var(--transition);
+            position: relative;
         }
 
         .day-cell.available {
             background: #e8f5e9;
             color: var(--forest-green);
-            font-weight: bold;
+            font-weight: 800;
             cursor: pointer;
-            border: 1.5px solid #81c784;
-            transition: var(--transition);
+            border: 2px solid #81c784;
         }
 
         .day-cell.available:hover {
             background: var(--campfire-glow);
             color: var(--white);
             border-color: var(--campfire-orange);
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
         .day-cell.selected {
             background: var(--campfire-orange) !important;
             color: var(--white) !important;
             border-color: var(--campfire-orange) !important;
-            box-shadow: 0 3px 10px rgba(230, 92, 0, 0.4);
-            font-weight: 800;
+            box-shadow: 0 4px 14px rgba(230, 92, 0, 0.4);
         }
 
-        .selected-date-banner {
-            margin-top: 14px;
-            background: var(--forest-green);
-            color: var(--white);
-            padding: 12px 14px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-            line-height: 1.5;
+        .event-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--campfire-orange);
+            margin-top: 3px;
         }
 
-        .date-range-box {
-            background: #fff8f3;
-            padding: 14px;
-            border-radius: 12px;
-            border: 1.5px dashed var(--campfire-orange);
-            margin-top: 12px;
-            display: none;
+        .day-cell.selected .event-dot {
+            background: #ffffff;
         }
 
-        .kids-ages-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px dashed var(--forest-mid);
-            margin-top: 5px;
-        }
-
-        .total-price-box {
-            background: var(--forest-green); 
-            color: var(--white);
-            padding: 16px; 
-            border-radius: 12px; 
-            text-align: center; 
-            font-size: 21px; 
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-submit {
-            display: inline-flex;
+        /* תיבת פרטי אירוע נבחר בלוח */
+        .event-info-box {
+            margin-top: 20px;
+            background: linear-gradient(135deg, var(--forest-light), #e4ede6);
+            border: 1.5px solid rgba(27, 56, 32, 0.1);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow));
-            color: var(--white);
-            padding: 15px 38px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: var(--transition);
-            box-shadow: 0 6px 22px rgba(230, 92, 0, 0.4);
-            border: none;
-            cursor: pointer;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .btn-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 28px rgba(230, 92, 0, 0.55);
+        .event-info-text h4 {
+            color: var(--forest-green);
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .event-info-text p {
+            color: var(--text-dark);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .about-box {
+            background: linear-gradient(135deg, var(--forest-light), #eaf2eb);
+            padding: 35px;
+            border-radius: 20px;
+            border-right: 6px solid var(--forest-green);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .about-box p {
+            margin-bottom: 15px;
+            color: var(--text-dark);
         }
 
         .social-bar {
@@ -606,13 +457,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
-        .social-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 22px rgba(0,0,0,0.15);
-        }
-
-        .social-link i { font-size: 22px; }
-
+        .social-link:hover { transform: translateY(-3px); }
         .link-wa { background: linear-gradient(135deg, #25D366, #1eaa53); }
         .link-fb { background: linear-gradient(135deg, #1877F2, #0d5cb5); }
 
@@ -633,96 +478,15 @@
             object-fit: contain;
         }
 
-        .payment-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(18, 36, 21, 0.75);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 24px;
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px; left: 15px;
-            font-size: 26px; cursor: pointer; color: var(--text-muted);
-            transition: var(--transition);
-        }
-        .close-modal:hover { color: var(--campfire-orange); }
-
-        .payment-options-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 25px;
-        }
-
-        .pay-option-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            border-radius: 14px;
-            text-decoration: none;
-            color: var(--text-dark);
-            background: #f8faf8;
-            font-weight: 700;
-            font-size: 16px;
-            transition: var(--transition);
-            border: 1.5px solid #dce5dd;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .pay-option-btn:hover {
-            background: var(--white);
-            border-color: var(--forest-green);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(27, 56, 32, 0.08);
-        }
-
-        .pay-btn-content {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .pay-btn-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--forest-light);
-            color: var(--forest-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-
         @media (max-width: 992px) { 
-            .booking-box { grid-template-columns: 1fr; } 
-            .equipment-section-container { grid-template-columns: 1fr; }
             section { padding: 30px 20px; }
+            .event-info-box { flex-direction: column; text-align: center; }
         }
         @media (max-width: 768px) { 
             .nav-container { flex-direction: column; gap: 12px; } 
-            .hero h1 { font-size: 38px; }
+            .hero h1 { font-size: 36px; }
             .social-bar { flex-direction: column; }
-            .day-cell { min-height: 34px; font-size: 12px; }
+            .day-cell { min-height: 44px; font-size: 14px; }
         }
 
         footer { 
@@ -741,8 +505,8 @@
             <nav>
                 <ul>
                     <li><a href="#activities">החוויות שלנו</a></li>
+                    <li><a href="#calendar-section">לוח אירועים</a></li>
                     <li><a href="jerusalem.html" style="color: var(--campfire-orange); font-weight: bold;">קמפינג ירושלים 🌲</a></li>
-                    <li><a href="#camping">קמפינג מירון/צפון</a></li>
                     <li><a href="#about">מי אנחנו</a></li>
                     <li>
                         <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
@@ -763,11 +527,11 @@
     <div class="wrapper">
 
         <!-- מרכז פעילויות וחוויות לבחירה -->
-        <section id="activities" style="background: linear-gradient(135deg, #ffffff, #f7faf7);">
+        <section id="activities">
             <div class="section-header">
-                <h2>איזו חוויה מתאימה לכם?</h2>
+                <h2>החוויות הקרובות שלנו</h2>
                 <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">
-                    בחרו את הפעילות הרצויה והבטיחו מקום במפגש הקרוב
+                    בחרו את הפעילות המתאימה לכם למעבר לפרטים המלאים והרשמה מהירה
                 </p>
             </div>
 
@@ -777,231 +541,69 @@
                     <div>
                         <div class="hub-icon"><i class="fas fa-mountain"></i></div>
                         <h3>קמפינג הרי ירושלים</h3>
-                        <p>סוגרים שנה בחניון נס הרים: מערת הנטיפים, עששיות, סיר פוייקה, זריחה, מזרקות טדי והכותל.</p>
+                        <span class="hub-dates-tag">27-28 לאוגוסט 2026</span>
+                        <p>סוגרים שנה בנס הרים: שמורת מערת הנטיפים, סדנת עששיות, סיר פוייקה, זריחה, מזרקות טדי וביקור בכותל.</p>
                     </div>
                     <a href="jerusalem.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה לירושלים <i class="fas fa-chevron-left"></i></a>
                 </div>
 
-                <!-- כרטיס 2: קמפינג מירון וספטמבר -->
+                <!-- כרטיס 2: קמפינג צפון וסוכות -->
                 <div class="hub-card">
                     <div>
                         <div class="hub-icon"><i class="fas fa-campground"></i></div>
-                        <h3>קמפינג צפון ומירון</h3>
-                        <p>קמפינג "הכל כלול" בטבע הגלילי: אוהלים ומזרנים, בישולי מדורה, סדנאות יצירה באדמה ותצפית כוכבים.</p>
+                        <h3>קמפינג משפחות וסוכות</h3>
+                        <span class="hub-dates-tag">ספטמבר 2026 (צפון)</span>
+                        <p>קמפינג "הכל כלול" בטבע הגלילי: אוהלים ומזרנים, בישולי מדורה וטאבון, סדנאות יצירה באדמה ותצפית כוכבים.</p>
                     </div>
-                    <a href="#camping" class="hub-btn">למועדי הקמפינג והרשמה <i class="fas fa-chevron-left"></i></a>
+                    <a href="https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20קמפינג%20משפחות%20בספטמבר/סוכות" target="_blank" class="hub-btn">לפרטים והרשמה לספטמבר <i class="fas fa-chevron-left"></i></a>
                 </div>
 
-                <!-- כרטיס 3: סדנאות יצירה בטבע -->
+                <!-- כרטיס 3: סדנאות יצירה בעמק הירדן -->
                 <div class="hub-card">
                     <div>
                         <div class="hub-icon"><i class="fas fa-paint-brush"></i></div>
                         <h3>סדנאות יצירה מהטבע</h3>
-                        <p>אשדות יעקב מאוחד: דמויות יער, תכשיטים מהטבע ופיסול באדמה למבוגרים וילדים.</p>
+                        <span class="hub-dates-tag">עמק הירדן</span>
+                        <p>מרחב יצירה בחומרים טבעיים למבוגרים וילדים: דמויות ויצורי יער, תכשיטים מהטבע ופיסול באדמה מקומית.</p>
                     </div>
-                    <a href="https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20סדנאות%20היצירה%20מהטבע%20באשדות%20יעקב" target="_blank" class="hub-btn">לפרטים והרשמה לסדנאות <i class="fas fa-chevron-left"></i></a>
+                    <a href="https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20סדנאות%20היצירה%20מהטבע%20בעמק%20הירדן" target="_blank" class="hub-btn">לפרטים והרשמה לסדנאות <i class="fas fa-chevron-left"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- עמוד המכירה הממוקד של קמפינג מירון וספטמבר -->
-        <section id="camping">
+        <!-- לוח שנה מרכזי וגדול לכל האירועים -->
+        <section id="calendar-section">
             <div class="section-header">
-                <h2>קמפינג משפחות "הכל כלול"</h2>
-                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">שחררו את הלוגיסטיקה המתישה. אנחנו דואגים להכל - מרמת האוהל והמזרנים ועד הארוחות. אתם מגיעים פשוט ליהנות ולייצר זיכרונות.</p>
+                <h2>לוח אירועים ופעילויות</h2>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">
+                    לחצו על התאריכים המודגשים בלוח לצפייה בפרטי האירוע ומעבר להרשמה
+                </p>
             </div>
 
-            <div class="grid">
-                <div class="card">
-                    <h3><i class="fas fa-fire" style="color: var(--campfire-orange);"></i> נפגשים בשעה 15:00 בצהריים</h3>
-                    <p>הגעה לשטח, התארגנות באוהלים, נשתה בנחת קפה ותה צמחים, ונשב למפגש פתיחה על המחצלת.</p>
+            <div class="big-calendar-wrapper">
+                <div class="calendar-header">
+                    <button type="button" class="cal-nav-btn" onclick="prevMonth()"><i class="fas fa-chevron-right"></i> לחודש אוגוסט</button>
+                    <span id="calendarMonthTitle">אוגוסט 2026</span>
+                    <button type="button" class="cal-nav-btn" onclick="nextMonth()">לחודש ספטמבר <i class="fas fa-chevron-left"></i></button>
                 </div>
-                <div class="card">
-                    <h3><i class="fas fa-utensils" style="color: var(--earth-light);"></i> בישול שטח</h3>
-                    <p>לארוחת הערב נכין על המדורה תבשיל פוייקה צמחוני ותפוחי אדמה על גחלים. למחרת בבוקר נאפה פיתות חמות על הטאבון עם ממרחים טעימים וירקות.</p>
+                
+                <div class="calendar-weekdays">
+                    <div>א'</div><div>ב'</div><div>ג'</div><div>ד'</div><div>ה'</div><div>ו'</div><div>ש'</div>
                 </div>
-                <div class="card">
-                    <h3><i class="fas fa-compass" style="color: var(--forest-mid);"></i> פעילות לילדים</h3>
-                    <p>בזמן הכנת ארוחת הערב הילדים יכינו עששיות ועם רדת החשיכה נצא לטיול לאור הנרות. נקשיב לקולות היער, נהנה מזמן איכות עם הילדים ונתחבר לטבע. בלילה הערים יוכלו לשכב על המחצלת לתצפית על מליון כוכבים. למחרת בבוקר הילדים יתנסו בפיסול באדמה וכל אחד ייקח איתו מזכרת מהאדמה המקומית. לאורך כל השהייה בטבע תהיה אפשרות להתנסות בכלי עבודה ובמלאכות קדומות לאחר קבלת הדרכת בטיחות: מסורים, גרזן ביקוע, מפסלות, סכין גילוף, אבן אש ועוד. בסיום הפעילות בשעה 12:00 כל משפחה תמשיך לדרכה - לטיול בנחלי האזור, לישיבה רגועה בעגלת קפה או לרחצה בכנרת.</p>
-                </div>
-            </div>
-
-            <!-- סקציית הציוד והתמונה המשולבת -->
-            <div class="equipment-section-container">
-                <div>
-                    <h3 style="color: var(--forest-green); margin-bottom: 12px; font-size: 22px;"><i class="fas fa-clipboard-check"></i> מה אנחנו מספקים?</h3>
-                    <ul class="info-list">
-                        <li>אוהל ומזרנים לכל המשפחה.</li>
-                        <li>ארוחות בוקר וערב טעימות שנבשל על המדורה.</li>
-                        <li>קפה ותה צמחים לאורך הפעילות.</li>
-                        <li>כלי אוכל רב פעמיים.</li>
-                        <li>ברזיה לשטיפת ידיים וכלים כולל סבון נוזלי.</li>
-                        <li>סדנאות יצירה לילדים.</li>
-                        <li>הדרכה מקצועית צמודה, לוגיסטיקה מאורגנת וליווי אישי.</li>
-                        <li><strong>הלינה במירון הינה בחניון לילה של רשות הטבע והגנים. יש ברזי מים ושולחנות פיקניק. אין שירותים ומקלחות.</strong></li>
-                        <li>פינת ישיבה משותפת על מחצלות.</li>
-                        <li>משחקי קופסא לילדים לערב ללא מסכים.</li>
-                    </ul>
+                
+                <div class="calendar-days" id="calendarDays">
+                    <!-- נוצר אוטומטית ע"י JS -->
                 </div>
 
-                <div>
-                    <div class="equipment-image-box">
-                        <img src="IMG2.PNG" alt="בישול פויקה ומדורה" onerror="this.style.display='none'">
+                <!-- תיבת פרטי האירוע של התאריך הנבחר -->
+                <div class="event-info-box" id="eventInfoBox">
+                    <div class="event-info-text">
+                        <h4 id="eventTitle">קמפינג סוף החופש בהרי ירושלים (נס הרים)</h4>
+                        <p id="eventDesc">27-28 לאוגוסט 2026 | מערת הנטיפים, סדנת עששיות, סיר פוייקה, מזרקות טדי והכותל.</p>
                     </div>
-
-                    <h3 style="color: var(--earth-brown); margin-bottom: 12px; font-size: 22px;"><i class="fas fa-hiking"></i> מה אתם מביאים?</h3>
-                    <ul class="info-list equipment-list">
-                        <li>סדינים וציפות/שמיכות דקות.</li>
-                        <li>סט אחד של בגדי החלפה, בגדים ארוכים דקים לערב.</li>
-                        <li>נעליים נוחות או סנדלים (לא כפכפים פתוחות).</li>
-                        <li>פנס.</li>
-                        <li>כובעים, קרם הגנה ותכשיר נגד יתושים.</li>
-                        <li>ציוד היגיינה אישי: מברשת ומשחת שיניים, מברשת שיער, דאודורנט, גליל נייר טואלט, 3 שקיות ריקות.</li>
-                        <li>שישיית ליטר וחצי מים מינרליים.</li>
-                        <li>תרופות.</li>
-                    </ul>
-
-                    <h3 style="color: var(--earth-brown); margin-top: 25px; margin-bottom: 12px; font-size: 22px;"><i class="fas fa-chair"></i> ציוד רשות:</h3>
-                    <ul class="info-list optional-list">
-                        <li>כרית שינה אישית.</li>
-                        <li>מחצלת קטנה לפרוס מחוץ לאוהל.</li>
-                        <li>כסאות מתקפלים.</li>
-                    </ul>
-
-                    <h3 style="color: var(--earth-brown); margin-top: 25px; margin-bottom: 12px; font-size: 22px;"><i class="fas fa-ban"></i> מה לא להביא:</h3>
-                    <ul class="info-list ban-list">
-                        <li>בעלי חיים.</li>
-                        <li>רמקולים.</li>
-                        <li>טלפונים לילדים.</li>
-                    </ul>
+                    <a href="jerusalem.html" id="eventLinkBtn" class="hub-btn hub-btn-highlight">מעבר לעמוד ההרשמה <i class="fas fa-chevron-left"></i></a>
                 </div>
             </div>
-
-            <!-- אזור עלויות, מחירון מעודכן וטופס הרשמה -->
-            <div class="booking-box">
-                <div class="price-tag">
-                    <span class="early-bird-badge"> מחירון קמפינג משפחות</span>
-                    
-                    <div class="price-item">מבוגר: <span>₪250</span></div>
-                    <div class="price-item">ילד ראשון ושני (מגיל שנתיים): <span>₪100</span></div>
-                    <div class="price-item">ילד שלישי והלאה: <span>₪50</span> בלבד!</div>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px; margin-bottom: 6px;">*פעוטות מתחת לגיל שנתיים - ללא עלות.</p>
-                    <p style="font-size: 13px; color: var(--forest-green); font-weight: bold; margin-bottom: 10px;">*בספטמבר: שהייה של לילה נוסף בין ה-27-29.9 בתוספת 200 ₪ למשפחה.</p>
-                    
-                    <div class="price-anchor-box">
-                        <span style="font-size: 15px; font-weight: bold; color: var(--text-dark);">סך הכל להרכב הנבחר:</span>
-                        <span class="discount-price-highlight" id="calculatedTotalDisplay">₪700</span>
-                    </div>
-
-                    <h4 style="margin-top: 15px; color: var(--earth-brown); font-size: 15px; font-weight: 700;">מדיניות ביטול :</h4>
-                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
-                        • עד 10 ימי עסקים לפני מועד האירוע - החזר כספי מלא .<br>
-                        • בין 10 ל-3 ימי עסקים לפני מועד האירוע - החזר בגובה 50% מהתשלום.<br>
-                        • פחות מ-3 ימי עסקים – לא ניתן לקבל החזר, אך ניתן להעביר את הזכות למשפחה אחרת
-                    </p>
-                </div>
-
-                <div class="booking-form">
-                    <h3 style="color: var(--forest-green); font-size: 22px;"><i class="fas fa-user-check"></i> טופס הרשמה מהיר </h3>
-                    
-                    <div class="form-group">
-                        <label>שם מלא:</label>
-                        <input type="text" id="parentName" placeholder="" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>טלפון נייד:</label>
-                        <input type="tel" id="parentPhone" placeholder="" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>כתובת מייל:</label>
-                        <input type="email" id="parentEmail" placeholder="example@domain.com" required>
-                    </div>
-
-                    <!-- לוח שנה מעודכן (הוסר 25-26.8) -->
-                    <div class="form-group">
-                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת תאריך ומיקום:</label>
-                        <div class="calendar-container">
-                            <div class="calendar-header">
-                                <button type="button" class="cal-nav-btn" onclick="prevMonth()"><i class="fas fa-chevron-right"></i> לחודש הקודם</button>
-                                <span id="calendarMonthTitle">אוגוסט 2026</span>
-                                <button type="button" class="cal-nav-btn" onclick="nextMonth()">לחודש הבא <i class="fas fa-chevron-left"></i></button>
-                            </div>
-                            <div class="calendar-weekdays">
-                                <div>א'</div><div>ב'</div><div>ג'</div><div>ד'</div><div>ה'</div><div>ו'</div><div>ש'</div>
-                            </div>
-                            <div class="calendar-days" id="calendarDays">
-                                <!-- ימים יווצרו דרך JavaScript -->
-                            </div>
-                            
-                            <!-- בחירת תאריך התחלה וסיום מדויקים עבור ספטמבר (27-29) -->
-                            <div id="dateRangeBox" class="date-range-box">
-                                <label style="font-size: 14px; font-weight: bold; color: var(--forest-green); display: block; margin-bottom: 8px;">
-                                    🏕️ בחירת תאריכי כניסה ויציאה בסוכות (27-29.9):
-                                </label>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                                    <div>
-                                        <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך הגעה (כניסה):</span>
-                                        <select id="startDateSelect" onchange="handleStartDateChange()" style="padding: 8px; border-radius: 8px; border: 1.5px solid var(--forest-mid); font-size: 13px; font-weight: bold; width: 100%; margin-top: 4px;">
-                                            <option value="27" selected>27.9 (יום ראשון)</option>
-                                            <option value="28">28.9 (יום שני)</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך עזיבה (יציאה):</span>
-                                        <select id="endDateSelect" onchange="calculateDateRangeNights()" style="padding: 8px; border-radius: 8px; border: 1.5px solid var(--forest-mid); font-size: 13px; font-weight: bold; width: 100%; margin-top: 4px;">
-                                            <option value="28" selected>28.9 (יום שני)</option>
-                                            <option value="29">29.9 (יום שלישי)</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div style="font-size: 12px; color: var(--campfire-orange); font-weight: bold; margin-top: 8px;">
-                                    * תוספת 200 ₪ ללילה נוסף (בשהייה של 2 לילות 27-29.9).
-                                </div>
-                            </div>
-
-                            <div class="selected-date-banner" id="selectedDateBanner">
-                                אנא לחצו על אחד המועדים המודגשים בלוח
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div class="form-group">
-                            <label>מספר מבוגרים:</label>
-                            <select id="adultsNum" onchange="calculateTotal()">
-                                <option value="1">1</option>
-                                <option value="2" selected>2</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>מספר ילדים:</label>
-                            <select id="kidsNum" onchange="renderKidsAgesInputs(); calculateTotal();">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3" selected>3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>גילאי הילדים <span style="color: red;">*</span> </label>
-                        <div id="kidsAgesContainer" class="kids-ages-container"></div>
-                    </div>
-
-                    <div class="total-price-box">
-                        לתשלום: ₪<span id="totalAmount">700</span>
-                    </div>
-
-                    <button class="btn-submit" onclick="openPaymentModal()" style="width: 100%; justify-content: center; margin-top: 10px;">
-                        בחירת אופן תשלום <i class="fas fa-chevron-left"></i>
-                    </button>
-                </div>
-            </div>
-
         </section>
 
         <!-- סקציית "מי אנחנו" -->
@@ -1039,58 +641,8 @@
 
     </div>
 
-    <!-- Modal תשלום -->
-    <div id="paymentModal" class="payment-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-shield-alt" style="color: var(--forest-mid);"></i> בחירת אופן תשלום</h2>
-            <p style="margin-top: 8px; font-size: 16px;">
-                סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">700</span></strong>
-            </p>
-            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp עם פרטי ההזמנה שלך לשליחת קישור תשלום:</p>
-            
-            <div class="payment-options-grid">
-                <button onclick="sendOrderToWhatsApp('העברה בנקאית')" class="pay-option-btn">
-                    <div class="pay-btn-content">
-                        <div class="pay-btn-icon"><i class="fas fa-university"></i></div>
-                        <span> העברה בנקאית </span>
-                    </div>
-                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
-                </button>
-
-                <button onclick="sendOrderToWhatsApp('PayBox')" class="pay-option-btn">
-                    <div class="pay-btn-content">
-                        <div class="pay-btn-icon"><i class="fas fa-box-open"></i></div>
-                        <span> PayBox</span>
-                    </div>
-                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
-                </button>
-
-                <button onclick="sendOrderToWhatsApp('bit')" class="pay-option-btn">
-                    <div class="pay-btn-content">
-                        <div class="pay-btn-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <span> bit</span>
-                    </div>
-                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
-                </button>
-
-                <button onclick="sendOrderToWhatsApp('כרטיס אשראי')" class="pay-option-btn">
-                    <div class="pay-btn-content">
-                        <div class="pay-btn-icon"><i class="far fa-credit-card"></i></div>
-                        <span> תשלום בכרטיס אשראי</span>
-                    </div>
-                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        const MY_WHATSAPP_NUMBER = "972559914540"; 
-        let currentMonth = 9; // ברירת מחדל לספטמבר (המועדים הפעילים)
-        let selectedDateText = "27-29.9 (סוכות)";
-        let extraNightsCost = 0;
-        let selectedNightsDetails = "";
+        let currentMonth = 8; // 8 = אוגוסט, 9 = ספטמבר
 
         function prevMonth() {
             currentMonth = 8;
@@ -1109,6 +661,7 @@
 
             if (currentMonth === 8) {
                 title.innerText = "אוגוסט 2026";
+                // אוגוסט מתחיל ביום שבת (6 תאים ריקים ב-RTL)
                 for (let i = 0; i < 6; i++) {
                     const emptyCell = document.createElement('div');
                     emptyCell.className = 'day-cell';
@@ -1119,12 +672,35 @@
                 for (let day = 1; day <= 31; day++) {
                     const dayCell = document.createElement('div');
                     dayCell.className = 'day-cell';
-                    dayCell.innerText = day;
                     dayCell.id = `day-8-${day}`;
+                    dayCell.innerHTML = `<span>${day}</span>`;
+
+                    // 27-28 לאוגוסט (הרי ירושלים)
+                    if (day === 27 || day === 28) {
+                        dayCell.classList.add('available');
+                        dayCell.innerHTML += `<div class="event-dot"></div>`;
+                        dayCell.onclick = () => showEventInfo(
+                            "קמפינג סוף החופש בהרי ירושלים (חניון נס הרים)",
+                            "27-28 לאוגוסט 2026 (חמישי-שישי) | שמורת מערת הנטיפים, עששיות, סיר פוייקה, מזרקות טדי והכותל.",
+                            "jerusalem.html",
+                            [27, 28], 8
+                        );
+                    }
+
                     container.appendChild(dayCell);
                 }
+
+                // בחירת ברירת מחדל לאוגוסט
+                showEventInfo(
+                    "קמפינג סוף החופש בהרי ירושלים (חניון נס הרים)",
+                    "27-28 לאוגוסט 2026 (חמישי-שישי) | שמורת מערת הנטיפים, עששיות, סיר פוייקה, מזרקות טדי והכותל.",
+                    "jerusalem.html",
+                    [27, 28], 8
+                );
+
             } else {
                 title.innerText = "ספטמבר 2026";
+                // ספטמבר מתחיל ביום שלישי (2 תאים ריקים)
                 for (let i = 0; i < 2; i++) {
                     const emptyCell = document.createElement('div');
                     emptyCell.className = 'day-cell';
@@ -1135,236 +711,74 @@
                 for (let day = 1; day <= 30; day++) {
                     const dayCell = document.createElement('div');
                     dayCell.className = 'day-cell';
-                    dayCell.innerText = day;
                     dayCell.id = `day-9-${day}`;
+                    dayCell.innerHTML = `<span>${day}</span>`;
 
+                    // 22-23 לספטמבר (אמהות וילדים)
                     if (day === 22 || day === 23) {
                         dayCell.classList.add('available');
-                        dayCell.onclick = () => selectDateGroup("22-23.9 (שלישי-רביעי - אמהות וילדים בלבד)", [22, 23], 9, false);
-                    } else if (day >= 27 && day <= 29) {
+                        dayCell.innerHTML += `<div class="event-dot"></div>`;
+                        dayCell.onclick = () => showEventInfo(
+                            "קמפינג אמהות וילדים בטבע (צפון)",
+                            "22-23 לספטמבר 2026 (שלישי-רביעי) | חוויית טבע מגבשת ומחברת, בישולי מדורה וסדנאות יצירה.",
+                            "https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20קמפינג%20אמהות%20וילדים%20ב-22-23%20בספטמבר",
+                            [22, 23], 9
+                        );
+                    }
+                    // 27-29 לספטמבר (קמפינג סוכות)
+                    else if (day >= 27 && day <= 29) {
                         dayCell.classList.add('available');
-                        dayCell.onclick = () => selectDateGroup("27-29.9 (סוכות - בחירת תאריכי הגעה ועזיבה)", [27, 28, 29], 9, true);
+                        dayCell.innerHTML += `<div class="event-dot"></div>`;
+                        dayCell.onclick = () => showEventInfo(
+                            "קמפינג משפחות בסוכות (צפון)",
+                            "27-29 לספטמבר 2026 (חול המועד סוכות) | אפשרות ללילה אחד או שני לילות, הכל כלול בטבע הגלילי.",
+                            "https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20קמפינג%20סוכות%20ב-27-29%20בספטמבר",
+                            [27, 28, 29], 9
+                        );
                     }
 
                     container.appendChild(dayCell);
                 }
+
+                // בחירת ברירת מחדל לספטמבר
+                showEventInfo(
+                    "קמפינג משפחות בסוכות (צפון)",
+                    "27-29 לספטמבר 2026 (חול המועד סוכות) | אפשרות ללילה אחד או שני לילות, הכל כלול בטבע הגלילי.",
+                    "https://wa.me/972559914540?text=שלום!%20אשמח%20לפרטים%20על%20קמפינג%20סוכות%20ב-27-29%20בספטמבר",
+                    [27, 28, 29], 9
+                );
             }
         }
 
-        function selectDateGroup(dateText, daysArray, month, isMultiNight) {
-            const rangeBox = document.getElementById('dateRangeBox');
+        function showEventInfo(title, desc, linkUrl, daysArray, month) {
+            document.getElementById('eventTitle').innerText = title;
+            document.getElementById('eventDesc').innerText = desc;
             
-            document.querySelectorAll('.day-cell').forEach(cell => cell.classList.remove('selected'));
+            const linkBtn = document.getElementById('eventLinkBtn');
+            linkBtn.href = linkUrl;
+            if (linkUrl.startsWith('http')) {
+                linkBtn.target = "_blank";
+                linkBtn.innerHTML = `לפרטים והרשמה בוואטסאפ <i class="fab fa-whatsapp"></i>`;
+            } else {
+                linkBtn.target = "_self";
+                linkBtn.innerHTML = `מעבר לעמוד ההרשמה <i class="fas fa-chevron-left"></i>`;
+            }
 
+            // סימון ימים בלוח
+            document.querySelectorAll('.day-cell').forEach(cell => cell.classList.remove('selected'));
             daysArray.forEach(day => {
                 const cell = document.getElementById(`day-${month}-${day}`);
                 if (cell) cell.classList.add('selected');
             });
-
-            if (isMultiNight) {
-                rangeBox.style.display = 'block';
-                handleStartDateChange();
-            } else {
-                rangeBox.style.display = 'none';
-                extraNightsCost = 0;
-                selectedNightsDetails = "";
-                selectedDateText = dateText;
-                
-                let note = "";
-                if (dateText.includes("אמהות וילדים")) {
-                    note = `<br><span style="color: #ffeb3b; font-size: 13px;">*מועד זה מיועד לאמהות וילדים בלבד</span>`;
-                }
-                document.getElementById('selectedDateBanner').innerHTML = `תאריך ומיקום נבחר: ${dateText}${note}`;
-                calculateTotal();
-            }
-        }
-
-        function handleStartDateChange() {
-            const startVal = parseInt(document.getElementById('startDateSelect').value);
-            const endSelect = document.getElementById('endDateSelect');
-            
-            endSelect.innerHTML = '';
-            const dayNames = { 28: "28.9 (יום שני)", 29: "29.9 (יום שלישי)" };
-            
-            for (let d = startVal + 1; d <= 29; d++) {
-                const opt = document.createElement('option');
-                opt.value = d;
-                opt.innerText = dayNames[d];
-                endSelect.appendChild(opt);
-            }
-
-            calculateDateRangeNights();
-        }
-
-        function calculateDateRangeNights() {
-            const startVal = parseInt(document.getElementById('startDateSelect').value);
-            const endVal = parseInt(document.getElementById('endDateSelect').value);
-            
-            const nights = endVal - startVal;
-            const extraNights = Math.max(0, nights - 1);
-            extraNightsCost = extraNights * 200;
-
-            let nightsText = nights === 1 ? "לילה 1" : `${nights} לילות`;
-            let extraCostText = extraNightsCost > 0 ? ` (תוספת ₪${extraNightsCost} עבור לילה נוסף)` : '';
-
-            selectedDateText = `${startVal}-${endVal}.9 (${nightsText})`;
-            selectedNightsDetails = `כניסה: ${startVal}.9 | יציאה: ${endVal}.9 (${nightsText})`;
-
-            document.getElementById('selectedDateBanner').innerHTML = `תאריכים נבחרים: ${startVal}.9 עד ${endVal}.9 (${nightsText})${extraCostText}`;
-
-            calculateTotal();
-        }
-
-        function renderKidsAgesInputs() {
-            const kidsCount = parseInt(document.getElementById('kidsNum').value);
-            const container = document.getElementById('kidsAgesContainer');
-            container.innerHTML = '';
-
-            for (let i = 1; i <= kidsCount; i++) {
-                const div = document.createElement('div');
-                div.style.display = 'flex';
-                div.style.flexDirection = 'column';
-                div.style.gap = '2px';
-
-                const label = document.createElement('label');
-                label.innerText = `גיל ילד ${i}:`;
-                label.style.fontSize = '12px';
-                label.style.fontWeight = 'bold';
-
-                const input = document.createElement('input');
-                input.type = 'number';
-                input.min = '0';
-                input.max = '18';
-                input.placeholder = 'גיל';
-                input.required = true;
-                input.className = 'kid-age-input';
-                input.style.padding = '6px';
-                input.style.fontSize = '14px';
-                input.oninput = calculateTotal;
-
-                div.appendChild(label);
-                div.appendChild(input);
-                container.appendChild(div);
-            }
-        }
-
-        function calculateTotal() {
-            const adults = parseInt(document.getElementById('adultsNum').value);
-            const totalKidsSelected = parseInt(document.getElementById('kidsNum').value);
-            
-            const ageInputs = document.querySelectorAll('.kid-age-input');
-            let payingKids = 0;
-            
-            ageInputs.forEach(input => {
-                const val = parseFloat(input.value);
-                if (isNaN(val) || val >= 2) {
-                    payingKids++;
-                }
-            });
-
-            if (ageInputs.length === 0) {
-                payingKids = totalKidsSelected;
-            }
-
-            let total = adults * 250;
-
-            if (payingKids > 0) {
-                let firstTwoKids = Math.min(2, payingKids);
-                let extraKids = Math.max(0, payingKids - 2);
-                total += (firstTwoKids * 100) + (extraKids * 50);
-            }
-
-            total += extraNightsCost;
-
-            const calcDisplay = document.getElementById('calculatedTotalDisplay');
-            if (calcDisplay) calcDisplay.innerText = `₪${total}`;
-            
-            document.getElementById('totalAmount').innerText = total;
-        }
-
-        function openPaymentModal() {
-            const name = document.getElementById('parentName').value;
-            const phone = document.getElementById('parentPhone').value;
-            const email = document.getElementById('parentEmail').value;
-            const total = document.getElementById('totalAmount').innerText;
-
-            if(!name || !phone || !email) {
-                alert('אנא מלאו שם מלא, טלפון נייד וכתובת מייל כדי להתקדם לתשלום.');
-                return;
-            }
-
-            const ageInputs = document.querySelectorAll('.kid-age-input');
-            let allAgesFilled = true;
-            ageInputs.forEach(input => {
-                if (input.value === "" || input.value === null) {
-                    allAgesFilled = false;
-                }
-            });
-
-            if (!allAgesFilled) {
-                alert('אנא מלאו את הגילאים עבור כל הילדים בטופס.');
-                return;
-            }
-
-            document.getElementById('modalTotal').innerText = total;
-            document.getElementById('paymentModal').style.display = 'flex';
-        }
-
-        function sendOrderToWhatsApp(paymentMethod) {
-            const name = document.getElementById('parentName').value;
-            const phone = document.getElementById('parentPhone').value;
-            const email = document.getElementById('parentEmail').value;
-            const adults = document.getElementById('adultsNum').value;
-            const kids = document.getElementById('kidsNum').value;
-            const total = document.getElementById('totalAmount').innerText;
-
-            const ageInputs = document.querySelectorAll('.kid-age-input');
-            let ages = [];
-            ageInputs.forEach((input, index) => {
-                if (input.value !== "") {
-                    ages.push(`ילד ${index + 1}: גיל ${input.value}`);
-                }
-            });
-            const agesStr = ages.length > 0 ? ages.join(', ') : 'לא צוינו גילאים';
-
-            let dateInfo = selectedDateText;
-            if (selectedNightsDetails !== "") {
-                dateInfo = `${selectedDateText} [${selectedNightsDetails}]`;
-            }
-
-            const message = `שלום! נרשמתי לקמפינג המשפחות דרך האתר:%0A%0A` +
-                            `שם מלא: ${name}%0A` +
-                            `טלפון: ${phone}%0A` +
-                            `מייל: ${email}%0A` +
-                            `מועד נבחר: ${dateInfo}%0A` +
-                            `מספר מבוגרים: ${adults}%0A` +
-                            `מספר ילדים: ${kids}%0A` +
-                            `גילאי הילדים: ${agesStr}%0A` +
-                            `סך הכל לתשלום: ₪${total}%0A` +
-                            `אופן תשלום מבוקש: ${paymentMethod}%0A%0A` +
-                            `אשמח לקבל קישור לתשלום. תודה`;
-
-            const waUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
-            
-            window.open(waUrl, '_blank');
-            closeModal();
-        }
-
-        function closeModal() {
-            document.getElementById('paymentModal').style.display = 'none';
         }
 
         window.onload = function() {
             renderCalendar();
-            renderKidsAgesInputs();
-            calculateTotal();
-            // סימון מועד ספטמבר כברירת מחדל
-            selectDateGroup("27-29.9 (סוכות - בחירת תאריכי הגעה ועזיבה)", [27, 28, 29], 9, true);
         };
     </script>
 
     <footer>
-        <p>מדורת השבט | חוויות טבע, קמפינג משפחות ומלאכות קדומות</p>
+        <p>מדורת השבט | קמפינג משפחות, חוויות טבע ומלאכות קדומות</p>
         <p style="font-size: 12px; color: #6a826f; margin-top: 5px;">טלפון ליצירת קשר: 055-9914540</p>
     </footer>
 
