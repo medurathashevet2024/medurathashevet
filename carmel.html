@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדורת השבט - קמפינג סוכות בכרמל</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --forest-green: #1b3820;
+            --forest-mid: #2d5a37;
+            --forest-light: #f0f5f1;
+            --earth-brown: #4a3329;
+            --earth-light: #8c6d5e;
+            --campfire-orange: #e65c00;
+            --campfire-glow: #ff751a;
+            --sandy-bg: #faf6f0;
+            --text-dark: #1f2421;
+            --text-muted: #58635a;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 4px 15px rgba(27, 56, 32, 0.05);
+            --shadow-md: 0 12px 35px rgba(27, 56, 32, 0.08);
+            --shadow-lg: 0 20px 45px rgba(27, 56, 32, 0.14);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: 'Assistant', sans-serif; background-color: var(--sandy-bg); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3, .logo-text { font-family: 'Secular One', sans-serif; }
+
+        header {
+            background-color: rgba(27, 56, 32, 0.98);
+            backdrop-filter: blur(12px);
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; }
+        .brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand-logo .logo-text { color: var(--sandy-bg); font-size: 26px; font-weight: bold; }
+        nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+        nav a { color: #d4e2d5; text-decoration: none; font-weight: 600; font-size: 15px; }
+        nav a:hover { color: var(--white); }
+
+        .phone-nav-link {
+            color: #ffffff !important; font-weight: bold; display: flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .wa-header-icon { width: 20px; height: 20px; object-fit: contain; vertical-align: middle; }
+
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(27, 56, 32, 0.5), rgba(74, 51, 41, 0.6)), 
+                        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 52vh; min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: var(--white); padding: 0 24px; margin-top: 65px;
+        }
+
+        .hero h1 { font-size: 52px; margin-bottom: 12px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .hero p { font-size: 22px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); font-weight: 300; max-width: 800px; }
+
+        .wrapper { max-width: 1200px; margin: 0 auto; padding: 50px 24px; }
+        .section-header { text-align: center; margin-bottom: 35px; }
+        .section-header h2 { font-size: 38px; color: var(--forest-green); position: relative; display: inline-block; }
+        .section-header h2::after { content: ''; position: absolute; bottom: -8px; left: 30%; width: 40%; height: 3px; background-color: var(--campfire-orange); border-radius: 2px; }
+
+        section { background: var(--white); padding: 45px; border-radius: 24px; box-shadow: var(--shadow-md); margin-bottom: 50px; border: 1px solid rgba(27, 56, 32, 0.04); }
+
+        .event-chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-bottom: 30px; }
+        .chip { background: var(--forest-light); color: var(--forest-green); padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; border: 1.5px solid rgba(45, 90, 55, 0.2); }
+        .chip i { color: var(--campfire-orange); }
+
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; margin-top: 25px; }
+        .card { background-color: var(--sandy-bg); padding: 24px; border-radius: 18px; border-top: 5px solid var(--earth-brown); box-shadow: var(--shadow-sm); }
+        .card h3 { color: var(--forest-green); margin-bottom: 10px; font-size: 20px; display: flex; align-items: center; gap: 8px; }
+
+        .equipment-section-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-top: 40px; background: #ffffff; padding: 20px 0; }
+        .equipment-image-box { display: flex; justify-content: center; align-items: center; margin-bottom: 25px; }
+        .equipment-image-box img { width: 100%; max-width: 450px; height: auto; max-height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); border: 4px solid #f8faf8; }
+
+        .info-list { list-style: none; margin-top: 15px; }
+        .info-list li { position: relative; padding-right: 28px; margin-bottom: 12px; font-size: 16px; }
+        .info-list li::before { content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; right: 0; color: var(--campfire-orange); font-size: 16px; }
+        .equipment-list li::before { content: "\f553"; color: var(--forest-mid); }
+        .optional-list li::before { content: "\f067"; color: var(--earth-light); }
+        .ban-list li::before { content: "\f05e"; color: #d9534f; }
+
+        .booking-box { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 35px; background: linear-gradient(135deg, var(--forest-light), #e4ede6); padding: 40px; border-radius: 22px; border: 1px solid rgba(27, 56, 32, 0.08); }
+        .price-tag { background: var(--white); padding: 30px; border-radius: 18px; box-shadow: var(--shadow-sm); border-right: 5px solid var(--campfire-orange); display: flex; flex-direction: column; justify-content: space-between; }
+        .early-bird-badge { background: var(--campfire-orange); color: var(--white); font-size: 14px; font-weight: bold; padding: 5px 14px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+        .price-item { font-size: 17px; font-weight: bold; color: var(--earth-brown); margin-bottom: 6px; }
+        .price-item span { color: var(--campfire-orange); font-size: 22px; }
+
+        .booking-form { display: flex; flex-direction: column; gap: 16px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-weight: 700; color: var(--forest-green); }
+        .form-group input, .form-group select { padding: 13px 16px; border: 1.5px solid #cdd8cf; border-radius: 12px; font-size: 16px; width: 100%; background: var(--white); }
+
+        .date-range-box { background: #fff8f3; padding: 14px; border-radius: 12px; border: 1.5px dashed var(--campfire-orange); margin-top: 8px; }
+        .calendar-container { background: var(--white); padding: 16px; border-radius: 16px; border: 1.5px solid #cdd8cf; width: 100%; }
+        
+        .selected-date-banner { margin-top: 12px; background: var(--forest-green); color: var(--white); padding: 12px 14px; border-radius: 10px; font-size: 14px; font-weight: bold; text-align: center; line-height: 1.5; }
+        .total-price-box { background: var(--forest-green); color: var(--white); padding: 16px; border-radius: 12px; text-align: center; font-size: 22px; font-weight: bold; }
+        .btn-submit { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow)); color: var(--white); padding: 15px 38px; text-decoration: none; font-size: 19px; font-weight: 700; border-radius: 50px; border: none; cursor: pointer; }
+
+        .social-bar { display: flex; align-items: center; justify-content: center; gap: 25px; margin-top: 40px; flex-wrap: wrap; background: rgba(27, 56, 32, 0.04); padding: 25px; border-radius: 20px; border: 1px dashed rgba(27, 56, 32, 0.15); }
+        .social-link { display: inline-flex; align-items: center; gap: 12px; padding: 14px 28px; border-radius: 50px; text-decoration: none; color: var(--white); font-weight: bold; font-size: 16px; }
+        .link-wa { background: linear-gradient(135deg, #25D366, #1eaa53); }
+        .link-fb { background: linear-gradient(135deg, #1877F2, #0d5cb5); }
+        .logo-center-box { background: var(--white); padding: 10px 20px; border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+        .logo-center-box img { max-height: 60px; width: auto; object-fit: contain; }
+
+        .payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18, 36, 21, 0.75); backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: var(--white); padding: 40px; border-radius: 24px; max-width: 500px; width: 100%; position: relative; text-align: center; }
+        .close-modal { position: absolute; top: 15px; left: 15px; font-size: 26px; cursor: pointer; color: var(--text-muted); }
+        .payment-options-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
+        .pay-option-btn { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-radius: 14px; text-decoration: none; color: var(--text-dark); background: #f8faf8; font-weight: 700; font-size: 16px; border: 1.5px solid #dce5dd; cursor: pointer; width: 100%; }
+
+        @media (max-width: 992px) { .booking-box { grid-template-columns: 1fr; } .equipment-section-container { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .hero h1 { font-size: 34px; } }
+        footer { background-color: #0f2112; color: #a3b8a7; text-align: center; padding: 35px 20px; font-size: 15px; border-top: 4px solid var(--campfire-orange); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo"><span class="logo-text">🌿 מדורת השבט</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">דף הבית</a></li>
+                    <li><a href="#about">על הקמפינג</a></li>
+                    <li><a href="#booking">הרשמה</a></li>
+                    <li>
+                        <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-header-icon">
+                            055-9914540
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>קמפינג סוכות בפארק הכרמל</h1>
+        <p>חוויית טבע משפחתית בחול המועד – חורש ירוק, שביל היחמורים, חי-בר כרמל ובישולי מדורה מפנקים</p>
+    </div>
+
+    <div class="wrapper">
+
+        <section id="about">
+            <div class="section-header">
+                <h2>מה מחכה לנו בסוכות בכרמל?</h2>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">
+                    קמפינג "הכל כלול" בחניון הכלניות המוצל, עם שפע פעילויות טבע, מלאכות ובישולי שדה
+                </p>
+            </div>
+
+            <div class="event-chips">
+                <div class="chip"><i class="far fa-calendar-check"></i> 27-29 לספטמבר 2026 (חול המועד סוכות)</div>
+                <div class="chip"><i class="fas fa-map-marker-alt"></i> חניון לילה כלניות (פארק הכרמל / שווייצריה הקטנה)</div>
+                <div class="chip"><i class="fas fa-moon"></i> אפשרות לבחירה: לילה 1 או 2 לילות</div>
+            </div>
+
+            <div class="grid-cards">
+                <div class="card">
+                    <h3><i class="fas fa-paw"></i> ביקור בחי-בר כרמל</h3>
+                    <p>הליכה קלילה בשביל היחמורים המוצל וסיור מרתק בשמורת חי-בר כרמל (נשרים, יחמורים ואיילים בסביבתם הטבעית).</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-fire"></i> סיר פוייקה ועששיות</h3>
+                    <p>סדנת יצירת עששיות לילדים לקראת שקיעה, וסיר פוייקה עשיר ומפנק המתבשל על גחלי המדורה.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-bread-slice"></i> פיתות בטאבון ופיסול באדמה</h3>
+                    <p>אפיית פיתות חמות על הטאבון לארוחת הבוקר, והתנסות בפיסול באדמה ומלאכות קדומות.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-tree"></i> שווייצריה הקטנה וחורש אלונים</h3>
+                    <p>לינה בחניון מוסדר עם שירותים וברזיות, מוקף צל ועצי חורש עבותים עם אוויר הרים צלול.</p>
+                </div>
+            </div>
+
+            <div class="equipment-section-container">
+                <div>
+                    <h3 style="color: var(--forest-green); margin-bottom: 12px; font-size: 22px;"><i class="fas fa-clipboard-check"></i> מה אנחנו מספקים?</h3>
+                    <ul class="info-list">
+                        <li>אוהל ומזרנים נוחים לכל המשפחה.</li>
+                        <li>ארוחות ערב (פוייקה מפנק) וארוחות בוקר (פיתות בטאבון, ירקות וממרחים).</li>
+                        <li>קפה, תה צמחים וכיבוד קל לאורך הפעילות.</li>
+                        <li>כלי אוכל רב פעמיים.</li>
+                        <li>סדנאות יצירה לילדים (עששיות, פיסול באדמה ומלאכות).</li>
+                        <li>הדרכה צמודה, מסלול בשביל היחמורים וליווי אישי.</li>
+                        <li>חניון מוסדר עם שירותים, ברזיות מים ושולחנות פיקניק.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="equipment-image-box">
+                        <img src="IMG2.PNG" alt="בישול פויקה ומדורה" onerror="this.style.display='none'">
+                    </div>
+
+                    <h3 style="color: var(--earth-brown); margin-bottom: 12px; font-size: 22px;"><i class="fas fa-hiking"></i> מה אתם מביאים?</h3>
+                    <ul class="info-list equipment-list">
+                        <li>סדינים וציפות/שמיכות דקות (או שקי שינה).</li>
+                        <li>בגדי החלפה ובגדים ארוכים דקים לערב.</li>
+                        <li>נעליים נוחות להליכה וסנדלים.</li>
+                        <li>פנס אישי, כובע וקרם הגנה.</li>
+                        <li>ציוד היגיינה אישי ותרופות.</li>
+                        <li>שישיית מים מינרליים למשפחה.</li>
+                    </ul>
+
+                    <h3 style="color: var(--earth-brown); margin-top: 25px; margin-bottom: 12px; font-size: 22px;"><i class="fas fa-ban"></i> מה לא להביא:</h3>
+                    <ul class="info-list ban-list">
+                        <li>בעלי חיים, רמקולים ומסכים לילדים בזמן הפעילות.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- אזור הרשמה ומחירון -->
+        <section id="booking">
+            <div class="section-header">
+                <h2>מחירון והרשמה לקמפינג סוכות בכרמל</h2>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">הכל כלול: לינה באוהלים, סדנאות, טיולים ו-2 ארוחות מלאות בכל יממה</p>
+            </div>
+
+            <div class="booking-box">
+                <div class="price-tag">
+                    <div>
+                        <span class="early-bird-badge">מחירון סוכות בכרמל</span>
+                        <div class="price-item">מבוגר: <span>₪250</span></div>
+                        <div class="price-item">ילד ראשון ושני (מגיל שנתיים): <span>₪100</span></div>
+                        <div class="price-item">ילד שלישי והלאה: <span>₪50</span> בלבד!</div>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">* פעוטות מתחת לגיל שנתיים – ללא עלות.</p>
+                        
+                        <div style="background: #e8f5e9; border: 1.5px dashed #2e7d32; padding: 12px; border-radius: 12px; margin-top: 12px; font-size: 13px; color: #1b5e20; font-weight: bold; line-height: 1.5;">
+                            🌙 <strong>תוספת לילה שני:</strong><br>
+                            בסיס (הורה + ילד 1): 300 ₪ | כל הורה נוסף: 100 ₪ | כל ילד נוסף: 50 ₪
+                        </div>
+
+                        <div style="background: #fff3e0; border: 1px solid #ffe0b2; padding: 8px 12px; border-radius: 8px; margin-top: 10px; font-size: 13px; color: #e65100; font-weight: bold; text-align: center;">
+                            * מותנה במספר נרשמים מינימלי
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="color: var(--earth-brown); font-size: 15px; font-weight: 700; margin-top: 15px;">מדיניות ביטול:</h4>
+                        <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+                            • עד 10 ימי עסקים לפני המועד - החזר כספי מלא.<br>
+                            • בין 10 ל-3 ימי עסקים - החזר בגובה 50%.<br>
+                            • פחות מ-3 ימי עסקים - ניתן להעביר את הזכות למשפחה אחרת.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="booking-form">
+                    <h3 style="color: var(--forest-green); font-size: 22px;"><i class="fas fa-user-check"></i> טופס שריין מקום</h3>
+                    
+                    <div class="form-group">
+                        <label>שם מלא:</label>
+                        <input type="text" id="parentName" placeholder="שם מלא" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>טלפון נייד:</label>
+                        <input type="tel" id="parentPhone" placeholder="050-0000000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>כתובת מייל:</label>
+                        <input type="email" id="parentEmail" placeholder="example@domain.com" required>
+                    </div>
+
+                    <!-- בחירת מבוגרים וילדים -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>מספר מבוגרים:</label>
+                            <select id="adultsNum" onchange="calculateTotal()">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>מספר ילדים:</label>
+                            <select id="kidsNum" onchange="calculateTotal()">
+                                <option value="0">ללא ילדים</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- בחירת תאריכי הגעה ועזיבה בסוכות -->
+                    <div class="form-group">
+                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת תאריכי הגעה ועזיבה (27-29.9):</label>
+                        <div class="date-range-box">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div>
+                                    <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך הגעה (כניסה):</span>
+                                    <select id="startDateSelect" onchange="handleStartDateChange()" style="padding: 8px; border-radius: 8px; border: 1.5px solid var(--forest-mid); font-size: 13px; font-weight: bold; width: 100%; margin-top: 4px;">
+                                        <option value="27" selected>27.9 (יום ראשון)</option>
+                                        <option value="28">28.9 (יום שני)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך עזיבה (יציאה):</span>
+                                    <select id="endDateSelect" onchange="calculateTotal()" style="padding: 8px; border-radius: 8px; border: 1.5px solid var(--forest-mid); font-size: 13px; font-weight: bold; width: 100%; margin-top: 4px;">
+                                        <option value="28" selected>28.9 (יום שני)</option>
+                                        <option value="29">29.9 (יום שלישי)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="selected-date-banner" id="selectedDateBanner">
+                            תאריכים נבחרים: 27.9 עד 28.9 (לילה 1)
+                        </div>
+                    </div>
+
+                    <div class="total-price-box">
+                        לתשלום: ₪<span id="totalAmount">700</span>
+                    </div>
+
+                    <button class="btn-submit" onclick="openPaymentModal()" style="width: 100%; justify-content: center; margin-top: 6px;">
+                        בחירת אופן תשלום והרשמה <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- סרגל קישורים תחתון -->
+        <div class="social-bar">
+            <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa">
+                <i class="fab fa-whatsapp"></i> שלחו לנו הודעה ב-WhatsApp
+            </a>
+            <div class="logo-center-box">
+                <img src="LOGO.PNG" alt="לוגו מדורת השבט" onerror="if (this.src.endsWith('LOGO.PNG')) { this.src='logo.png'; } else if (this.src.endsWith('logo.png')) { this.src='logo.jpg'; } else { this.style.display='none'; }">
+            </div>
+            <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%98/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
+                <i class="fab fa-facebook-f"></i> עמוד הפייסבוק
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Modal תשלום -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-shield-alt" style="color: var(--forest-mid);"></i> בחירת אופן תשלום</h2>
+            <p style="margin-top: 8px; font-size: 16px;">סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">700</span></strong></p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp לקבלת קישור לתשלום:</p>
+            
+            <div class="payment-options-grid">
+                <button onclick="sendOrderToWhatsApp('העברה בנקאית')" class="pay-option-btn"><span>העברה בנקאית</span><i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i></button>
+                <button onclick="sendOrderToWhatsApp('PayBox')" class="pay-option-btn"><span>PayBox</span><i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i></button>
+                <button onclick="sendOrderToWhatsApp('bit')" class="pay-option-btn"><span>bit</span><i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i></button>
+                <button onclick="sendOrderToWhatsApp('כרטיס אשראי')" class="pay-option-btn"><span>תשלום בכרטיס אשראי</span><i class="fab fa-whatsapp" style="color: #25D366; font-size: 20px;"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const MY_WHATSAPP_NUMBER = "972559914540"; 
+
+        function handleStartDateChange() {
+            const startVal = parseInt(document.getElementById('startDateSelect').value);
+            const endSelect = document.getElementById('endDateSelect');
+            endSelect.innerHTML = '';
+            
+            const dayNames = { 28: "28.9 (יום שני)", 29: "29.9 (יום שלישי)" };
+            for (let d = startVal + 1; d <= 29; d++) {
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.innerText = dayNames[d];
+                endSelect.appendChild(opt);
+            }
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const adults = parseInt(document.getElementById('adultsNum').value);
+            const kids = parseInt(document.getElementById('kidsNum').value);
+            const startVal = parseInt(document.getElementById('startDateSelect').value);
+            const endVal = parseInt(document.getElementById('endDateSelect').value);
+            
+            // חישוב לילה 1
+            let night1Total = adults * 250;
+            if (kids > 0) {
+                const firstTwo = Math.min(2, kids);
+                const extraKids = Math.max(0, kids - 2);
+                night1Total += (firstTwo * 100) + (extraKids * 50);
+            }
+
+            let total = night1Total;
+            const nights = endVal - startVal;
+            let extraCost = 0;
+
+            // חישוב לילה 2 במידה ונבחר
+            if (nights > 1) {
+                // בסיס לילה שני: 300 ש"ח (הורה + ילד 1)
+                extraCost = 300;
+                
+                // הורים נוספים מעבר ל-1: 100 ש"ח כל אחד
+                if (adults > 1) {
+                    extraCost += (adults - 1) * 100;
+                }
+                
+                // ילדים נוספים מעבר ל-1: 50 ש"ח כל אחד
+                if (kids > 1) {
+                    extraCost += (kids - 1) * 50;
+                }
+
+                total += extraCost;
+            }
+
+            const nightsText = nights === 1 ? "לילה 1" : `${nights} לילות`;
+            const extraText = extraCost > 0 ? ` (כולל ₪${extraCost} עבור לילה שני)` : '';
+            document.getElementById('selectedDateBanner').innerHTML = `תאריכים נבחרים: ${startVal}.9 עד ${endVal}.9 (${nightsText})${extraText}<br><span style="font-size:12px; color:#ffeb3b;">*מותנה במספר נרשמים מינימלי</span>`;
+            document.getElementById('totalAmount').innerText = total;
+        }
+
+        function openPaymentModal() {
+            const name = document.getElementById('parentName').value.trim();
+            const phone = document.getElementById('parentPhone').value.trim();
+            const email = document.getElementById('parentEmail').value.trim();
+            const total = document.getElementById('totalAmount').innerText;
+
+            if(!name || !phone || !email) {
+                alert('אנא מלאו שם מלא, טלפון נייד וכתובת מייל כדי להמשיך להרשמה.');
+                return;
+            }
+
+            document.getElementById('modalTotal').innerText = total;
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function sendOrderToWhatsApp(paymentMethod) {
+            const name = document.getElementById('parentName').value.trim();
+            const phone = document.getElementById('parentPhone').value.trim();
+            const email = document.getElementById('parentEmail').value.trim();
+            const adults = document.getElementById('adultsNum').value;
+            const kids = document.getElementById('kidsNum').value;
+            const startVal = document.getElementById('startDateSelect').value;
+            const endVal = document.getElementById('endDateSelect').value;
+            const total = document.getElementById('totalAmount').innerText;
+
+            const message = `שלום! נרשמתי לקמפינג סוכות בכרמל (חניון כלניות):%0A%0A` +
+                            `שם מלא: ${name}%0A` +
+                            `טלפון: ${phone}%0A` +
+                            `מייל: ${email}%0A` +
+                            `תאריכים: ${startVal}.9 עד ${endVal}.9%0A` +
+                            `הרכב משפחתי: ${adults} מבוגרים, ${kids} ילדים%0A` +
+                            `סך הכל לתשלום: ₪${total}%0A` +
+                            `אופן תשלום מבוקש: ${paymentMethod}%0A%0A` +
+                            `* ידוע לי כי היציאה לפעילות מותנית במספר נרשמים מינימלי.%0A` +
+                            `אשמח לקבל קישור לתשלום לשריין את מקומנו. תודה!`;
+
+            const waUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
+            window.open(waUrl, '_blank');
+            closeModal();
+        }
+
+        function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
+        window.onload = function() { calculateTotal(); };
+    </script>
+
+    <footer>
+        <p>מדורת השבט | קמפינג משפחות, חוויות טבע ומלאכות קדומות</p>
+        <p style="font-size: 12px; color: #6a826f; margin-top: 5px;">טלפון ליצירת קשר: 055-9914540</p>
+    </footer>
+
+</body>
+</html>
