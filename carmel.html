@@ -248,13 +248,13 @@
                         <input type="email" id="parentEmail" placeholder="example@domain.com" required>
                     </div>
 
-                    <!-- בחירת מבוגרים וילדים -->
+                    <!-- בחירת מבוגרים וילדים - ברירת מחדל: 1 מבוגר ו-1 ילד -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                         <div class="form-group">
                             <label>מספר מבוגרים:</label>
                             <select id="adultsNum" onchange="calculateTotal()">
-                                <option value="1">1</option>
-                                <option value="2" selected>2</option>
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                             </select>
@@ -263,9 +263,9 @@
                             <label>מספר ילדים:</label>
                             <select id="kidsNum" onchange="calculateTotal()">
                                 <option value="0">ללא ילדים</option>
-                                <option value="1">1</option>
+                                <option value="1" selected>1</option>
                                 <option value="2">2</option>
-                                <option value="3" selected>3</option>
+                                <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
@@ -306,7 +306,7 @@
                     </div>
 
                     <div class="total-price-box">
-                        לתשלום: ₪<span id="totalAmount">890</span>
+                        לתשלום: ₪<span id="totalAmount">420</span>
                     </div>
 
                     <button class="btn-submit" onclick="openPaymentModal()" style="width: 100%; justify-content: center; margin-top: 6px;">
@@ -335,7 +335,7 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h2 style="color: var(--forest-green); font-size: 24px;"><i class="fas fa-shield-alt" style="color: var(--forest-mid);"></i> בחירת אופן תשלום</h2>
-            <p style="margin-top: 8px; font-size: 16px;">סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">890</span></strong></p>
+            <p style="margin-top: 8px; font-size: 16px;">סך הכל לתשלום: <strong style="color: var(--campfire-orange); font-size: 24px;">₪<span id="modalTotal">420</span></strong></p>
             <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">בלחיצה על האפשרות המבוקשת, ייפתח צ'אט WhatsApp לקבלת קישור לתשלום:</p>
             
             <div class="payment-options-grid">
