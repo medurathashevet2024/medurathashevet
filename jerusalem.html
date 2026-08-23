@@ -213,66 +213,35 @@
 
         .chip i { color: var(--campfire-orange); }
 
-        .schedule-grid {
+        .grid-cards {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
             margin-top: 25px;
         }
 
-        .schedule-day-box {
-            background: #faf7f2;
-            padding: 28px;
+        .card {
+            background-color: var(--sandy-bg);
+            padding: 24px;
             border-radius: 18px;
-            border: 1.5px solid #e2dad0;
+            border-top: 5px solid var(--earth-brown);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
         }
 
-        .schedule-day-title {
-            font-size: 21px;
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-top-color: var(--campfire-orange);
+        }
+
+        .card h3 {
             color: var(--forest-green);
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--campfire-orange);
-            padding-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .experience-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .experience-list li {
-            position: relative;
-            padding-right: 28px;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        .experience-list li::before {
-            content: "\f00c";
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
-            color: var(--campfire-orange);
-            position: absolute;
-            right: 0;
-            top: 2px;
-            font-size: 15px;
-        }
-
-        .schedule-note-box {
-            text-align: center;
-            margin-top: 25px;
-            padding: 14px;
-            background: var(--forest-light);
-            border-radius: 12px;
-            font-weight: 700;
-            color: var(--forest-green);
-            font-size: 15px;
+            gap: 8px;
         }
 
         .booking-box {
@@ -589,7 +558,6 @@
 
         @media (max-width: 992px) { 
             .booking-box { grid-template-columns: 1fr; }
-            .schedule-grid { grid-template-columns: 1fr; }
             section { padding: 30px 20px; }
         }
         @media (max-width: 768px) { 
@@ -614,7 +582,6 @@
             <nav>
                 <ul>
                     <li><a href="#about">על הקמפינג</a></li>
-                    <li><a href="#schedule">התוכנית</a></li>
                     <li><a href="#booking">הרשמה</a></li>
                     <li>
                         <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
@@ -634,7 +601,7 @@
 
     <div class="wrapper">
 
-        <!-- סקציית מה מחכה לנו -->
+        <!-- סקציית מה מחכה לנו (כרטיסיות קצרות וקריאות) -->
         <section id="about">
             <div class="section-header">
                 <h2>מה מחכה לנו בקמפינג?</h2>
@@ -648,49 +615,24 @@
                 <div class="chip"><i class="fas fa-map-marker-alt"></i> חניון לילה נס הרים, הרי ירושלים</div>
                 <div class="chip"><i class="fas fa-child"></i> מתאים לכל המשפחה (עדיפות לגילאי שנתיים ומעלה)</div>
             </div>
-        </section>
 
-        <!-- סקציית תוכנית הטיול התמציתית -->
-        <section id="schedule">
-            <div class="section-header">
-                <h2>תוכנית החוויות</h2>
-                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">
-                    כל הפעילויות והמסלולים מותאמים, קלילים, בטוחים ובקצב רגוע
-                </p>
-            </div>
-
-            <div class="schedule-grid">
-                <!-- יום חמישי -->
-                <div class="schedule-day-box">
-                    <div class="schedule-day-title">
-                        <i class="fas fa-sun"></i> יום חמישי (אחה"צ וערב): מערת הנטיפים, שקיעה ופוייקה
-                    </div>
-                    <ul class="experience-list">
-                        <li><strong>סיור קריר ומרהיב:</strong> ביקור בשמורת טבע מערת הנטיפים.</li>
-                        <li><strong>התמקמות בטבע:</strong> הגעה לחניון נס הרים, הקמת אוהלים ומפגש פתיחה.</li>
-                        <li><strong>יצירה ושקיעה:</strong> סדנת הכנת עששיות לילדים והליכה קצרה לתצפית שקיעה מול ההרים.</li>
-                        <li><strong>ארוחת מדורה:</strong> סיר פוייקה עשיר ומפנק שמתבשל בנחת.</li>
-                        <li><strong>לילה קסום:</strong> לינה באוהלים תחת שמיים זרועי כוכבים באוויר הרים צלול.</li>
-                    </ul>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3><i class="fas fa-mountain"></i> מערת הנטיפים ונס הרים</h3>
+                    <p>סיור קריר ומרהיב בשמורת טבע מערת הנטיפים, והתמקמות בחניון נס הרים בלב חורש ירוק ובריזת הרים מרעננת.</p>
                 </div>
-
-                <!-- יום שישי -->
-                <div class="schedule-day-box">
-                    <div class="schedule-day-title">
-                        <i class="fas fa-compass"></i> יום שישי (בוקר וצהריים): זריחה, טאבון והעיר העתיקה
-                    </div>
-                    <ul class="experience-list">
-                        <li><strong>בוקר של שקט:</strong> תצפית זריחה למשכימי קום וקפה חם בטבע.</li>
-                        <li><strong>ארוחת בוקר כפרית:</strong> אפיית פיתות חמות על הטאבון והתארגנות לנסיעה.</li>
-                        <li><strong>חוויה ירושלמית:</strong> נסיעה ברכבת הקלה והתרעננות במזרקות פארק טדי מול החומות.</li>
-                        <li><strong>סמטאות וכותל:</strong> מעבר בשוק הצבעוני, הגעה לרחבת הכותל ומעגל סיכום ופרידה.</li>
-                        <li><strong>חזרה הביתה:</strong> סיום עד השעה 14:00 והגעה רגועה לקראת שבת.</li>
-                    </ul>
+                <div class="card">
+                    <h3><i class="fas fa-fire"></i> עששיות וסיר פוייקה</h3>
+                    <p>סדנת עששיות לילדים, טיול שקיעה מול נופי הרי ירושלים, וארוחת ערב מפנקת וחמה מסיר פוייקה שהתבשל על המדורה.</p>
                 </div>
-            </div>
-
-            <div class="schedule-note-box">
-                📄 לנרשמים יישלח קובץ לו"ז מפורט שעה-אחר-שעה עם הנחיות הגעה וציוד מומלץ
+                <div class="card">
+                    <h3><i class="fas fa-bread-slice"></i> זריחה ופיתות בטאבון</h3>
+                    <p>תצפית זריחה למשכימי קום, קפה של בוקר, אפיית פיתות חמות על הטאבון וארוחת בוקר כפרית ומזינה.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-landmark"></i> חוויה ירושלמית בעיר העתיקה</h3>
+                    <p>נסיעה ברכבת הקלה, שכשוך במזרקות פארק טדי, מעבר בסמטאות השוק הצבעוניות, תפילה בכותל ומעגל פרידה מרגש.</p>
+                </div>
             </div>
         </section>
 
@@ -707,7 +649,8 @@
                         <span class="early-bird-badge">מחירון קמפינג ירושלים</span>
                         <div class="price-item">מבוגר: <span>₪250</span></div>
                         <div class="price-item">ילד 1 ו-2 (מגיל שנתיים): <span>₪170</span></div>
-                        <div class="price-item">ילד שלישי והלאה: <span>₪100</span> בלבד!</div>
+                        <div class="price-item">ילד שלישי והלאה: <span>₪50</span> בלבד!</div>
+                        <p style="font-size: 13px; color: var(--forest-green); font-weight: bold; margin-top: 4px;">* מקסימום מחיר למשפחה: ₪890 בלבד</p>
                         
                         <div class="discount-callout">
                             🎒 הטבה למצטיידים עצמאית: מגיעים עם אוהל ומזרנים מהבית? קבלו 100 ₪ הנחה למשפחה!
@@ -905,21 +848,24 @@
             const isOwnGear = document.getElementById('bringOwnGear').checked;
             
             // מבוגרים: 250 ש"ח
-            let total = adults * 250;
+            let baseTotal = adults * 250;
 
-            // ילדים: 170 ש"ח לילד 1 ו-2, 100 ש"ח לילד 3 ומעלה
+            // ילדים: 170 ש"ח לילד 1 ו-2, 50 ש"ח לילד 3 ומעלה
             if (kids > 0) {
                 const firstTwo = Math.min(2, kids);
                 const extraKids = Math.max(0, kids - 2);
-                total += (firstTwo * 170) + (extraKids * 100);
+                baseTotal += (firstTwo * 170) + (extraKids * 50);
             }
+
+            // הגבלת תקרת מחיר מקסימלית למשפחה ל-890 ש"ח
+            let finalTotal = Math.min(890, baseTotal);
 
             // הנחת ציוד עצמאי
             if (isOwnGear) {
-                total = Math.max(0, total - 100);
+                finalTotal = Math.max(0, finalTotal - 100);
             }
 
-            document.getElementById('totalAmount').innerText = total;
+            document.getElementById('totalAmount').innerText = finalTotal;
         }
 
         function openPaymentModal() {
