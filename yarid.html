@@ -73,11 +73,10 @@
         .chip i { color: var(--campfire-orange); }
 
         .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 25px; }
-        .card { background-color: var(--sandy-bg); padding: 26px; border-radius: 18px; border-top: 5px solid var(--earth-brown); box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; }
+        .card { background-color: var(--sandy-bg); padding: 26px; border-radius: 18px; border-top: 5px solid var(--earth-brown); box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column; justify-content: flex-start; }
         .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-top-color: var(--campfire-orange); }
         .card h3 { color: var(--forest-green); margin-bottom: 10px; font-size: 21px; display: flex; align-items: center; gap: 8px; }
-        .card p { font-size: 15px; color: var(--text-dark); margin-bottom: 12px; }
-        .price-badge { display: inline-block; background: #fff1e5; color: var(--campfire-orange); font-weight: 800; font-size: 15px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(230, 92, 0, 0.2); align-self: flex-start; }
+        .card p { font-size: 15px; color: var(--text-dark); margin: 0; }
 
         .booking-box { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 35px; background: linear-gradient(135deg, var(--forest-light), #e4ede6); padding: 40px; border-radius: 22px; border: 1px solid rgba(27, 56, 32, 0.08); }
         .price-tag { background: var(--white); padding: 30px; border-radius: 18px; box-shadow: var(--shadow-sm); border-right: 5px solid var(--campfire-orange); display: flex; flex-direction: column; justify-content: space-between; }
@@ -87,7 +86,7 @@
 
         .booking-form { display: flex; flex-direction: column; gap: 16px; }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
-        .form-group label { font-weight: 700; color: var(--forest-green); }
+        .form-group label { font-weight: 700; color: var(--forest-green); font-size: 15px; }
         .form-group input, .form-group select { padding: 13px 16px; border: 1.5px solid #cdd8cf; border-radius: 12px; font-size: 16px; width: 100%; background: var(--white); }
 
         .total-price-box { background: var(--forest-green); color: var(--white); padding: 16px; border-radius: 12px; text-align: center; font-size: 22px; font-weight: bold; }
@@ -151,50 +150,32 @@
 
             <div class="event-chips">
                 <div class="chip"><i class="fas fa-map-marker-alt"></i> עמק הירדן (קיבוץ אשדות יעקב מאוחד)</div>
-                <div class="chip"><i class="fas fa-leaf"></i> חומרים טבעיים: אדמה, ענפים, זרעים וסיבים</div>
+                <div class="chip"><i class="far fa-calendar-alt"></i> 1-3 לאוקטובר (חוה״מ סוכות) | 10:00 - 13:00</div>
                 <div class="chip"><i class="fas fa-users"></i> מתאים לכל הגילאים (החל מגיל 3)</div>
             </div>
 
             <div class="grid-cards">
                 <div class="card">
-                    <div>
-                        <h3><i class="fas fa-dragon"></i> יצורי יער ודמויות מהטבע</h3>
-                        <p>יצירת דמויות קסומות, חיות ויצורי יער באמצעות איצטרובלים, זרעים, קליפות עצים, ענפים ועלים מיובשים.</p>
-                    </div>
-                    <span class="price-badge">₪50 לסדנה</span>
+                    <h3><i class="fas fa-dragon"></i> יצורי יער ודמויות מהטבע</h3>
+                    <p>יצירת דמויות קסומות, חיות ויצורי יער באמצעות איצטרובלים, זרעים, קליפות עצים, ענפים ועלים מיובשים.</p>
                 </div>
 
                 <div class="card">
-                    <div>
-                        <h3><i class="fas fa-gem"></i> תכשיטים ומחרוזות מהטבע</h3>
-                        <p>הכנת שרשראות, צמידים ומחזיקי מפתחות ייחודיים מחרוזי עץ, גזעי עצים קדוחים, זרעים וסיבי בננה ורפיה.</p>
-                    </div>
-                    <span class="price-badge">₪50 לסדנה</span>
+                    <h3><i class="fas fa-gem"></i> תכשיטים ומחרוזות מהטבע</h3>
+                    <p>הכנת שרשראות, צמידים ומחזיקי מפתחות ייחודיים מחרוזי עץ, גזעי עצים קדוחים, זרעים וסיבי בננה ורפיה.</p>
                 </div>
 
                 <div class="card">
-                    <div>
-                        <h3><i class="fas fa-mountain"></i> פיסול באדמה וצבעי טבע</h3>
-                        <p>סדנת מגע בחומר: לישת אדמה מקומית, פיסול כלי חרס ופסלונים קטנים, וצביעה בפיגמנטים טבעיים מן הצומח.</p>
-                    </div>
-                    <span class="price-badge">₪50 לסדנה</span>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <h3><i class="fas fa-lightbulb"></i> סדנת עששיות קסומה</h3>
-                        <p>הכנת עששית אישית מזכוכית, חומרים מן הטבע וחוטי יוטה, כולל נר דולק לאווירה חמימה ומיוחדת.</p>
-                    </div>
-                    <span class="price-badge">₪50 לסדנה</span>
+                    <h3><i class="fas fa-mountain"></i> פיסול באדמה וצבעי טבע</h3>
+                    <p>סדנת מגע בחומר: לישת אדמה מקומית, פיסול כלי חרס ופסלונים קטנים, וצביעה בפיגמנטים טבעיים מן הצומח.</p>
                 </div>
             </div>
         </section>
 
-        <!-- אזור הרשמה ומחשבון מהיר -->
+        <!-- אזור הרשמה -->
         <section id="booking">
             <div class="section-header">
-                <h2>שריין מקום בסדנאות</h2>
-                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">בחרו את מספר הסדנאות והבטיחו את מקומכם</p>
+                <h2>הרשמה לסדנאות</h2>
             </div>
 
             <div class="booking-box">
@@ -218,7 +199,7 @@
                 </div>
 
                 <div class="booking-form">
-                    <h3 style="color: var(--forest-green); font-size: 22px;"><i class="fas fa-user-check"></i> טופס שריין מקום</h3>
+                    <h3 style="color: var(--forest-green); font-size: 22px;"><i class="fas fa-user-check"></i> הרשמה</h3>
                     
                     <div class="form-group">
                         <label>שם מלא:</label>
@@ -231,24 +212,25 @@
                     </div>
 
                     <div class="form-group">
-                        <label>סה"כ סדנאות (לכל המשתתפים יחד):</label>
-                        <select id="workshopsCount" onchange="calculateTotal()">
-                            <option value="1" selected>סדנה 1 (50 ₪)</option>
-                            <option value="2">2 סדנאות (100 ₪)</option>
-                            <option value="3">3 סדנאות (150 ₪)</option>
-                            <option value="4">4 סדנאות (200 ₪)</option>
-                            <option value="5">5 סדנאות (250 ₪)</option>
-                            <option value="6">6 סדנאות (300 ₪)</option>
-                            <option value="7">7 סדנאות (350 ₪)</option>
-                            <option value="8">8 סדנאות (400 ₪)</option>
+                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת תאריך הגעה (שעות 10:00 - 13:00):</label>
+                        <select id="eventDateSelect" style="padding: 12px; border-radius: 12px; border: 1.5px solid #cdd8cf; font-weight: bold; color: var(--forest-green);">
+                            <option value="1 לאוקטובר 2026 (יום חמישי) | 10:00-13:00" selected>1 לאוקטובר 2026 (יום חמישי) | 10:00 - 13:00</option>
+                            <option value="2 לאוקטובר 2026 (יום שישי) | 10:00-13:00">2 לאוקטובר 2026 (יום שישי) | 10:00 - 13:00</option>
+                            <option value="3 לאוקטובר 2026 (יום שבת) | 10:00-13:00">3 לאוקטובר 2026 (יום שבת) | 10:00 - 13:00</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> מועד מבוקש:</label>
-                        <select id="eventDateSelect" style="padding: 12px; border-radius: 12px; border: 1.5px solid #cdd8cf; font-weight: bold; color: var(--forest-green);">
-                            <option value="סדנאות חוה״מ סוכות בעמק הירדן" selected>סדנאות חול המועד סוכות בעמק הירדן</option>
-                            <option value="תיאום מועד מותאם אישית לקבוצה">תיאום סדנה פרטית / מועד לקבוצה</option>
+                        <label><i class="fas fa-users" style="color: var(--campfire-orange);"></i> מספר משתתפים יוצרים:</label>
+                        <select id="participantsCount" onchange="calculateTotal()">
+                            <option value="1" selected>משתתף 1 (50 ₪)</option>
+                            <option value="2">2 משתתפים (100 ₪)</option>
+                            <option value="3">3 משתתפים (150 ₪)</option>
+                            <option value="4">4 משתתפים (200 ₪)</option>
+                            <option value="5">5 משתתפים (250 ₪)</option>
+                            <option value="6">6 משתתפים (300 ₪)</option>
+                            <option value="7">7 משתתפים (350 ₪)</option>
+                            <option value="8">8 משתתפים (400 ₪)</option>
                         </select>
                     </div>
 
@@ -298,7 +280,7 @@
         const MY_WHATSAPP_NUMBER = "972559914540"; 
 
         function calculateTotal() {
-            const count = parseInt(document.getElementById('workshopsCount').value);
+            const count = parseInt(document.getElementById('participantsCount').value);
             const total = count * 50;
             document.getElementById('totalAmount').innerText = total;
         }
@@ -320,15 +302,15 @@
         function sendOrderToWhatsApp(paymentMethod) {
             const name = document.getElementById('parentName').value.trim();
             const phone = document.getElementById('parentPhone').value.trim();
-            const count = document.getElementById('workshopsCount').value;
+            const participants = document.getElementById('participantsCount').value;
             const dateText = document.getElementById('eventDateSelect').value;
             const total = document.getElementById('totalAmount').innerText;
 
             const message = `שלום! נרשמתי לסדנאות יצירה מהטבע בעמק הירדן:%0A%0A` +
                             `שם מלא: ${name}%0A` +
                             `טלפון: ${phone}%0A` +
-                            `מועד: ${dateText}%0A` +
-                            `סה"כ סדנאות: ${count}%0A` +
+                            `מועד נבחר: ${dateText}%0A` +
+                            `מספר משתתפים יוצרים: ${participants}%0A` +
                             `סך הכל לתשלום: ₪${total}%0A` +
                             `אופן תשלום מבוקש: ${paymentMethod}%0A%0A` +
                             `אשמח לקבל קישור לתשלום לשריין מקום. תודה!`;
