@@ -212,6 +212,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label>כתובת מייל:</label>
+                        <input type="email" id="parentEmail" placeholder="example@domain.com" required>
+                    </div>
+
+                    <div class="form-group">
                         <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת תאריך הגעה (שעות 10:00 - 13:00):</label>
                         <select id="eventDateSelect" style="padding: 12px; border-radius: 12px; border: 1.5px solid #cdd8cf; font-weight: bold; color: var(--forest-green);">
                             <option value="1 לאוקטובר 2026 (יום חמישי) | 10:00-13:00" selected>1 לאוקטובר 2026 (יום חמישי) | 10:00 - 13:00</option>
@@ -288,10 +293,11 @@
         function openPaymentModal() {
             const name = document.getElementById('parentName').value.trim();
             const phone = document.getElementById('parentPhone').value.trim();
+            const email = document.getElementById('parentEmail').value.trim();
             const total = document.getElementById('totalAmount').innerText;
 
-            if(!name || !phone) {
-                alert('אנא מלאו שם מלא וטלפון נייד כדי להמשיך.');
+            if(!name || !phone || !email) {
+                alert('אנא מלאו שם מלא, טלפון נייד וכתובת מייל כדי להמשיך.');
                 return;
             }
 
@@ -302,6 +308,7 @@
         function sendOrderToWhatsApp(paymentMethod) {
             const name = document.getElementById('parentName').value.trim();
             const phone = document.getElementById('parentPhone').value.trim();
+            const email = document.getElementById('parentEmail').value.trim();
             const participants = document.getElementById('participantsCount').value;
             const dateText = document.getElementById('eventDateSelect').value;
             const total = document.getElementById('totalAmount').innerText;
@@ -309,6 +316,7 @@
             const message = `שלום! נרשמתי לסדנאות יצירה מהטבע בעמק הירדן:%0A%0A` +
                             `שם מלא: ${name}%0A` +
                             `טלפון: ${phone}%0A` +
+                            `מייל: ${email}%0A` +
                             `מועד נבחר: ${dateText}%0A` +
                             `מספר משתתפים יוצרים: ${participants}%0A` +
                             `סך הכל לתשלום: ₪${total}%0A` +
