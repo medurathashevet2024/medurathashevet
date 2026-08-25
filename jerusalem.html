@@ -77,6 +77,53 @@
         .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-top-color: var(--campfire-orange); }
         .card h3 { color: var(--forest-green); margin-bottom: 10px; font-size: 20px; display: flex; align-items: center; gap: 8px; }
 
+        /* סגנון לוח זמנים מפורט (אקורדיון) */
+        .schedule-details-box {
+            margin-top: 30px;
+            background: #ffffff;
+            border: 2px solid #e1e9e2;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .schedule-summary-btn {
+            background: var(--forest-light);
+            padding: 18px 24px;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--forest-green);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            user-select: none;
+        }
+        .schedule-summary-btn::-webkit-details-marker { display: none; }
+        .schedule-summary-btn:hover { background: #e5eee7; }
+        .schedule-content {
+            padding: 24px;
+            background: #ffffff;
+            border-top: 1px solid #e1e9e2;
+        }
+        .timeline-item {
+            position: relative;
+            padding-right: 25px;
+            margin-bottom: 16px;
+            border-right: 2px solid var(--campfire-orange);
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-time {
+            font-weight: 800;
+            color: var(--campfire-orange);
+            font-size: 15px;
+            display: block;
+        }
+        .timeline-text {
+            color: var(--text-dark);
+            font-size: 15px;
+        }
+
         .info-link-banner {
             margin-top: 30px; background: #faf4eb; border: 1.5px dashed var(--campfire-orange); border-radius: 16px;
             padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
@@ -131,8 +178,8 @@
             <nav>
                 <ul>
                     <li><a href="index.html">דף הבית</a></li>
-                    <li><a href="jerusalem.html" style="color: var(--campfire-orange); font-weight: bold;">הרי ירושלים 🌲</a></li>
-                    <li><a href="carmel.html">סוכות בכרמל ⛰️</a></li>
+                    <li><a href="jerusalem.html" style="color: var(--campfire-orange); font-weight: bold;">קמפינג בהרי ירושלים 🌲</a></li>
+                    <li><a href="carmel.html">קמפינג בכרמל ⛰️</a></li>
                     <li><a href="equipment.html">ציוד והנחיות 🎒</a></li>
                     <li>
                         <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
@@ -184,6 +231,67 @@
                     <p>נסיעה ברכבת הקלה, שכשוך במזרקות פארק טדי, מעבר בסמטאות השוק הצבעוניות, תפילה בכותל ומעגל פרידה מרגש.</p>
                 </div>
             </div>
+
+            <!-- תפריט נפתח ללו"ז המפורט של הרי ירושלים -->
+            <details class="schedule-details-box">
+                <summary class="schedule-summary-btn">
+                    <span><i class="fas fa-clock" style="color: var(--campfire-orange); margin-left: 8px;"></i> לצפייה בלוח הזמנים המפורט שעה-אחר-שעה</span>
+                    <i class="fas fa-chevron-down"></i>
+                </summary>
+                <div class="schedule-content">
+                    <h4 style="color: var(--forest-green); margin-bottom: 12px; font-size: 17px;">יום 1 (חמישי):</h4>
+                    <div class="timeline-item">
+                        <span class="timeline-time">15:00 - 16:30</span>
+                        <span class="timeline-text">מפגש וסיור קריר ומודרך בשמורת טבע מערת הנטיפים (אבשלום).</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">16:30 - 17:00</span>
+                        <span class="timeline-text">נסיעה קצרה והגעה לחניון הלילה נס הרים בלב החורש.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">17:00 - 18:00</span>
+                        <span class="timeline-text">הקמת אוהלים, פריסת מזרנים והעמדת סיר הפוייקה לבישול ארוך על גחלי המדורה.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">18:00 - 18:45</span>
+                        <span class="timeline-text">סדנת יצירת עששיות לילדים מחומרים טבעיים וצבעים.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">18:45 - 19:45</span>
+                        <span class="timeline-text">טיול שקיעה רגלי וקליל לתצפית נוף מרהיבה מול הרי יהודה, וחזרה עם עששיות דולקות.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">19:45 - 21:00</span>
+                        <span class="timeline-text">ארוחת ערב עשירה וחמה: סיר פוייקה עשיר, ירקות ותה צמחים מסביב למדורה.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">21:00 ואילך</span>
+                        <span class="timeline-text">צפייה בכוכבים באוויר ההרים הקריר ולינה באוהלים.</span>
+                    </div>
+
+                    <h4 style="color: var(--forest-green); margin-top: 20px; margin-bottom: 12px; font-size: 17px;">יום 2 (שישי):</h4>
+                    <div class="timeline-item">
+                        <span class="timeline-time">06:00 - 06:45</span>
+                        <span class="timeline-text">תצפית זריחה קסומה למשכימי קום מול ההרים.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">06:45 - 07:30</span>
+                        <span class="timeline-text">קפה שחור מבושל, תה צמחים והתעוררות של המחנה.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">07:30 - 09:00</span>
+                        <span class="timeline-text">הכנת בצק, אפיית פיתות חמות על הטאבון והסאג' וארוחת בוקר כפרית.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">09:00 - 10:00</span>
+                        <span class="timeline-text">קיפול ציוד, פינוי המתחם וניקיון השטח.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">10:30 - 13:00</span>
+                        <span class="timeline-text">חוויה ירושלמית: נסיעה ברכבת הקלה, התרעננות במזרקות פארק טדי, הליכה בסמטאות העיר העתיקה, תפילה בכותל המערבי ומעגל סיכום.</span>
+                    </div>
+                </div>
+            </details>
 
             <div class="info-link-banner">
                 <p><i class="fas fa-backpack" style="color: var(--campfire-orange);"></i> רוצים לדעת מה אנחנו מספקים ומה לארוז בתיק?</p>
