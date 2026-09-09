@@ -499,6 +499,10 @@
         </div>
     </div>
 
+    <footer>
+        <p>כל הזכויות שמורות למדורת השבט 🌿</p>
+    </footer>
+
     <script>
         const MY_WHATSAPP_NUMBER = "972559914540"; 
 
@@ -529,25 +533,13 @@
         }
 
         function openPaymentModal() {
-            const name = document.getElementById('parentName').value.trim();
-            const phone = document.getElementById('parentPhone').value.trim();
-            const email = document.getElementById('parentEmail').value.trim();
-            const kids = parseInt(document.getElementById('kidsNum').value);
-            const kidsAges = document.getElementById('kidsAges').value.trim();
             const total = document.getElementById('totalAmount').innerText;
-
-            if(!name || !phone || !email) {
-                alert('אנא מלאו שם מלא, טלפון נייד וכתובת מייל כדי להמשיך להרשמה.');
-                return;
-            }
-
-            if(kids > 0 && !kidsAges) {
-                alert('אנא ציינו את גילאי הילדים כדי להמשיך.');
-                return;
-            }
-
             document.getElementById('modalTotal').innerText = total;
             document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
         }
 
         function sendOrderToWhatsApp(paymentMethod) {
@@ -557,39 +549,35 @@
             const adults = document.getElementById('adultsNum').value;
             const kids = document.getElementById('kidsNum').value;
             const kidsAges = document.getElementById('kidsAges').value.trim();
-            const dateText = document.getElementById('eventDate').value;
-            const isOwnGear = document.getElementById('bringOwnGear').checked ? "כן (מביאים אוהל ומזרנים עצמאית - 100 ₪ הנחה)" : "לא (אספקת ציוד מלאה על ידי מדורת השבט)";
+            const eventDate = document.getElementById('eventDate').value;
+            const ownGear = document.getElementById('bringOwnGear').checked ? "כן" : "לא";
             const total = document.getElementById('totalAmount').innerText;
 
-            let kidsInfoText = `${kids} ילדים`;
-            if (parseInt(kids) > 0 && kidsAges) {
-                kidsInfoText += ` (גילאים: ${kidsAges})`;
+            if (!name || !phone) {
+                alert("אנא מלאו שם מלא ומספר טלפון לפני מעבר לתשלום.");
+                closeModal();
+                return;
             }
 
-            const message = `שלום! נרשמתי לקמפינג בכרמל:%0A%0A` +
-                            `שם מלא: ${name}%0A` +
-                            `טלפון: ${phone}%0A` +
-                            `מייל: ${email}%0A` +
-                            `מועד: ${dateText}%0A` +
-                            `הרכב משפחתי: ${adults} מבוגרים, ${kidsInfoText}%0A` +
-                            `ציוד עצמאי: ${isOwnGear}%0A` +
-                            `סך הכל לתשלום: ₪${total}%0A` +
-                            `אופן תשלום מבוקש: ${paymentMethod}%0A%0A` +
-                            `אשמח לקבל קישור לתשלום לשריין את מקומנו. תודה!`;
+            let message = `שלום מדורת השבט! 🌿\nברצוני להירשם לקמפינג בכרמל:\n\n` +
+                          `👤 שם: ${name}\n` +
+                          `📞 טלפון: ${phone}\n` +
+                          `📧 מייל: ${email}\n` +
+                          `📅 מועד: ${eventDate}\n` +
+                          `👥 מבוגרים: ${adults}, ילדים: ${kids}\n`;
+            
+            if(kids > 0) {
+                message += `👶 גילאי ילדים: ${kidsAges}\n`;
+            }
 
-            const waUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
-            window.open(waUrl, '_blank');
+            message += `⛺ ציוד עצמאי: ${ownGear}\n` +
+                       `💰 סה"כ לתשלום: ₪${total}\n` +
+                       `💳 אופן תשלום מבוקש: ${paymentMethod}`;
+
+            const encodedURL = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(encodedURL, '_blank');
             closeModal();
         }
-
-        function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
-        window.onload = function() { calculateTotal(); };
     </script>
-
-    <footer>
-        <p>מדורת השבט | קמפינג משפחות, חוויות טבע ומלאכות קדומות</p>
-        <p style="font-size: 12px; color: #6a826f; margin-top: 5px;">טלפון ליצירת קשר: 055-9914540</p>
-    </footer>
-
 </body>
 </html>
