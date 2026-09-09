@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מדורת השבט - קמפינג סוכות בפארק הכרמל</title>
+    <title>מדורת השבט - קמפינג ברכס הכרמל</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@
 
         .hero {
             background: linear-gradient(rgba(27, 56, 32, 0.5), rgba(74, 51, 41, 0.6)), 
-                        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+                        url('https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             height: 52vh; min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; color: var(--white); padding: 0 24px; margin-top: 65px;
         }
@@ -77,7 +77,6 @@
         .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-top-color: var(--campfire-orange); }
         .card h3 { color: var(--forest-green); margin-bottom: 10px; font-size: 20px; display: flex; align-items: center; gap: 8px; }
 
-        /* סגנון לוח זמנים מפורט (אקורדיון) */
         .schedule-details-box {
             margin-top: 30px;
             background: #ffffff;
@@ -147,8 +146,6 @@
         .checkbox-container { display: flex; align-items: center; gap: 10px; background: var(--white); padding: 12px 16px; border-radius: 12px; border: 1.5px solid #cdd8cf; cursor: pointer; font-weight: 700; color: var(--forest-green); }
         .checkbox-container input { width: 20px; height: 20px; cursor: pointer; accent-color: var(--campfire-orange); }
 
-        .date-range-box { background: #fff8f3; padding: 14px; border-radius: 12px; border: 1.5px dashed var(--campfire-orange); margin-top: 8px; }
-        .selected-date-banner { margin-top: 12px; background: var(--forest-green); color: var(--white); padding: 12px 14px; border-radius: 10px; font-size: 14px; font-weight: bold; text-align: center; line-height: 1.5; }
         .total-price-box { background: var(--forest-green); color: var(--white); padding: 16px; border-radius: 12px; text-align: center; font-size: 22px; font-weight: bold; }
         .btn-submit { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow)); color: var(--white); padding: 15px 38px; text-decoration: none; font-size: 19px; font-weight: 700; border-radius: 50px; border: none; cursor: pointer; }
 
@@ -180,6 +177,7 @@
                     <li><a href="index.html">דף הבית</a></li>
                     <li><a href="jerusalem.html">קמפינג בהרי ירושלים 🌲</a></li>
                     <li><a href="carmel.html" style="color: var(--campfire-orange); font-weight: bold;">קמפינג בכרמל ⛰️</a></li>
+                    <li><a href="yarid.html">סדנאות יצירה מהטבע 🎨</a></li>
                     <li><a href="equipment.html">ציוד והנחיות 🎒</a></li>
                     <li>
                         <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
@@ -193,106 +191,93 @@
     </header>
 
     <div class="hero">
-        <h1>קמפינג סוכות בפארק הכרמל</h1>
-        <p>חוויית טבע משפחתית בחול המועד – הגשרים התלויים, עששיות בשקיעה, זריחה בחורשת הארבעים וחי-בר כרמל</p>
+        <h1>קמפינג משפחות ברכס הכרמל</h1>
+        <p>חוויית טבע משפחתית – שוויצריה הקטנה, עששיות, שקיעה מול הים, סיר פוייקה ושכשוך בעין מודע</p>
     </div>
 
     <div class="wrapper">
 
         <section id="about">
             <div class="section-header">
-                <h2>מה מחכה לנו בסוכות בכרמל?</h2>
+                <h2>מה מחכה לנו בקמפינג?</h2>
                 <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">
-                    קמפינג "הכל כלול" בחניון הכלניות המוצל, בלי לחץ ובלי לוגיסטיקה מעייפת
+                    בלי לחץ ובלי למהר – 24 שעות של חורש ירוק, בריזה מהים, ארוחות מפנקות וחיבור משפחתי.
                 </p>
             </div>
 
             <div class="event-chips">
-                <div class="chip"><i class="far fa-calendar-check"></i> 27-29 לספטמבר 2026 (חול המועד סוכות)</div>
-                <div class="chip"><i class="fas fa-map-marker-alt"></i> חניון לילה כלניות (פארק הכרמל)</div>
-                <div class="chip"><i class="fas fa-moon"></i> אפשרות לבחירה: לילה 1 או 2 לילות</div>
+                <div class="chip"><i class="fas fa-calendar-alt"></i> 28-29 לספטמבר 2026 (שני-רביעי)</div>
+                <div class="chip"><i class="fas fa-map-marker-alt"></i> חניון לילה שוויצריה הקטנה, הכרמל</div>
+                <div class="chip"><i class="fas fa-child"></i> מתאים לכל גיל (אידיאלי לגילאי שנתיים ומעלה)</div>
             </div>
 
             <div class="grid-cards">
                 <div class="card">
-                    <h3><i class="fas fa-bridge"></i> פארק נשר והגשרים התלויים</h3>
-                    <p>פתיחת החוויה בטיול קליל ומרגש בין צמרות העצים על הגשרים התלויים בפארק נשר, לפני ההגעה לחניון.</p>
+                    <h3><i class="fas fa-tree"></i> חורש מוצל בשוויצריה הקטנה</h3>
+                    <p>מפגש בלב שמורת הטבע, הקמת מחנה מוצל בין עצי האלון והאלה ובריזת הרים קרירה מול נוף הים.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-fire"></i> עששיות, שקיעה וסיר פוייקה</h3>
-                    <p>סדנת עששיות לילדים, הליכה למצפור הצוק לתצפית שקיעה, חזרה בטיול עששיות וסיר פוייקה עשיר על גחלי המדורה.</p>
+                    <h3><i class="fas fa-fire"></i> עששיות וסיר פוייקה</h3>
+                    <p>סדנת עששיות לילדים, טיול שקיעה מרהיב מול הים, וארוחת ערב עשירה וחמה מסיר פוייקה שהתבשל על המדורה.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-sun"></i> זריחה ופיתות בטאבון</h3>
-                    <p>תצפית זריחה עוצרת נשימה במצוק חורשת הארבעים, קפה של בוקר ואפיית פיתות חמות על הטאבון והסאג'.</p>
+                    <h3><i class="fas fa-bread-slice"></i> פיתות בטאבון וארוחת בוקר</h3>
+                    <p>קפה של בוקר מול הזריחה, אפיית פיתות חמות על הטאבון והסאג' וארוחת בוקר כפרית ומנקזת אנרגיות.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-paw"></i> סיור בשמורת חי-בר כרמל</h3>
-                    <p>סיור מרתק בשמורת הטבע חי-בר כרמל, מפגש קרוב עם יחמורים פרסיים, איילים ונשרים בסביבתם הטבעית.</p>
+                    <h3><i class="fas fa-water"></i> שכשוך מרענן בעין מודע</h3>
+                    <p>נסיעה קצרה לפארק המעיינות, שכשוך במימיו הצלולים של עין מודע, פיקניק צהריים ומעגל סיכום ופרידה.</p>
                 </div>
             </div>
 
-            <!-- תפריט נפתח ללו"ז המפורט של הכרמל -->
             <details class="schedule-details-box">
                 <summary class="schedule-summary-btn">
-                    <span><i class="fas fa-clock" style="color: var(--campfire-orange); margin-left: 8px;"></i> לצפייה בלוח הזמנים המפורט שעה-אחר-שעה</span>
+                    <span><i class="fas fa-clock" style="color: var(--campfire-orange); margin-left: 8px;"></i> לצפייה בלוח הזמנים המפורט שעה-אחר-שעה (28-29.9)</span>
                     <i class="fas fa-chevron-down"></i>
                 </summary>
                 <div class="schedule-content">
-                    <h4 style="color: var(--forest-green); margin-bottom: 12px; font-size: 17px;">יום 1:</h4>
+                    <h4 style="color: var(--forest-green); margin-bottom: 12px; font-size: 17px;">יום 1 (שני, 28/09):</h4>
                     <div class="timeline-item">
-                        <span class="timeline-time">15:00 - 16:30</span>
-                        <span class="timeline-text">התכנסות וטיול רגוע במסלול הגשרים התלויים בפארק נשר.</span>
+                        <span class="timeline-time">15:30 - 16:30</span>
+                        <span class="timeline-text">מפגש והתמקמות בחניון הלילה שוויצריה הקטנה בלב החורש.</span>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-time">16:30 - 17:00</span>
-                        <span class="timeline-text">נסיעה לפארק הכרמל והגעה לחניון הכלניות.</span>
+                        <span class="timeline-time">16:30 - 17:30</span>
+                        <span class="timeline-text">הקמת אוהלים, פריסת מזרנים והעמדת סיר הפוייקה לבישול ארוך על גחלי המדורה.</span>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-time">17:00 - 18:00</span>
-                        <span class="timeline-text">התמקמות באוהלים, מעגל פתיחה והיכרות, הכנת ארוחת ערב משותפת.</span>
+                        <span class="timeline-time">17:30 - 18:30</span>
+                        <span class="timeline-text">סדנת יצירת עששיות מחומרים טבעיים וצבעים לילדים ולמבוגרים.</span>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-time">18:00 - 18:45</span>
-                        <span class="timeline-text">סדנת הכנת עששיות.</span>
+                        <span class="timeline-time">18:30 - 19:30</span>
+                        <span class="timeline-text">טיול שקיעה רגלי מודרך לתצפית מרהיבה מול הים התיכון וחזרה עם עששיות דולקות.</span>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-time">18:45 - 19:45</span>
-                        <span class="timeline-text">טיול עששיות קליל למצפור הצוק לתצפית שקיעה וחזרה למאהל .</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-time">19:45 - 21:00</span>
-                        <span class="timeline-text">ישיבה לארוחת ערב משותפת כשהפוייקה מוכן.</span>
+                        <span class="timeline-time">19:30 - 21:00</span>
+                        <span class="timeline-text">ארוחת ערב עשירה: סיר פוייקה חם, תוספות, סלטים טריים ותה צמחים מהמדורה.</span>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-time">21:00 ואילך</span>
-                        <span class="timeline-text">התארגנות לשנת הלילה.</span>
+                        <span class="timeline-text">סיפורים מסביב למדורה, צפייה בכוכבים ולינה באוהלים.</span>
                     </div>
 
-                    <h4 style="color: var(--forest-green); margin-top: 20px; margin-bottom: 12px; font-size: 17px;">יום 2:</h4>
+                    <h4 style="color: var(--forest-green); margin-top: 20px; margin-bottom: 12px; font-size: 17px;">יום 2 (שלישי, 29/09):</h4>
                     <div class="timeline-item">
-                        <span class="timeline-time">06:20 - 06:45</span>
-                        <span class="timeline-text">למשכימי קום הליכה רגלית קצרה (כ־10 דקות) לתצפית זריחה במצוק חורשת הארבעים.</span>
+                        <span class="timeline-time">06:30 - 07:15</span>
+                        <span class="timeline-text">התעוררות קסומה בלב החורש, קפה שחור מבושל ותה צמחים.</span>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-time">06:45 - 07:30</span>
-                        <span class="timeline-text">חזרה למאהל, התעוררות של שאר הקבוצה וקפה של בוקר.</span>
+                        <span class="timeline-time">07:15 - 08:45</span>
+                        <span class="timeline-text">הכנת בצק, אפיית פיתות חמות על הטאבון והסאג' וארוחת בוקר כפרית.</span>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-time">07:30 - 09:00</span>
-                        <span class="timeline-text">הכנת בצק ואפיית פיתות על הטאבון, חיתוך ירקות וארוחה משותפת עם מגוון ממרחים.</span>
+                        <span class="timeline-time">08:45 - 09:45</span>
+                        <span class="timeline-text">קיפול ציוד, פינוי המחנה וסריקת השטח לניקיון מלא.</span>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-time">09:00 - 10:00</span>
-                        <span class="timeline-text">קיפול ציוד, פירוק האוהלים וניקיון יסודי של השטח.</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-time">10:00 - 12:30</span>
-                        <span class="timeline-text">נסיעה קצרצרה מהחניון וסיור בשמורת טבע חי-בר כרמל.</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-time">12:30</span>
-                        <span class="timeline-text">מעגל סיום.</span>
+                        <span class="timeline-time">10:30 - 13:00</span>
+                        <span class="timeline-text">נסיעה מקסימה לשכשוך מרענן במעיין עין מודע (פארק המעיינות), פיקניק צהריים, מעגל סיכום ופרידה.</span>
                     </div>
                 </div>
             </details>
@@ -303,32 +288,23 @@
             </div>
         </section>
 
-        <!-- אזור הרשמה ומחירון -->
+        <!-- אזור הרשמה ומחשבון -->
         <section id="booking">
             <div class="section-header">
-                <h2>מחירון והרשמה לקמפינג סוכות בכרמל</h2>
-                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">הכל כלול: לינה באוהלים, סדנאות, טיולים ו-2 ארוחות מלאות בכל יממה</p>
+                <h2>מחירון והרשמה לקמפינג בכרמל</h2>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 18px;">הכל כלול: הדרכה, סדנת עששיות, טיולי ערב, שכשוך במעיין, 2 ארוחות מלאות, אוהל ומזרנים נוחים</p>
             </div>
 
             <div class="booking-box">
                 <div class="price-tag">
                     <div>
-                        <span class="early-bird-badge">מחירון סוכות בכרמל</span>
+                        <span class="early-bird-badge">מחירון קמפינג כרמל</span>
                         <div class="price-item">מבוגר: <span>₪250</span></div>
                         <div class="price-item">ילד 1 ו-2 (מגיל שנתיים): <span>₪170</span></div>
                         <div class="price-item">ילד שלישי והלאה: <span>₪50</span> בלבד!</div>
                         
                         <div class="discount-callout">
-                            🎒 הטבה למצטיידים עצמאית: מגיעים עם אוהל ומזרנים מהבית? קבלו 100 ₪ הנחה למשפחה ללילה!
-                        </div>
-
-                        <div style="background: #e8f5e9; border: 1.5px dashed #2e7d32; padding: 12px; border-radius: 12px; margin-top: 12px; font-size: 13px; color: #1b5e20; font-weight: bold; line-height: 1.5;">
-                            🌙 <strong>תוספת לילה שני מלא:</strong><br>
-                            בסיס (הורה + ילד 1): 300 ₪ | כל הורה נוסף: 100 ₪ | כל ילד נוסף: 50 ₪
-                        </div>
-
-                        <div style="background: #fff3e0; border: 1px solid #ffe0b2; padding: 8px 12px; border-radius: 8px; margin-top: 10px; font-size: 13px; color: #e65100; font-weight: bold; text-align: center;">
-                            * מותנה במספר נרשמים מינימלי
+                            🎒 הטבה למצטיידים עצמאית: מגיעים עם אוהל ומזרנים מהבית? קבלו 100 ₪ הנחה למשפחה!
                         </div>
                     </div>
 
@@ -343,7 +319,7 @@
                 </div>
 
                 <div class="booking-form">
-                    <h3 style="color: var(--forest-green); font-size: 22px;"><i class="fas fa-user-check"></i> טופס שריין מקום</h3>
+                    <h3 style="color: var(--forest-green); font-size: 22px;"><i class="fas fa-user-check"></i> טופס הרשמה</h3>
                     
                     <div class="form-group">
                         <label>שם מלא:</label>
@@ -360,7 +336,6 @@
                         <input type="email" id="parentEmail" placeholder="example@domain.com" required>
                     </div>
 
-                    <!-- בחירת מבוגרים וילדים - ברירת מחדל: 1 מבוגר ו-1 ילד -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                         <div class="form-group">
                             <label>מספר מבוגרים:</label>
@@ -385,36 +360,21 @@
                         </div>
                     </div>
 
-                    <!-- צ'קבוקס הבאת ציוד עצמאי -->
+                    <div class="form-group" id="kidsAgesGroup">
+                        <label>גילאי הילדים:</label>
+                        <input type="text" id="kidsAges" placeholder="למשל: 4, 7, 11">
+                    </div>
+
                     <label class="checkbox-container">
                         <input type="checkbox" id="bringOwnGear" onchange="calculateTotal()">
-                        <span>מגיעים עם אוהל ומזרנים מהבית (100 ₪ הנחה ללילה)</span>
+                        <span>מגיעים עם אוהל ומזרנים מהבית (100 ₪ הנחה)</span>
                     </label>
 
-                    <!-- בחירת תאריכי הגעה ועזיבה בסוכות -->
                     <div class="form-group">
-                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחירת תאריכי הגעה ועזיבה (27-29.9):</label>
-                        <div class="date-range-box">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                                <div>
-                                    <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך הגעה (כניסה):</span>
-                                    <select id="startDateSelect" onchange="handleStartDateChange()" style="padding: 8px; border-radius: 8px; border: 1.5px solid var(--forest-mid); font-size: 13px; font-weight: bold; width: 100%; margin-top: 4px;">
-                                        <option value="27" selected>27.9 (יום ראשון)</option>
-                                        <option value="28">28.9 (יום שני)</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <span style="font-size: 12px; font-weight: bold; color: var(--earth-brown);">תאריך עזיבה (יציאה):</span>
-                                    <select id="endDateSelect" onchange="calculateTotal()" style="padding: 8px; border-radius: 8px; border: 1.5px solid var(--forest-mid); font-size: 13px; font-weight: bold; width: 100%; margin-top: 4px;">
-                                        <option value="28" selected>28.9 (יום שני)</option>
-                                        <option value="29">29.9 (יום שלישי)</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selected-date-banner" id="selectedDateBanner">
-                            תאריכים נבחרים: 27.9 עד 28.9 (לילה 1)
-                        </div>
+                        <label><i class="far fa-calendar-alt" style="color: var(--campfire-orange);"></i> בחר מועד פעילות:</label>
+                        <select id="eventDate">
+                            <option value="28-29 לספטמבר 2026 (שני-שלישי)">28-29 לספטמבר 2026 (שני-שלישי)</option>
+                        </select>
                     </div>
 
                     <div class="total-price-box">
@@ -462,53 +422,29 @@
     <script>
         const MY_WHATSAPP_NUMBER = "972559914540"; 
 
-        function handleStartDateChange() {
-            const startVal = parseInt(document.getElementById('startDateSelect').value);
-            const endSelect = document.getElementById('endDateSelect');
-            endSelect.innerHTML = '';
-            
-            const dayNames = { 28: "28.9 (יום שני)", 29: "29.9 (יום שלישי)" };
-            for (let d = startVal + 1; d <= 29; d++) {
-                const opt = document.createElement('option');
-                opt.value = d;
-                opt.innerText = dayNames[d];
-                endSelect.appendChild(opt);
-            }
-            calculateTotal();
-        }
-
         function calculateTotal() {
             const adults = parseInt(document.getElementById('adultsNum').value);
             const kids = parseInt(document.getElementById('kidsNum').value);
-            const startVal = parseInt(document.getElementById('startDateSelect').value);
-            const endVal = parseInt(document.getElementById('endDateSelect').value);
             const isOwnGear = document.getElementById('bringOwnGear').checked;
             
-            let night1Total = adults * 250;
+            const kidsAgesGroup = document.getElementById('kidsAgesGroup');
+            if (kids === 0) {
+                kidsAgesGroup.style.display = 'none';
+            } else {
+                kidsAgesGroup.style.display = 'flex';
+            }
+
+            let total = adults * 250;
             if (kids > 0) {
                 const firstTwo = Math.min(2, kids);
                 const extraKids = Math.max(0, kids - 2);
-                night1Total += (firstTwo * 170) + (extraKids * 50);
-            }
-
-            let total = night1Total;
-            const nights = endVal - startVal;
-            let extraCost = 0;
-
-            if (nights > 1) {
-                extraCost = 300;
-                if (adults > 1) extraCost += (adults - 1) * 100;
-                if (kids > 1) extraCost += (kids - 1) * 50;
-                total += extraCost;
+                total += (firstTwo * 170) + (extraKids * 50);
             }
 
             if (isOwnGear) {
-                total = Math.max(0, total - (100 * nights));
+                total = Math.max(0, total - 100);
             }
 
-            const nightsText = nights === 1 ? "לילה 1" : `${nights} לילות`;
-            const extraText = extraCost > 0 ? ` (כולל ₪${extraCost} עבור לילה שני)` : '';
-            document.getElementById('selectedDateBanner').innerHTML = `תאריכים נבחרים: ${startVal}.9 עד ${endVal}.9 (${nightsText})${extraText}<br><span style="font-size:12px; color:#ffeb3b;">*מותנה במספר נרשמים מינימלי</span>`;
             document.getElementById('totalAmount').innerText = total;
         }
 
@@ -516,10 +452,17 @@
             const name = document.getElementById('parentName').value.trim();
             const phone = document.getElementById('parentPhone').value.trim();
             const email = document.getElementById('parentEmail').value.trim();
+            const kids = parseInt(document.getElementById('kidsNum').value);
+            const kidsAges = document.getElementById('kidsAges').value.trim();
             const total = document.getElementById('totalAmount').innerText;
 
             if(!name || !phone || !email) {
                 alert('אנא מלאו שם מלא, טלפון נייד וכתובת מייל כדי להמשיך להרשמה.');
+                return;
+            }
+
+            if(kids > 0 && !kidsAges) {
+                alert('אנא ציינו את גילאי הילדים כדי להמשיך.');
                 return;
             }
 
@@ -533,21 +476,25 @@
             const email = document.getElementById('parentEmail').value.trim();
             const adults = document.getElementById('adultsNum').value;
             const kids = document.getElementById('kidsNum').value;
-            const startVal = document.getElementById('startDateSelect').value;
-            const endVal = document.getElementById('endDateSelect').value;
-            const isOwnGear = document.getElementById('bringOwnGear').checked ? "כן (מביאים ציוד עצמאית)" : "לא (אספקת ציוד מלאה)";
+            const kidsAges = document.getElementById('kidsAges').value.trim();
+            const dateText = document.getElementById('eventDate').value;
+            const isOwnGear = document.getElementById('bringOwnGear').checked ? "כן (מביאים אוהל ומזרנים עצמאית - 100 ₪ הנחה)" : "לא (אספקת ציוד מלאה על ידי מדורת השבט)";
             const total = document.getElementById('totalAmount').innerText;
 
-            const message = `שלום! נרשמתי לקמפינג סוכות בכרמל (חניון כלניות):%0A%0A` +
+            let kidsInfoText = `${kids} ילדים`;
+            if (parseInt(kids) > 0 && kidsAges) {
+                kidsInfoText += ` (גילאים: ${kidsAges})`;
+            }
+
+            const message = `שלום! נרשמתי לקמפינג בכרמל:%0A%0A` +
                             `שם מלא: ${name}%0A` +
                             `טלפון: ${phone}%0A` +
                             `מייל: ${email}%0A` +
-                            `תאריכים: ${startVal}.9 עד ${endVal}.9%0A` +
-                            `הרכב משפחתי: ${adults} מבוגרים, ${kids} ילדים%0A` +
+                            `מועד: ${dateText}%0A` +
+                            `הרכב משפחתי: ${adults} מבוגרים, ${kidsInfoText}%0A` +
                             `ציוד עצמאי: ${isOwnGear}%0A` +
                             `סך הכל לתשלום: ₪${total}%0A` +
                             `אופן תשלום מבוקש: ${paymentMethod}%0A%0A` +
-                            `* ידוע לי כי היציאה לפעילות מותנית במספר נרשמים מינימלי.%0A` +
                             `אשמח לקבל קישור לתשלום לשריין את מקומנו. תודה!`;
 
             const waUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
