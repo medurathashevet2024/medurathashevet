@@ -236,7 +236,7 @@
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-time">12:00 – 13:00</span>
-                        <span class="timeline-text"><strong>סדנאות יצירה מהטבע: הכנת דמויות יער, פיסול באדמה (לילדים), הכנת תכשיטים מחומרים טבעיים (להורים), </strong>.</span>
+                        <span class="timeline-text"><strong>סדנאות יצירה מהטבע: הכנת דמויות יער ופיסול באדמה (לילדים), הכנת תכשיטים מחומרים טבעיים (להורים)</strong>.</span>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-time">13:00 – 14:00</span>
@@ -378,7 +378,7 @@
             const ticketText = ticketSelect.options[ticketSelect.selectedIndex].text;
             const total = document.getElementById('totalAmount').innerText;
 
-            const message = `היי מדורת השבט! 🌿\nאני מעוניין/ת להירשם ליום יער בבחירות (27.10).\n\nפרטים:\n- שם: ${name}\n- טלפון: ${phone}\n- מייל: ${email}\n- סוג כרטיס: ${ticketText}\n- סה"כ לתשלום: ₪${total}\n- אقطעת תשלום נבחרת: ${paymentMethod}`;
+            const message = `היי מדורת השבט! 🌿\nאני מעוניין/ת להירשם ליום יער בבחירות (27.10).\n\nפרטים:\n- שם: ${name}\n- טלפון: ${phone}\n- מייל: ${email}\n- סוג כרטיס: ${ticketText}\n- סה"כ לתשלום: ₪${total}\n- אפשרות תשלום נבחרת: ${paymentMethod}`;
 
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${MY_WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
