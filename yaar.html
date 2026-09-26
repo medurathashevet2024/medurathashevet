@@ -5,16 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>יום יער ביום הבחירות - מדורת השבט</title>
     <style>
+        :root {
+            --primary-color: #3b5323;
+            --primary-light: #f2f7ec;
+            --border-color: #d4edbc;
+            --text-color: #333;
+            --accent-color: #d97706;
+        }
+
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-color);
             background-color: #f7f9f6;
             margin: 0;
             padding: 0;
         }
+
+        /* תפריט ניווט אחיד */
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #d4edbc;
+        }
+
         header {
-            background-color: #3b5323;
+            background-color: var(--primary-color);
             color: #ffffff;
             padding: 2rem 1rem;
             text-align: center;
@@ -28,6 +62,7 @@
             margin: 0;
             color: #d4edbc;
         }
+
         .container {
             max-width: 800px;
             margin: 2rem auto;
@@ -36,23 +71,22 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
+
         h2 {
-            color: #3b5323;
+            color: var(--primary-color);
             border-bottom: 2px solid #e2ebd8;
             padding-bottom: 0.5rem;
             margin-top: 1.5rem;
         }
+
         .info-box {
-            background-color: #f2f7ec;
-            border-right: 4px solid #3b5323;
+            background-color: var(--primary-light);
+            border-right: 4px solid var(--primary-color);
             padding: 1rem;
             margin: 1.5rem 0;
             border-radius: 4px;
         }
-        .info-box ul {
-            margin: 0.5rem 0;
-            padding-right: 1.5rem;
-        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -64,12 +98,13 @@
             border-bottom: 1px solid #e0e0e0;
         }
         th {
-            background-color: #3b5323;
+            background-color: var(--primary-color);
             color: #ffffff;
         }
         tr:nth-child(even) {
             background-color: #fafcf8;
         }
+
         .pricing {
             display: flex;
             gap: 1rem;
@@ -78,21 +113,22 @@
         }
         .price-card {
             flex: 1;
-            background: #f2f7ec;
+            background: var(--primary-light);
             padding: 1.2rem;
             border-radius: 6px;
             text-align: center;
-            border: 1px solid #d4edbc;
+            border: 1px solid var(--border-color);
         }
         .price-card h3 {
             margin: 0 0 0.5rem 0;
-            color: #3b5323;
+            color: var(--primary-color);
         }
         .price-card .price {
             font-size: 1.5rem;
             font-weight: bold;
             color: #2c3e50;
         }
+
         .form-section {
             background-color: #fafcf8;
             padding: 1.5rem;
@@ -116,8 +152,8 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-        button {
-            background-color: #3b5323;
+        button.submit-btn {
+            background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 0.75rem 1.5rem;
@@ -128,9 +164,65 @@
             width: 100%;
             transition: background-color 0.2s;
         }
-        button:hover {
+        button.submit-btn:hover {
             background-color: #2e411b;
         }
+
+        /* עיצוב חלונית (Modal) בחירת תשלום */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .modal-content h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .pay-btn {
+            background-color: #f2f7ec;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .pay-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .close-modal {
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
         footer {
             text-align: center;
             padding: 1.5rem;
@@ -140,6 +232,18 @@
     </style>
 </head>
 <body>
+
+    <!-- תפריט ניווט ראשי -->
+    <nav>
+        <ul>
+            <li><a href="index.html">דף הבית</a></li>
+            <li><a href="jerusalem.html">קמפינג בהרי ירושלים 🌲</a></li>
+            <li><a href="carmel.html">קמפינג בכרמל ⛰️</a></li>
+            <li><a href="yaar.html" style="color: #d4edbc; font-weight: bold;">יום יער בבחירות 🌲</a></li>
+            <li><a href="yarid.html">סדנאות יצירה מהטבע 🎨</a></li>
+            <li><a href="equipment.html">ציוד והנחיות 🎒</a></li>
+        </ul>
+    </nav>
 
     <header>
         <h1>יום יער ביום הבחירות</h1>
@@ -213,7 +317,7 @@
 
         <section class="form-section">
             <h2>טופס הרשמה</h2>
-            <form onsubmit="event.preventDefault(); alert('תודה רבה! טופס ההרשמה נקלט בהצלחה. נתראה ביער!');">
+            <form id="registrationForm" onsubmit="openPaymentModal(event)">
                 <div class="form-group">
                     <label for="fullname">שם מלא:</label>
                     <input type="text" id="fullname" name="fullname" required placeholder="הכניסו שם מלא">
@@ -233,14 +337,45 @@
                         <option value="family">חבילה משפחתית - עד 6 נפשות (200 ₪)</option>
                     </select>
                 </div>
-                <button type="submit">הירשמו עכשיו</button>
+                <button type="submit" class="submit-btn">הירשמו עכשיו</button>
             </form>
         </section>
+    </div>
+
+    <!-- חלונית בחירת תשלום (Modal) -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <h3>בחר אופן תשלום</h3>
+            <p>אנא בחר את הדרך בה תרצה לבצע את התשלום עבור ההרשמה:</p>
+            <div class="payment-options">
+                <button class="pay-btn" onclick="selectPayment('Bit / PayBox')">תשלום באמצעות Bit / PayBox</button>
+                <button class="pay-btn" onclick="selectPayment('Credit Card')">תשלום בכרטיס אשראי</button>
+                <button class="pay-btn" onclick="selectPayment('Bank Transfer')">העברה בנקאית</button>
+            </div>
+            <button class="close-modal" onclick="closePaymentModal()">ביטול</button>
+        </div>
     </div>
 
     <footer>
         <p>מדורת השבט - חינוך יער וחוויה בטבע | כל הזכויות שמורות</p>
     </footer>
+
+    <script>
+        function openPaymentModal(event) {
+            event.preventDefault();
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function selectPayment(method) {
+            alert('בחרת ב: ' + method + '. תודה רבה על הרשמתך! פרטי ההתחברות והתשלום יישלחו אליך בהקדם.');
+            closePaymentModal();
+            document.getElementById('registrationForm').reset();
+        }
+    </script>
 
 </body>
 </html>
