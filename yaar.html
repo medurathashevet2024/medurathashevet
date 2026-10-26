@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מדורת השבט - יום יער ביום הבחירות</title>
+    <title>מדורת השבט - יום יער </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
@@ -184,8 +184,8 @@
     <span> עדכון מזג אוויר: יום יער בגלבוע נדחה לשבת הקרובה, 31.10.2026 מחכים לכם </span>
 </div>
     <div class="hero">
-        <h1>יום יער ביום הבחירות</h1>
-        <p>חיבור לטבע, סדנאות יצירה ובישולי שטח בחורשת גדעון בגלבוע</p>
+        <h1>יום יער בגלבוע</h1>
+        <p>חיבור לטבע, סדנאות יצירה ובישולי שטח בחורשת גדעון</p>
     </div>
 
     <div class="wrapper">
@@ -199,7 +199,7 @@
             </div>
 
             <div class="event-chips">
-                <div class="chip"><i class="fas fa-calendar-alt"></i> 27 באוקטובר (יום הבחירות)</div>
+                <div class="chip"><i class="fas fa-calendar-alt"></i> 31 באוקטובר (יום שבת)</div>
                 <div class="chip"><i class="fas fa-map-marker-alt"></i> חורשת גדעון, הגלבוע</div>
             </div>
 
@@ -226,7 +226,7 @@
 
             <details class="schedule-details-box" open>
                 <summary class="schedule-summary-btn">
-                    <span><i class="fas fa-clock" style="color: var(--campfire-orange); margin-left: 8px;"></i> לוח הזמנים המלא | 27.10 (יום הבחירות)</span>
+                    <span><i class="fas fa-clock" style="color: var(--campfire-orange); margin-left: 8px;"></i> לוח הזמנים המלא | 31.10 (יום שבת)</span>
                     <i class="fas fa-chevron-down"></i>
                 </summary>
                 <div class="schedule-content">
@@ -406,7 +406,7 @@
             const ticketText = ticketSelect.options[ticketSelect.selectedIndex].text;
             const total = document.getElementById('totalAmount').innerText;
 
-            const message = `היי מדורת השבט! 🌿\nאני מעוניין/ת להירשם ליום יער בבחירות (27.10).\n\nפרטים:\n- שם: ${name}\n- טלפון: ${phone}\n- מייל: ${email}\n- סוג כרטיס: ${ticketText}\n- סה"כ לתשלום: ₪${total}\n- אפשרות תשלום נבחרת: ${paymentMethod}`;
+            const message = `היי מדורת השבט! 🌿\nאני מעוניין/ת להירשם ליום יער בשבת (31.10).\n\nפרטים:\n- שם: ${name}\n- טלפון: ${phone}\n- מייל: ${email}\n- סוג כרטיס: ${ticketText}\n- סה"כ לתשלום: ₪${total}\n- אפשרות תשלום נבחרת: ${paymentMethod}`;
 
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${MY_WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
