@@ -169,7 +169,58 @@
     <div class="form-container">
         <h2>הרשמה לפעילות</h2>
        
-        <form id="registerForm" onsubmit="sendToWhatsApp(event)">
+       function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            const eventVal = document.getElementById('eventSelect').value;
+            const clientName = document.getElementById('clientName').value;
+            const phone = document.getElementById('phone').value;
+            const settlement = document.getElementById('settlement').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            const payments = document.getElementById('paymentsSelect').selectedOptions[0].text;
+            const remarks = document.getElementById('clientRemarks').value.trim();
+            const totalPrice = document.getElementById('totalPriceDisplay').innerText;
+
+            let eventNameDisplay = "";
+            let detailsText = "";
+
+            if (eventVal === 'journey') {
+                const jOptText = document.getElementById('journeyOption').selectedOptions[0].text;
+                const pGender = document.querySelector('input[name="parentGender"]:checked')?.value || 'לא צוין';
+                const cAge = document.getElementById('childAge').value;
+                const cGender = document.querySelector('input[name="childGender"]:checked')?.value || 'לא צוין';
+                const rental = document.getElementById('tentRental').checked ? 'כן (+50 ₪)' : 'לא';
+
+                eventNameDisplay = "מסע משותף: הורה וילד";
+                detailsText += `📌 *מסלול:* ${jOptText}\n`;
+                detailsText += `👤 *מבוגר/ת:* ${clientName} (${pGender})\n`;
+                detailsText += `👶 *ילד/ה:* גיל ${cAge} (${cGender})\n`;
+                detailsText += `⛺ *השאלת אוהל:* ${rental}\n`;
+            } else {
+                const extraText = document.getElementById('extraParticipants').selectedOptions[0].text;
+                eventNameDisplay = 'יום יער: "מי מפחד מהחושך?"';
+                detailsText += `👨‍👩‍👧‍👦 *הרכב משפחתי:* ${extraText}\n`;
+                detailsText += `👤 *שם המזמין/ה:* ${clientName}\n`;
+            }
+
+            let message = `היי טליה, אני רוצה להירשם לפעילות ב'מדורת השבט'! 🌿\n\n`;
+            message += `🏕️ *פעילות:* ${eventNameDisplay}\n`;
+            message += detailsText;
+            message += `📞 *טלפון:* ${phone}\n`;
+            message += `🏡 *יישוב:* ${settlement}\n`;
+            message += `💳 *אמצעי תשלום:* ${paymentMethod} (${payments})\n`;
+            if (remarks) {
+                message += `📝 *הערות:* ${remarks}\n`;
+            }
+            message += `💰 *סה"כ לתשלום:* ${totalPrice}\n\n`;
+            message += `אשמח לקבל פרטים להשלמת התשלום.`;
+
+            const phoneNumber = "972559914540";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            // פתיחת הקישור כחלון חדש שיוצא מה-iframe ומכוון לוואטסאפ בוודאות
+            window.open(whatsappUrl, '_blank');
+        }
             
             <!-- בחירת הפעילות -->
             <div class="form-group">
