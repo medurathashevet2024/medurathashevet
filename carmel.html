@@ -372,6 +372,105 @@
             </div>
         </section>
 
+             <!-- כפתור ההרשמה הראשי בעמוד -->
+<div style="text-align: center; margin: 40px 0;">
+    <button onclick="openRegisterModal()" class="cta-button" style="border:none; cursor:pointer; font-size:1.2rem;">
+        הרשמה
+    </button>
+</div>
+
+<!-- החלון הקופץ (Modal Pop-up) -->
+<div id="registerModal" class="modal-overlay" onclick="closeRegisterModal(event)">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeRegisterModalForce()">&times;</button>
+        <!-- הטופס נטען ישירות מ-register.html -->
+        <iframe src="register.html" class="modal-iframe"></iframe>
+    </div>
+</div>
+
+<!-- עיצוב CSS לחלון הקופץ (להוסיף בתוך תגית ה-<style> בעמוד) -->
+<style>
+    /* הכהיית הרקע סביב החלון */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.65);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    /* תיבת החלון הקופץ - מותאמת ברוחב הטקסט המרכזי */
+    .modal-content {
+        position: relative;
+        background: #fff;
+        width: 100%;
+        max-width: 750px; /* רוחב מותאם ונוח לקריאה */
+        height: 85vh; /* גובה 85% מהמסך */
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        animation: fadeIn 0.3s ease;
+    }
+
+    .modal-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* כפתור סגירה X */
+    .modal-close {
+        position: absolute;
+        top: 12px;
+        left: 15px; /* ממוקם בשמאל לפי RTL */
+        background: #2e4d36;
+        color: white;
+        border: none;
+        font-size: 24px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 2100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<!-- סקריפט JavaScript לפתיחה וסגירה (להוסיף בתחתית העמוד לפני </body>) -->
+<script>
+    function openRegisterModal() {
+        document.getElementById('registerModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // מונע גלילה של הרקע
+    }
+
+    function closeRegisterModal(event) {
+        if (event.target.id === 'registerModal') {
+            document.getElementById('registerModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    function closeRegisterModalForce() {
+        document.getElementById('registerModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+</script>
+        
+        <--
         <!-- אזור הרשמה ומחשבון -->
         <section id="booking">
             <div class="section-header">
@@ -471,7 +570,7 @@
                 </div>
             </div>
         </section>
-
+--!>
         <div class="social-bar">
             <a href="https://wa.me/972559914540" target="_blank" class="social-link link-wa">
                 <i class="fab fa-whatsapp"></i> שלחו לנו הודעה ב-WhatsApp
