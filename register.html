@@ -203,9 +203,9 @@
                     <label for="journeyOption">בחירת מסלול  *</label>
                     <select id="journeyOption" onchange="calculateTotal()">
                         <option value="full">הרשמה לכל 3 המפגשים (מסע שלם)</option>
-                        <option value="m1">מפגש 1: עוצמת העץ בלבד (13.11.26) - 550 ₪</option>
-                        <option value="m2">מפגש 2: חכמת האש בלבד (27.11.26) - 550 ₪</option>
-                        <option value="m3">מפגש 3: סופ"ש מסכם בלבד (10-11.12.26) - 600 ₪</option>
+                        <option value="m1">מפגש 1: עץ (20.11.26) - 390 ₪</option>
+                        <option value="m2">מפגש 2: אש (4.12.26) - 390 ₪</option>
+                        <option value="m3">מפגש 3: סופ"ש מסכם בלבד (10-11.12.26 חופשת חנוכה) - 780 ₪</option>
                     </select>
                 </div>
 
@@ -262,11 +262,15 @@
             <!-- אמצעי תשלום ומספר תשלומים -->
             <div class="form-row">
                 <div class="form-group">
-                    <label for="paymentMethod">אמצעי תשלום מועדף *</label>
-                    <select id="paymentMethod" required>
-                        <option value="כרטיס אשראי">כרטיס אשראי</option>
-                        <option value="כרטיס פייטר (מילואים)">כרטיס פייטר (מילואים)</option>
-                    </select>
+                  <select id="paymentMethod" required>
+                       <option value="ביט (Bit)">ביט (Bit)</option>
+                       <option value="העברה בנקאית">העברה בנקאית</option>
+    <option value="מזומן">מזומן</option>
+    <option value="כרטיס אשראי">כרטיס אשראי</option>
+    <option value="כרטיס פייטר (מילואים)">כרטיס פייטר (מילואים)</option>
+   
+   
+</select>
                 </div>
                 <div class="form-group">
                     <label for="paymentsSelect">מספר תשלומים *</label>
@@ -303,7 +307,7 @@
             </div>
 
             <button type="submit" class="submit-btn">
-                💬 המשך
+                 המשך
             </button>
         </form>
     </div>
@@ -456,7 +460,7 @@
             const phoneNumber = "972559914540";
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
-            window.open(whatsappUrl, '_blank');
+           window.location.href = whatsappUrl;
         }
 
         window.onload = function() {
