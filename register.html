@@ -3,284 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>הרשמה לפעילויות - מדורת השבט</title>
+    <title>טופס הרשמה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2b4c38;
-            --accent-orange: #d96b27;
-            --bg-light: #f4f7f4;
-            --text-dark: #2c3e50;
+            --primary-green: #2e4d36;
+            --warm-orange: #d97724;
+            --bg-cream: #fbf8f3;
+            --text-dark: #2c3531;
+            --border-light: #e2ded4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9fbf9;
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--bg-cream);
             color: var(--text-dark);
-            margin: 0;
             padding: 20px;
-            direction: rtl;
         }
 
-        .booking-container {
-            max-width: 650px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #e0e8e0;
+        .form-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 100%;
         }
 
-        h1 {
-            color: var(--primary-color);
+        h2 {
+            color: var(--primary-green);
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
+            font-size: 1.8rem;
         }
 
-        .subtitle {
+        p.subtitle {
             text-align: center;
             color: #666;
             margin-bottom: 25px;
-        }
-
-        .form-section {
-            background-color: var(--bg-light);
-            padding: 18px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border-right: 4px solid var(--accent-orange);
-        }
-
-        .form-section h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-            font-size: 1.1rem;
+            font-size: 0.95rem;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
         label {
             display: block;
+            font-weight: 700;
             margin-bottom: 6px;
-            font-weight: 600;
-        }
-
-        input[type="text"],
-        input[type="tel"],
-        input[type="email"],
-        input[type="number"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
+            color: var(--primary-green);
             font-size: 0.95rem;
         }
 
-        .row-group {
-            display: flex;
-            gap: 12px;
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background-color: #fafafa;
         }
 
-        .row-group .form-group {
-            flex: 1;
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--warm-orange);
+            background-color: #fff;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 70px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            height: 42px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-green);
+        }
+
+        .price-summary {
+            background-color: #f4f6f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #d5ded7;
+        }
+
+        .price-summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .total-price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #bdc9c0;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary-green);
         }
 
         .submit-btn {
             width: 100%;
-            background-color: var(--accent-orange);
+            background-color: #25d366;
             color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
+            padding: 12px;
             font-size: 1.1rem;
-            font-weight: bold;
+            font-weight: 700;
+            border-radius: 25px;
+            border: none;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             transition: background 0.2s;
         }
 
         .submit-btn:hover {
-            background-color: #b85419;
+            background-color: #1ebc57;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="booking-container">
-    <h1>הרשמה לפעילות</h1>
-    <p class="subtitle">מדורת השבט - חיבור לטבע ולקהילה</p>
-
-    <form id="mainBookingForm">
-        <!-- 1. בחירת פעילות -->
-        <div class="form-section">
-            <h3>1. בחירת אירוע/פעילות</h3>
+    <div class="form-container">
+        <h2>הרשמה לפעילות</h2>
+       
+        <form id="registerForm" onsubmit="sendToWhatsApp(event)">
+            
+            <!-- בחירת הפעילות -->
             <div class="form-group">
-                <label for="activitySelect">בחר/י פעילות:</label>
-                <select id="activitySelect" required>
-                    <option value="">-- טוען פעילויות זמינות... --</option>
+               
+                <select id="eventSelect" onchange="switchEventFields(); calculateTotal();" required>
+                    <option value="journey">מסע הורה וילד </option>
+                    <option value="yaar">יום יער</option>
                 </select>
             </div>
-        </div>
 
-        <!-- 2. פרטי מבוגר מלווה -->
-        <div class="form-section">
-            <h3>2. פרטי מבוגר אחראי</h3>
-            <div class="row-group">
+            <!-- שדות משותפים (פרטי קשר) -->
+            <div class="form-row" id="commonFields">
                 <div class="form-group">
-                    <label for="parentName">שם מלא:</label>
-                    <input type="text" id="parentName" required>
+                    <label for="clientName" id="nameLabel">שם מלא של ההורה *</label>
+                    <input type="text" id="clientName" required placeholder="ישראל ישראלי">
                 </div>
                 <div class="form-group">
-                    <label for="parentPhone">טלפון נייד:</label>
-                    <input type="tel" id="parentPhone" required placeholder="050-0000000">
+                    <label for="phone">טלפון נייד *</label>
+                    <input type="tel" id="phone" required placeholder="050-0000000">
                 </div>
             </div>
+
             <div class="form-group">
-                <label for="parentEmail">דוא"ל:</label>
-                <input type="email" id="parentEmail" required>
+                <label for="settlement">יישוב מגורים *</label>
+                <input type="text" id="settlement" required placeholder="שם היישוב">
             </div>
-        </div>
 
-        <!-- 3. פרטי המשתתפים (ילדים) -->
-        <div class="form-section">
-            <h3>3. פרטי הילד/ה והמשתתפים</h3>
-            <div class="row-group">
+            <!-- ===== אזור ייעודי למסע הורה וילד (JOURNEY) ===== -->
+            <div id="journeySpecificFields">
                 <div class="form-group">
-                    <label for="childName">שם הילד/ה:</label>
-                    <input type="text" id="childName" required>
+                    <label for="journeyOption">בחירת מסלול  *</label>
+                    <select id="journeyOption" onchange="calculateTotal()">
+                        <option value="full">הרשמה לכל 3 המפגשים (מסע שלם)</option>
+                        <option value="m1">מפגש 1: עוצמת העץ בלבד (13.11.26) - 550 ₪</option>
+                        <option value="m2">מפגש 2: חכמת האש בלבד (27.11.26) - 550 ₪</option>
+                        <option value="m3">מפגש 3: סופ"ש מסכם בלבד (10-11.12.26) - 600 ₪</option>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label for="childAge">גיל הילד/ה:</label>
-                    <input type="number" id="childAge" min="1" max="18" required>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="parentGender">מין המבוגר/ת *</label>
+                        <div class="radio-group">
+                            <label class="radio-option"><input type="radio" name="parentGender" value="זכר"> זכר</label>
+                            <label class="radio-option"><input type="radio" name="parentGender" value="נקבה"> נקבה</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="childAge">גיל הילד/ה *</label>
+                        <input type="number" id="childAge" min="6" max="18" placeholder="לדוגמה: 11">
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="childGender">מין:</label>
-                    <select id="childGender" required>
-                        <option value="">בחר/י</option>
-                        <option value="בן">בן</option>
-                        <option value="בת">בת</option>
+                    <label>מין הילד/ה *</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="childGender" value="ילד"> ילד</label>
+                        <label class="radio-option"><input type="radio" name="childGender" value="ילדה"> ילדה</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
+                        <input type="checkbox" id="tentRental" onchange="calculateTotal()" style="width: auto;">
+                        מעוניינים בהשאלת אוהל ומזרנים לסופ"ש המסכם (+50 ₪)
+                    </label>
+                </div>
+            </div>
+
+            <!-- ===== אזור ייעודי ליום יער (YAAR) ===== -->
+            <div id="yaarSpecificFields" style="display: none;">
+                <div class="form-group">
+                    <label for="extraParticipants">הרכב משפחתי  *</label>
+                    <select id="extraParticipants" onchange="calculateTotal()">
+                        <option value="0">זוג (הורה + ילד.ה) - 190 ₪</option>
+                        <option value="1">3 משתתפים - 255 ₪</option>
+                      <option value="2">2 4 משתתפים (משפחה גרעינית) - 290 ₪ </option>
+                          <option value="3">3 5 משתתפים (משפחה גרעינית) - 290 ₪ </option>
                     </select>
                 </div>
             </div>
 
+            <!-- קוד קופון הנחה -->
             <div class="form-group">
-                <label for="participantCount">מספר משתתפים כולל (הורים + ילדים):</label>
-                <input type="number" id="participantCount" min="1" value="2" required>
+                <label for="couponCode">קוד קופון</label>
+                <input type="text" id="couponCode" placeholder="הכניסו קוד הנחה אם יש" style="text-transform: uppercase;" oninput="calculateTotal()">
+                <small id="couponMessage" style="display: block; margin-top: 4px; font-weight: bold;"></small>
             </div>
 
-            <div class="form-group">
-                <label for="dietary">רגישויות, אלרגיות או העדפות תזונה (לדוגמה: צמחוני/טבעוני/גלוטן):</label>
-                <input type="text" id="dietary" placeholder="אם אין, אפשר להשאיר ריק">
-            </div>
-        </div>
-
-        <!-- 4. תשלום ופריסה -->
-        <div class="form-section">
-            <h3>4. אופן התשלום</h3>
-            <div class="row-group">
+            <!-- אמצעי תשלום ומספר תשלומים -->
+            <div class="form-row">
                 <div class="form-group">
-                    <label for="paymentMethod">אמצעי תשלום מועדף:</label>
+                    <label for="paymentMethod">אמצעי תשלום מועדף *</label>
                     <select id="paymentMethod" required>
-                        <option value="ביט / פייבוקס">ביט / PayBox</option>
-                        <option value="העברה בנקאית">העברה בנקאית</option>
-                        <option value="מזומן במקום">מזומן במקום</option>
+                        <option value="כרטיס אשראי">כרטיס אשראי</option>
+                        <option value="כרטיס פייטר (מילואים)">כרטיס פייטר (מילואים)</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="installments">מספר תשלומים:</label>
-                    <select id="installments" required>
-                        <option value="1 (תשלום אחד)">תשלום 1</option>
-                        <option value="2 תשלומים">2 תשלומים</option>
-                        <option value="3 תשלומים">3 תשלומים</option>
+                    <label for="paymentsSelect">מספר תשלומים *</label>
+                    <select id="paymentsSelect" required>
+                        <!-- מתעדכן אוטומטית לפי הסכום (מינימום 200 ₪ לתשלום) -->
                     </select>
                 </div>
             </div>
+
+            <!-- הערות או בקשות מיוחדות -->
             <div class="form-group">
-                <label for="notes">הערות נוספות:</label>
-                <textarea id="notes" rows="2" placeholder="בקשות מיוחדות..."></textarea>
-            </div>
-        </div>
-
-        <button type="submit" class="submit-btn">אישור והמשך לווטסאפ ←</button>
-    </form>
-</div>
-
-<script>
-    // 1. רשימת הפעילויות - המערכת מציגה רק אירועים שטרם עבר זמנם
-    const activities = [
-        { id: 'yaar-31-10', name: 'יום יער - 31.10.2026', date: '2026-10-31' },
-        { id: 'journey-1', name: 'מסע הורה וילד: מפגש 1 - עץ (20.11.2026)', date: '2026-11-20' },
-        { id: 'journey-2', name: 'מסע הורה וילד: מפגש 2 - אש (04.12.2026)', date: '2026-12-04' },
-        { id: 'journey-full', name: 'מסע הורה וילד: המסע המלא (3 מפגשים)', date: '2026-12-31' }
-    ];
-
-    const activitySelect = document.getElementById('activitySelect');
-    const today = new Date().toISOString().split('T')[0];
-
-    // טעינת הפעילויות הרלוונטיות לתפריט
-    function loadActivities() {
-        activitySelect.innerHTML = '<option value="">-- בחר/י פעילות --</option>';
-        
-        // זיהוי פרמטר שנשלח ב-URL (למשל: register.html?activity=journey-1)
-        const urlParams = new URLSearchParams(window.location.search);
-        const selectedFromUrl = urlParams.get('activity');
-
-        activities.forEach(act => {
-            if (act.date >= today) { // סינון אירועים שעברו
-                const option = document.createElement('option');
-                option.value = act.name;
-                option.textContent = act.name;
-                if (selectedFromUrl === act.id) {
-                    option.selected = true;
-                }
-                activitySelect.appendChild(option);
-            }
-        });
-    }
-
-    loadActivities();
-
-    // 2. טיפול בשליחת הטופס
-    document.getElementById('mainBookingForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const formData = {
-            activity: document.getElementById('activitySelect').value,
-            parentName: document.getElementById('parentName').value,
-            parentPhone: document.getElementById('parentPhone').value,
-            parentEmail: document.getElementById('parentEmail').value,
-            childName: document.getElementById('childName').value,
-            childAge: document.getElementById('childAge').value,
-            childGender: document.getElementById('childGender').value,
-            participantCount: document.getElementById('participantCount').value,
-            dietary: document.getElementById('dietary').value || 'אין',
-            paymentMethod: document.getElementById('paymentMethod').value,
-            installments: document.getElementById('installments').value,
-            notes: document.getElementById('notes').value || 'אין'
-        };
-
-        // א' שליחת הנתונים ל-Google Sheets (AppScript)
-        // fetch('YOUR_GOOGLE_SCRIPT_URL', { method: 'POST', body: JSON.stringify(formData) });
-
-        // ב' הכנת הודעה ויצירת מעבר לווטסאפ שלך
-        const whatsappText = `היי טליה, נרשמתי דרך האתר! 🌲%0A` +
-            `*פעילות:* ${formData.activity}%0A` +
-            `*שם הורה:* ${formData.parentName}%0A` +
-            `*טלפון:* ${formData.parentPhone}%0A` +
-            `*שם הילד/ה:* ${formData.childName} (גיל ${formData.childAge}, ${formData.childGender})%0A` +
-            `*סה"כ משתתפים:* ${formData.participantCount}%0A` +
-            `*העדפות תזונה:* ${formData.dietary}%0A` +
-            `*תשלום:* ${formData.paymentMethod} (${formData.installments})`;
-
-        const whatsappUrl = `https://wa.me/972559914540?text=${whatsappText}`;
-        window.location.href = whatsappUrl;
-    });
-</script>
-
-</body>
-              </html>
+                <label for="clientRemarks">הערות / בקשות מיוחדות</label>
               
+            </div>
+
+            <!-- סיכום מחיר -->
+            <div class="price-summary">
+                <div class="price-summary-row">
+                    <span>מחיר בסיס:</span>
+                    <span id="basePriceDisplay">0 ₪</span>
+                </div>
+                <div class="price-summary-row" id="discountRow" style="display: none; color: #d97724;">
+                    <span>הנחה:</span>
+                    <span id="discountDisplay">0 ₪</span>
+                </div>
+                <div class="price-summary-row" id="addonRow" style="display: none;">
+                    <span>תוספות:</span>
+                    <span id="addonDisplay">0 ₪</span>
+                </div>
+                <div class="total-price-row">
+                    <span>סה"כ לתשלום:</span>
+                    <span id="totalPriceDisplay">0 ₪</span>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                💬 המשך
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function switchEventFields() {
+            const eventVal = document.getElementById('eventSelect').value;
+            const journeyDiv = document.getElementById('journeySpecificFields');
+            const yaarDiv = document.getElementById('yaarSpecificFields');
+            const nameLabel = document.getElementById('nameLabel');
+
+            if (eventVal === 'journey') {
+                journeyDiv.style.display = 'block';
+                yaarDiv.style.display = 'none';
+                nameLabel.innerText = "שם מלא של המבוגר/ת *";
+            } else {
+                journeyDiv.style.display = 'none';
+                yaarDiv.style.display = 'block';
+               
+            }
+        }
+
+        function calculateTotal() {
+            const eventVal = document.getElementById('eventSelect').value;
+            const couponInput = document.getElementById('couponCode').value.trim().toUpperCase();
+            const couponMsg = document.getElementById('couponMessage');
+
+            let basePrice = 0;
+            let discount = 0;
+            let addonCost = 0;
+
+            const today = new Date();
+            const earlyBirdDeadline = new Date('2026-11-07T23:59:59');
+
+            if (eventVal === 'journey') {
+                const jOpt = document.getElementById('journeyOption').value;
+                const rentalChecked = document.getElementById('tentRental').checked;
+
+                if (jOpt === 'full') {
+                    basePrice = 1600;
+                    if (today <= earlyBirdDeadline) discount = 200; 
+                    if (rentalChecked) addonCost += 50;
+                } else if (jOpt === 'm1' || jOpt === 'm2') {
+                    basePrice = 550;
+                } else if (jOpt === 'm3') {
+                    basePrice = 600;
+                    if (rentalChecked) addonCost += 50;
+                }
+            } else {
+                const extraCount = parseInt(document.getElementById('extraParticipants').value) || 0;
+                let subtotal = 190 + (extraCount * 65);
+                if (subtotal > 290) subtotal = 290; 
+                basePrice = subtotal;
+            }
+
+            if (couponInput === 'CLICKBATEVA26' || couponInput.length >= 4) {
+                discount += Math.round(basePrice * 0.10);
+                couponMsg.style.color = '#2e4d36';
+                couponMsg.innerText = 'קוד קופון הוחל בהצלחה (10% הנחה)!';
+            } else {
+                couponMsg.innerText = '';
+            }
+
+            let finalTotal = basePrice - discount + addonCost;
+
+            document.getElementById('basePriceDisplay').innerText = basePrice.toLocaleString() + ' ₪';
+            
+            if (discount > 0) {
+                document.getElementById('discountRow').style.display = 'flex';
+                document.getElementById('discountDisplay').innerText = '-' + discount.toLocaleString() + ' ₪';
+            } else {
+                document.getElementById('discountRow').style.display = 'none';
+            }
+
+            if (addonCost > 0) {
+                document.getElementById('addonRow').style.display = 'flex';
+                document.getElementById('addonDisplay').innerText = '+' + addonCost.toLocaleString() + ' ₪';
+            } else {
+                document.getElementById('addonRow').style.display = 'none';
+            }
+
+            document.getElementById('totalPriceDisplay').innerText = finalTotal.toLocaleString() + ' ₪';
+
+            updatePaymentsDropdown(finalTotal);
+        }
+
+        function updatePaymentsDropdown(total) {
+            const select = document.getElementById('paymentsSelect');
+            select.innerHTML = '';
+
+            let maxPayments = Math.floor(total / 200);
+            if (maxPayments < 1) maxPayments = 1;
+            if (maxPayments > 10) maxPayments = 10;
+
+            for (let i = 1; i <= maxPayments; i++) {
+                let instPrice = Math.round(total / i);
+                let opt = document.createElement('option');
+                opt.value = i;
+                opt.text = i === 1 ? `תשלום 1 יחיד (${total} ₪)` : `${i} תשלומים שווים (${instPrice} ₪ לתשלום)`;
+                select.appendChild(opt);
+            }
+        }
+
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            const eventVal = document.getElementById('eventSelect').value;
+            const clientName = document.getElementById('clientName').value;
+            const phone = document.getElementById('phone').value;
+            const settlement = document.getElementById('settlement').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            const payments = document.getElementById('paymentsSelect').selectedOptions[0].text;
+            const remarks = document.getElementById('clientRemarks').value.trim();
+            const totalPrice = document.getElementById('totalPriceDisplay').innerText;
+
+            let eventNameDisplay = "";
+            let detailsText = "";
+
+            if (eventVal === 'journey') {
+                const jOptText = document.getElementById('journeyOption').selectedOptions[0].text;
+                const pGender = document.querySelector('input[name="parentGender"]:checked')?.value || 'לא צוין';
+                const cAge = document.getElementById('childAge').value;
+                const cGender = document.querySelector('input[name="childGender"]:checked')?.value || 'לא צוין';
+                const rental = document.getElementById('tentRental').checked ? 'כן (+50 ₪)' : 'לא';
+
+                eventNameDisplay = "מסע משותף: הורה וילד";
+                detailsText += `📌 *מסלול:* ${jOptText}\n`;
+                detailsText += `👤 *מבוגר/ת:* ${clientName} (${pGender})\n`;
+                detailsText += `👶 *ילד/ה:* גיל ${cAge} (${cGender})\n`;
+                detailsText += `⛺ *השאלת אוהל:* ${rental}\n`;
+            } else {
+                const extraText = document.getElementById('extraParticipants').selectedOptions[0].text;
+                eventNameDisplay = 'יום יער: "מי מפחד מהחושך?"';
+                detailsText += `👨‍👩‍👧‍👦 *הרכב משפחתי:* ${extraText}\n`;
+                detailsText += `👤 *שם המזמין/ה:* ${clientName}\n`;
+            }
+
+            let message = `היי, אני רוצה להירשם לפעילות ב'מדורת השבט' 🌿\n\n`;
+            message += `🏕️ *פעילות:* ${eventNameDisplay}\n`;
+            message += detailsText;
+            message += `📞 *טלפון:* ${phone}\n`;
+            message += `🏡 *יישוב:* ${settlement}\n`;
+            message += `💳 *אמצעי תשלום:* ${paymentMethod} (${payments})\n`;
+            if (remarks) {
+                message += `📝 *הערות:* ${remarks}\n`;
+            }
+            message += `💰 *סה"כ לתשלום:* ${totalPrice}\n\n`;
+            message += `אבקש לקבל קישור לתשלום.`;
+
+            const phoneNumber = "972559914540";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        window.onload = function() {
+            switchEventFields();
+            calculateTotal();
+        };
+    </script>
+</body>
+</html>
