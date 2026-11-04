@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרשמה לפעילויות - מדורת השבט</title>
+    <style>
+        :root {
+            --primary-color: #2b4c38;
+            --accent-orange: #d96b27;
+            --bg-light: #f4f7f4;
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fbf9;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .booking-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e0e8e0;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-section {
+            background-color: var(--bg-light);
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-right: 4px solid var(--accent-orange);
+        }
+
+        .form-section h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 0.95rem;
+        }
+
+        .row-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .row-group .form-group {
+            flex: 1;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--accent-orange);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #b85419;
+        }
+    </style>
+</head>
+<body>
+
+<div class="booking-container">
+    <h1>הרשמה לפעילות</h1>
+    <p class="subtitle">מדורת השבט - חיבור לטבע ולקהילה</p>
+
+    <form id="mainBookingForm">
+        <!-- 1. בחירת פעילות -->
+        <div class="form-section">
+            <h3>1. בחירת אירוע/פעילות</h3>
+            <div class="form-group">
+                <label for="activitySelect">בחר/י פעילות:</label>
+                <select id="activitySelect" required>
+                    <option value="">-- טוען פעילויות זמינות... --</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 2. פרטי מבוגר מלווה -->
+        <div class="form-section">
+            <h3>2. פרטי מבוגר אחראי</h3>
+            <div class="row-group">
+                <div class="form-group">
+                    <label for="parentName">שם מלא:</label>
+                    <input type="text" id="parentName" required>
+                </div>
+                <div class="form-group">
+                    <label for="parentPhone">טלפון נייד:</label>
+                    <input type="tel" id="parentPhone" required placeholder="050-0000000">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="parentEmail">דוא"ל:</label>
+                <input type="email" id="parentEmail" required>
+            </div>
+        </div>
+
+        <!-- 3. פרטי המשתתפים (ילדים) -->
+        <div class="form-section">
+            <h3>3. פרטי הילד/ה והמשתתפים</h3>
+            <div class="row-group">
+                <div class="form-group">
+                    <label for="childName">שם הילד/ה:</label>
+                    <input type="text" id="childName" required>
+                </div>
+                <div class="form-group">
+                    <label for="childAge">גיל הילד/ה:</label>
+                    <input type="number" id="childAge" min="1" max="18" required>
+                </div>
+                <div class="form-group">
+                    <label for="childGender">מין:</label>
+                    <select id="childGender" required>
+                        <option value="">בחר/י</option>
+                        <option value="בן">בן</option>
+                        <option value="בת">בת</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="participantCount">מספר משתתפים כולל (הורים + ילדים):</label>
+                <input type="number" id="participantCount" min="1" value="2" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dietary">רגישויות, אלרגיות או העדפות תזונה (לדוגמה: צמחוני/טבעוני/גלוטן):</label>
+                <input type="text" id="dietary" placeholder="אם אין, אפשר להשאיר ריק">
+            </div>
+        </div>
+
+        <!-- 4. תשלום ופריסה -->
+        <div class="form-section">
+            <h3>4. אופן התשלום</h3>
+            <div class="row-group">
+                <div class="form-group">
+                    <label for="paymentMethod">אמצעי תשלום מועדף:</label>
+                    <select id="paymentMethod" required>
+                        <option value="ביט / פייבוקס">ביט / PayBox</option>
+                        <option value="העברה בנקאית">העברה בנקאית</option>
+                        <option value="מזומן במקום">מזומן במקום</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="installments">מספר תשלומים:</label>
+                    <select id="installments" required>
+                        <option value="1 (תשלום אחד)">תשלום 1</option>
+                        <option value="2 תשלומים">2 תשלומים</option>
+                        <option value="3 תשלומים">3 תשלומים</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="notes">הערות נוספות:</label>
+                <textarea id="notes" rows="2" placeholder="בקשות מיוחדות..."></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">אישור והמשך לווטסאפ ←</button>
+    </form>
+</div>
+
+<script>
+    // 1. רשימת הפעילויות - המערכת מציגה רק אירועים שטרם עבר זמנם
+    const activities = [
+        { id: 'yaar-31-10', name: 'יום יער - 31.10.2026', date: '2026-10-31' },
+        { id: 'journey-1', name: 'מסע הורה וילד: מפגש 1 - עץ (20.11.2026)', date: '2026-11-20' },
+        { id: 'journey-2', name: 'מסע הורה וילד: מפגש 2 - אש (04.12.2026)', date: '2026-12-04' },
+        { id: 'journey-full', name: 'מסע הורה וילד: המסע המלא (3 מפגשים)', date: '2026-12-31' }
+    ];
+
+    const activitySelect = document.getElementById('activitySelect');
+    const today = new Date().toISOString().split('T')[0];
+
+    // טעינת הפעילויות הרלוונטיות לתפריט
+    function loadActivities() {
+        activitySelect.innerHTML = '<option value="">-- בחר/י פעילות --</option>';
+        
+        // זיהוי פרמטר שנשלח ב-URL (למשל: register.html?activity=journey-1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedFromUrl = urlParams.get('activity');
+
+        activities.forEach(act => {
+            if (act.date >= today) { // סינון אירועים שעברו
+                const option = document.createElement('option');
+                option.value = act.name;
+                option.textContent = act.name;
+                if (selectedFromUrl === act.id) {
+                    option.selected = true;
+                }
+                activitySelect.appendChild(option);
+            }
+        });
+    }
+
+    loadActivities();
+
+    // 2. טיפול בשליחת הטופס
+    document.getElementById('mainBookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = {
+            activity: document.getElementById('activitySelect').value,
+            parentName: document.getElementById('parentName').value,
+            parentPhone: document.getElementById('parentPhone').value,
+            parentEmail: document.getElementById('parentEmail').value,
+            childName: document.getElementById('childName').value,
+            childAge: document.getElementById('childAge').value,
+            childGender: document.getElementById('childGender').value,
+            participantCount: document.getElementById('participantCount').value,
+            dietary: document.getElementById('dietary').value || 'אין',
+            paymentMethod: document.getElementById('paymentMethod').value,
+            installments: document.getElementById('installments').value,
+            notes: document.getElementById('notes').value || 'אין'
+        };
+
+        // א' שליחת הנתונים ל-Google Sheets (AppScript)
+        // fetch('YOUR_GOOGLE_SCRIPT_URL', { method: 'POST', body: JSON.stringify(formData) });
+
+        // ב' הכנת הודעה ויצירת מעבר לווטסאפ שלך
+        const whatsappText = `היי טליה, נרשמתי דרך האתר! 🌲%0A` +
+            `*פעילות:* ${formData.activity}%0A` +
+            `*שם הורה:* ${formData.parentName}%0A` +
+            `*טלפון:* ${formData.parentPhone}%0A` +
+            `*שם הילד/ה:* ${formData.childName} (גיל ${formData.childAge}, ${formData.childGender})%0A` +
+            `*סה"כ משתתפים:* ${formData.participantCount}%0A` +
+            `*העדפות תזונה:* ${formData.dietary}%0A` +
+            `*תשלום:* ${formData.paymentMethod} (${formData.installments})`;
+
+        const whatsappUrl = `https://wa.me/972559914540?text=${whatsappText}`;
+        window.location.href = whatsappUrl;
+    });
+</script>
+
+</body>
+              </html>
+              
