@@ -1,6 +1,4 @@
-
-
-                    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -81,17 +79,6 @@
             color: var(--accent-gold);
         }
 
-        .whatsapp-btn-header {
-            background-color: none;           
-            padding: 6px 14px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
         .hero {
             position: relative;
             height: 55vh;
@@ -137,6 +124,8 @@
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(217, 119, 36, 0.4);
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
@@ -150,18 +139,10 @@
             padding: 40px 20px;
         }
 
-        .section-title {
-            text-align: center;
-            font-family: 'Heebo', sans-serif;
-            color: var(--primary-green);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-
         .section-subtitle {
             text-align: center;
             color: var(--text-muted);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             font-size: 1.1rem;
         }
 
@@ -221,73 +202,61 @@
             margin-bottom: 4px;
         }
 
-        .registration-section {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 35px;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-            border: 1px solid var(--border-light);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--primary-green);
-        }
-
-        input, select {
+        /* עיצוב החלון הקופץ (Modal) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            background-color: #fafafa;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--warm-orange);
-            background-color: #fff;
-        }
-
-        .price-summary {
-            background-color: #f4f6f4;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            border-radius: 10px;
-            margin: 25px 0;
-            border: 1px solid #d5ded7;
         }
 
-        .price-summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 1.05rem;
+        .modal-content {
+            position: relative;
+            background: #fff;
+            width: 100%;
+            max-width: 750px;
+            height: 85vh;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s ease;
         }
 
-        .total-price-row {
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            left: 15px;
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            font-size: 24px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2100;
             display: flex;
-            justify-content: space-between;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 2px solid #bdc9c0;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--primary-green);
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         footer {
@@ -299,9 +268,6 @@
         }
 
         @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
             .hero h1 {
                 font-size: 2rem;
             }
@@ -324,14 +290,11 @@
                     <li><a href="carmel.html">קמפינג בכרמל ⛰️</a></li>
                     <li><a href="events.html">מסיבות ואירועים 🎉</a></li>
                     <li><a href="yarid.html">סדנאות יצירה מהטבע 🎨</a></li>
-                      <li><a href="yaar.html">יום יער 🌳</a></li>
-                      <li><a href="journey.html">מסע הורה וילד 🐦‍🔥</a></li>
+                     <li><a href="yaar.html">יום יער 🌳</a></li>
+                     <li><a href="journey.html">מסע הורה וילד 🐦‍🔥</a></li>
                     <li><a href="equipment.html">ציוד והנחיות 🎒</a></li>
                 </ul>
             </nav>
-            <a href="https://wa.me/972559914540" target="_blank" class="whatsapp-btn-header">
-            
-            </a>
         </div>
     </header>
 
@@ -339,16 +302,15 @@
     <section class="hero">
         <div class="hero-content">
             <h1>יום יער אל תוך הערב</h1>
-          <h1>עם קבלת שבת שבטית למשפחות</h1>
+            <h1>עם קבלת שבת שבטית למשפחות</h1>
             <p>חוויה קהילתית מחברת של יצירה, הסתגלות מעצימה לחשיכה,</p>
              <p>בישול שדה וטקס קבלת שבת מרגש סביב המדורה.</p>
-         
         </div>
     </section>
 
     <div class="container">
 
-        <p class="section-subtitle">"מי מפחד מהחושך? יחד נמצא את הכוחות שבנו, נחווה חוויה נעימה נעימה ומעצימה ואולי אפילו נתרגל לשקט של הלילה ונהנה ממנו.</p>
+        <p class="section-subtitle">"מי מפחד מהחושך? יחד נמצא את הכוחות שבנו, נחווה חוויה נעימה ומעצימה ואולי אפילו נתרגל לשקט של הלילה ונהנה ממנו."</p>
         <p class="section-subtitle">פעילות חווייתית מיוחדת למשפחות בשעת בין ערביים</p>
 
         <!-- Event Details & Program Card -->
@@ -380,100 +342,31 @@
                     <span class="time-badge">17:30</span>
                     <div class="itinerary-desc">
                         <h4>קבלת שבת וארוחת ערב</h4>
-                        <p>  נערוך קבלת שבת אלטרנטיבית עם קידוש ושירה ונאכל יחד ארוחת שישי.</p>
+                        <p> נערוך קבלת שבת אלטרנטיבית עם קידוש ושירה ונאכל יחד ארוחת שישי.</p>
                     </div>
                 </li>
                 <li class="itinerary-item">
                     <span class="time-badge">18:30</span>
                     <div class="itinerary-desc">
                         <h4>סיום ופרידה</h4>
-                       
                     </div>
                 </li>
             </ul>
         </div>
 
-      <!-- אזור כפתור ההרשמה שפותח את החלון הקופץ -->
-<div style="text-align: center; margin: 50px 0;">
-   
-    <button onclick="openRegisterModal()" class="cta-button" style="border: none; cursor: pointer; font-size: 1.2rem; padding: 14px 40px;">
-       הרשמה
-    </button>
-</div>
+        <!-- אזור כפתור ההרשמה שפותח את החלון הקופץ -->
+        <div style="text-align: center; margin: 50px 0;">
+            <button onclick="openRegisterModal()" class="cta-button">
+                הרשמה
+            </button>
+        </div>
 
-<!-- החלון הקופץ (Modal) שנטען מתוך register.html -->
-<div id="registerModal" class="modal-overlay" onclick="closeRegisterModal(event)">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeRegisterModalForce()">&times;</button>
-        <iframe src="register.html" class="modal-iframe"></iframe>
-    </div>
-</div>
-        <!-- Registration Form Section -->
-        <div class="registration-section" id="register" style="display: none;">
-            <h2 class="section-title">הרשמה ליום יער</h2>
-            <p class="section-subtitle">אנא בחרו את הרכב המשפחה שלכם להתאמת התמחור ההוגן</p>
-
-            <form id="yaarForm" onsubmit="handleFormSubmit(event)">
-                
-                <div class="form-group">
-                    <label for="familyName">שם המשפחה / שם המזמין.ת *</label>
-                    <input type="text" id="familyName" required placeholder="משפחת ישראלי">
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phone">טלפון ליצירת קשר *</label>
-                        <input type="tel" id="phone" required placeholder="050-0000000">
-                    </div>
-                    <div class="form-group">
-                        <label for="settlement">יישוב מגורים *</label>
-                        <input type="text" id="settlement" required placeholder="שם היישוב או הקיבוץ">
-                    </div>
-                </div>
-
-                <!-- Family Composition Selectors -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="extraParticipants">מספר משתתפים נוספים (מעבר לזוג הבסיס) *</label>
-                        <select id="extraParticipants" onchange="calculateTotal()" required>
-                            <option value="0">זוג בלבד (הורה + ילד.ה / 2 משתתפים)</option>
-                            <option value="1">משתתף נוסף אחד (סה"כ 3 נפשות)</option>
-                            <option value="2">2 משתתפים נוספים (סה"כ 4 נפשות)</option>
-                            <option value="3">3 משתתפים נוספים ומעלה (תקרת משפחה)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="couponCode">קוד קופון / מועדון צרכנות</label>
-                        <input type="text" id="couponCode" placeholder="הכניסו קוד הנחה" style="text-transform: uppercase;" oninput="calculateTotal()">
-                    </div>
-                </div>
-
-                <!-- Dynamic Pricing Display -->
-                <div class="price-summary">
-                    <div class="price-summary-row">
-                        <span>מחיר בסיס לזוג:</span>
-                        <span>190 ₪</span>
-                    </div>
-                    <div class="price-summary-row" id="extraRow" style="display: none;">
-                        <span>תוספת משתתפים (65 ₪ למשתתף):</span>
-                        <span id="extraPriceDisplay">0 ₪</span>
-                    </div>
-                    <div class="price-summary-row" id="capNoticeRow" style="display: none; color: var(--primary-green); font-weight: bold;">
-                        <span>הוטלה תקרת מקסימום למשפחה!</span>
-                        <span>מחיר גג: 290 ₪</span>
-                    </div>
-                    <div class="price-summary-row" id="discountRow" style="display: none; color: #d97724;">
-                        <span>הנחת מועדונים (10%):</span>
-                        <span id="discountDisplay">0 ₪</span>
-                    </div>
-                    <div class="total-price-row">
-                        <span>סה"כ לתשלום:</span>
-                        <span id="totalPriceDisplay">190 ₪</span>
-                    </div>
-                </div>
-
-                <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer; font-size: 1.2rem; text-align: center;">להרשמה ומעבר לתשלום ←</button>
-            </form>
+        <!-- החלון הקופץ (Modal) שנטען מתוך register.html -->
+        <div id="registerModal" class="modal-overlay" onclick="closeRegisterModal(event)">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeRegisterModalForce()">&times;</button>
+                <iframe src="register.html" class="modal-iframe"></iframe>
+            </div>
         </div>
 
     </div>
@@ -484,63 +377,24 @@
         <p>טלפון ליצירת קשר: 055-9914540</p>
     </footer>
 
-    <!-- Price Calculation Logic -->
+    <!-- JavaScript לפתיחה וסגירה של החלון הקופץ -->
     <script>
-        function calculateTotal() {
-            const extraCount = parseInt(document.getElementById('extraParticipants').value);
-            const couponInput = document.getElementById('couponCode').value.trim().toUpperCase();
-            
-            const basePairPrice = 190;
-            const extraPersonPrice = 65;
-            const maxFamilyCap = 290;
-            
-            let extraCost = extraCount * extraPersonPrice;
-            let subtotal = basePairPrice + extraCost;
-            let isCapped = false;
-
-            // Apply Family Cap
-            if (subtotal > maxFamilyCap) {
-                subtotal = maxFamilyCap;
-                isCapped = true;
-            }
-
-            // Discount calculation (10% for clubs/coupons)
-            let discount = 0;
-            if (couponInput !== '') {
-                discount = Math.round(subtotal * 0.10);
-            }
-
-            let finalTotal = subtotal - discount;
-
-            // Update UI
-            if (extraCount > 0 && !isCapped) {
-                document.getElementById('extraRow').style.display = 'flex';
-                document.getElementById('extraPriceDisplay').innerText = extraCost + ' ₪';
-                document.getElementById('capNoticeRow').style.display = 'none';
-            } else if (isCapped) {
-                document.getElementById('extraRow').style.display = 'none';
-                document.getElementById('capNoticeRow').style.display = 'flex';
-            } else {
-                document.getElementById('extraRow').style.display = 'none';
-                document.getElementById('capNoticeRow').style.display = 'none';
-            }
-
-            if (discount > 0) {
-                document.getElementById('discountRow').style.display = 'flex';
-                document.getElementById('discountDisplay').innerText = '-' + discount + ' ₪';
-            } else {
-                document.getElementById('discountRow').style.display = 'none';
-            }
-
-            document.getElementById('totalPriceDisplay').innerText = finalTotal + ' ₪';
+        function openRegisterModal() {
+            document.getElementById('registerModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
 
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            alert('תודה על הרשמתכם ליום יער! מעביר אותך לעמוד התשלום...');
+        function closeRegisterModal(event) {
+            if (event.target.id === 'registerModal') {
+                document.getElementById('registerModal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
 
-        window.onload = calculateTotal;
+        function closeRegisterModalForce() {
+            document.getElementById('registerModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
