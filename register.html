@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>טופס הרשמה</title>
+    <title>טופס הרשמה | מדורת השבט</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -168,73 +168,23 @@
 
     <div class="form-container">
         <h2>הרשמה לפעילות</h2>
-       
-       function sendToWhatsApp(event) {
-            event.preventDefault();
-            
-            const eventVal = document.getElementById('eventSelect').value;
-            const clientName = document.getElementById('clientName').value;
-            const phone = document.getElementById('phone').value;
-            const settlement = document.getElementById('settlement').value;
-            const paymentMethod = document.getElementById('paymentMethod').value;
-            const payments = document.getElementById('paymentsSelect').selectedOptions[0].text;
-            const remarks = document.getElementById('clientRemarks').value.trim();
-            const totalPrice = document.getElementById('totalPriceDisplay').innerText;
+        <p class="subtitle">הבטחת מקומכם בפעילויות השטח</p>
 
-            let eventNameDisplay = "";
-            let detailsText = "";
-
-            if (eventVal === 'journey') {
-                const jOptText = document.getElementById('journeyOption').selectedOptions[0].text;
-                const pGender = document.querySelector('input[name="parentGender"]:checked')?.value || 'לא צוין';
-                const cAge = document.getElementById('childAge').value;
-                const cGender = document.querySelector('input[name="childGender"]:checked')?.value || 'לא צוין';
-                const rental = document.getElementById('tentRental').checked ? 'כן (+50 ₪)' : 'לא';
-
-                eventNameDisplay = "מסע משותף: הורה וילד";
-                detailsText += `📌 *מסלול:* ${jOptText}\n`;
-                detailsText += `👤 *מבוגר/ת:* ${clientName} (${pGender})\n`;
-                detailsText += `👶 *ילד/ה:* גיל ${cAge} (${cGender})\n`;
-                detailsText += `⛺ *השאלת אוהל:* ${rental}\n`;
-            } else {
-                const extraText = document.getElementById('extraParticipants').selectedOptions[0].text;
-                eventNameDisplay = 'יום יער: "מי מפחד מהחושך?"';
-                detailsText += `👨‍👩‍👧‍👦 *הרכב משפחתי:* ${extraText}\n`;
-                detailsText += `👤 *שם המזמין/ה:* ${clientName}\n`;
-            }
-
-            let message = `היי טליה, אני רוצה להירשם לפעילות ב'מדורת השבט'! 🌿\n\n`;
-            message += `🏕️ *פעילות:* ${eventNameDisplay}\n`;
-            message += detailsText;
-            message += `📞 *טלפון:* ${phone}\n`;
-            message += `🏡 *יישוב:* ${settlement}\n`;
-            message += `💳 *אמצעי תשלום:* ${paymentMethod} (${payments})\n`;
-            if (remarks) {
-                message += `📝 *הערות:* ${remarks}\n`;
-            }
-            message += `💰 *סה"כ לתשלום:* ${totalPrice}\n\n`;
-            message += `אשמח לקבל פרטים להשלמת התשלום.`;
-
-            const phoneNumber = "972559914540";
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            
-            // פתיחת הקישור כחלון חדש שיוצא מה-iframe ומכוון לוואטסאפ בוודאות
-            window.open(whatsappUrl, '_blank');
-        }
+        <form id="registerForm" onsubmit="sendToWhatsApp(event)">
             
             <!-- בחירת הפעילות -->
             <div class="form-group">
-               
+                <label for="eventSelect">בחירת הפעילות *</label>
                 <select id="eventSelect" onchange="switchEventFields(); calculateTotal();" required>
-                    <option value="journey">מסע הורה וילד </option>
-                    <option value="yaar">יום יער</option>
+                    <option value="journey">מסע משותף: הורה וילד במלאכות קדומות</option>
+                    <option value="yaar">יום יער אל תוך הערב: "מי מפחד מהחושך?"</option>
                 </select>
             </div>
 
             <!-- שדות משותפים (פרטי קשר) -->
             <div class="form-row" id="commonFields">
                 <div class="form-group">
-                    <label for="clientName" id="nameLabel">שם מלא של ההורה *</label>
+                    <label for="clientName" id="nameLabel">שם מלא של המבוגר/ת *</label>
                     <input type="text" id="clientName" required placeholder="ישראל ישראלי">
                 </div>
                 <div class="form-group">
@@ -245,18 +195,18 @@
 
             <div class="form-group">
                 <label for="settlement">יישוב מגורים *</label>
-                <input type="text" id="settlement" required placeholder="שם היישוב">
+                <input type="text" id="settlement" required placeholder="שם היישוב/קיבוץ">
             </div>
 
             <!-- ===== אזור ייעודי למסע הורה וילד (JOURNEY) ===== -->
             <div id="journeySpecificFields">
                 <div class="form-group">
-                    <label for="journeyOption">בחירת מסלול  *</label>
+                    <label for="journeyOption">בחירת מסלול במסע *</label>
                     <select id="journeyOption" onchange="calculateTotal()">
                         <option value="full">הרשמה לכל 3 המפגשים (מסע שלם)</option>
-                        <option value="m1">מפגש 1: עץ (20.11.26) - 390 ₪</option>
-                        <option value="m2">מפגש 2: אש (4.12.26) - 390 ₪</option>
-                        <option value="m3">מפגש 3: סופ"ש מסכם בלבד (10-11.12.26 חופשת חנוכה) - 780 ₪</option>
+                        <option value="m1">מפגש 1: עוצמת העץ בלבד (13.11.26) - 550 ₪</option>
+                        <option value="m2">מפגש 2: חכמת האש בלבד (27.11.26) - 550 ₪</option>
+                        <option value="m3">מפגש 3: סופ"ש מסכם בלבד (10-11.12.26) - 600 ₪</option>
                     </select>
                 </div>
 
@@ -293,40 +243,39 @@
             <!-- ===== אזור ייעודי ליום יער (YAAR) ===== -->
             <div id="yaarSpecificFields" style="display: none;">
                 <div class="form-group">
-                    <label for="extraParticipants">הרכב משפחתי  *</label>
+                    <label for="extraParticipants">הרכב משפחתי (בחירת משתתפים) *</label>
                     <select id="extraParticipants" onchange="calculateTotal()">
-                        <option value="0">זוג (הורה + ילד.ה) - 190 ₪</option>
-                        <option value="1">3 משתתפים - 255 ₪</option>
-                      <option value="2">2 4 משתתפים (משפחה גרעינית) - 290 ₪ </option>
-                          <option value="3">3 5 משתתפים (משפחה גרעינית) - 290 ₪ </option>
+                        <option value="0">זוג בלבד (הורה + ילד.ה / 2 משתתפים) - 190 ₪</option>
+                        <option value="1">משתתף נוסף אחד (סה"כ 3 נפשות) - 255 ₪</option>
+                        <option value="2">2 משתתפים נוספים (סה"כ 4 נפשות) - 290 ₪ (תקרה)</option>
+                        <option value="3">3 משתתפים נוספים ומעלה (תקרת משפחה) - 290 ₪ (תקרה)</option>
                     </select>
                 </div>
             </div>
 
             <!-- קוד קופון הנחה -->
             <div class="form-group">
-                <label for="couponCode">קוד קופון</label>
-                <input type="text" id="couponCode" placeholder="0" style="text-transform: uppercase;" oninput="calculateTotal()">
+                <label for="couponCode">קוד קופון / מועדון צרכנות (10% הנחה)</label>
+                <input type="text" id="couponCode" placeholder="הכניסו קוד הנחה אם יש" style="text-transform: uppercase;" oninput="calculateTotal()">
                 <small id="couponMessage" style="display: block; margin-top: 4px; font-weight: bold;"></small>
             </div>
 
             <!-- אמצעי תשלום ומספר תשלומים -->
             <div class="form-row">
                 <div class="form-group">
-                  <select id="paymentMethod" required>
-                       <option value="ביט (Bit)">ביט (Bit)</option>
-                       <option value="העברה בנקאית">העברה בנקאית</option>
-    <option value="מזומן">מזומן</option>
-    <option value="כרטיס אשראי">כרטיס אשראי</option>
-    <option value="כרטיס פייטר (מילואים)">כרטיס פייטר (מילואים)</option>
-   
-   
-</select>
+                    <label for="paymentMethod">אמצעי תשלום מועדף *</label>
+                    <select id="paymentMethod" required>
+                        <option value="כרטיס אשראי">כרטיס אשראי</option>
+                        <option value="כרטיס פייטר (מילואים)">כרטיס פייטר (מילואים)</option>
+                        <option value="ביט (Bit)">ביט (Bit)</option>
+                        <option value="העברה בנקאית">העברה בנקאית</option>
+                        <option value="מזומן">מזומן</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="paymentsSelect">מספר תשלומים *</label>
                     <select id="paymentsSelect" required>
-                        <!-- מתעדכן אוטומטית לפי הסכום (מינימום 200 ₪ לתשלום) -->
+                        <!-- מתעדכן אוטומטית לפי הסכום -->
                     </select>
                 </div>
             </div>
@@ -334,7 +283,7 @@
             <!-- הערות או בקשות מיוחדות -->
             <div class="form-group">
                 <label for="clientRemarks">הערות / בקשות מיוחדות</label>
-              
+                <textarea id="clientRemarks" placeholder="משהו נוסף שתרצו שנצטרך אליו?"></textarea>
             </div>
 
             <!-- סיכום מחיר -->
@@ -344,7 +293,7 @@
                     <span id="basePriceDisplay">0 ₪</span>
                 </div>
                 <div class="price-summary-row" id="discountRow" style="display: none; color: #d97724;">
-                    <span>הנחת הרשמה מוקדמת עד 13.11.26:</span>
+                    <span>הנחה:</span>
                     <span id="discountDisplay">0 ₪</span>
                 </div>
                 <div class="price-summary-row" id="addonRow" style="display: none;">
@@ -358,11 +307,12 @@
             </div>
 
             <button type="submit" class="submit-btn">
-                 המשך
+                💬 המשך
             </button>
         </form>
     </div>
 
+    <!-- כאן מתחיל הסקריפט בצורה תקינה -->
     <script>
         function switchEventFields() {
             const eventVal = document.getElementById('eventSelect').value;
@@ -377,7 +327,7 @@
             } else {
                 journeyDiv.style.display = 'none';
                 yaarDiv.style.display = 'block';
-               
+                nameLabel.innerText = "שם המשפחה / שם המזמין.ת *";
             }
         }
 
@@ -398,13 +348,13 @@
                 const rentalChecked = document.getElementById('tentRental').checked;
 
                 if (jOpt === 'full') {
-                    basePrice = 1560;
+                    basePrice = 1600;
                     if (today <= earlyBirdDeadline) discount = 200; 
                     if (rentalChecked) addonCost += 50;
                 } else if (jOpt === 'm1' || jOpt === 'm2') {
-                    basePrice = 390;
+                    basePrice = 550;
                 } else if (jOpt === 'm3') {
-                    basePrice = 780;
+                    basePrice = 600;
                     if (rentalChecked) addonCost += 50;
                 }
             } else {
@@ -496,7 +446,7 @@
                 detailsText += `👤 *שם המזמין/ה:* ${clientName}\n`;
             }
 
-            let message = `היי, אני רוצה להירשם לפעילות ב'מדורת השבט' 🌿\n\n`;
+            let message = `היי טליה, אני רוצה להירשם לפעילות ב'מדורת השבט'! 🌿\n\n`;
             message += `🏕️ *פעילות:* ${eventNameDisplay}\n`;
             message += detailsText;
             message += `📞 *טלפון:* ${phone}\n`;
@@ -506,12 +456,12 @@
                 message += `📝 *הערות:* ${remarks}\n`;
             }
             message += `💰 *סה"כ לתשלום:* ${totalPrice}\n\n`;
-            message += `אבקש לקבל קישור לתשלום.`;
+            message += `אשמח לקבל פרטים להשלמת התשלום.`;
 
             const phoneNumber = "972559914540";
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
-           window.location.href = whatsappUrl;
+            window.open(whatsappUrl, '_blank');
         }
 
         window.onload = function() {
