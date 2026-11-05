@@ -287,7 +287,7 @@
                     <span id="basePriceDisplay">0 ₪</span>
                 </div>
                 <div class="price-summary-row" id="discountRow" style="display: none; color: #d97724;">
-                    <span>הנחה:</span>
+                    <span>הנחת הרשמה מוקדמת:</span>
                     <span id="discountDisplay">0 ₪</span>
                 </div>
                 <div class="price-summary-row" id="addonRow" style="display: none;">
@@ -317,11 +317,11 @@
             if (eventVal === 'journey') {
                 journeyDiv.style.display = 'block';
                 yaarDiv.style.display = 'none';
-                nameLabel.innerText = "שם מלא של המבוגר/ת *";
+                nameLabel.innerText = "שם ההורה *";
             } else {
                 journeyDiv.style.display = 'none';
                 yaarDiv.style.display = 'block';
-                nameLabel.innerText = "שם המשפחה / שם המזמין.ת *";
+                nameLabel.innerText = "שם ההורה *";
             }
         }
 
@@ -423,7 +423,7 @@
 
             if (eventVal === 'journey') {
                 const jOptText = document.getElementById('journeyOption').selectedOptions[0].text;
-                const pGender = document.querySelector('input[name="parentGender"]:checked')?.value || 'לא צוין';
+              
                 const cAge = document.getElementById('childAge').value;
                 const cGender = document.querySelector('input[name="childGender"]:checked')?.value || 'לא צוין';
                 const rental = document.getElementById('tentRental').checked ? 'כן (+50 ₪)' : 'לא';
