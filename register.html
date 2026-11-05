@@ -176,7 +176,7 @@
             <div class="form-group">
                 <label for="eventSelect">בחירת הפעילות *</label>
                 <select id="eventSelect" onchange="switchEventFields(); calculateTotal();" required>
-                    <option value="journey">מסע הורה וילד</option>
+                    <option value="journey">זמן של ביחד - הורה וילד</option>
                     <option value="yaar">יום יער</option>
                 </select>
             </div>
@@ -201,9 +201,9 @@
             <!-- ===== אזור ייעודי למסע הורה וילד (JOURNEY) ===== -->
             <div id="journeySpecificFields">
                 <div class="form-group">
-                    <label for="journeyOption">בחירת מסלול במסע *</label>
+                    <label for="journeyOption">בחירת מפגשים *</label>
                     <select id="journeyOption" onchange="calculateTotal()">
-                        <option value="full">הרשמה לכל 3 המפגשים (מסע שלם)</option>
+                        <option value="full">הרשמה לכל 3 המפגשים</option>
                         <option value="m1">מפגש 1: עץ (20.11.26) - 390 ₪</option>
                         <option value="m2">מפגש 2: אש (4.12.26) - 390 ₪</option>
                         <option value="m3">מפגש 3: סופ"ש מסכם (10-11.12.26)  חופשת חנוכה - 780 ₪</option>
@@ -428,7 +428,7 @@
                 const cGender = document.querySelector('input[name="childGender"]:checked')?.value || 'לא צוין';
                 const rental = document.getElementById('tentRental').checked ? 'כן (+50 ₪)' : 'לא';
 
-                eventNameDisplay = "מסע הורה וילד";
+                eventNameDisplay = "זמן של ביחד - הורה וילד";
                 detailsText += ` מסלול: ${jOptText}\n`;
                 detailsText += ` מבוגר/ת: ${clientName} (${pGender})\n`;
                 detailsText += ` ילד/ה: גיל ${cAge} (${cGender})\n`;
