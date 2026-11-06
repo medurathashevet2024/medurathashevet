@@ -91,19 +91,23 @@
         .hub-btn:hover { background: var(--campfire-orange); }
         .hub-btn-highlight { background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow)); box-shadow: 0 4px 15px rgba(230, 92, 0, 0.3); }
 
-        .big-calendar-wrapper { max-width: 850px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 20px; border: 2px solid #e1e9e2; box-shadow: var(--shadow-sm); }
-        .calendar-header { display: flex; justify-content: center; align-items: center; font-weight: 800; font-size: 20px; color: var(--forest-green); margin-bottom: 15px; background: var(--forest-light); padding: 10px 18px; border-radius: 12px; }
+        .big-calendar-wrapper { max-width: 900px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 20px; border: 2px solid #e1e9e2; box-shadow: var(--shadow-sm); }
+        
+        .calendar-month-container { margin-bottom: 30px; }
+        .calendar-month-container:last-child { margin-bottom: 0; }
 
-        .calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; font-size: 15px; color: var(--text-muted); margin-bottom: 10px; }
-        .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
-        .day-cell { min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 16px; border-radius: 12px; background: #f8faf8; color: #9aa89d; cursor: not-allowed; font-weight: 600; }
+        .calendar-header { display: flex; justify-content: center; align-items: center; font-weight: 800; font-size: 18px; color: var(--forest-green); margin-bottom: 12px; background: var(--forest-light); padding: 8px 16px; border-radius: 10px; }
+
+        .calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }
+        .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+        
+        .day-cell { min-height: 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 15px; border-radius: 10px; background: #f8faf8; color: #9aa89d; cursor: not-allowed; font-weight: 600; }
         .day-cell.available { background: #e8f5e9; color: var(--forest-green); font-weight: 800; cursor: pointer; border: 2px solid #81c784; }
         .day-cell.available:hover { background: var(--campfire-glow); color: var(--white); border-color: var(--campfire-orange); }
         
-        /* עיצוב מיוחד לימי חופשת חנוכה (5-12 בדצמבר) */
+        /* רקע צהוב נקי לימי חופשת חנוכה (בלי קווים מקווקווים) */
         .day-cell.hanukkah-holiday {
             background-color: #fff3cd !important;
-            border: 2px dashed var(--campfire-orange) !important;
             color: #856404 !important;
             font-weight: bold;
             cursor: pointer;
@@ -111,10 +115,10 @@
 
         .day-cell.selected { background: var(--campfire-orange) !important; color: var(--white) !important; border-color: var(--campfire-orange) !important; box-shadow: 0 4px 14px rgba(230, 92, 0, 0.4); }
 
-        .event-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--campfire-orange); margin-top: 3px; }
+        .event-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--campfire-orange); margin-top: 2px; }
         .day-cell.selected .event-dot { background: #ffffff; }
 
-        .event-info-box { margin-top: 20px; background: linear-gradient(135deg, var(--forest-light), #e4ede6); border: 1.5px solid rgba(27, 56, 32, 0.1); border-radius: 14px; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .event-info-box { margin-top: 25px; background: linear-gradient(135deg, var(--forest-light), #e4ede6); border: 1.5px solid rgba(27, 56, 32, 0.1); border-radius: 14px; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .event-info-text h4 { color: var(--forest-green); font-size: 18px; margin-bottom: 4px; }
         .event-info-text p { color: var(--text-dark); font-size: 14px; margin: 0; }
 
@@ -127,7 +131,7 @@
         .logo-center-box img { max-height: 60px; width: auto; object-fit: contain; }
 
         @media (max-width: 992px) { section { padding: 30px 20px; } .event-info-box { flex-direction: column; text-align: center; } }
-        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .hero h1 { font-size: 36px; } .day-cell { min-height: 44px; font-size: 14px; } }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .hero h1 { font-size: 36px; } .day-cell { min-height: 40px; font-size: 13px; } }
         footer { background-color: #0f2112; color: #a3b8a7; text-align: center; padding: 35px 20px; font-size: 15px; border-top: 4px solid var(--campfire-orange); }
     </style>
 </head>
@@ -172,7 +176,6 @@
             </div>
 
             <div class="hub-grid">
-                <!-- כרטיסייה 1: אירועי 20.11 -->
                 <div class="hub-card">
                     <div>
                         <div class="hub-icon"><i class="fas fa-seedling"></i></div>
@@ -184,7 +187,6 @@
                     <a href="journey.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה<i class="fas fa-chevron-left"></i></a>
                 </div>
 
-                <!-- כרטיסייה 2: אירועי דצמבר (זמן הורה וילד) -->
                 <div class="hub-card">
                     <div>
                         <div class="hub-icon"><i class="fas fa-fire"></i></div>
@@ -196,7 +198,6 @@
                     <a href="journey.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה<i class="fas fa-chevron-left"></i></a>
                 </div>
 
-                <!-- כרטיסייה 3: יום יער נוסף -->
                 <div class="hub-card">
                     <div>
                         <div class="hub-icon"><i class="fas fa-tree"></i></div>
@@ -209,7 +210,7 @@
             </div>
         </section>
 
-        <!-- לוח שנה מעודכן -->
+        <!-- לוח שנה עם הפרדה לחודשים וימים מדויקים -->
         <section id="calendar-section">
             <div class="section-header">
                 <h2>לוח אירועים ופעילויות</h2>
@@ -218,26 +219,16 @@
                 </p>
             </div>
 
-            <div class="big-calendar-wrapper">
-                <div class="calendar-header">
-                    <span>נובמבר / דצמבר 2026 (כולל חופשת חנוכה)</span>
-                </div>
-                
-                <div class="calendar-weekdays">
-                    <div>א'</div><div>ב'</div><div>ג'</div><div>ד'</div><div>ה'</div><div>ו'</div><div>ש'</div>
-                </div>
-                
-                <div class="calendar-days" id="calendarDays">
-                    <!-- נוצר אוטומטית דרך ה-JS למטה -->
-                </div>
+            <div class="big-calendar-wrapper" id="calendarWrapper">
+                <!-- ייווצר אוטומטית דרך ה-JS עם הפרדה לחודשים -->
+            </div>
 
-                <div class="event-info-box" id="eventInfoBox">
-                    <div class="event-info-text">
-                        <h4 id="eventTitle">בחר/י תאריך בלוח</h4>
-                        <p id="eventDesc">לחצו על יום מודגש לצפייה בפרטי הפעילות.</p>
-                    </div>
-                    <a href="journey.html" id="eventLinkBtn" class="hub-btn hub-btn-highlight">מעבר לעמוד ההרשמה <i class="fas fa-chevron-left"></i></a>
+            <div class="event-info-box" id="eventInfoBox">
+                <div class="event-info-text">
+                    <h4 id="eventTitle">בחר/י תאריך בלוח</h4>
+                    <p id="eventDesc">לחצו על יום מודגש לצפייה בפרטי הפעילות.</p>
                 </div>
+                <a href="journey.html" id="eventLinkBtn" class="hub-btn hub-btn-highlight">מעבר לעמוד ההרשמה <i class="fas fa-chevron-left"></i></a>
             </div>
         </section>
 
@@ -262,55 +253,82 @@
             <div class="logo-center-box">
                 <img src="LOGO.PNG" alt="לוגו מדורת השבט" onerror="if (this.src.endsWith('LOGO.PNG')) { this.src='logo.png'; } else if (this.src.endsWith('logo.png')) { this.src='logo.jpg'; } else { this.style.display='none'; }">
             </div>
-            <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%98/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
+            <a href="https://www.facebook.com/people/%D7%9E%D7%93%D7%95%D7%A8%D7%AA-%D7%94%D7%A9%D7%91%D7%/61570384501336/?rdid=g4FT6jg3Nbh9YlQb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NTxrWHuMP%2F" target="_blank" class="social-link link-fb">
                 <i class="fab fa-facebook-f"></i> עמוד הפייסבוק
             </a>
         </div>
 
     </div>
 
-   <script>
+    <script>
         function renderCalendar() {
-            const container = document.getElementById('calendarDays');
-            container.innerHTML = '';
+            const wrapper = document.getElementById('calendarWrapper');
+            wrapper.innerHTML = '';
 
-            // רווחים התחלתיים בלוח השנה
-            for (let i = 0; i < 3; i++) {
-                const emptyCell = document.createElement('div');
-                emptyCell.className = 'day-cell';
-                emptyCell.style.background = 'transparent';
-                container.appendChild(emptyCell);
-            }
+            const weekdaysHTML = `
+                <div class="calendar-weekdays">
+                    <div>א'</div><div>ב'</div><div>ג'</div><div>ד'</div><div>ה'</div><div>ו'</div><div>ש'</div>
+                </div>`;
 
-            // ימי נובמבר (עד 30)
+            // --- חודש נובמבר 2026 ---
+            // 1 בנובמבר 2026 חל ביום ראשון (אינדקס 0)
+            const novContainer = document.createElement('div');
+            novContainer.className = 'calendar-month-container';
+            novContainer.innerHTML = `
+                <div class="calendar-header"><span>נובמבר 2026</span></div>
+                ${weekdaysHTML}
+                <div class="calendar-days" id="novDays"></div>
+            `;
+            wrapper.appendChild(novContainer);
+
+            const novDaysGrid = document.getElementById('novDays');
+            // 1 בנובמבר הוא יום ראשון, אין צורך ברווחים (או 0)
             for (let day = 1; day <= 30; day++) {
                 const dayCell = document.createElement('div');
                 dayCell.className = 'day-cell';
                 dayCell.id = `day-nov-${day}`;
                 dayCell.innerHTML = `<span>${day}</span>`;
 
-                if (day === 20) {
+                if (day === 20) { // 20.11.2026 הוא אכן יום שישי
                     dayCell.classList.add('available');
                     dayCell.innerHTML += `<div class="event-dot"></div>`;
                     dayCell.onclick = () => showEventInfo(
                         "זמן הורה וילד.ה + יום יער וקבלת שבת שבטית",
-                        "20.11.2026 - פעילויות עומק, יצירה וקבלת שבת ברמת מנשה.",
+                        "20.11.2026 (יום שישי) - פעילויות עומק, יצירה וקבלת שבת ברמת מנשה.",
                         "journey.html",
                         ['day-nov-20']
                     );
                 }
-
-                container.appendChild(dayCell);
+                novDaysGrid.appendChild(dayCell);
             }
 
-            // ימי דצמבר (עד 15)
-            for (let day = 1; day <= 15; day++) {
+
+            // --- חודש דצמבר 2026 ---
+            // 1 בדצמבר 2026 חל ביום שלישי (א' = 0, ב' = 1, ג' = 2 -> 2 תאים ריקים לפני)
+            const decContainer = document.createElement('div');
+            decContainer.className = 'calendar-month-container';
+            decContainer.innerHTML = `
+                <div class="calendar-header"><span>דצמבר 2026 (כולל חופשת חנוכה)</span></div>
+                ${weekdaysHTML}
+                <div class="calendar-days" id="decDays"></div>
+            `;
+            wrapper.appendChild(decContainer);
+
+            const decDaysGrid = document.getElementById('decDays');
+            for (let i = 0; i < 2; i++) { // 2 ימים ריקים לתחילת דצמבר (ראשון שני)
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'day-cell';
+                emptyCell.style.background = 'transparent';
+                decDaysGrid.appendChild(emptyCell);
+            }
+
+            for (let day = 1; day <= 31; day++) {
                 const dayCell = document.createElement('div');
                 dayCell.className = 'day-cell';
                 dayCell.id = `day-dec-${day}`;
-                dayCell.innerHTML = `<span>${day}<br><small style="font-size:10px">דצמבר</small></span>`;
+                dayCell.innerHTML = `<span>${day}</span>`;
 
-                // סימון ימי חופשת חנוכה (5 עד 12 בדצמבר)
+                // סימון ימי חופשת חנוכה (5 עד 12 בדצמבר) ברקע צהוב נקי
                 if (day >= 5 && day <= 12) {
                     dayCell.classList.add('hanukkah-holiday');
                 }
@@ -334,14 +352,13 @@
                         ['day-dec-10', 'day-dec-11']
                     );
                 }
-
-                container.appendChild(dayCell);
+                decDaysGrid.appendChild(dayCell);
             }
 
-            // הצגת אירוע ברירת מחדל בטעינה (20.11)
+            // ברירת מחדל בטעינה ראשונית (20.11)
             showEventInfo(
                 "זמן הורה וילד.ה + יום יער וקבלת שבת שבטית",
-                "20.11.2026 - פעילויות עומק, יצירה וקבלת שבת ברמת מנשה.",
+                "20.11.2026 (יום שישי) - פעילויות עומק, יצירה וקבלת שבת ברמת מנשה.",
                 "journey.html",
                 ['day-nov-20']
             );
@@ -364,7 +381,7 @@
 
         window.onload = function() { renderCalendar(); };
     </script>
-    
+
     <footer>
         <p>מדורת השבט | קמפינג משפחות, חוויות טבע ומלאכות קדומות</p>
         <p style="font-size: 12px; color: #6a826f; margin-top: 5px;">טלפון ליצירת קשר: 055-9914540</p>
