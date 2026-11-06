@@ -43,12 +43,11 @@
         .brand-logo .logo-text { color: var(--sandy-bg); font-size: 26px; font-weight: bold; letter-spacing: 0.5px; }
 
         nav ul { display: flex; list-style: none; gap: 18px; align-items: center; }
-        nav a { color: #d4e2d5; text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        nav a { color: #d4e2d5; text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
         nav a:hover { color: var(--white); }
-
-       
-       
-        .wa-header-icon { width: 40px; height: 40px; object-fit: contain; vertical-align: middle; }
+        
+        .phone-nav-link { background: none !important; border: none !important; padding: 0 !important; }
+        .wa-header-icon { width: 30px; height: 30px; object-fit: contain; vertical-align: middle; }
 
         .hero {
             position: relative;
@@ -82,7 +81,7 @@
         }
 
         .hub-card h3 { font-size: 23px; color: var(--forest-green); margin-bottom: 8px; }
-        .hub-dates-tag { display: inline-block; background: #fff5eb; color: var(--campfire-orange); font-weight: 800; font-size: 14px; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; border: 1px solid rgba(230, 92, 0, 0.2); }
+        .hub-dates-tag { display: block; background: #fff5eb; color: var(--campfire-orange); font-weight: 800; font-size: 14px; padding: 6px 12px; border-radius: 12px; margin-bottom: 8px; border: 1px solid rgba(230, 92, 0, 0.2); }
         .hub-card p { font-size: 15px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.6; }
 
         .hub-btn {
@@ -100,6 +99,16 @@
         .day-cell { min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 16px; border-radius: 12px; background: #f8faf8; color: #9aa89d; cursor: not-allowed; font-weight: 600; }
         .day-cell.available { background: #e8f5e9; color: var(--forest-green); font-weight: 800; cursor: pointer; border: 2px solid #81c784; }
         .day-cell.available:hover { background: var(--campfire-glow); color: var(--white); border-color: var(--campfire-orange); }
+        
+        /* עיצוב מיוחד לימי חופשת חנוכה (5-12 בדצמבר) */
+        .day-cell.hanukkah-holiday {
+            background-color: #fff3cd !important;
+            border: 2px dashed var(--campfire-orange) !important;
+            color: #856404 !important;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         .day-cell.selected { background: var(--campfire-orange) !important; color: var(--white) !important; border-color: var(--campfire-orange) !important; box-shadow: 0 4px 14px rgba(230, 92, 0, 0.4); }
 
         .event-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--campfire-orange); margin-top: 3px; }
@@ -134,13 +143,13 @@
                     <li><a href="carmel.html">קמפינג בכרמל ⛰️</a></li>
                     <li><a href="events.html">מסיבות ואירועים 🎉</a></li>
                     <li><a href="yarid.html">סדנאות יצירה מהטבע 🎨</a></li>
-                      <li><a href="yaar.html">יום יער 🌳</a></li>
-                      <li><a href="journey.html">הורה וילד 🐦‍🔥</a></li>
+                    <li><a href="yaar.html">יום יער 🌳</a></li>
+                    <li><a href="journey.html">הורה וילד 🐦‍🔥</a></li>
                     <li><a href="equipment.html">ציוד והנחיות 🎒</a></li>
                     <li>
                         <a href="https://wa.me/972559914540" target="_blank" class="phone-nav-link">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-header-icon">
-                                                 </a>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -163,38 +172,44 @@
             </div>
 
             <div class="hub-grid">
+                <!-- כרטיסייה 1: אירועי 20.11 -->
                 <div class="hub-card">
                     <div>
-                        <div class="hub-icon"><i class="fas fa-mountain"></i></div>
-                        <h3>קמפינג בהרי ירושלים</h3>
-                        <span class="hub-dates-tag">22-23.9 (אמהות וילדים)</span>
-                        <p>חניון נס הרים: מערת הנטיפים, סדנת עששיות, סיר פוייקה, זריחה, מזרקות טדי והכותל המערבי.</p>
+                        <div class="hub-icon"><i class="fas fa-seedling"></i></div>
+                        <h3>פעילויות 20.11.2026</h3>
+                        <span class="hub-dates-tag">זמן הורה וילד.ה (רמת מנשה)</span>
+                        <span class="hub-dates-tag">יום יער וקבלת שבת שבטית</span>
+                        <p>חגיגה של חיבור לטבע, יצירה בידיים, בישול שדה וקבלת שבת מרגשת סביב המדורה.</p>
                     </div>
-                    <a href="jerusalem.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה לירושלים <i class="fas fa-chevron-left"></i></a>
+                    <a href="journey.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה<i class="fas fa-chevron-left"></i></a>
                 </div>
 
+                <!-- כרטיסייה 2: אירועי דצמבר (זמן הורה וילד) -->
                 <div class="hub-card">
                     <div>
-                        <div class="hub-icon"><i class="fas fa-campground"></i></div>
-                        <h3>קמפינג סוכות בכרמל</h3>
-                        <span class="hub-dates-tag">27-29 לספטמבר (חול המועד)</span>
-                        <p>חניון הכלניות: הגשרים התלויים בפארק נשר, עששיות בשקיעה, זריחה בחורשת הארבעים ושמורת חי-בר כרמל.</p>
+                        <div class="hub-icon"><i class="fas fa-fire"></i></div>
+                        <h3>זמן הורה וילד.ה - דצמבר</h3>
+                        <span class="hub-dates-tag">מפגש שני - 04.12.2026</span>
+                        <span class="hub-dates-tag">סופ"ש מסכם - 10-11.12.2026</span>
+                        <p>מפגשי עומק ייחודיים של חיבור, יצירה בידיים, ולילה קסום סביב מדורת השבט ברמת מנשה.</p>
                     </div>
-                    <a href="carmel.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה לכרמל <i class="fas fa-chevron-left"></i></a>
+                    <a href="journey.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה<i class="fas fa-chevron-left"></i></a>
                 </div>
 
+                <!-- כרטיסייה 3: יום יער נוסף -->
                 <div class="hub-card">
                     <div>
-                        <div class="hub-icon"><i class="fas fa-paint-brush"></i></div>
-                        <h3>סדנאות יצירה מהטבע</h3>
-                        <span class="hub-dates-tag">1-3 לאוקטובר (חוה״מ סוכות)</span>
-                        <p>מרחב יצירה בחומרים טבעיים למבוגרים וילדים: דמויות ויצורי יער, תכשיטים מהטבע, ופיסול באדמה.</p>
+                        <div class="hub-icon"><i class="fas fa-tree"></i></div>
+                        <h3>יום יער בין ערביים</h3>
+                        <span class="hub-dates-tag">20.11.2026 - רמת מנשה</span>
+                        <p>חוויה קהילתית מחברת של יצירה, הסתגלות מעצימה לחשיכה, בישול שדה וקבלת שבת.</p>
                     </div>
-                    <a href="yarid.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה לסדנאות <i class="fas fa-chevron-left"></i></a>
+                    <a href="yaar.html" class="hub-btn hub-btn-highlight">לפרטים והרשמה<i class="fas fa-chevron-left"></i></a>
                 </div>
             </div>
         </section>
 
+        <!-- לוח שנה מעודכן -->
         <section id="calendar-section">
             <div class="section-header">
                 <h2>לוח אירועים ופעילויות</h2>
@@ -205,7 +220,7 @@
 
             <div class="big-calendar-wrapper">
                 <div class="calendar-header">
-                    <span>ספטמבר 2026</span>
+                    <span>נובמבר / דצמבר 2026 (כולל חופשת חנוכה)</span>
                 </div>
                 
                 <div class="calendar-weekdays">
@@ -213,15 +228,15 @@
                 </div>
                 
                 <div class="calendar-days" id="calendarDays">
-                    <!-- נוצר דרך JS -->
+                    <!-- נוצר אוטומטית דרך ה-JS למטה -->
                 </div>
 
                 <div class="event-info-box" id="eventInfoBox">
                     <div class="event-info-text">
-                        <h4 id="eventTitle">קמפינג משפחות אמהות וילדים בהרי ירושלים (נס הרים)</h4>
-                        <p id="eventDesc">22-23 לספטמבר 2026 | מערת הנטיפים, עששיות, סיר פוייקה, זריחה והכותל.</p>
+                        <h4 id="eventTitle">בחר/י תאריך בלוח</h4>
+                        <p id="eventDesc">לחצו על יום מודגש לצפייה בפרטי הפעילות.</p>
                     </div>
-                    <a href="jerusalem.html" id="eventLinkBtn" class="hub-btn hub-btn-highlight">מעבר לעמוד ההרשמה <i class="fas fa-chevron-left"></i></a>
+                    <a href="journey.html" id="eventLinkBtn" class="hub-btn hub-btn-highlight">מעבר לעמוד ההרשמה <i class="fas fa-chevron-left"></i></a>
                 </div>
             </div>
         </section>
@@ -259,51 +274,80 @@
             const container = document.getElementById('calendarDays');
             container.innerHTML = '';
 
-            for (let i = 0; i < 2; i++) {
+            // יצירת ימים לדוגמה להמחשת נובמבר/דצמבר
+            for (let i = 0; i < 3; i++) {
                 const emptyCell = document.createElement('div');
                 emptyCell.className = 'day-cell';
                 emptyCell.style.background = 'transparent';
                 container.appendChild(emptyCell);
             }
 
+            // ימי נובמבר (עד 30)
             for (let day = 1; day <= 30; day++) {
                 const dayCell = document.createElement('div');
                 dayCell.className = 'day-cell';
-                dayCell.id = `day-9-${day}`;
+                dayCell.id = `day-nov-${day}`;
                 dayCell.innerHTML = `<span>${day}</span>`;
 
-                if (day === 22 || day === 23) {
+                if (day === 20) {
                     dayCell.classList.add('available');
                     dayCell.innerHTML += `<div class="event-dot"></div>`;
                     dayCell.onclick = () => showEventInfo(
-                        "קמפינג אמהות וילדים בהרי ירושלים (חניון נס הרים)",
-                        "22-23 לספטמבר 2026 (שלישי-רביעי) | זמן איכות לאמהות וילדים: מערת הנטיפים, טיול עששיות, וביקור בכותל.",
-                        "jerusalem.html",
-                        [22, 23]
-                    );
-                } else if (day >= 27 && day <= 29) {
-                    dayCell.classList.add('available');
-                    dayCell.innerHTML += `<div class="event-dot"></div>`;
-                    dayCell.onclick = () => showEventInfo(
-                        "קמפינג סוכות בפארק הכרמל (חניון כלניות)",
-                        "27-29 לספטמבר 2026 (חול המועד סוכות) | הגשרים התלויים, עששיות בשקיעה, זריחה וחי-בר כרמל.",
-                        "carmel.html",
-                        [27, 28, 29]
+                        "זמן הורה וילד.ה + יום יער וקבלת שבת שבטית",
+                        "20.11.2026 - פעילויות עומק, יצירה וקבלת שבת ברמת מנשה.",
+                        "journey.html",
+                        ['day-nov-20']
                     );
                 }
 
                 container.appendChild(dayCell);
             }
 
+            // ימי דצמבר (עד 15 להמחשת הפעילויות)
+            for (let day = 1; day <= 15; day++) {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'day-cell';
+                dayCell.id = `day-dec-${day}`;
+                dayCell.innerHTML = `<span>${day} דצמבר</span>`;
+
+                // סימון ימי חופשת חנוכה (5 עד 12 בדצמבר) בצבע שונה
+                if (day >= 5 && day <= 12) {
+                    dayCell.classList.add('hanukkah-holiday');
+                }
+
+                if (day === 4) {
+                    dayCell.classList.add('available');
+                    dayCell.innerHTML += `<div class="event-dot"></div>`;
+                    dayCell.onclick = () => showEventInfo(
+                        "זמן הורה וילד.ה - מפגש שני",
+                        "04.12.2026 - מפגש עומק נוסף בסדרת הורה וילד ברמת מנשה.",
+                        "journey.html",
+                        ['day-dec-4']
+                    );
+                } else if (day >= 10 && day <= 11) {
+                    dayCell.classList.add('available');
+                    dayCell.innerHTML += `<div class="event-dot"></div>`;
+                    dayCell.onclick = () => showEventInfo(
+                        "זמן הורה וילד.ה - סופ"ש מסכם (חופשת חנוכה)",
+                        "10-11.12.2026 - מפגש סופ"ש מסכם ולילה סביב המדורה במסגרת חופשת חנוכה.",
+                        "journey.html",
+                        ['day-dec-10', 'day-dec-11']
+                    );
+                }
+
+                container.appendChild(dayCell);
+            }
+
+            // הצגת אירוע ברירת מחדל בטעינה (20.11)
             showEventInfo(
-                "קמפינג אמהות וילדים בהרי ירושלים (חניון נס הרים)",
-                "22-23 לספטמבר 2026 (שלישי-רביעי) | זמן איכות לאמהות וילדים: מערת הנטיפים, טיול עששיות, וביקור בכותל.",
-                "jerusalem.html",
-                [22, 23]
+                "זמן הורה וילד.ה + יום יער וקבלת שבת שבטית",
+                "20.11.2026 - פעילויות עומק, יצירה וקבלת שבת ברמת מנשה.",
+                "journey.html",
+                ['day-nov-20']
             );
         }
 
-        function showEventInfo(title, desc, linkUrl, daysArray) {
+        function showEventInfo(title, desc, linkUrl, dayIdsArray) {
             document.getElementById('eventTitle').innerText = title;
             document.getElementById('eventDesc').innerText = desc;
             
@@ -312,8 +356,8 @@
             linkBtn.innerHTML = `מעבר לעמוד ההרשמה <i class="fas fa-chevron-left"></i>`;
 
             document.querySelectorAll('.day-cell').forEach(cell => cell.classList.remove('selected'));
-            daysArray.forEach(day => {
-                const cell = document.getElementById(`day-9-${day}`);
+            dayIdsArray.forEach(id => {
+                const cell = document.getElementById(id);
                 if (cell) cell.classList.add('selected');
             });
         }
