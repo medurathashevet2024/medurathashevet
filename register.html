@@ -176,6 +176,10 @@
             </div>
             <div id="couponMsg" style="font-size: 0.9rem; margin-bottom: 10px;"></div>
 
+            <div class="price-summary" id="priceSummaryBox" style="display:none;">
+                סה"כ לתשלום: <span id="finalPriceText">0</span> ₪
+            </div>
+
             <div class="row-group">
                 <div class="form-group">
                     <label for="paymentMethod">אמצעי תשלום מועדף:</label>
@@ -213,7 +217,7 @@
 <script>
     // רשימת הפעילויות המעודכנות
     const activities = [
-        { id: 'yaar-20-11', name: 'יום יער וקבלת שבת שבטית - 20.11.2026', date: '2026-11-20', type: 'yaar', basePrice: 150 },
+        { id: 'yaar-20-11', name: 'יום יער וקבלת שבת שבטית - 20.11.2026', date: '2026-11-20', type: 'yaar', basePrice: 190 },
         { id: 'journey-20-11', name: 'זמן הורה וילד.ה - 20.11.2026 (רמת מנשה)', date: '2026-11-20', type: 'journey', basePrice: 180 },
         { id: 'journey-04-12', name: 'זמן הורה וילד.ה (מפגש שני) - 04.12.2026', date: '2026-12-04', type: 'journey', basePrice: 180 },
         { id: 'journey-10-12', name: 'זמן הורה וילד.ה (סופ"ש חנוכה) - 10-11.12.2026', date: '2026-12-10', type: 'journey', basePrice: 350 }
@@ -300,6 +304,7 @@
                 </div>
             `;
         }
+        calculatePrice();
     }
 
     function updateYaarKidsInputs() {
@@ -350,6 +355,10 @@
         } else {
             couponMsg.innerText = '';
         }
+
+        const finalPrice = basePrice - discount;
+        document.getElementById('finalPriceText').innerText = finalPrice;
+        document.getElementById('priceSummaryBox').style.display = 'block';
     }
 
     loadActivities();
