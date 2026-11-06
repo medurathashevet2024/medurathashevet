@@ -269,12 +269,12 @@
 
     </div>
 
-    <script>
+   <script>
         function renderCalendar() {
             const container = document.getElementById('calendarDays');
             container.innerHTML = '';
 
-            // יצירת ימים לדוגמה להמחשת נובמבר/דצמבר
+            // רווחים התחלתיים בלוח השנה
             for (let i = 0; i < 3; i++) {
                 const emptyCell = document.createElement('div');
                 emptyCell.className = 'day-cell';
@@ -303,14 +303,14 @@
                 container.appendChild(dayCell);
             }
 
-            // ימי דצמבר (עד 15 להמחשת הפעילויות)
+            // ימי דצמבר (עד 15)
             for (let day = 1; day <= 15; day++) {
                 const dayCell = document.createElement('div');
                 dayCell.className = 'day-cell';
                 dayCell.id = `day-dec-${day}`;
-                dayCell.innerHTML = `<span>${day} דצמבר</span>`;
+                dayCell.innerHTML = `<span>${day}<br><small style="font-size:10px">דצמבר</small></span>`;
 
-                // סימון ימי חופשת חנוכה (5 עד 12 בדצמבר) בצבע שונה
+                // סימון ימי חופשת חנוכה (5 עד 12 בדצמבר)
                 if (day >= 5 && day <= 12) {
                     dayCell.classList.add('hanukkah-holiday');
                 }
@@ -328,8 +328,8 @@
                     dayCell.classList.add('available');
                     dayCell.innerHTML += `<div class="event-dot"></div>`;
                     dayCell.onclick = () => showEventInfo(
-                        "זמן הורה וילד.ה - סופ"ש מסכם (חופשת חנוכה)",
-                        "10-11.12.2026 - מפגש סופ"ש מסכם ולילה סביב המדורה במסגרת חופשת חנוכה.",
+                        "זמן הורה וילד.ה - סופ\"ש מסכם (חופשת חנוכה)",
+                        "10-11.12.2026 - מפגש סופ\"ש מסכם ולילה סביב המדורה במסגרת חופשת חנוכה.",
                         "journey.html",
                         ['day-dec-10', 'day-dec-11']
                     );
@@ -364,7 +364,7 @@
 
         window.onload = function() { renderCalendar(); };
     </script>
-
+    
     <footer>
         <p>מדורת השבט | קמפינג משפחות, חוויות טבע ומלאכות קדומות</p>
         <p style="font-size: 12px; color: #6a826f; margin-top: 5px;">טלפון ליצירת קשר: 055-9914540</p>
