@@ -136,9 +136,7 @@
     <h1>הרשמה לפעילות</h1>
     <p class="subtitle">מדורת השבט - חיבור לטבע ולקהילה</p>
 
-    <div class="early-bird-note">
-        ✨ <strong>הנחת הרשמה מוקדמת:</strong> 10% הנחה אוטומטית על מסלול כל 3 המפגשים לנרשמים עד ה-12.11.2026!
-    </div>
+   
 
     <form id="mainBookingForm">
         <!-- 1. בחירת פעילות -->
@@ -198,7 +196,7 @@
                 <div class="form-group">
                     <label for="paymentMethod">אמצעי תשלום מועדף:</label>
                     <select id="paymentMethod" required>
-                        <option value="ביט / פייבוקס">ביט / PayBox</option>
+                        <option value="ביט">ביט</option>
                         <option value="העברה בנקאית">העברה בנקאית</option>
                         <option value="כרטיס אשראי">כרטיס אשראי</option>
                         <option value="כרטיס פייטר (משרתי מילואים)">כרטיס פייטר (משרתי מילואים)</option>
@@ -206,7 +204,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="installments">מספר תשלומים:</label>
+                    <label for="installments">מספר תשלומים בכרטיס אשראי:</label>
                     <select id="installments" required>
                         <option value="1 תשלום">תשלום 1</option>
                         <option value="2 תשלומים">2 תשלומים</option>
@@ -228,7 +226,7 @@
 <script>
     const activities = [
         { id: 'yaar-20-11', name: 'יום יער וקבלת שבת שבטית - 20.11.2026', date: '2026-11-20', type: 'yaar' },
-        { id: 'journey-all', name: 'מסלול מלא - כל 3 המפגשים של זמן הורה וילד.ה', date: '2026-11-20', type: 'journey', basePrice: 1140, isEarlyBird: true },
+        { id: 'journey-all', name: 'מסלול מלא - כל 3 המפגשים של זמן הורה וילד.ה', date: '2026-11-20', type: 'journey', basePrice: 1560, isEarlyBird: true },
         { id: 'journey-20-11', name: 'זמן הורה וילד.ה - 20.11.2026 (רמת מנשה)', date: '2026-11-20', type: 'journey', basePrice: 390 },
         { id: 'journey-04-12', name: 'זמן הורה וילד.ה (מפגש שני) - 04.12.2026', date: '2026-12-04', type: 'journey', basePrice: 390 },
         { id: 'journey-10-12', name: 'זמן הורה וילד.ה (סופ"ש חנוכה) - 10-11.12.2026', date: '2026-12-10', type: 'journey', basePrice: 780 }
@@ -382,12 +380,7 @@
             couponMsg.style.color = '#2e4d36';
             couponMsg.innerText = 'קוד קופון XTRA25 הוחל בהצלחה (25% הנחה)';
         } 
-        else if (couponInput.length >= 4) {
-            discount += Math.round(basePrice * 0.10);
-            couponMsg.style.color = '#2e4d36';
-            couponMsg.innerText = 'קוד קופון הוחל בהצלחה';
-        } 
-        else if (couponInput !== '') {
+             else if (couponInput !== '') {
             couponMsg.style.color = '#c0392b';
             couponMsg.innerText = 'קוד קופון שגוי או אינו תקף לפעילות זו';
         } else if (isEarlyBird) {
