@@ -137,7 +137,7 @@
     <p class="subtitle">מדורת השבט - חיבור לטבע ולקהילה</p>
 
     <div class="early-bird-note">
-        ✨ <strong>הנחת הרשמה מוקדמת:</strong> 10% הנחה אוטומטית על מסלול כל 3 המפגשים לנרשמים עד ה-12.11.2026!
+         <strong>הנחת הרשמה מוקדמת</strong> 10% על מסלול כל 3 המפגשים לנרשמים עד ה-12.11.2026
     </div>
 
     <form id="mainBookingForm">
@@ -351,7 +351,6 @@
             const kids = parseInt(document.getElementById('kidsCount').value) || 1;
             const totalParticipants = adults + kids;
 
-            // בדיקת חריגה מעל 6 משתתפים
             if (totalParticipants > 6) {
                 document.getElementById('couponMsg').style.color = '#c0392b';
                 document.getElementById('couponMsg').innerText = 'סך המשתתפים המקסימלי ביום יער הוא עד 6 משתתפים.';
@@ -359,13 +358,12 @@
                 return;
             }
 
-            // חישוב מחיר אוטומטי לפי סך המשתתפים
             if (totalParticipants === 2) {
-                basePrice = 190; // זוג (הורה + ילד.ה)
+                basePrice = 190;
             } else if (totalParticipants === 3) {
-                basePrice = 255; // 3 משתתפים
+                basePrice = 255;
             } else {
-                basePrice = 290; // 4 עד 6 משתתפים
+                basePrice = 290;
             }
         } else {
             basePrice = parseInt(selectedOption.dataset.price || 0);
@@ -452,28 +450,30 @@
             if (totalP === 3) packageDesc = "3 משתתפים (255 ₪)";
             if (totalP >= 4) packageDesc = "4-6 משתתפים (290 ₪)";
 
-            participantsText = `מסלול: ${packageDesc}%0Aמבוגרים: ${adults}%0Aילדים: ${kidsCount} (גילאים: ${ages.join(', ')})%0A`;
+            participantsText = `מסלול: ${packageDesc}\nמבוגרים: ${adults}\nילדים: ${kidsCount} (גילאים: ${ages.join(', ')})\n`;
         } else {
             const childName = document.getElementById('childName').value;
             const childAge = document.getElementById('childAge').value;
             const childGender = document.getElementById('childGender').value;
-            participantsText = `שם הילד/ה: ${childName} (גיל ${childAge}, ${childGender})%0A`;
+            participantsText = `שם הילד/ה: ${childName} (גיל ${childAge}, ${childGender})\n`;
         }
 
         const finalPrice = document.getElementById('finalPriceText').innerText;
 
-        const whatsappText = `היי טליה, נרשמתי דרך האתר! 🌲%0A` +
-            `פעילות: ${activityName}%0A` +
-            `שם הורה: ${parentName}%0A` +
-            `טלפון: ${parentPhone}%0A` +
+        const whatsappText = `היי טליה, נרשמתי דרך האתר! 🌲\n` +
+            `פעילות: ${activityName}\n` +
+            `שם הורה: ${parentName}\n` +
+            `טלפון: ${parentPhone}\n` +
             participantsText +
-            `סה"כ לתשלום: ${finalPrice} ₪%0A` +
-            `תשלום: ${paymentMethod} (${installments})%0A` +
+            `סה"כ לתשלום: ${finalPrice} ₪\n` +
+            `תשלום: ${paymentMethod} (${installments})\n` +
             `הערות: ${notes}`;
 
         const phoneNumber = "972559914540";
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${whatsappText}`;
-        window.location.href = whatsappUrl;
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappText)}`;
+        
+        // פתיחת הקישור בלשונית חדשה כדי למנוע חסימות דפדפן
+        window.open(whatsappUrl, '_blank');
     });
 </script>
 
