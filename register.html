@@ -136,7 +136,9 @@
     <h1>הרשמה לפעילות</h1>
     <p class="subtitle">מדורת השבט - חיבור לטבע ולקהילה</p>
 
-   
+    <div class="early-bird-note">
+        ✨ <strong>הנחת הרשמה מוקדמת:</strong> 10% הנחה אוטומטית על מסלול כל 3 המפגשים לנרשמים עד ה-12.11.2026!
+    </div>
 
     <form id="mainBookingForm">
         <!-- 1. בחירת פעילות -->
@@ -196,7 +198,7 @@
                 <div class="form-group">
                     <label for="paymentMethod">אמצעי תשלום מועדף:</label>
                     <select id="paymentMethod" required>
-                        <option value="ביט">ביט</option>
+                        <option value="ביט / פייבוקס">ביט / PayBox</option>
                         <option value="העברה בנקאית">העברה בנקאית</option>
                         <option value="כרטיס אשראי">כרטיס אשראי</option>
                         <option value="כרטיס פייטר (משרתי מילואים)">כרטיס פייטר (משרתי מילואים)</option>
@@ -204,7 +206,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="installments">מספר תשלומים בכרטיס אשראי:</label>
+                    <label for="installments">מספר תשלומים:</label>
                     <select id="installments" required>
                         <option value="1 תשלום">תשלום 1</option>
                         <option value="2 תשלומים">2 תשלומים</option>
@@ -274,28 +276,22 @@
 
         if (type === 'yaar') {
             section.innerHTML += `
-                <div class="form-group">
-                    <label for="yaarPackage">הרכב משתתפים ביום יער:</label>
-                    <select id="yaarPackage" onchange="calculatePrice()" required>
-                        <option value="190">זוג (הורה + ילד.ה) - 190 ₪</option>
-                        <option value="255">3 משתתפים - 255 ₪</option>
-                        <option value="290">4 עד 6 משתתפים (משפחה גרעינית) - 290 ₪</option>
-                    </select>
-                </div>
                 <div class="row-group">
                     <div class="form-group">
                         <label for="adultsCount">מספר מבוגרים:</label>
-                        <select id="adultsCount" required>
+                        <select id="adultsCount" onchange="calculatePrice()" required>
                             <option value="1">1 מבוגר/ת</option>
                             <option value="2">2 מבוגרים</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="kidsCount">מספר ילדים:</label>
-                        <select id="kidsCount" onchange="updateYaarKidsInputs()" required>
+                        <select id="kidsCount" onchange="updateYaarKidsInputs(); calculatePrice();" required>
                             <option value="1">ילד/ה 1</option>
                             <option value="2">2 ילדים</option>
                             <option value="3">3 ילדים</option>
+                            <option value="4">4 ילדים</option>
+                            <option value="5">5 ילדים</option>
                         </select>
                     </div>
                 </div>
@@ -351,9 +347,25 @@
         const type = selectedOption.dataset.type;
 
         if (type === 'yaar') {
-            const packageSelect = document.getElementById('yaarPackage');
-            if (packageSelect) {
-                basePrice = parseInt(packageSelect.value);
+            const adults = parseInt(document.getElementById('adultsCount').value) || 1;
+            const kids = parseInt(document.getElementById('kidsCount').value) || 1;
+            const totalParticipants = adults + kids;
+
+            // בדיקת חריגה מעל 6 משתתפים
+            if (totalParticipants > 6) {
+                document.getElementById('couponMsg').style.color = '#c0392b';
+                document.getElementById('couponMsg').innerText = 'סך המשתתפים המקסימלי ביום יער הוא עד 6 משתתפים.';
+                document.getElementById('priceSummaryBox').style.display = 'none';
+                return;
+            }
+
+            // חישוב מחיר אוטומטי לפי סך המשתתפים
+            if (totalParticipants === 2) {
+                basePrice = 190; // זוג (הורה + ילד.ה)
+            } else if (totalParticipants === 3) {
+                basePrice = 255; // 3 משתתפים
+            } else {
+                basePrice = 290; // 4 עד 6 משתתפים
             }
         } else {
             basePrice = parseInt(selectedOption.dataset.price || 0);
@@ -361,33 +373,40 @@
 
         const activityDate = selectedOption.dataset.date;
         const isEarlyBird = selectedOption.dataset.earlyBird === "true";
-        const couponInput = document.getElementById('couponInput').value.trim();
+        const couponInput = document.getElementById('couponInput').value.trim().toUpperCase();
         const couponMsg = document.getElementById('couponMsg');
 
         let discount = 0;
 
         if (isEarlyBird) {
-            discount += Math.round(basePrice * 0.10);
+            discount = Math.round(basePrice * 0.10);
         }
 
         if (couponInput === 'CLICKBATEVA26') {
-            discount += Math.round(basePrice * 0.10);
+            discount = Math.round(basePrice * 0.10);
             couponMsg.style.color = '#2e4d36';
             couponMsg.innerText = 'קוד קופון הוחל בהצלחה (10% הנחה)';
         } 
         else if (couponInput === 'XTRA25' && activityDate === '2026-11-20') {
-            discount += Math.round(basePrice * 0.25);
+            discount = Math.round(basePrice * 0.25);
             couponMsg.style.color = '#2e4d36';
             couponMsg.innerText = 'קוד קופון XTRA25 הוחל בהצלחה (25% הנחה)';
         } 
-             else if (couponInput !== '') {
+        else if (couponInput.length >= 4) {
+            discount = Math.round(basePrice * 0.10);
+            couponMsg.style.color = '#2e4d36';
+            couponMsg.innerText = 'קוד קופון הוחל בהצלחה';
+        } 
+        else if (couponInput !== '') {
             couponMsg.style.color = '#c0392b';
             couponMsg.innerText = 'קוד קופון שגוי או אינו תקף לפעילות זו';
-        } else if (isEarlyBird) {
-            couponMsg.style.color = '#2e4d36';
-            couponMsg.innerText = 'הופעלה הנחת הרשמה מוקדמת (10%)!';
         } else {
-            couponMsg.innerText = '';
+            if (isEarlyBird) {
+                couponMsg.style.color = '#2e4d36';
+                couponMsg.innerText = 'הופעלה הנחת הרשמה מוקדמת (10%)!';
+            } else {
+                couponMsg.innerText = '';
+            }
         }
 
         const finalPrice = Math.max(0, basePrice - discount);
@@ -404,6 +423,15 @@
         const activityName = selectedOption.text;
         const activityType = selectedOption.dataset.type;
 
+        if (activityType === 'yaar') {
+            const adults = parseInt(document.getElementById('adultsCount').value) || 1;
+            const kids = parseInt(document.getElementById('kidsCount').value) || 1;
+            if ((adults + kids) > 6) {
+                alert('שגיאה: סך המשתתפים ביום יער אינו יכול לעלות על 6 אנשים.');
+                return;
+            }
+        }
+
         const parentName = document.getElementById('parentName').value;
         const parentPhone = document.getElementById('parentPhone').value;
         const paymentMethod = document.getElementById('paymentMethod').value;
@@ -413,14 +441,18 @@
         let participantsText = '';
 
         if (activityType === 'yaar') {
-            const packageText = document.getElementById('yaarPackage').selectedOptions[0].text;
             const adults = document.getElementById('adultsCount').value;
             const kidsCount = parseInt(document.getElementById('kidsCount').value);
             let ages = [];
             for (let i = 1; i <= kidsCount; i++) {
                 ages.push(document.getElementById(`yaarChildAge_${i}`).value);
             }
-            participantsText = `מסלול: ${packageText}%0Aמבוגרים: ${adults}%0Aילדים: ${kidsCount} (גילאים: ${ages.join(', ')})%0A`;
+            let packageDesc = "זוג (190 ₪)";
+            let totalP = parseInt(adults) + kidsCount;
+            if (totalP === 3) packageDesc = "3 משתתפים (255 ₪)";
+            if (totalP >= 4) packageDesc = "4-6 משתתפים (290 ₪)";
+
+            participantsText = `מסלול: ${packageDesc}%0Aמבוגרים: ${adults}%0Aילדים: ${kidsCount} (גילאים: ${ages.join(', ')})%0A`;
         } else {
             const childName = document.getElementById('childName').value;
             const childAge = document.getElementById('childAge').value;
@@ -430,7 +462,7 @@
 
         const finalPrice = document.getElementById('finalPriceText').innerText;
 
-        const whatsappText = `היי, נרשמתי דרך האתר%0A` +
+        const whatsappText = `היי טליה, נרשמתי דרך האתר! 🌲%0A` +
             `פעילות: ${activityName}%0A` +
             `שם הורה: ${parentName}%0A` +
             `טלפון: ${parentPhone}%0A` +
@@ -439,7 +471,8 @@
             `תשלום: ${paymentMethod} (${installments})%0A` +
             `הערות: ${notes}`;
 
-        const whatsappUrl = `https://wa.me/972559914540?text=${whatsappText}`;
+        const phoneNumber = "972559914540";
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${whatsappText}`;
         window.location.href = whatsappUrl;
     });
 </script>
