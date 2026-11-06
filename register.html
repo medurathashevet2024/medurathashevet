@@ -136,9 +136,8 @@
     <h1>הרשמה לפעילות</h1>
     <p class="subtitle">מדורת השבט - חיבור לטבע ולקהילה</p>
 
-    <!-- הערת הנחת הרשמה מוקדמת בתחתית העמוד / באזור העליון -->
     <div class="early-bird-note">
-        ✨ <strong>הנחת הרשמה מוקדמת:</strong> 10% הנחה על מסלול כל 3 המפגשים לנרשמים עד ה-12.11.2026!
+        ✨ <strong>הנחת הרשמה מוקדמת:</strong> 10% הנחה אוטומטית על מסלול כל 3 המפגשים לנרשמים עד ה-12.11.2026!
     </div>
 
     <form id="mainBookingForm">
@@ -172,10 +171,9 @@
             </div>
         </div>
 
-        <!-- 3. פרטי המשתתפים (משתנה דינמית לפי סוג הפעילות) -->
+        <!-- 3. פרטי המשתתפים -->
         <div class="form-section" id="participantsSection">
             <h3>3. פרטי המשתתפים</h3>
-            <!-- התוכן מתעדכן אוטומטית דרך ה-JS בהתאם לפעילות שנבחרה -->
         </div>
 
         <!-- 4. קופונים ותשלום -->
@@ -230,7 +228,7 @@
 <script>
     const activities = [
         { id: 'yaar-20-11', name: 'יום יער וקבלת שבת שבטית - 20.11.2026', date: '2026-11-20', type: 'yaar' },
-        { id: 'journey-all', name: 'מסלול מלא - כל 3 המפגשים של זמן הורה וילד.ה', date: '2026-11-20', type: 'journey', basePrice: 1140, isEarlyBird: true },
+        { id: 'journey-all', name: 'מסלול מלא - כל 3 המפגשים של זמן הורה וילד.ה', date: '2026-11-20', type: 'journey', basePrice: 1560, isEarlyBird: true },
         { id: 'journey-20-11', name: 'זמן הורה וילד.ה - 20.11.2026 (רמת מנשה)', date: '2026-11-20', type: 'journey', basePrice: 390 },
         { id: 'journey-04-12', name: 'זמן הורה וילד.ה (מפגש שני) - 04.12.2026', date: '2026-12-04', type: 'journey', basePrice: 390 },
         { id: 'journey-10-12', name: 'זמן הורה וילד.ה (סופ"ש חנוכה) - 10-11.12.2026', date: '2026-12-10', type: 'journey', basePrice: 780 }
@@ -364,42 +362,51 @@
         }
 
         const activityDate = selectedOption.dataset.date;
+        const isEarlyBird = selectedOption.dataset.earlyBird === "true";
         const couponInput = document.getElementById('couponInput').value.trim();
         const couponMsg = document.getElementById('couponMsg');
 
         let discount = 0;
 
-        // בדיקת קופונים
+        // חישוב הנחת הרשמה מוקדמת אוטומטית למסלול המלא (עד 12.11.2026)
+        if (isEarlyBird) {
+            discount += Math.round(basePrice * 0.10);
+        }
+
+        // בדיקת קופונים נוספים
         if (couponInput === 'CLICKBATEVA26') {
-            discount = Math.round(basePrice * 0.10);
+            discount += Math.round(basePrice * 0.10);
             couponMsg.style.color = '#2e4d36';
             couponMsg.innerText = 'קוד קופון הוחל בהצלחה (10% הנחה)';
         } 
         else if (couponInput === 'XTRA25' && activityDate === '2026-11-20') {
-            discount = Math.round(basePrice * 0.25);
+            discount += Math.round(basePrice * 0.25);
             couponMsg.style.color = '#2e4d36';
             couponMsg.innerText = 'קוד קופון XTRA25 הוחל בהצלחה (25% הנחה)';
         } 
         else if (couponInput.length >= 4) {
-            discount = Math.round(basePrice * 0.10);
+            discount += Math.round(basePrice * 0.10);
             couponMsg.style.color = '#2e4d36';
             couponMsg.innerText = 'קוד קופון הוחל בהצלחה';
         } 
         else if (couponInput !== '') {
             couponMsg.style.color = '#c0392b';
             couponMsg.innerText = 'קוד קופון שגוי או אינו תקף לפעילות זו';
+        } else if (isEarlyBird) {
+            couponMsg.style.color = '#2e4d36';
+            couponMsg.innerText = 'הופעלה הנחת הרשמה מוקדמת (10%)!';
         } else {
             couponMsg.innerText = '';
         }
 
-        const finalPrice = basePrice - discount;
+        const finalPrice = Math.max(0, basePrice - discount);
         document.getElementById('finalPriceText').innerText = finalPrice;
         document.getElementById('priceSummaryBox').style.display = 'block';
     }
 
     loadActivities();
 
-    // שליחת הטופס ומעבר לווטסאפ (ללא כוכביות)
+    // שליחת הטופס ומעבר לווטסאפ
     document.getElementById('mainBookingForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
