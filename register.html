@@ -228,7 +228,7 @@
 <script>
     const activities = [
         { id: 'yaar-20-11', name: 'יום יער וקבלת שבת שבטית - 20.11.2026', date: '2026-11-20', type: 'yaar' },
-        { id: 'journey-all', name: 'מסלול מלא - כל 3 המפגשים של זמן הורה וילד.ה', date: '2026-11-20', type: 'journey', basePrice: 1560, isEarlyBird: true },
+        { id: 'journey-all', name: 'מסלול מלא - כל 3 המפגשים של זמן הורה וילד.ה', date: '2026-11-20', type: 'journey', basePrice: 1140, isEarlyBird: true },
         { id: 'journey-20-11', name: 'זמן הורה וילד.ה - 20.11.2026 (רמת מנשה)', date: '2026-11-20', type: 'journey', basePrice: 390 },
         { id: 'journey-04-12', name: 'זמן הורה וילד.ה (מפגש שני) - 04.12.2026', date: '2026-12-04', type: 'journey', basePrice: 390 },
         { id: 'journey-10-12', name: 'זמן הורה וילד.ה (סופ"ש חנוכה) - 10-11.12.2026', date: '2026-12-10', type: 'journey', basePrice: 780 }
@@ -368,12 +368,10 @@
 
         let discount = 0;
 
-        // חישוב הנחת הרשמה מוקדמת אוטומטית למסלול המלא (עד 12.11.2026)
         if (isEarlyBird) {
             discount += Math.round(basePrice * 0.10);
         }
 
-        // בדיקת קופונים נוספים
         if (couponInput === 'CLICKBATEVA26') {
             discount += Math.round(basePrice * 0.10);
             couponMsg.style.color = '#2e4d36';
@@ -406,7 +404,6 @@
 
     loadActivities();
 
-    // שליחת הטופס ומעבר לווטסאפ
     document.getElementById('mainBookingForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -440,7 +437,7 @@
 
         const finalPrice = document.getElementById('finalPriceText').innerText;
 
-        const whatsappText = `היי טליה, נרשמתי דרך האתר! 🌲%0A` +
+        const whatsappText = `היי, נרשמתי דרך האתר%0A` +
             `פעילות: ${activityName}%0A` +
             `שם הורה: ${parentName}%0A` +
             `טלפון: ${parentPhone}%0A` +
