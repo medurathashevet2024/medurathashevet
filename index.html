@@ -25,7 +25,6 @@
             --transition: all 0.3s ease;
             --shadow-sm: 0 4px 15px rgba(27, 56, 32, 0.05);
             --shadow-md: 0 12px 35px rgba(27, 56, 32, 0.08);
-            --shadow-lg: 0 20px 45px rgba(27, 56, 32, 0.14);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
@@ -81,7 +80,7 @@
         }
 
         .hub-card h3 { font-size: 22px; color: var(--forest-green); margin-bottom: 8px; }
-        .hub-dates-tag { display: block; background: #fff5eb; color: var(--campfire-orange); font-weight: 800; font-size: 14px; padding: 6px 12px; border-radius: 12px; margin-bottom: 8px; border: 1px solid rgba(230, 92, 0, 0.2); }
+        .hub-dates-tag { display: block; background: #fff5eb; color: var(--campfire-orange); font-weight: 800; font-size: 14px; padding: 6px 12px; border-radius: 12px; margin-bottom: 12px; border: 1px solid rgba(230, 92, 0, 0.2); }
         .hub-card p { font-size: 15px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.6; }
 
         .hub-btn {
@@ -91,7 +90,6 @@
         .hub-btn:hover { background: var(--campfire-orange); }
         .hub-btn-highlight { background: linear-gradient(135deg, var(--campfire-orange), var(--campfire-glow)); box-shadow: 0 4px 15px rgba(230, 92, 0, 0.3); }
 
-        /* באנר כרטיס פייטר */
         .fighter-banner {
             margin-top: 32px;
             background: linear-gradient(135deg, var(--forest-light), #e4ede6);
@@ -108,10 +106,7 @@
             font-weight: 700;
             box-shadow: var(--shadow-sm);
         }
-        .fighter-banner i {
-            color: var(--campfire-orange);
-            font-size: 22px;
-        }
+        .fighter-banner i { color: var(--campfire-orange); font-size: 22px; }
 
         .big-calendar-wrapper { max-width: 920px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 20px; border: 2px solid #e1e9e2; box-shadow: var(--shadow-sm); }
         
@@ -120,23 +115,23 @@
         .calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }
         .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
         
-        .day-cell { min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 15px; border-radius: 10px; background: #f8faf8; color: #9aa89d; cursor: not-allowed; font-weight: 600; }
+        .day-cell { min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 15px; border-radius: 10px; background: #f8faf8; color: #9aa89d; font-weight: 600; }
         .day-cell.available { background: #e8f5e9; color: var(--forest-green); font-weight: 800; cursor: pointer; border: 2px solid #81c784; }
         .day-cell.available:hover { background: var(--campfire-glow); color: var(--white); border-color: var(--campfire-orange); }
         
         .day-cell.hanukkah-holiday {
-            background-color: #fff3cd !important;
-            color: #856404 !important;
+            background-color: #fff3cd;
+            color: #856404;
             font-weight: bold;
         }
         .day-cell.hanukkah-holiday.available {
-            background-color: #ffe8a1 !important;
-            color: #1b3820 !important;
+            background-color: #ffe8a1;
+            color: #1b3820;
             border: 2px solid #e65c00;
             cursor: pointer;
         }
 
-        .day-cell.selected { background: var(--campfire-orange) !important; color: var(--white) !important; border-color: var(--campfire-orange) !important; box-shadow: 0 4px 14px rgba(230, 92, 0, 0.4); }
+        .day-cell.selected { background: var(--campfire-orange); color: var(--white); border-color: var(--campfire-orange); box-shadow: 0 4px 14px rgba(230, 92, 0, 0.4); }
 
         .event-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--campfire-orange); margin-top: 2px; }
         .day-cell.selected .event-dot { background: #ffffff; }
@@ -207,10 +202,9 @@
                         <div class="hub-icon"><i class="fas fa-fire"></i></div>
                         <h3>זמן יער למבוגרים</h3>
                         <span class="hub-dates-tag">4.12 (שישי) • יער רמת מנשה</span>
-                        <span class="hub-dates-tag">120 ₪ למשתתף | 220 ₪ לזוג</span>
                         <p>פעם בחודש זמן של שקט ונחת לעצמנו סביב המדורה, עם מלאכות וסדנת הכנת חנוכייה מחומרים טבעיים.</p>
                     </div>
-                    <a href="hanukkah.html#adults" class="hub-btn hub-btn-highlight">לעמוד הפעילות <i class="fas fa-chevron-left"></i></a>
+                    <a href="hanukkah.html#adults" class="hub-btn hub-btn-highlight">לפרטים מלאים <i class="fas fa-chevron-left"></i></a>
                 </div>
 
                 <div class="hub-card">
@@ -218,10 +212,9 @@
                         <div class="hub-icon"><i class="fas fa-campground"></i></div>
                         <h3>קמפינג יחידנים</h3>
                         <span class="hub-dates-tag">4–5.12 • נר ראשון של חנוכה</span>
-                        <span class="hub-dates-tag">מחירון קמפינג משפחתי</span>
                         <p>מלאכות לילדים, משחקי יער, בישול פויקה על המדורה, קבלת שבת והדלקת נר ראשון של חנוכה.</p>
                     </div>
-                    <a href="hanukkah.html#solo-camp" class="hub-btn hub-btn-highlight">לעמוד הפעילות <i class="fas fa-chevron-left"></i></a>
+                    <a href="hanukkah.html#solo-camp" class="hub-btn hub-btn-highlight">לפרטים מלאים <i class="fas fa-chevron-left"></i></a>
                 </div>
 
                 <div class="hub-card">
@@ -229,10 +222,9 @@
                         <div class="hub-icon"><i class="fas fa-tree"></i></div>
                         <h3>מפגש חנוכה בגבעת המורה</h3>
                         <span class="hub-dates-tag">7.12 (שני, 15:00–18:00)</span>
-                        <span class="hub-dates-tag">65 ₪ למשתתף מגיל 3</span>
                         <p>הכנת חנוכיות, פיתות על הטאבון והדלקת נרות חנוכה באווירת יער קסומה.</p>
                     </div>
-                    <a href="hanukkah.html#givat-more" class="hub-btn">לעמוד הפעילות <i class="fas fa-chevron-left"></i></a>
+                    <a href="hanukkah.html#givat-more" class="hub-btn">לפרטים מלאים <i class="fas fa-chevron-left"></i></a>
                 </div>
 
                 <div class="hub-card">
@@ -240,10 +232,9 @@
                         <div class="hub-icon"><i class="fas fa-sun"></i></div>
                         <h3>מפגש חנוכה בעמק הירדן</h3>
                         <span class="hub-dates-tag">9.12 (רביעי, 15:00–18:00)</span>
-                        <span class="hub-dates-tag">65 ₪ למשתתף מגיל 3</span>
                         <p>הכנת חנוכיות, פיתות על הטאבון והדלקת נרות חנוכה במרחב הפתוח.</p>
                     </div>
-                    <a href="hanukkah.html#jordan-valley" class="hub-btn">לעמוד הפעילות <i class="fas fa-chevron-left"></i></a>
+                    <a href="hanukkah.html#jordan-valley" class="hub-btn">לפרטים מלאים <i class="fas fa-chevron-left"></i></a>
                 </div>
 
                 <div class="hub-card">
@@ -251,10 +242,9 @@
                         <div class="hub-icon"><i class="fas fa-bread-slice"></i></div>
                         <h3>זמן יער למשפחות</h3>
                         <span class="hub-dates-tag">10.12 (חמישי, 10:00–13:00)</span>
-                        <span class="hub-dates-tag">65 ₪ למשתתף מגיל 3</span>
                         <p>בוקר של מלאכות ופיתות טריות על הטאבון למשפחות בחופשת החנוכה.</p>
                     </div>
-                    <a href="hanukkah.html#morning" class="hub-btn">לעמוד הפעילות <i class="fas fa-chevron-left"></i></a>
+                    <a href="hanukkah.html#morning" class="hub-btn">לפרטים מלאים <i class="fas fa-chevron-left"></i></a>
                 </div>
 
                 <div class="hub-card">
@@ -262,14 +252,12 @@
                         <div class="hub-icon"><i class="fas fa-moon"></i></div>
                         <h3>קמפינג משפחות וקבלת שבת</h3>
                         <span class="hub-dates-tag">10–11.12 • קמפינג ושבת שבטית</span>
-                        <span class="hub-dates-tag">קמפינג: כרמל | שבת: 65 ₪ (מגיל 3)</span>
                         <p>קמפינג משפחות (10–11.12, 15:00 עד 14:00) וקבלת שבת שבטית והדלקת נרות חנוכה (11.12, 15:00–18:00).</p>
                     </div>
-                    <a href="hanukkah.html#family-camp" class="hub-btn hub-btn-highlight">לעמוד הפעילות <i class="fas fa-chevron-left"></i></a>
+                    <a href="hanukkah.html#family-camp" class="hub-btn hub-btn-highlight">לפרטים מלאים <i class="fas fa-chevron-left"></i></a>
                 </div>
             </div>
 
-            <!-- באנר כרטיס פייטר -->
             <div class="fighter-banner">
                 <i class="fas fa-shield-alt"></i>
                 <span>משרתי מילואים? אצלנו ניתן לשלם ולממש הטבות באמצעות <strong>כרטיס פייטר</strong>!</span>
@@ -294,9 +282,7 @@
                     <div>א'</div><div>ב'</div><div>ג'</div><div>ד'</div><div>ה'</div><div>ו'</div><div>ש'</div>
                 </div>
                 
-                <div class="calendar-days" id="calendarDays">
-                    <!-- ימים נטענים דינמית דרך ה-JS -->
-                </div>
+                <div class="calendar-days" id="calendarDays"></div>
             </div>
 
             <div class="event-info-box" id="eventInfoBox">
@@ -304,7 +290,7 @@
                     <h4 id="eventTitle">בחר/י תאריך בלוח</h4>
                     <p id="eventDesc">לחצו על יום מודגש לצפייה בפרטי הפעילות.</p>
                 </div>
-                <a href="hanukkah.html" id="eventLinkBtn" class="hub-btn hub-btn-highlight">לעמוד הפעילות <i class="fas fa-chevron-left"></i></a>
+                <a href="hanukkah.html" id="eventLinkBtn" class="hub-btn hub-btn-highlight">לפרטים מלאים <i class="fas fa-chevron-left"></i></a>
             </div>
         </section>
 
@@ -337,8 +323,33 @@
     </div>
 
     <script>
+        function showEventInfo(title, desc, linkUrl, dayIdsArray) {
+            const titleEl = document.getElementById('eventTitle');
+            const descEl = document.getElementById('eventDesc');
+            const linkBtn = document.getElementById('eventLinkBtn');
+
+            if (titleEl) titleEl.innerText = title;
+            if (descEl) descEl.innerText = desc;
+            if (linkBtn) {
+                linkBtn.href = linkUrl;
+                linkBtn.innerHTML = 'לפרטים מלאים <i class="fas fa-chevron-left"></i>';
+            }
+
+            document.querySelectorAll('.day-cell').forEach(function(cell) {
+                cell.classList.remove('selected');
+            });
+
+            if (Array.isArray(dayIdsArray)) {
+                dayIdsArray.forEach(function(id) {
+                    const cell = document.getElementById(id);
+                    if (cell) cell.classList.add('selected');
+                });
+            }
+        }
+
         function renderCalendar() {
             const container = document.getElementById('calendarDays');
+            if (!container) return;
             container.innerHTML = '';
 
             // 1 בדצמבר 2026 חל ביום שלישי (2 תאים ריקים בהתחלה)
@@ -352,8 +363,8 @@
             for (let day = 1; day <= 31; day++) {
                 const dayCell = document.createElement('div');
                 dayCell.className = 'day-cell';
-                dayCell.id = `day-dec-${day}`;
-                dayCell.innerHTML = `<span>${day}</span>`;
+                dayCell.id = 'day-dec-' + day;
+                dayCell.innerHTML = '<span>' + day + '</span>';
 
                 if (day >= 5 && day <= 12) {
                     dayCell.classList.add('hanukkah-holiday');
@@ -361,85 +372,84 @@
 
                 if (day === 4) {
                     dayCell.classList.add('available');
-                    dayCell.innerHTML += `<div class="event-dot"></div>`;
-                    dayCell.onclick = () => showEventInfo(
-                        "4.12 (שישי) — זמן יער למבוגרים | יער רמת מנשה",
-                        "שקט ונחת סביב המדורה, מלאכות וסדנת הכנת חנוכייה מחומרים טבעיים (120 ₪ למשתתף / 220 ₪ לזוג). במקביל מתחיל קמפינג יחידנים (4–5.12).",
-                        "hanukkah.html#adults",
-                        ['day-dec-4']
-                    );
+                    dayCell.innerHTML += '<div class="event-dot"></div>';
+                    dayCell.addEventListener('click', function() {
+                        showEventInfo(
+                            '4.12 (שישי) — זמן יער למבוגרים | יער רמת מנשה',
+                            'זמן של שקט ונחת סביב המדורה, עם מלאכות וסדנת הכנת חנוכייה מחומרים טבעיים.',
+                            'hanukkah.html#adults',
+                            ['day-dec-4']
+                        );
+                    });
                 } else if (day === 5) {
                     dayCell.classList.add('available');
-                    dayCell.innerHTML += `<div class="event-dot"></div>`;
-                    dayCell.onclick = () => showEventInfo(
-                        "4–5.12 — קמפינג יחידנים (אמא וילדים, אבא וילדים)",
-                        "מלאכות לילדים, משחקי יער, בישול פויקה על המדורה, קבלת שבת והדלקת נר ראשון של חנוכה.",
-                        "hanukkah.html#solo-camp",
-                        ['day-dec-4', 'day-dec-5']
-                    );
+                    dayCell.innerHTML += '<div class="event-dot"></div>';
+                    dayCell.addEventListener('click', function() {
+                        showEventInfo(
+                            '4–5.12 — קמפינג יחידנים (אמא וילדים, אבא וילדים)',
+                            'מלאכות לילדים, משחקי יער, בישול פויקה על המדורה, קבלת שבת והדלקת נר ראשון של חנוכה.',
+                            'hanukkah.html#solo-camp',
+                            ['day-dec-4', 'day-dec-5']
+                        );
+                    });
                 } else if (day === 7) {
                     dayCell.classList.add('available');
-                    dayCell.innerHTML += `<div class="event-dot"></div>`;
-                    dayCell.onclick = () => showEventInfo(
-                        "7.12 (שני, 15:00–18:00) — מפגש חנוכה ביער גבעת המורה",
-                        "הכנת חנוכיות, פיתות על הטאבון והדלקת נרות חנוכה (65 ₪ למשתתף מגיל 3).",
-                        "hanukkah.html#givat-more",
-                        ['day-dec-7']
-                    );
+                    dayCell.innerHTML += '<div class="event-dot"></div>';
+                    dayCell.addEventListener('click', function() {
+                        showEventInfo(
+                            '7.12 (שני, 15:00–18:00) — מפגש חנוכה ביער גבעת המורה',
+                            'הכנת חנוכיות, פיתות על הטאבון והדלקת נרות חנוכה.',
+                            'hanukkah.html#givat-more',
+                            ['day-dec-7']
+                        );
+                    });
                 } else if (day === 9) {
                     dayCell.classList.add('available');
-                    dayCell.innerHTML += `<div class="event-dot"></div>`;
-                    dayCell.onclick = () => showEventInfo(
-                        "9.12 (רביעי, 15:00–18:00) — מפגש חנוכה בעמק הירדן",
-                        "הכנת חנוכיות, פיתות על הטאבון והדלקת נרות חנוכה (65 ₪ למשתתף מגיל 3).",
-                        "hanukkah.html#jordan-valley",
-                        ['day-dec-9']
-                    );
+                    dayCell.innerHTML += '<div class="event-dot"></div>';
+                    dayCell.addEventListener('click', function() {
+                        showEventInfo(
+                            '9.12 (רביעי, 15:00–18:00) — מפגש חנוכה בעמק הירדן',
+                            'הכנת חנוכיות, פיתות על הטאבון והדלקת נרות חנוכה.',
+                            'hanukkah.html#jordan-valley',
+                            ['day-dec-9']
+                        );
+                    });
                 } else if (day === 10) {
                     dayCell.classList.add('available');
-                    dayCell.innerHTML += `<div class="event-dot"></div>`;
-                    dayCell.onclick = () => showEventInfo(
-                        "10.12 (חמישי, 10:00–13:00) זמן יער למשפחות & קמפינג משפחות (10–11.12)",
-                        "בוקר של מלאכות ופיתות על הטאבון (65 ₪ למשתתף מגיל 3) ובהמשך קמפינג משפחות מ-15:00 עד 14:00 למחרת.",
-                        "hanukkah.html#morning",
-                        ['day-dec-10', 'day-dec-11']
-                    );
+                    dayCell.innerHTML += '<div class="event-dot"></div>';
+                    dayCell.addEventListener('click', function() {
+                        showEventInfo(
+                            '10.12 (חמישי, 10:00–13:00) זמן יער למשפחות & קמפינג משפחות (10–11.12)',
+                            'בוקר של מלאכות ופיתות טריות על הטאבון, ובהמשך קמפינג משפחות מ-15:00 עד 14:00 למחרת.',
+                            'hanukkah.html#morning',
+                            ['day-dec-10', 'day-dec-11']
+                        );
+                    });
                 } else if (day === 11) {
                     dayCell.classList.add('available');
-                    dayCell.innerHTML += `<div class="event-dot"></div>`;
-                    dayCell.onclick = () => showEventInfo(
-                        "11.12 (שישי, 15:00–18:00) — קבלת שבת שבטית והדלקת נרות חנוכה",
-                        "מלאכות, פיתות על הטאבון, קבלת שבת והדלקת נרות חנוכה (65 ₪ למשתתף מגיל 3), וסיום קמפינג משפחות ב-14:00.",
-                        "hanukkah.html#shabbat",
-                        ['day-dec-10', 'day-dec-11']
-                    );
+                    dayCell.innerHTML += '<div class="event-dot"></div>';
+                    dayCell.addEventListener('click', function() {
+                        showEventInfo(
+                            '11.12 (שישי, 15:00–18:00) — קבלת שבת שבטית והדלקת נרות חנוכה',
+                            'מלאכות, פיתות על הטאבון, קבלת שבת והדלקת נרות חנוכה, וסיום קמפינג משפחות ב-14:00.',
+                            'hanukkah.html#shabbat',
+                            ['day-dec-10', 'day-dec-11']
+                        );
+                    });
                 }
+
+                container.appendChild(dayCell);
             }
 
             showEventInfo(
-                "4.12 (שישי) — זמן יער למבוגרים | יער רמת מנשה",
-                "שקט ונחת סביב המדורה, מלאכות וסדנת הכנת חנוכייה מחומרים טבעיים (120 ₪ למשתתף / 220 ₪ לזוג). לחצו על ימים נוספים בלוח לצפייה בשאר מפגשי חנוכה.",
-                "hanukkah.html#adults",
+                '4.12 (שישי) — זמן יער למבוגרים | יער רמת מנשה',
+                'זמן של שקט ונחת סביב המדורה, עם מלאכות וסדנת הכנת חנוכייה מחומרים טבעיים. לחצו על ימים נוספים בלוח לצפייה בשאר מפגשי חנוכה.',
+                'hanukkah.html#adults',
                 ['day-dec-4']
             );
         }
 
-        function showEventInfo(title, desc, linkUrl, dayIdsArray) {
-            document.getElementById('eventTitle').innerText = title;
-            document.getElementById('eventDesc').innerText = desc;
-            
-            const linkBtn = document.getElementById('eventLinkBtn');
-            linkBtn.href = linkUrl;
-            linkBtn.innerHTML = `לעמוד הפעילות <i class="fas fa-chevron-left"></i>`;
-
-            document.querySelectorAll('.day-cell').forEach(cell => cell.classList.remove('selected'));
-            dayIdsArray.forEach(id => {
-                const cell = document.getElementById(id);
-                if (cell) cell.classList.add('selected');
-            });
-        }
-
-        window.onload = function() { renderCalendar(); };
+        document.addEventListener('DOMContentLoaded', renderCalendar);
     </script>
 
     <footer>
