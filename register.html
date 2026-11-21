@@ -167,7 +167,7 @@
             <h3>3. פרטי המשתתפים</h3>
         </div>
 
-        <!-- 4. הנחות -->
+        <!-- 4. הנחות ותשלום -->
         <div class="form-section">
             <h3>4. הנחות</h3>
             <div class="row-group">
@@ -188,7 +188,7 @@
             <div class="row-group">
                 <div class="form-group">
                     <label for="paymentMethod">אמצעי תשלום מועדף:</label>
-                    <select id="paymentMethod" required>
+                    <select id="paymentMethod" onchange="toggleInstallments()" required>
                         <option value="ביט">ביט</option>
                         <option value="כרטיס פייטר (משרתי מילואים)">כרטיס פייטר (משרתי מילואים)</option>
                         <option value="העברה בנקאית">העברה בנקאית</option>
@@ -196,9 +196,9 @@
                         <option value="מזומן במקום">מזומן במקום</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="installmentsGroup" style="display: none;">
                     <label for="installments">מספר תשלומים:</label>
-                    <select id="installments" required>
+                    <select id="installments">
                         <option value="1 תשלום">תשלום 1</option>
                         <option value="2 תשלומים">2 תשלומים</option>
                         <option value="3 תשלומים">3 תשלומים</option>
@@ -231,6 +231,17 @@
 
     const activitySelect = document.getElementById('activitySelect');
 
+    function toggleInstallments() {
+        const paymentMethod = document.getElementById('paymentMethod').value;
+        const installmentsGroup = document.getElementById('installmentsGroup');
+        if (paymentMethod === 'כרטיס אשראי') {
+            installmentsGroup.style.display = 'block';
+        } else {
+            installmentsGroup.style.display = 'none';
+            document.getElementById('installments').value = '1 תשלום';
+        }
+    }
+
     function loadActivities() {
         activitySelect.innerHTML = '<option value="">-- בחר/י פעילות --</option>';
         const urlParams = new URLSearchParams(window.location.search);
@@ -250,6 +261,7 @@
             activitySelect.appendChild(option);
         });
         handleActivityChange();
+        toggleInstallments();
     }
 
     function renderAgeFields(containerId, count, minAge) {
@@ -418,7 +430,9 @@
         const parentPhone = document.getElementById('parentPhone').value;
         const parentEmail = document.getElementById('parentEmail').value;
         const paymentMethod = document.getElementById('paymentMethod').value;
-        const installments = document.getElementById('installments').value;
+        const installmentsText = paymentMethod === 'כרטיס אשראי'
+            ? ` (${document.getElementById('installments').value})`
+            : '';
         const notes = document.getElementById('notes').value || 'אין';
 
         let participantsText = '';
@@ -446,13 +460,13 @@
 
         const finalPrice = document.getElementById('finalPriceText').innerText;
 
-        const whatsappText = `היי, נרשמתי דרך האתר 🌲\n` +
+        const whatsappText = `היי, נרשמתי דרך האתר \n` +
             `פעילות: ${activityName}\n` +
             `שם מלא: ${parentName}\n` +
             `טלפון: ${parentPhone}\n` +
             `אימייל: ${parentEmail}\n` +
             participantsText +
-            `אמצעי תשלום מועדף: ${paymentMethod} (${installments})\n` +
+            `אמצעי תשלום מועדף: ${paymentMethod}${installmentsText}\n` +
             `סה"כ לתשלום: ${finalPrice} ₪\n` +
             `הערות: ${notes}\n\n` +
             `תודה על הרשמתכם, קישור לתשלום יישלח עד סוף יום העסקים.`;
