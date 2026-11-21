@@ -12,6 +12,7 @@
             --text-dark: #2c3e50;
         }
 
+        * { box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #faf6f0;
@@ -31,17 +32,8 @@
             border: 1px solid #e0e8e0;
         }
 
-        h1 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 25px;
-        }
+        h1 { color: var(--primary-color); text-align: center; margin-bottom: 8px; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 25px; }
 
         .form-section {
             background-color: var(--bg-light);
@@ -51,21 +43,9 @@
             border-right: 4px solid var(--accent-orange);
         }
 
-        .form-section h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-            font-size: 1.1rem;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
+        .form-section h3 { margin-top: 0; color: var(--primary-color); font-size: 1.1rem; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 6px; font-weight: 600; }
 
         input[type="text"],
         input[type="tel"],
@@ -77,18 +57,24 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            box-sizing: border-box;
             font-size: 0.95rem;
         }
 
-        .row-group {
-            display: flex;
-            gap: 12px;
-        }
+        .row-group { display: flex; gap: 12px; }
+        .row-group .form-group { flex: 1; }
 
-        .row-group .form-group {
-            flex: 1;
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-weight: 600;
         }
+        .checkbox-row input { width: 18px; height: 18px; accent-color: var(--accent-orange); }
 
         .submit-btn {
             width: 100%;
@@ -102,10 +88,7 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-
-        .submit-btn:hover {
-            background-color: #b85419;
-        }
+        .submit-btn:hover { background-color: #b85419; }
 
         .price-summary {
             background: #e8f5e9;
@@ -115,18 +98,19 @@
             font-weight: bold;
             color: var(--primary-color);
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
         }
 
-        .early-bird-note {
-            background-color: #fff3cd;
-            color: #856404;
+        .fighter-note {
+            background-color: #e8f5e9;
+            color: #1b3820;
             padding: 10px;
-            border-radius: 6px;
-            font-size: 0.9rem;
+            border-radius: 8px;
+            font-size: 0.92rem;
             text-align: center;
-            margin-bottom: 15px;
-            border: 1px solid #ffeeba;
+            margin-bottom: 18px;
+            border: 1px solid #c8e6c9;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -134,10 +118,10 @@
 
 <div class="booking-container">
     <h1>הרשמה לפעילות</h1>
-    <p class="subtitle">מדורת השבט - חיבור לטבע ולקהילה</p>
+    <p class="subtitle">מדורת השבט — חנוכה של יער, אש ומלאכות 🕯️🌲🔥</p>
 
-    <div class="early-bird-note">
-         <strong>הנחת הרשמה מוקדמת</strong> 10% על מסלול כל 3 המפגשים לנרשמים עד ה-12.11.2026
+    <div class="fighter-note">
+        🎖️ משרתי מילואים? ניתן לשלם ולממש הטבות עם <strong>כרטיס פייטר</strong>!
     </div>
 
     <form id="mainBookingForm">
@@ -199,9 +183,9 @@
                     <label for="paymentMethod">אמצעי תשלום מועדף:</label>
                     <select id="paymentMethod" required>
                         <option value="ביט / פייבוקס">ביט / PayBox</option>
+                        <option value="כרטיס פייטר (משרתי מילואים)">כרטיס פייטר (משרתי מילואים)</option>
                         <option value="העברה בנקאית">העברה בנקאית</option>
                         <option value="כרטיס אשראי">כרטיס אשראי</option>
-                        <option value="כרטיס פייטר (משרתי מילואים)">כרטיס פייטר (משרתי מילואים)</option>
                         <option value="מזומן במקום">מזומן במקום</option>
                     </select>
                 </div>
@@ -217,21 +201,25 @@
 
             <div class="form-group">
                 <label for="notes">הערות נוספות:</label>
-                <textarea id="notes" rows="2" placeholder="בקשות מיוחדות..."></textarea>
+                <textarea id="notes" rows="2" placeholder="בקשות מיוחדות / רגישויות..."></textarea>
             </div>
         </div>
 
-        <button type="submit" class="submit-btn">המשך</button>
+        <button type="submit" class="submit-btn">המשך לשליחה ב-WhatsApp</button>
     </form>
 </div>
 
 <script>
     const activities = [
-        { id: 'yaar-20-11', name: 'יום יער וקבלת שבת שבטית - 20.11.2026', date: '2026-11-20', type: 'yaar' },
-        { id: 'journey-all', name: 'מסלול מלא - כל 3 המפגשים של זמן הורה וילד.ה', date: '2026-11-20', type: 'journey', basePrice: 1560, isEarlyBird: true },
-        { id: 'journey-20-11', name: 'זמן הורה וילד.ה - 20.11.2026 (רמת מנשה)', date: '2026-11-20', type: 'journey', basePrice: 390 },
-        { id: 'journey-04-12', name: 'זמן הורה וילד.ה (מפגש שני) - 04.12.2026', date: '2026-12-04', type: 'journey', basePrice: 390 },
-        { id: 'journey-10-12', name: 'זמן הורה וילד.ה (סופ"ש חנוכה) - 10-11.12.2026', date: '2026-12-10', type: 'journey', basePrice: 780 }
+        { id: 'hanukkah-adults-04-12', name: '4.12 (שישי) — זמן יער למבוגרים | יער רמת מנשה', type: 'adults' },
+        { id: 'hanukkah-solo-camp-04-05-12', name: '4–5.12 — קמפינג יחידנים (אמא וילדים, אבא וילדים)', type: 'camping' },
+        { id: 'hanukkah-givat-more-07-12', name: '7.12 (שני, 15:00–18:00) — מפגש חנוכה ביער גבעת המורה', type: 'workshop65' },
+        { id: 'hanukkah-jordan-valley-09-12', name: '9.12 (רביעי, 15:00–18:00) — מפגש חנוכה בעמק הירדן', type: 'workshop65' },
+        { id: 'hanukkah-morning-10-12', name: '10.12 (חמישי, 10:00–13:00) — זמן יער למשפחות', type: 'workshop65' },
+        { id: 'hanukkah-family-camp-10-11-12', name: '10–11.12 (15:00 עד 14:00) — קמפינג משפחות', type: 'camping' },
+        { id: 'hanukkah-shabbat-11-12', name: '11.12 (שישי, 15:00–18:00) — קבלת שבת שבטית והדלקת נרות חנוכה', type: 'workshop65' },
+        { id: 'journey-04-12', name: 'זמן הורה וילד.ה (מפגש שני) - 04.12.2026', type: 'journey', basePrice: 390 },
+        { id: 'journey-10-12', name: 'זמן הורה וילד.ה (סופ"ש חנוכה) - 10-11.12.2026', type: 'journey', basePrice: 780 }
     ];
 
     const activitySelect = document.getElementById('activitySelect');
@@ -246,12 +234,8 @@
             option.value = act.id;
             option.textContent = act.name;
             option.dataset.type = act.type;
-            option.dataset.date = act.date;
             if (act.basePrice) {
                 option.dataset.price = act.basePrice;
-            }
-            if (act.isEarlyBird) {
-                option.dataset.earlyBird = "true";
             }
             if (selectedFromUrl === act.id) {
                 option.selected = true;
@@ -274,30 +258,50 @@
 
         const type = selectedOption.dataset.type;
 
-        if (type === 'yaar') {
+        if (type === 'adults') {
+            section.innerHTML += `
+                <div class="form-group">
+                    <label for="adultsParticipants">בחרו הרכב השתתפות:</label>
+                    <select id="adultsParticipants" onchange="calculatePrice()" required>
+                        <option value="1">משתתף/ת 1 (120 ₪)</option>
+                        <option value="2">זוג / 2 משתתפים (220 ₪)</option>
+                    </select>
+                </div>
+            `;
+        } else if (type === 'workshop65') {
             section.innerHTML += `
                 <div class="row-group">
                     <div class="form-group">
-                        <label for="adultsCount">מספר מבוגרים:</label>
-                        <select id="adultsCount" onchange="calculatePrice()" required>
-                            <option value="1">1 מבוגר/ת</option>
-                            <option value="2">2 מבוגרים</option>
-                        </select>
+                        <label for="paidCount65">מספר משתתפים מגיל 3 ומעלה (65 ₪ למשתתף):</label>
+                        <input type="number" id="paidCount65" min="1" max="15" value="2" oninput="calculatePrice()" required>
                     </div>
                     <div class="form-group">
-                        <label for="kidsCount">מספר ילדים:</label>
-                        <select id="kidsCount" onchange="updateYaarKidsInputs(); calculatePrice();" required>
-                            <option value="1">ילד/ה 1</option>
-                            <option value="2">2 ילדים</option>
-                            <option value="3">3 ילדים</option>
-                            <option value="4">4 ילדים</option>
-                            <option value="5">5 ילדים</option>
-                        </select>
+                        <label for="toddlersUnder3">ילדים מתחת לגיל 3 (ללא עלות):</label>
+                        <input type="number" id="toddlersUnder3" min="0" max="10" value="0" oninput="calculatePrice()">
                     </div>
                 </div>
-                <div id="yaarKidsAgesContainer"></div>
             `;
-            updateYaarKidsInputs();
+        } else if (type === 'camping') {
+            section.innerHTML += `
+                <div class="row-group">
+                    <div class="form-group">
+                        <label for="campAdults">מספר מבוגרים (250 ₪ למבוגר):</label>
+                        <input type="number" id="campAdults" min="1" max="6" value="1" oninput="calculatePrice()" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="campKids2Plus">ילדים מגיל שנתיים (170 ₪ לילד 1–2, 50 ₪ מילד 3):</label>
+                        <input type="number" id="campKids2Plus" min="0" max="10" value="1" oninput="calculatePrice()" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="campKidsUnder2">ילדים מתחת לגיל שנתיים (ללא עלות):</label>
+                    <input type="number" id="campKidsUnder2" min="0" max="5" value="0" oninput="calculatePrice()">
+                </div>
+                <label class="checkbox-row">
+                    <input type="checkbox" id="ownGearDiscount" onchange="calculatePrice()">
+                    <span>🎒 מגיעים עם אוהל ומזרנים מהבית (100 ₪ הנחה למשפחה)</span>
+                </label>
+            `;
         } else {
             section.innerHTML += `
                 <div class="row-group">
@@ -323,22 +327,6 @@
         calculatePrice();
     }
 
-    function updateYaarKidsInputs() {
-        const count = parseInt(document.getElementById('kidsCount').value);
-        const container = document.getElementById('yaarKidsAgesContainer');
-        container.innerHTML = '';
-
-        for (let i = 1; i <= count; i++) {
-            const div = document.createElement('div');
-            div.className = 'form-group';
-            div.innerHTML = `
-                <label for="yaarChildAge_${i}">גיל ילד/ה ${i}:</label>
-                <input type="number" id="yaarChildAge_${i}" min="1" max="18" placeholder="הכנס גיל" required>
-            `;
-            container.appendChild(div);
-        }
-    }
-
     function calculatePrice() {
         const selectedOption = activitySelect.options[activitySelect.selectedIndex];
         if (!selectedOption || !selectedOption.dataset.type) return;
@@ -346,65 +334,41 @@
         let basePrice = 0;
         const type = selectedOption.dataset.type;
 
-        if (type === 'yaar') {
-            const adults = parseInt(document.getElementById('adultsCount').value) || 1;
-            const kids = parseInt(document.getElementById('kidsCount').value) || 1;
-            const totalParticipants = adults + kids;
+        if (type === 'adults') {
+            const count = parseInt(document.getElementById('adultsParticipants').value) || 1;
+            basePrice = (count === 2) ? 220 : 120;
+        } else if (type === 'workshop65') {
+            const paid = Math.max(1, parseInt(document.getElementById('paidCount65').value) || 1);
+            basePrice = paid * 65;
+        } else if (type === 'camping') {
+            const adults = Math.max(1, parseInt(document.getElementById('campAdults').value) || 1);
+            const kids = Math.max(0, parseInt(document.getElementById('campKids2Plus').value) || 0);
+            const ownGear = document.getElementById('ownGearDiscount').checked;
 
-            if (totalParticipants > 6) {
-                document.getElementById('couponMsg').style.color = '#c0392b';
-                document.getElementById('couponMsg').innerText = 'סך המשתתפים המקסימלי ביום יער הוא עד 6 משתתפים.';
-                document.getElementById('priceSummaryBox').style.display = 'none';
-                return;
-            }
+            let kidsPrice = 0;
+            if (kids === 1) kidsPrice = 170;
+            else if (kids === 2) kidsPrice = 340;
+            else if (kids >= 3) kidsPrice = 340 + (kids - 2) * 50;
 
-            if (totalParticipants === 2) {
-                basePrice = 190;
-            } else if (totalParticipants === 3) {
-                basePrice = 255;
-            } else {
-                basePrice = 290;
-            }
+            basePrice = (adults * 250) + kidsPrice - (ownGear ? 100 : 0);
+            basePrice = Math.max(0, basePrice);
         } else {
             basePrice = parseInt(selectedOption.dataset.price || 0);
         }
 
-        const activityDate = selectedOption.dataset.date;
-        const isEarlyBird = selectedOption.dataset.earlyBird === "true";
         const couponInput = document.getElementById('couponInput').value.trim().toUpperCase();
         const couponMsg = document.getElementById('couponMsg');
-
         let discount = 0;
-
-        if (isEarlyBird) {
-            discount = Math.round(basePrice * 0.10);
-        }
 
         if (couponInput === 'CLICKBATEVA26') {
             discount = Math.round(basePrice * 0.10);
             couponMsg.style.color = '#2e4d36';
             couponMsg.innerText = 'קוד קופון הוחל בהצלחה (10% הנחה)';
-        } 
-        else if (couponInput === 'XTRA25' && activityDate === '2026-11-20') {
-            discount = Math.round(basePrice * 0.25);
-            couponMsg.style.color = '#2e4d36';
-            couponMsg.innerText = 'קוד קופון XTRA25 הוחל בהצלחה (25% הנחה)';
-        } 
-        else if (couponInput.length >= 4) {
-            discount = Math.round(basePrice * 0.10);
-            couponMsg.style.color = '#2e4d36';
-            couponMsg.innerText = 'קוד קופון הוחל בהצלחה';
-        } 
-        else if (couponInput !== '') {
+        } else if (couponInput !== '') {
             couponMsg.style.color = '#c0392b';
-            couponMsg.innerText = 'קוד קופון שגוי או אינו תקף לפעילות זו';
+            couponMsg.innerText = 'קוד קופון שגוי או אינו בתוקף';
         } else {
-            if (isEarlyBird) {
-                couponMsg.style.color = '#2e4d36';
-                couponMsg.innerText = 'הופעלה הנחת הרשמה מוקדמת (10%)!';
-            } else {
-                couponMsg.innerText = '';
-            }
+            couponMsg.innerText = '';
         }
 
         const finalPrice = Math.max(0, basePrice - discount);
@@ -421,15 +385,6 @@
         const activityName = selectedOption.text;
         const activityType = selectedOption.dataset.type;
 
-        if (activityType === 'yaar') {
-            const adults = parseInt(document.getElementById('adultsCount').value) || 1;
-            const kids = parseInt(document.getElementById('kidsCount').value) || 1;
-            if ((adults + kids) > 6) {
-                alert('שגיאה: סך המשתתפים ביום יער אינו יכול לעלות על 6 אנשים.');
-                return;
-            }
-        }
-
         const parentName = document.getElementById('parentName').value;
         const parentPhone = document.getElementById('parentPhone').value;
         const paymentMethod = document.getElementById('paymentMethod').value;
@@ -438,19 +393,19 @@
 
         let participantsText = '';
 
-        if (activityType === 'yaar') {
-            const adults = document.getElementById('adultsCount').value;
-            const kidsCount = parseInt(document.getElementById('kidsCount').value);
-            let ages = [];
-            for (let i = 1; i <= kidsCount; i++) {
-                ages.push(document.getElementById(`yaarChildAge_${i}`).value);
-            }
-            let packageDesc = "זוג (190 ₪)";
-            let totalP = parseInt(adults) + kidsCount;
-            if (totalP === 3) packageDesc = "3 משתתפים (255 ₪)";
-            if (totalP >= 4) packageDesc = "4-6 משתתפים (290 ₪)";
-
-            participantsText = `מסלול: ${packageDesc}\nמבוגרים: ${adults}\nילדים: ${kidsCount} (גילאים: ${ages.join(', ')})\n`;
+        if (activityType === 'adults') {
+            const count = document.getElementById('adultsParticipants').value;
+            participantsText = `הרכב: ${count === '2' ? 'זוג (220 ₪)' : 'משתתף/ת 1 (120 ₪)'}\n`;
+        } else if (activityType === 'workshop65') {
+            const paid = document.getElementById('paidCount65').value;
+            const under3 = document.getElementById('toddlersUnder3').value || 0;
+            participantsText = `משתתפים מגיל 3+: ${paid} | מתחת לגיל 3: ${under3}\n`;
+        } else if (activityType === 'camping') {
+            const adults = document.getElementById('campAdults').value;
+            const kids = document.getElementById('campKids2Plus').value;
+            const under2 = document.getElementById('campKidsUnder2').value || 0;
+            const ownGear = document.getElementById('ownGearDiscount').checked ? 'כן (הנחת 100 ₪)' : 'לא (אוהל ומזרנים מאיתנו)';
+            participantsText = `מבוגרים: ${adults} | ילדים (2+): ${kids} | מתחת לגיל 2: ${under2}\nציוד שינה מהבית: ${ownGear}\n`;
         } else {
             const childName = document.getElementById('childName').value;
             const childAge = document.getElementById('childAge').value;
@@ -460,7 +415,7 @@
 
         const finalPrice = document.getElementById('finalPriceText').innerText;
 
-        const whatsappText = `היי, נרשמתי דרך האתר \n` +
+        const whatsappText = `היי טליה, נרשמתי דרך האתר! 🌲\n` +
             `פעילות: ${activityName}\n` +
             `שם הורה: ${parentName}\n` +
             `טלפון: ${parentPhone}\n` +
@@ -471,8 +426,6 @@
 
         const phoneNumber = "972559914540";
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappText)}`;
-        
-        // פתיחת הקישור בלשונית חדשה כדי למנוע חסימות דפדפן
         window.open(whatsappUrl, '_blank');
     });
 </script>
