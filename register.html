@@ -70,6 +70,20 @@
             margin-top: 10px;
         }
 
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .checkbox-row input { width: 18px; height: 18px; accent-color: var(--accent-orange); }
+
         .submit-btn {
             width: 100%;
             background-color: var(--accent-orange);
@@ -131,7 +145,7 @@
 
         <!-- 2. פרטי מבוגר מלווה -->
         <div class="form-section">
-            <h3>2. פרטי מבוגר אחראי</h3>
+            <h3>2. פרטי מבוגר</h3>
             <div class="row-group">
                 <div class="form-group">
                     <label for="parentName">שם מלא:</label>
@@ -175,7 +189,7 @@
                 <div class="form-group">
                     <label for="paymentMethod">אמצעי תשלום מועדף:</label>
                     <select id="paymentMethod" required>
-                        <option value="ביט / פייבוקס">ביט / PayBox</option>
+                        <option value="ביט">ביט</option>
                         <option value="כרטיס פייטר (משרתי מילואים)">כרטיס פייטר (משרתי מילואים)</option>
                         <option value="העברה בנקאית">העברה בנקאית</option>
                         <option value="כרטיס אשראי">כרטיס אשראי</option>
@@ -194,7 +208,7 @@
 
             <div class="form-group">
                 <label for="notes">הערות נוספות:</label>
-                <textarea id="notes" rows="2" placeholder="בקשות מיוחדות / רגישויות..."></textarea>
+                <textarea id="notes" rows="2" placeholder="בקשות מיוחדות והערות..."></textarea>
             </div>
         </div>
 
@@ -204,13 +218,13 @@
 
 <script>
     const activities = [
-        { id: 'hanukkah-adults-04-12', name: '4.12 (שישי) — זמן יער למבוגרים | יער רמת מנשה', type: 'adults' },
-        { id: 'hanukkah-solo-camp-04-05-12', name: '4–5.12 — קמפינג יחידנים (אמא וילדים, אבא וילדים)', type: 'camping' },
-        { id: 'hanukkah-givat-more-07-12', name: '7.12 (שני, 15:00–18:00) — מפגש חנוכה ביער גבעת המורה', type: 'workshop65' },
-        { id: 'hanukkah-jordan-valley-09-12', name: '9.12 (רביעי, 15:00–18:00) — מפגש חנוכה בעמק הירדן', type: 'workshop65' },
-        { id: 'hanukkah-morning-10-12', name: '10.12 (חמישי, 10:00–13:00) — זמן יער למשפחות', type: 'workshop65' },
-        { id: 'hanukkah-family-camp-10-11-12', name: '10–11.12 (15:00 עד 14:00) — קמפינג משפחות', type: 'camping' },
-        { id: 'hanukkah-shabbat-11-12', name: '11.12 (שישי, 15:00–18:00) — קבלת שבת שבטית והדלקת נרות חנוכה', type: 'workshop65' },
+        { id: 'hanukkah-adults-04-12', name: '4.12 זמן יער למבוגרים | יער רמת מנשה', type: 'adults' },
+        { id: 'hanukkah-solo-camp-04-05-12', name: '4–5.12 קמפינג משפחות יחידניות', type: 'camping' },
+        { id: 'hanukkah-givat-more-07-12', name: '7.12 זמן יער גבעת המורה', type: 'workshop65' },
+        { id: 'hanukkah-jordan-valley-09-12', name: '9.12 זמן יער עמק הירדן', type: 'workshop65' },
+        { id: 'hanukkah-morning-10-12', name: '10.12 זמן יער רמת השופט', type: 'workshop65' },
+        { id: 'hanukkah-family-camp-10-11-12', name: '10–11.12 קמפינג משפחות רמת השופט', type: 'camping' },
+        { id: 'hanukkah-shabbat-11-12', name: '11.12 קבלת שבת רמת השופט', type: 'workshop65' },
         { id: 'journey-04-12', name: 'זמן הורה וילד.ה (מפגש שני) - 04.12.2026', type: 'journey', basePrice: 390 },
         { id: 'journey-10-12', name: 'זמן הורה וילד.ה (סופ"ש חנוכה) - 10-11.12.2026', type: 'journey', basePrice: 780 }
     ];
@@ -284,7 +298,7 @@
         if (type === 'adults') {
             section.innerHTML += `
                 <div class="form-group">
-                    <label for="adultsParticipants">בחרו הרכב השתתפות:</label>
+                    <label for="adultsParticipants">בחרו הרכב משתתפים:</label>
                     <select id="adultsParticipants" onchange="calculatePrice()" required>
                         <option value="1">משתתף/ת 1 (120 ₪)</option>
                         <option value="2">זוג / 2 משתתפים (220 ₪)</option>
@@ -293,9 +307,18 @@
             `;
         } else if (type === 'workshop65') {
             section.innerHTML += `
-                <div class="form-group">
-                    <label for="paidCount65">מספר משתתפים מגיל 3 ומעלה (65 ₪ למשתתף):</label>
-                    <input type="number" id="paidCount65" min="1" max="10" value="1" oninput="renderAgeFields('workshopAges', this.value, 3); calculatePrice();" required>
+                <div class="row-group">
+                    <div class="form-group">
+                        <label for="w65Adults">מספר מבוגרים (65 ₪ למשתתף):</label>
+                        <select id="w65Adults" onchange="calculatePrice()" required>
+                            <option value="1">1 מבוגר</option>
+                            <option value="2">2 מבוגרים</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="w65Kids">מספר ילדים מגיל 3 (65 ₪ למשתתף):</label>
+                        <input type="number" id="w65Kids" min="0" max="10" value="1" oninput="renderAgeFields('workshopAges', this.value, 3); calculatePrice();" required>
+                    </div>
                 </div>
                 <div id="workshopAges" class="kids-ages-grid"></div>
             `;
@@ -308,31 +331,23 @@
                         <input type="number" id="campAdults" min="1" max="6" value="1" oninput="calculatePrice()" required>
                     </div>
                     <div class="form-group">
-                        <label for="campKids2Plus">מספר ילדים מגיל שנתיים (170 ₪ לילד 1–2, 50 ₪ מילד 3):</label>
+                        <label for="campKids2Plus">מספר ילדים מגיל שנתיים: 170 ש"ח לילד, 50 ש"ח לילד שלישי והלאה</label>
                         <input type="number" id="campKids2Plus" min="0" max="10" value="1" oninput="renderAgeFields('campKidsAges', this.value, 2); calculatePrice();" required>
                     </div>
                 </div>
                 <div id="campKidsAges" class="kids-ages-grid"></div>
+                <label class="checkbox-row">
+                    <input type="checkbox" id="withOwnTent" onchange="calculatePrice()">
+                    <span>מגיעים עם אוהל ומזרנים מהבית (100 ₪ הנחה)</span>
+                </label>
             `;
             renderAgeFields('campKidsAges', 1, 2);
         } else {
             section.innerHTML += `
                 <div class="row-group">
                     <div class="form-group">
-                        <label for="childName">שם הילד/ה:</label>
-                        <input type="text" id="childName" required>
-                    </div>
-                    <div class="form-group">
                         <label for="childAge">גיל הילד/ה:</label>
                         <input type="number" id="childAge" min="1" max="18" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="childGender">מין הילד/ה:</label>
-                        <select id="childGender" required>
-                            <option value="">בחר/י</option>
-                            <option value="בן">בן</option>
-                            <option value="בת">בת</option>
-                        </select>
                     </div>
                 </div>
             `;
@@ -351,18 +366,21 @@
             const count = parseInt(document.getElementById('adultsParticipants').value) || 1;
             basePrice = (count === 2) ? 220 : 120;
         } else if (type === 'workshop65') {
-            const paid = Math.max(1, parseInt(document.getElementById('paidCount65').value) || 1);
-            basePrice = paid * 65;
+            const adults = parseInt(document.getElementById('w65Adults').value) || 1;
+            const kids = Math.max(0, parseInt(document.getElementById('w65Kids').value) || 0);
+            basePrice = (adults + kids) * 65;
         } else if (type === 'camping') {
             const adults = Math.max(1, parseInt(document.getElementById('campAdults').value) || 1);
             const kids = Math.max(0, parseInt(document.getElementById('campKids2Plus').value) || 0);
+            const withOwnTent = document.getElementById('withOwnTent') ? document.getElementById('withOwnTent').checked : false;
 
             let kidsPrice = 0;
             if (kids === 1) kidsPrice = 170;
             else if (kids === 2) kidsPrice = 340;
             else if (kids >= 3) kidsPrice = 340 + (kids - 2) * 50;
 
-            basePrice = (adults * 250) + kidsPrice;
+            basePrice = (adults * 250) + kidsPrice - (withOwnTent ? 100 : 0);
+            basePrice = Math.max(0, basePrice);
         } else {
             basePrice = parseInt(selectedOption.dataset.price || 0);
         }
@@ -398,6 +416,7 @@
 
         const parentName = document.getElementById('parentName').value;
         const parentPhone = document.getElementById('parentPhone').value;
+        const parentEmail = document.getElementById('parentEmail').value;
         const paymentMethod = document.getElementById('paymentMethod').value;
         const installments = document.getElementById('installments').value;
         const notes = document.getElementById('notes').value || 'אין';
@@ -405,35 +424,38 @@
         let participantsText = '';
 
         if (activityType === 'adults') {
-            const count = document.getElementById('adultsParticipants').value;
-            participantsText = `הרכב: ${count === '2' ? 'זוג (220 ₪)' : 'משתתף/ת 1 (120 ₪)'}\n`;
+            const count = parseInt(document.getElementById('adultsParticipants').value) || 1;
+            participantsText = `מספר מבוגרים: ${count} (${count === 2 ? 'זוג - 220 ₪' : 'יחיד/ה - 120 ₪'})\nמספר ילדים: 0\n`;
         } else if (activityType === 'workshop65') {
-            const paid = parseInt(document.getElementById('paidCount65').value) || 1;
-            const ages = collectAges('workshopAges', paid);
-            participantsText = `משתתפים (גיל 3+): ${paid} (גילאים: ${ages.join(', ')})\n`;
+            const adults = parseInt(document.getElementById('w65Adults').value) || 1;
+            const kids = parseInt(document.getElementById('w65Kids').value) || 0;
+            const ages = collectAges('workshopAges', kids);
+            const agesDisplay = kids > 0 ? ages.join(', ') : 'אין';
+            participantsText = `מספר מבוגרים: ${adults}\nמספר ילדים: ${kids}\nגילאי הילדים: ${agesDisplay}\n`;
         } else if (activityType === 'camping') {
             const adults = parseInt(document.getElementById('campAdults').value) || 1;
             const kids = parseInt(document.getElementById('campKids2Plus').value) || 0;
             const ages = collectAges('campKidsAges', kids);
-            const agesStr = kids > 0 ? ` (גילאים: ${ages.join(', ')})` : '';
-            participantsText = `מבוגרים: ${adults} | ילדים (2+): ${kids}${agesStr}\n`;
+            const agesDisplay = kids > 0 ? ages.join(', ') : 'אין';
+            const withOwnTent = document.getElementById('withOwnTent') && document.getElementById('withOwnTent').checked ? 'כן' : 'לא';
+            participantsText = `מספר מבוגרים: ${adults}\nמספר ילדים: ${kids}\nגילאי הילדים: ${agesDisplay}\nמגיעים עם אוהל: ${withOwnTent}\n`;
         } else {
-            const childName = document.getElementById('childName').value;
             const childAge = document.getElementById('childAge').value;
-            const childGender = document.getElementById('childGender').value;
-            participantsText = `שם הילד/ה: ${childName} (גיל ${childAge}, ${childGender})\n`;
+            participantsText = `מספר מבוגרים: 1\nמספר ילדים: 1\nגילאי הילדים: ${childAge}\n`;
         }
 
         const finalPrice = document.getElementById('finalPriceText').innerText;
 
-        const whatsappText = `היי טליה, נרשמתי דרך האתר! 🌲\n` +
+        const whatsappText = `היי, נרשמתי דרך האתר 🌲\n` +
             `פעילות: ${activityName}\n` +
-            `שם הורה: ${parentName}\n` +
+            `שם מלא: ${parentName}\n` +
             `טלפון: ${parentPhone}\n` +
+            `אימייל: ${parentEmail}\n` +
             participantsText +
+            `אמצעי תשלום מועדף: ${paymentMethod} (${installments})\n` +
             `סה"כ לתשלום: ${finalPrice} ₪\n` +
-            `תשלום: ${paymentMethod} (${installments})\n` +
-            `הערות: ${notes}`;
+            `הערות: ${notes}\n\n` +
+            `תודה על הרשמתכם, קישור לתשלום יישלח עד סוף יום העסקים.`;
 
         const phoneNumber = "972559914540";
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappText)}`;
